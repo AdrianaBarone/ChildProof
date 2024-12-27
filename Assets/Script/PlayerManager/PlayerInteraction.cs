@@ -39,10 +39,6 @@ public class PlayerInteraction : MonoBehaviour
             fixedCamera.gameObject.SetActive(false);
     }
 
-
-
-
-
     public void RaycastForInteractable()
     {
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
@@ -135,6 +131,8 @@ public class PlayerInteraction : MonoBehaviour
         playerCamera.gameObject.SetActive(false);
 
         Cursor.visible = true;
+        PlayerManager.Instance.TransitionToInspection();
+        
     }
 
     private IEnumerator EndInteraction(Vector3 startPosition, Quaternion startRotation)
@@ -159,7 +157,8 @@ public class PlayerInteraction : MonoBehaviour
         // Disabilita la fotocamera fissa
         fixedCamera.gameObject.SetActive(false);
         playerCamera.gameObject.SetActive(true);
+
+
+        PlayerManager.Instance.TransitionToExploration();
     }
-
-
 }

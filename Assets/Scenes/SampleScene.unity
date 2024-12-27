@@ -1009,9 +1009,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryMenu: {fileID: 759924701}
   player: {fileID: 1819248548}
-  cursorImage: {fileID: 0}
-  defaultCursor: {fileID: 0}
-  targetCursor: {fileID: 0}
 --- !u!114 &795032147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2460,6 +2457,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 626743759229228433, guid: f57feb72b9acb434d8242c40e91ffcc4, type: 3}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 963194227}
     - target: {fileID: 1768732293263763295, guid: f57feb72b9acb434d8242c40e91ffcc4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

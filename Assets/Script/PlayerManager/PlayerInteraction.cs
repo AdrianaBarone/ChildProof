@@ -2,15 +2,10 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
 
-public enum PlayerState
-{
-    STATO_A,
-    STATO_B,
-}
+
 
 public class PlayerInteraction : MonoBehaviour
 {
-    private PlayerState state = PlayerState.STATO_A;
 
     // Parametri per il controllo visibilità
     [SerializeField] private float distance = 2f;
@@ -35,7 +30,6 @@ public class PlayerInteraction : MonoBehaviour
 
     // Tempo di transizione tra le fotocamere
     [SerializeField] private float transitionTime = 1f;
-    private bool isTransitioning = false;
     private Vector3 startPosition;
     private Quaternion startRotation;
 
@@ -45,96 +39,58 @@ public class PlayerInteraction : MonoBehaviour
             fixedCamera.gameObject.SetActive(false);
     }
 
-    void TransitionState(PlayerState toState)
+
+
+
+
+    public void RaycastForInteractable()
     {
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        RaycastHit hitInfo;
+        Debug.DrawRay(ray.origin, ray.direction * distance, Color.red); // Visualizza il raycast in scena
 
-        if (state == PlayerState.STATO_A)
+        if (Physics.Raycast(ray, out hitInfo, distance, layerMask))
         {
+            pointingInteractable = hitInfo.collider.GetComponent<Interactable>();
+            pointingGrabbable = hitInfo.collider.GetComponent<Grabbable>();
+            pointingPickable = hitInfo.collider.GetComponent<Pickable>();
 
 
-        }
-        else if (state == PlayerState.STATO_B)
-        {
-
-
-        }
-
-        state = toState;
-    }
-
-    void Update()
-    {
-
-
-        if (state == PlayerState.STATO_A)
-        {
-            Cursor.visible = true;
-
-            // Raycast per l'interazione
-            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-            RaycastHit hitInfo;
-            Debug.DrawRay(ray.origin, ray.direction * distance, Color.red); // Visualizza il raycast in scena
-
-            if (Physics.Raycast(ray, out hitInfo, distance, layerMask))
+            if (pointingInteractable)
             {
-                pointingInteractable = hitInfo.collider.GetComponent<Interactable>();
-                pointingGrabbable = hitInfo.collider.GetComponent<Grabbable>();
-                pointingPickable = hitInfo.collider.GetComponent<Pickable>();
+                UpdateCursor(interactCursor); // Cambio del cursore per interazione
+                pointingInteractable.BaseInteract();
 
-
-                if (pointingInteractable)
+                if (Input.GetMouseButtonDown(0))
                 {
-                    UpdateCursor(interactCursor); // Cambio del cursore per interazione
-                    pointingInteractable.BaseInteract();
-
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        StartCoroutine(StartInteraction(hitInfo.collider.transform));
-                    }
+                    StartCoroutine(StartInteraction(hitInfo.collider.transform));
                 }
-                else if (pointingGrabbable)
+            }
+            else if (pointingGrabbable)
+            {
+                UpdateCursor(grabbableCursor); // Cambio del cursore per oggetto afferrabile
+                if (Input.GetMouseButtonDown(0))
                 {
-                    UpdateCursor(grabbableCursor); // Cambio del cursore per oggetto afferrabile
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        StartCoroutine(StartInteraction(hitInfo.collider.transform));
-                    }
+                    StartCoroutine(StartInteraction(hitInfo.collider.transform));
                 }
-                else if (pointingPickable)
+            }
+            else if (pointingPickable)
+            {
+                UpdateCursor(grabbableCursor); // Cambio del cursore per oggetto afferrabile
+                if (Input.GetMouseButtonDown(0))
                 {
-                    UpdateCursor(grabbableCursor); // Cambio del cursore per oggetto afferrabile
-                    if (Input.GetMouseButtonDown(0))
-                    {
-                        pointingPickable.BasePick();
-                    }
-                }
-                else
-                {
-                    UpdateCursor(defaultCursor); // Cambio al cursore predefinito
+                    pointingPickable.BasePick();
                 }
             }
             else
             {
-                UpdateCursor(defaultCursor); // Se non c'è nulla, cursore predefinito
+                UpdateCursor(defaultCursor); // Cambio al cursore predefinito
             }
-
         }
-        else if (state == PlayerState.STATO_B)
+        else
         {
-            // camera fissa, drag/grab and drop per singolo oggetto
-
+            UpdateCursor(defaultCursor); // Se non c'è nulla, cursore predefinito
         }
-
-
-        if (playerCamera.gameObject.activeSelf && !isTransitioning)
-        {
-
-        }
-        else if (isTransitioning)
-        {
-            Cursor.visible = false;  // Nascondi il cursore durante la transizione
-        }
-        else Cursor.visible = true;
     }
 
 
@@ -149,8 +105,8 @@ public class PlayerInteraction : MonoBehaviour
 
     private IEnumerator StartInteraction(Transform interactableTransform)
     {
-        // Inizio della transizione
-        isTransitioning = true;
+        // Inizio della transizione, nascondi cursore
+        Cursor.visible = false;
 
         // Calcolare la posizione frontale all'oggetto (senza inclinazione)
         // La fotocamera "fixed" sarà posizionata a una certa distanza davanti all'oggetto, lungo il suo "forward"
@@ -177,21 +133,12 @@ public class PlayerInteraction : MonoBehaviour
         // Attiva la fotocamera fissa
         fixedCamera.gameObject.SetActive(true);
         playerCamera.gameObject.SetActive(false);
-        fixedIsActive();
 
-        // Disabilita il movimento del giocatore
-        playerMovement.EnablePlayerMovement(false);
-
-        // Esegui l'interazione
-        //--- interazione con inventario ---//
-
-        isTransitioning = false;
+        Cursor.visible = true;
     }
 
     private IEnumerator EndInteraction(Vector3 startPosition, Quaternion startRotation)
     {
-        // Inizio della transizione inversa
-        isTransitioning = true;
 
         // Interpolazione per il movimento graduale della fotocamera
         float elapsedTime = 0f;
@@ -212,16 +159,7 @@ public class PlayerInteraction : MonoBehaviour
         // Disabilita la fotocamera fissa
         fixedCamera.gameObject.SetActive(false);
         playerCamera.gameObject.SetActive(true);
-        fixedIsActive();
-
-        // Riabilita il movimento del giocatore
-        playerMovement.EnablePlayerMovement(true);
-
-        isTransitioning = false;
     }
 
-    public bool fixedIsActive()
-    {
-        return fixedCamera.gameObject.activeSelf;
-    }
+
 }

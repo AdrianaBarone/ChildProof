@@ -7,28 +7,28 @@ public class InventoryManager : MonoBehaviour
 {
     public GameObject InventoryMenu;
     public GameObject player;
-    private PlayerInteraction playerInteraction;
+    private PlayerManager playerManager;
 
     void Start()
     {
-        playerInteraction = player.GetComponent<PlayerInteraction>();
+        playerManager = player.GetComponent<PlayerManager>();
         InventoryMenu.SetActive(true);
     }
 
     // Update is called once per frame
-void Update()
-{
-    // Verifica se la fotocamera fissa è attiva
-    if (playerInteraction.fixedIsActive())
+    void Update()
     {
-        // Confinare il cursore quando la fotocamera fissa è attiva
-        Cursor.lockState = CursorLockMode.None;  // Sblocca il cursore
+        // Verifica se la fotocamera fissa è attiva
+        if (playerManager.IsInStateExploration())
+        {
+            // Confinare il cursore quando la fotocamera fissa è attiva
+            Cursor.lockState = CursorLockMode.None;  // Sblocca il cursore
+        }
+        else
+        {
+            // Restituisce il cursore al gioco quando la fotocamera fissa non è attiva
+            ItemSettings.Instance.ListItems();  // Probabilmente gestisce l'inventario
+            Cursor.lockState = CursorLockMode.Locked;  // Blocca il cursore al centro
+        }
     }
-    else
-    {
-        // Restituisce il cursore al gioco quando la fotocamera fissa non è attiva
-        ItemSettings.Instance.ListItems();  // Probabilmente gestisce l'inventario
-        Cursor.lockState = CursorLockMode.Locked;  // Blocca il cursore al centro
-    }
-}
 }

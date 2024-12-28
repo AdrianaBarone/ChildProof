@@ -105,9 +105,10 @@ GameObject:
   - component: {fileID: 7067435396428617038}
   - component: {fileID: 5456135509529755773}
   - component: {fileID: 5557704722024717872}
-  - component: {fileID: 2435013194993660597}
   - component: {fileID: 626743759229228433}
   - component: {fileID: 1889419855819284049}
+  - component: {fileID: 7727372386090062524}
+  - component: {fileID: 506898635543073013}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -229,29 +230,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2435013194993660597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6628767215116273291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12f773ef6b778734a97a549f72d654ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
-  speed: 20
-  sensitivity: 5
-  distance: 2
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  cursorImage: {fileID: 0}
-  defaultCursor: {fileID: 0}
-  interactCursor: {fileID: 0}
-  grabbableCursor: {fileID: 0}
 --- !u!114 &626743759229228433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,5 +257,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d397f6daab65f4cc4927498968661bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInteraction: {fileID: 0}
-  playerMovement: {fileID: 626743759229228433}
+--- !u!114 &7727372386090062524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628767215116273291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a2de58f482b774a9fab0d37504c96d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 2
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  defaultCursor: {fileID: 10305, guid: 0000000000000000f000000000000000, type: 0}
+  interactCursor: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
+  grabbableCursor: {fileID: 10910, guid: 0000000000000000f000000000000000, type: 0}
+  playerCamera: {fileID: 1326062376019105503}
+  fixedCamera: {fileID: 0}
+  playerMovement: {fileID: 506898635543073013}
+  transitionTime: 1
+--- !u!114 &506898635543073013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628767215116273291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d20c2feff4f9524ab9454ff0bafbff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 1326062376019105503}
+  speed: 5
+  sensitivity: 5

@@ -11,6 +11,7 @@ public class InventoryManager : MonoBehaviour {
 
     private void Awake() {
         Instance = this;
+        ListItems();
     }
 
     public void Add(Item item) {

@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
+using System;
+using Unity.VisualScripting;
 
 
 
@@ -24,6 +26,7 @@ public class PlayerInteraction : MonoBehaviour
     // Riferimento alla fotocamera mobile e fissa
     [SerializeField] private Camera playerCamera;
     [SerializeField] private Camera fixedCamera;
+    public CameraPosition cameraPosition;
 
     // Movimento del giocatore
     [SerializeField] private PlayerMovement playerMovement;
@@ -104,10 +107,37 @@ public class PlayerInteraction : MonoBehaviour
         // Inizio della transizione, nascondi cursore
         Cursor.visible = false;
 
+        CameraPosition cameraPositionComponent = interactableTransform.GetComponent<CameraPosition>();
+        if (cameraPositionComponent == null)
+        {
+            Debug.LogError("Nessun componente CameraPosition trovato sull'oggetto.");
+            yield break;
+        }
+
+        string positionType = cameraPositionComponent.GivePosition();
+        
+        // Calcolare la posizione e la rotazione della fotocamera in base al tipo di posizione
+        Vector3 targetPosition = Vector3.zero;
+        Quaternion targetRotation = Quaternion.identity;
+
         // Calcolare la posizione frontale all'oggetto (senza inclinazione)
         // La fotocamera "fixed" sarà posizionata a una certa distanza davanti all'oggetto, lungo il suo "forward"
-        Vector3 targetPosition = interactableTransform.position + interactableTransform.forward * 5f; // posizioniamo la fotocamera "fixed" davanti all'oggetto
-        Quaternion targetRotation = Quaternion.LookRotation(interactableTransform.position - targetPosition);  // orientamento verso l'oggetto
+        switch (positionType)
+        {
+            case "Above":
+                targetPosition = interactableTransform.position + interactableTransform.up * 5f; // Posizione sopra l'oggetto
+                break;
+            case "Forward":
+                targetPosition = interactableTransform.position + interactableTransform.forward * 5f; // Posizione davanti all'oggetto
+                break;
+            case "Side":
+                targetPosition = interactableTransform.position + interactableTransform.right * 5f; // Posizione di lato all'oggetto
+                break;
+            default:
+                targetPosition = interactableTransform.position + interactableTransform.forward * 5f; // Default, fotocamera davanti
+                break;
+        }
+        targetRotation = Quaternion.LookRotation(interactableTransform.position - targetPosition);  // orientamento verso l'oggetto
 
         // Interpolazione per il movimento graduale della fotocamera
         float elapsedTime = 0f;

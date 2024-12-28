@@ -15,53 +15,53 @@ public class ItemSettings : MonoBehaviour
         Instance = this;
     }
 
-public void Add(Item item)
-{
-    foreach (Item i in Items)
+    public void Add(Item item)
     {
-        if (i.id == item.id) 
+        foreach (Item i in Items)
         {
-            i.quantity += 1;  
-            return;
+            if (i.id == item.id)
+            {
+                i.quantity += 1;
+                return;
+            }
         }
-    }
 
-    Items.Add(item);
-}
+        Items.Add(item);
+    }
 
     public void Remove(Item item)
     {
         foreach (Item i in Items)
-    {
-        if (i.id == item.id) 
         {
-            i.quantity -= 1;   
-            return;
+            if (i.id == item.id)
+            {
+                i.quantity -= 1;
+                return;
+            }
         }
-    }
         Items.Remove(item);
     }
-    
+
 
     public void ListItems()
     {
-    // Pulisce l'inventario prima di ogni restart gioco
-    foreach (Transform item in ItemContent)
-    {
-        Destroy(item.gameObject);
-    }
+        // Pulisce l'inventario prima di ogni restart gioco
+        foreach (Transform item in ItemContent)
+        {
+            Destroy(item.gameObject);
+        }
 
-    // Aggiungi gli oggetti all'inventario
-    foreach (Item item in Items)
-    {
-        GameObject obj = Instantiate(InventoryItem, ItemContent);
-        var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
-        var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
-        var itemQuantity = obj.transform.Find("ItemQuantity").GetComponent<Text>();
+        // Aggiungi gli oggetti all'inventario
+        foreach (Item item in Items)
+        {
+            GameObject obj = Instantiate(InventoryItem, ItemContent);
+            // var itemName = obj.transform.Find("ItemName").GetComponent<Text>();
+            var ItemIcon = obj.transform.Find("Border/ItemIcon").GetComponent<Image>();
+            var ItemQuantity = obj.transform.Find("Border/ItemQuantity").GetComponent<Text>();
 
-        itemName.text = item.itemName;
-        itemIcon.sprite = item.icon;
-        itemQuantity.text = "x" + item.quantity.ToString();
-    }
+            //itemName.text = item.itemName;
+            ItemIcon.sprite = item.icon;
+            ItemQuantity.text = "x" + item.quantity.ToString();
+        }
     }
 }

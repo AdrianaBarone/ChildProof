@@ -14,6 +14,7 @@ public class PlayerManager : MonoBehaviour
 
     private PlayerInteraction playerInteraction;
     private PlayerMovement playerMovement;
+    private PlayerInspection playerInspection;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class PlayerManager : MonoBehaviour
 
         playerInteraction = GetComponent<PlayerInteraction>();
         playerMovement = GetComponent<PlayerMovement>();
+        playerInspection = GetComponent<PlayerInspection>();
     }
 
     void Update()
@@ -34,6 +36,7 @@ public class PlayerManager : MonoBehaviour
                 break;
             case PlayerState.INSPECTION:
                 // inventoryManager.enlargeUI (nella transizione)
+                playerInspection.TryDragDrop();
                 Debug.Log("INSPECTION");
                 break;
             default:

@@ -30,11 +30,12 @@ public class PlayerManager : MonoBehaviour
         switch (state)
         {
             case PlayerState.EXPLORATION:
+            Cursor.lockState = CursorLockMode.Locked;
                 playerInteraction.RaycastForInteractable();
                 playerMovement.HandleMovement();
                 break;
             case PlayerState.INSPECTION:
-                
+                Cursor.lockState = CursorLockMode.None;
                 //InventoryManager.Instance.ListItems();
                 //playerInspection.TryDragDrop();
                 break;

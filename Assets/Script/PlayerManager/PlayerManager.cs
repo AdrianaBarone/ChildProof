@@ -30,14 +30,13 @@ public class PlayerManager : MonoBehaviour
         switch (state)
         {
             case PlayerState.EXPLORATION:
-            Debug.Log("EXPLORATION");
                 playerInteraction.RaycastForInteractable();
                 playerMovement.HandleMovement();
                 break;
             case PlayerState.INSPECTION:
-                // inventoryManager.enlargeUI (nella transizione)
-                playerInspection.TryDragDrop();
-                Debug.Log("INSPECTION");
+                
+                //InventoryManager.Instance.ListItems();
+                //playerInspection.TryDragDrop();
                 break;
             default:
                 break;
@@ -46,11 +45,13 @@ public class PlayerManager : MonoBehaviour
 
     public void TransitionToInspection()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         state = PlayerState.INSPECTION;
     }
 
     public void TransitionToExploration()
     {
+        Cursor.lockState = CursorLockMode.None;
         state = PlayerState.EXPLORATION;
     }
 

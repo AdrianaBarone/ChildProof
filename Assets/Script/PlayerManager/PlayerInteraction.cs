@@ -19,7 +19,7 @@ public class PlayerInteraction : MonoBehaviour
     //Oggetti con cui interagire
     private Interactable pointingInteractable;
     private Grabbable pointingGrabbable;
-    private Pickable pointingPickable;
+    private IPickable pointingPickable;
 
     // Riferimento alla fotocamera mobile e fissa
     [SerializeField] private Camera playerCamera;
@@ -49,8 +49,9 @@ public class PlayerInteraction : MonoBehaviour
         {
             pointingInteractable = hitInfo.collider.GetComponent<Interactable>();
             pointingGrabbable = hitInfo.collider.GetComponent<Grabbable>();
-            pointingPickable = hitInfo.collider.GetComponent<Pickable>();
+            pointingPickable = hitInfo.collider.GetComponent<IPickable>();
 
+            // TODO: capire bene come gestire queste interazioni
 
             if (pointingInteractable)
             {
@@ -70,12 +71,12 @@ public class PlayerInteraction : MonoBehaviour
                     StartCoroutine(StartInteraction(hitInfo.collider.transform));
                 }
             }
-            else if (pointingPickable)
+            else if (pointingPickable != null)
             {
                 UpdateCursor(grabbableCursor); // Cambio del cursore per oggetto afferrabile
                 if (Input.GetMouseButtonDown(0))
                 {
-                    pointingPickable.BasePick();
+                    pointingPickable.OnPick();
                 }
             }
             else

@@ -9,7 +9,6 @@ public class CameraPosition : MonoBehaviour
 
     public string GivePosition()
     {
-        Debug.Log("posizione fixed: "+ cameraPosition);
         return cameraPosition;
     }
 }

@@ -1,13 +1,9 @@
 using System.Collections;
-using UnityEngine.UI;
 using UnityEngine;
-using System;
-using Unity.VisualScripting;
 
 
 
-public class PlayerInteraction : MonoBehaviour
-{
+public class PlayerInteraction : MonoBehaviour {
 
     // Parametri per il controllo visibilità
     [SerializeField] private float distance = 2f;
@@ -20,7 +16,6 @@ public class PlayerInteraction : MonoBehaviour
 
     //Oggetti con cui interagire
     private Interactable pointingInteractable;
-    private Grabbable pointingGrabbable;
     private IPickable pointingPickable;
 
     // Riferimento alla fotocamera mobile e fissa
@@ -28,162 +23,143 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private Camera fixedCamera;
     public CameraPosition cameraPosition;
 
-    // Movimento del giocatore
-    [SerializeField] private PlayerMovement playerMovement;
-
     // Tempo di transizione tra le fotocamere
     [SerializeField] private float transitionTime = 1f;
     private Vector3 startPosition;
     private Quaternion startRotation;
 
-    void Start()
-    {
+    void Start() {
         if (fixedCamera != null)
             fixedCamera.gameObject.SetActive(false);
     }
 
-    public void RaycastForInteractable()
-    {
-        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-        RaycastHit hitInfo;
+    public void RaycastForInteractable() {
+        Ray ray = new(playerCamera.transform.position, playerCamera.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * distance, Color.red); // Visualizza il raycast in scena
 
-        if (Physics.Raycast(ray, out hitInfo, distance, layerMask))
-        {
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance, layerMask)) {
             pointingInteractable = hitInfo.collider.GetComponent<Interactable>();
-            pointingGrabbable = hitInfo.collider.GetComponent<Grabbable>();
             pointingPickable = hitInfo.collider.GetComponent<IPickable>();
+            Inspectable pointingInspectable = hitInfo.collider.GetComponent<Inspectable>();
 
             // TODO: capire bene come gestire queste interazioni
 
-            if (pointingInteractable)
-            {
+            if (pointingInteractable != null) {
                 UpdateCursor(interactCursor); // Cambio del cursore per interazione
                 pointingInteractable.BaseInteract();
 
-                if (Input.GetMouseButtonDown(0))
-                {
-                    StartCoroutine(StartInteraction(hitInfo.collider.transform));
+                if (Input.GetMouseButtonDown(0) && pointingInspectable && !pointingInspectable.IsResolved()) {
+                    StartCoroutine(StartInteraction(pointingInteractable));
                 }
             }
-            else if (pointingGrabbable)
-            {
-                UpdateCursor(grabbableCursor); // Cambio del cursore per oggetto afferrabile
-                if (Input.GetMouseButtonDown(0))
-                {
-                    StartCoroutine(StartInteraction(hitInfo.collider.transform));
-                }
+            else {
+                UpdateCursor(defaultCursor); // Cambio al cursore predefinito
             }
-            else if (pointingPickable != null)
-            {
+            
+            if (pointingPickable != null) {
                 UpdateCursor(grabbableCursor); // Cambio del cursore per oggetto afferrabile
-                if (Input.GetMouseButtonDown(0))
-                {
+                if (Input.GetMouseButtonDown(0)) {
                     pointingPickable.OnPick();
                 }
             }
-            else
-            {
-                UpdateCursor(defaultCursor); // Cambio al cursore predefinito
-            }
         }
-        else
-        {
+        else {
             UpdateCursor(defaultCursor); // Se non c'è nulla, cursore predefinito
         }
     }
 
 
+    public bool TryDragAndDrop(Item item) {
+        DropZone dropZone = RaycastForDropZone();
+        if (dropZone == null) {
+            return false;
+        }
+
+
+        if (dropZone.AcceptsItem(item)) {
+            dropZone.OnDrop();
+            return true;
+        }
+
+        return false;
+    }
+
+    public DropZone RaycastForDropZone() {
+        // ray is from mouse position to the world
+        Ray ray = fixedCamera.ScreenPointToRay(Input.mousePosition);
+        
+        Debug.DrawRay(ray.origin, ray.direction * distance * 10, Color.blue); // Visualizza il raycast in scena
+
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance * 10, layerMask)) {
+            DropZone dropZone = hitInfo.collider.GetComponent<DropZone>();
+
+            if (dropZone != null) {
+                // TODO: ritorna true? cambia colore?
+            }
+
+            return dropZone;
+        }
+
+        return null;
+    }
+
     // Funzione per cambiare il cursore
-    private void UpdateCursor(Texture2D newCursor)
-    {
-        if (newCursor != null)
-        {
-            Cursor.SetCursor(newCursor, Vector2.zero, CursorMode.Auto);
+    private void UpdateCursor(Texture2D newCursor) {
+        if (newCursor != null) {
+            Vector2 cursorHotspot = new Vector2(newCursor.width / 2, newCursor.height / 2);
+            Cursor.SetCursor(newCursor, cursorHotspot, CursorMode.Auto);
         }
     }
 
-    private IEnumerator StartInteraction(Transform interactableTransform)
-    {
+    private IEnumerator StartInteraction(Interactable interactable) {
         // Inizio della transizione, nascondi cursore
-        Cursor.visible = false;
+        PlayerManager.Instance.PrepareTransition(); // NOTE: Blocca le interazioni durante la transizione
 
-        CameraPosition cameraPositionComponent = interactableTransform.GetComponent<CameraPosition>();
-        if (cameraPositionComponent == null)
-        {
-            Debug.LogError("Nessun componente CameraPosition trovato sull'oggetto.");
-            yield break;
-        }
+        (Vector3 targetPosition, Quaternion targetRotation) = interactable.GetTargetPositionAndRotation();
 
-        string positionType = cameraPositionComponent.GivePosition();
-        
-        // Calcolare la posizione e la rotazione della fotocamera in base al tipo di posizione
-        Vector3 targetPosition = Vector3.zero;
-        Quaternion targetRotation = Quaternion.identity;
-
-        // Calcolare la posizione frontale all'oggetto (senza inclinazione)
-        // La fotocamera "fixed" sarà posizionata a una certa distanza davanti all'oggetto, lungo il suo "forward"
-        switch (positionType)
-        {
-            case "Above":
-                targetPosition = interactableTransform.position + interactableTransform.up * 5f; // Posizione sopra l'oggetto
-                break;
-            case "Forward":
-                targetPosition = interactableTransform.position + interactableTransform.forward * 5f; // Posizione davanti all'oggetto
-                break;
-            case "Side":
-                targetPosition = interactableTransform.position + interactableTransform.right * 5f; // Posizione di lato all'oggetto
-                break;
-            default:
-                targetPosition = interactableTransform.position + interactableTransform.forward * 5f; // Default, fotocamera davanti
-                break;
-        }
-        targetRotation = Quaternion.LookRotation(interactableTransform.position - targetPosition);  // orientamento verso l'oggetto
 
         // Interpolazione per il movimento graduale della fotocamera
         float elapsedTime = 0f;
         startPosition = playerCamera.transform.position;
         startRotation = playerCamera.transform.rotation;
 
-        while (elapsedTime < transitionTime)
-        {
-            playerCamera.transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / transitionTime);
-            playerCamera.transform.rotation = Quaternion.Slerp(startRotation, targetRotation, elapsedTime / transitionTime);
+        while (elapsedTime < transitionTime) {
+            Vector3 newPosition = Vector3.Lerp(startPosition, targetPosition, elapsedTime / transitionTime);
+            Quaternion newRotation = Quaternion.Slerp(startRotation, targetRotation, elapsedTime / transitionTime);
+            playerCamera.transform.SetPositionAndRotation(newPosition, newRotation);
+            
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         // Assicurarsi che la posizione finale e la rotazione siano precise
-        fixedCamera.transform.position = targetPosition;
-        fixedCamera.transform.rotation = targetRotation;
+        fixedCamera.transform.SetPositionAndRotation(targetPosition, targetRotation);
+
 
         // Attiva la fotocamera fissa
         fixedCamera.gameObject.SetActive(true);
         playerCamera.gameObject.SetActive(false);
 
-        Cursor.visible = true;
+
         PlayerManager.Instance.TransitionToInspection();
-        
     }
 
-    private IEnumerator EndInteraction(Vector3 startPosition, Quaternion startRotation)
-    {
-
+    private IEnumerator EndInteraction() {
+        PlayerManager.Instance.PrepareTransition(); // NOTE: Blocca le interazioni durante la transizione
         // Interpolazione per il movimento graduale della fotocamera
         float elapsedTime = 0f;
         Vector3 targetPosition = startPosition;
         Quaternion targetRotation = startRotation;
 
-        while (elapsedTime < transitionTime)
-        {
+        while (elapsedTime < transitionTime) {
             fixedCamera.transform.position = Vector3.Lerp(fixedCamera.transform.position, targetPosition, elapsedTime / transitionTime);
             fixedCamera.transform.rotation = Quaternion.Slerp(fixedCamera.transform.rotation, targetRotation, elapsedTime / transitionTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        playerCamera.transform.position = targetPosition;
-        playerCamera.transform.rotation = targetRotation;
+
+        playerCamera.transform.SetPositionAndRotation(targetPosition, targetRotation);
 
         // Disabilita la fotocamera fissa
         fixedCamera.gameObject.SetActive(false);
@@ -191,5 +167,9 @@ public class PlayerInteraction : MonoBehaviour
 
 
         PlayerManager.Instance.TransitionToExploration();
+    }
+
+    public void EndInteractionExternal() {
+        StartCoroutine(EndInteraction());
     }
 }

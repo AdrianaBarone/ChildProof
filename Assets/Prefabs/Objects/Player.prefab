@@ -72,7 +72,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 23
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -107,8 +107,9 @@ GameObject:
   - component: {fileID: 5557704722024717872}
   - component: {fileID: 626743759229228433}
   - component: {fileID: 1889419855819284049}
-  - component: {fileID: 7727372386090062524}
+  - component: {fileID: 2029407041694800557}
   - component: {fileID: 506898635543073013}
+  - component: {fileID: 399969154173210471}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -242,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d20c2feff4f9524ab9454ff0bafbff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
+  playerCamera: {fileID: 1326062376019105503}
   speed: 20
   sensitivity: 5
 --- !u!114 &1889419855819284049
@@ -257,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d397f6daab65f4cc4927498968661bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7727372386090062524
+--- !u!114 &2029407041694800557
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -273,14 +274,29 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  defaultCursor: {fileID: 10305, guid: 0000000000000000f000000000000000, type: 0}
-  interactCursor: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
-  grabbableCursor: {fileID: 10910, guid: 0000000000000000f000000000000000, type: 0}
+  defaultCursor: {fileID: 2800000, guid: 5fae8cd15b5c14da998523d451ea3fd1, type: 3}
+  interactCursor: {fileID: 2800000, guid: 212d5a346ae7b47eba2799419f8d5efc, type: 3}
+  grabbableCursor: {fileID: 2800000, guid: 33a56334570c046d8b0f95615a0cae7e, type: 3}
   playerCamera: {fileID: 1326062376019105503}
   fixedCamera: {fileID: 0}
-  playerMovement: {fileID: 506898635543073013}
+  cameraPosition: {fileID: 0}
   transitionTime: 1
 --- !u!114 &506898635543073013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6628767215116273291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d20c2feff4f9524ab9454ff0bafbff0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 1326062376019105503}
+  speed: 5
+  sensitivity: 5
+--- !u!114 &399969154173210471
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

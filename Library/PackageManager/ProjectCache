@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638723684460000000
-    m_Hash: 203369209
+      ticks: 638723686360000000
+    m_Hash: 3513244575
   m_LockFileStatus:
     m_FilePath: "/Users/davidepace/Progetti/Realta\u0300 virtuale/ChildProof/Childproof/Packages/packages-lock.json"
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638723684510000000
-    m_Hash: 2171062305
+      ticks: 638723686360000000
+    m_Hash: 2792859585
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -22,6 +22,196 @@ m_LocalPackages:
 m_ProjectPath: "/Users/davidepace/Progetti/Realta\u0300 virtuale/ChildProof/Childproof/Packages"
 m_EditorVersion: 6000.0.33f1 (433b0a79340b)
 m_ResolvedPackages:
+- packageId: com.unity.behavior@1.0.7
+  testable: 0
+  isDirectDependency: 1
+  version: 1.0.7
+  source: 1
+  resolvedPath: "/Users/davidepace/Progetti/Realta\u0300 virtuale/ChildProof/Childproof/Library/PackageCache/com.unity.behavior"
+  assetPath: Packages/com.unity.behavior
+  name: com.unity.behavior
+  displayName: Behavior
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: 'Unity Behavior is a graph-based tool to create and run behavior trees.
+    Besides including a comprehensive library of pre-built nodes, the interface provides
+    node customization options and real-time debugging. While fully functional on
+    its own, a Unity Muse subscription enhances your experience by using large language
+    models (LLM) to generate behavior trees from text prompts and create code for
+    custom action nodes. This subscription, although optional, provides a powerful
+    addition for those looking to accelerate their development process.
+
+
+    A demo
+    showcasing this package can be found in the Asset Store <a href=https://assetstore.unity.com/packages/templates/tutorials/behavior-demo-for-unity-298313>https://assetstore.unity.com/packages/templates/tutorials/behavior-demo-for-unity-298313</a>.'
+  errors: []
+  versions:
+    all:
+    - 1.0.0-pre.1
+    - 1.0.0
+    - 1.0.1
+    - 1.0.2
+    - 1.0.3
+    - 1.0.4
+    - 1.0.5
+    - 1.0.6
+    - 1.0.7
+    compatible:
+    - 1.0.0-pre.1
+    - 1.0.0
+    - 1.0.1
+    - 1.0.2
+    - 1.0.3
+    - 1.0.4
+    - 1.0.5
+    - 1.0.6
+    - 1.0.7
+    recommended: 1.0.7
+    deprecated: []
+  dependencies:
+  - name: com.unity.burst
+    version: 1.7.2
+  - name: com.unity.dt.app-ui
+    version: 2.0.0-pre.14
+  - name: com.unity.modules.ai
+    version: 1.0.0
+  - name: com.unity.collections
+    version: 2.1.4
+  - name: com.unity.modules.audio
+    version: 1.0.0
+  - name: com.unity.modules.animation
+    version: 1.0.0
+  - name: com.unity.nuget.newtonsoft-json
+    version: 3.2.1
+  - name: com.unity.modules.particlesystem
+    version: 1.0.0
+  - name: com.unity.modules.unitywebrequest
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.burst
+    version: 1.8.18
+  - name: com.unity.mathematics
+    version: 1.3.2
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.dt.app-ui
+    version: 2.0.0-pre.14
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.modules.androidjni
+    version: 1.0.0
+  - name: com.unity.modules.uielements
+    version: 1.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.modules.hierarchycore
+    version: 1.0.0
+  - name: com.unity.modules.screencapture
+    version: 1.0.0
+  - name: com.unity.modules.imageconversion
+    version: 1.0.0
+  - name: com.unity.modules.ai
+    version: 1.0.0
+  - name: com.unity.collections
+    version: 2.5.1
+  - name: com.unity.test-framework
+    version: 1.4.5
+  - name: com.unity.ext.nunit
+    version: 2.0.5
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.4
+  - name: com.unity.test-framework.performance
+    version: 3.0.3
+  - name: com.unity.modules.audio
+    version: 1.0.0
+  - name: com.unity.modules.animation
+    version: 1.0.0
+  - name: com.unity.nuget.newtonsoft-json
+    version: 3.2.1
+  - name: com.unity.modules.particlesystem
+    version: 1.0.0
+  - name: com.unity.modules.unitywebrequest
+    version: 1.0.0
+  keywords:
+  - ai
+  - behaviour trees
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638703021494040000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.behavior@1.0/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.ai.designer-monorepo.git
+    revision: d89240d0dc22380308fdeab7d6272b9bd5a86a98
+    path: 
+  unityLifecycle:
+    version: 
+    nextVersion: 
+    recommendedVersion: 1.0.0
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: "{\"changelog\":\"### Added\\n- Added new Interrupted status and ensure
+    that all incomplete child nodes of Parallel composites are marked as interrupted.\\n-
+    Added a checkbox to the behavior project settings to contnrol if nodes and condition
+    scripts should automatically open after creation.\\n\\n### Changed\\n- Selection
+    of a node now brings it to the front.\\n- Selection of a node in a sequence brings
+    the sequence to the front.\\n- Small tweak to node selected border radius.\\n-
+    Nodes replaced with Placeholder Nodes will not be replaced in the asset, only
+    in the UI, reducing risk in recovery.\\n- When saving a new Node/Condition from
+    the wizard, a postfix of the node type (Action/Modifier/Flow) or Condition won't
+    be added to the suggested filename if it already ends with it.\\n- Updated AppUI
+    dependency to 2.0.0-pre14 and created a settings file to exclude AppUI Shaders
+    and execution from builds. This can be overriden with a custom user App UI Settings
+    file.\\n- Exposed `SaveFolderEventChannels` in the Project Settings -> Behavior
+    menu.\\n- Improved documentation description for the `GameObject` API inside
+    the `Node` class.\\n- Improved asset rebuilding and saving mechanism to avoid
+    frequent regeneration.\\n\\n### Fixed\\n- Editing Subgraph Representation will
+    no longer add duplicate variables.\\n- Softened search fields filtering so that,
+    for example, 'int list' and 'list int' will return 'Integer List'.\\n- Fixed
+    WaitForAnyComposite not ending correctly yielding multiple runs of child nodes.
+    \\n- Editing a node with the node wizard (edit node definition) will no longer
+    remove to Action/Modifer/Sequence postfix.\\n- Fixed an issue where automatic
+    save path for enums and event channels saved the file name into the save path
+    settings and caused an infinite loop when saving the next file.\\n- Remove erroneous
+    references to Muse in the API docs.\\n- Improved Undo support for editing Behavior
+    Agent on a GameObject.\\n- Adding a Run In Parallel node and its various types
+    from the branch dialog will set the correct mode.\\n- Subassets of Graph and
+    Blackboard will have their names track more correctly with the main asset.\\n-
+    BehaviorWindow will now close during autosave if its asset is invalid.\\n\\n###
+    Known Issues\\n- Deleting a behavior graph asset while the window is open can
+    cause the graph editor window to be stuck and the user will need to reset their
+    layout to get rid of it.\\n- Runtime serialization of nodes in user assemblies
+    don't serialize some properties correctly.\\n- Editing fields in Run Subgraph
+    node with subgraph representation doesn\u2019t update the inspector values.\"}"
+  assetStore:
+    productId: 
+  fingerprint: fbb071b45f811840b4181a70083236ddf83b68cf
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 1.0.0-pre.1
+    minimumUnityVersion: 6000.0.16f1
 - packageId: com.unity.collab-proxy@2.6.0
   testable: 0
   isDirectDependency: 1
@@ -3885,6 +4075,686 @@ m_ResolvedPackages:
     compatibilityLevel: 0
     minimumPackageVersion: 1.2.6
     minimumUnityVersion: 2019.3.0a1
+- packageId: com.unity.burst@1.8.18
+  testable: 0
+  isDirectDependency: 0
+  version: 1.8.18
+  source: 1
+  resolvedPath: "/Users/davidepace/Progetti/Realta\u0300 virtuale/ChildProof/Childproof/Library/PackageCache/com.unity.burst"
+  assetPath: Packages/com.unity.burst
+  name: com.unity.burst
+  displayName: Burst
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: Burst is a compiler that translates from IL/.NET bytecode to highly
+    optimized native code using LLVM.
+  errors: []
+  versions:
+    all:
+    - 0.2.4-preview.5
+    - 0.2.4-preview.7
+    - 0.2.4-preview.11
+    - 0.2.4-preview.12
+    - 0.2.4-preview.13
+    - 0.2.4-preview.14
+    - 0.2.4-preview.15
+    - 0.2.4-preview.16
+    - 0.2.4-preview.17
+    - 0.2.4-preview.18
+    - 0.2.4-preview.19
+    - 0.2.4-preview.20
+    - 0.2.4-preview.21
+    - 0.2.4-preview.22
+    - 0.2.4-preview.23
+    - 0.2.4-preview.24
+    - 0.2.4-preview.25
+    - 0.2.4-preview.30
+    - 0.2.4-preview.31
+    - 0.2.4-preview.33
+    - 0.2.4-preview.34
+    - 0.2.4-preview.37
+    - 0.2.4-preview.41
+    - 0.2.4-preview.45
+    - 0.2.4-preview.48
+    - 0.2.4-preview.50
+    - 1.1.0-preview.2
+    - 1.1.0-preview.3
+    - 1.1.0-preview.4
+    - 1.1.1
+    - 1.1.2
+    - 1.1.3-preview.3
+    - 1.2.0-preview.1
+    - 1.2.0-preview.5
+    - 1.2.0-preview.6
+    - 1.2.0-preview.8
+    - 1.2.0-preview.9
+    - 1.2.0-preview.10
+    - 1.2.0-preview.11
+    - 1.2.0-preview.12
+    - 1.2.0
+    - 1.2.1
+    - 1.2.2
+    - 1.2.3
+    - 1.3.0-preview.1
+    - 1.3.0-preview.2
+    - 1.3.0-preview.3
+    - 1.3.0-preview.4
+    - 1.3.0-preview.5
+    - 1.3.0-preview.6
+    - 1.3.0-preview.7
+    - 1.3.0-preview.8
+    - 1.3.0-preview.9
+    - 1.3.0-preview.10
+    - 1.3.0-preview.11
+    - 1.3.0-preview.12
+    - 1.3.0-preview.13
+    - 1.3.0
+    - 1.3.1
+    - 1.3.2
+    - 1.3.3
+    - 1.3.4
+    - 1.3.5
+    - 1.3.6
+    - 1.3.7
+    - 1.3.8
+    - 1.3.9
+    - 1.4.0-pre.1
+    - 1.4.0-preview.1
+    - 1.4.0-preview.2
+    - 1.4.0-preview.3
+    - 1.4.0-preview.4
+    - 1.4.0-preview.5
+    - 1.4.1-pre.1
+    - 1.4.1-pre.2
+    - 1.4.1
+    - 1.4.2
+    - 1.4.3
+    - 1.4.4-preview.1
+    - 1.4.4-preview.2
+    - 1.4.4
+    - 1.4.5
+    - 1.4.6
+    - 1.4.7
+    - 1.4.8
+    - 1.4.9
+    - 1.4.11
+    - 1.5.0-pre.3
+    - 1.5.0-pre.4
+    - 1.5.0-pre.5
+    - 1.5.0
+    - 1.5.1
+    - 1.5.2
+    - 1.5.3
+    - 1.5.4
+    - 1.5.5
+    - 1.5.6-preview.1
+    - 1.5.6
+    - 1.6.0-pre.2
+    - 1.6.0-pre.3
+    - 1.6.0-pre.4
+    - 1.6.0
+    - 1.6.1
+    - 1.6.2
+    - 1.6.3
+    - 1.6.4
+    - 1.6.5
+    - 1.6.6
+    - 1.7.0-pre.1
+    - 1.7.0
+    - 1.7.1
+    - 1.7.2
+    - 1.7.3
+    - 1.7.4
+    - 1.8.0-pre.1
+    - 1.8.0-pre.2
+    - 1.8.0
+    - 1.8.1
+    - 1.8.2
+    - 1.8.3
+    - 1.8.4
+    - 1.8.7
+    - 1.8.8
+    - 1.8.9
+    - 1.8.10
+    - 1.8.11
+    - 1.8.12
+    - 1.8.13
+    - 1.8.14
+    - 1.8.15
+    - 1.8.16
+    - 1.8.17
+    - 1.8.18
+    compatible:
+    - 1.8.18
+    recommended: 1.8.18
+    deprecated: []
+  dependencies:
+  - name: com.unity.mathematics
+    version: 1.2.1
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.mathematics
+    version: 1.3.2
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638622972693870000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.burst@1.8/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/burst.git
+    revision: 594a8d8794083be96fa510b2deea0954f971ecc9
+    path: 
+  unityLifecycle:
+    version: 1.8.18
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Added\n- Added the `UNITY_BURST_DISABLE_COMPILATION`
+    environment variable as an alternative to the `--burst-disable-compilation` command-line
+    argument\n\n### Removed\n\n### Changed\n\n### Fixed\n- Static fields used in
+    static constructors were sometimes incorrectly set to read only, despite being
+    written.\n- Fixed a case of the editor getting stuck loading during a domain
+    reload if Burst was set to synchronous compilation\n- Fixed hashing bug that
+    could occur when method signatures differed only by generic parameter count\n-
+    Branches within if (cpufeaturesupported) blocks could cause the transform pass
+    to miss identify which blocks are supporting which features, leading to errors
+    at compile time about intrinsics not being in matching blocks.\n- Fixed ''cannot
+    open input file ucrt.lib'' error when building for Universal Windows Platform
+    and targeting SDK 10.0.26100.0\n\n### Known Issues"}'
+  assetStore:
+    productId: 
+  fingerprint: 616862665d8c8ffe643d505aebb5de2ee73b0ab0
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 1.8.18
+    minimumUnityVersion: 2020.3.0a1
+- packageId: com.unity.dt.app-ui@2.0.0-pre.14
+  testable: 0
+  isDirectDependency: 0
+  version: 2.0.0-pre.14
+  source: 1
+  resolvedPath: "/Users/davidepace/Progetti/Realta\u0300 virtuale/ChildProof/Childproof/Library/PackageCache/com.unity.dt.app-ui"
+  assetPath: Packages/com.unity.dt.app-ui
+  name: com.unity.dt.app-ui
+  displayName: App UI
+  author:
+    name: 
+    email: 
+    url: 
+  category: UI
+  type: 
+  description: App UI is a versatile and customizable UI library for Unity that provides
+    essential building blocks for creating beautiful and responsive user interfaces.
+    With support for MVVM architecture, state management, and localization, App UI
+    simplifies app development while maintaining flexibility and extensibility. The
+    library includes a wide range of UI components, design tokens, and symbols, all
+    of which can be easily customized to fit your app's unique style and branding.
+  errors: []
+  versions:
+    all:
+    - 0.2.7
+    - 0.2.9
+    - 0.2.11
+    - 0.2.12
+    - 0.3.1
+    - 0.3.2
+    - 0.3.3
+    - 0.3.4
+    - 0.3.5
+    - 0.3.8
+    - 0.3.9
+    - 0.4.0
+    - 0.4.1
+    - 0.4.2
+    - 0.5.0
+    - 0.5.1
+    - 0.5.2
+    - 0.5.3
+    - 0.5.4
+    - 0.5.5
+    - 0.6.0
+    - 0.6.1
+    - 0.6.2
+    - 0.6.3
+    - 0.6.4
+    - 0.6.5
+    - 1.0.0-pre.1
+    - 1.0.0-pre.2
+    - 1.0.0-pre.3
+    - 1.0.0-pre.4
+    - 1.0.0-pre.5
+    - 1.0.0-pre.6
+    - 1.0.0-pre.7
+    - 1.0.0-pre.8
+    - 1.0.0-pre.9
+    - 1.0.0-pre.10
+    - 1.0.0-pre.11
+    - 1.0.0-pre.12
+    - 1.0.0-pre.13
+    - 1.0.0-pre.14
+    - 1.0.0-pre.15
+    - 1.0.1
+    - 1.0.2
+    - 1.0.3
+    - 1.0.4
+    - 1.0.5
+    - 1.0.6
+    - 1.1.0
+    - 1.1.1
+    - 1.2.0
+    - 1.2.1
+    - 2.0.0-pre.2
+    - 2.0.0-pre.3
+    - 2.0.0-pre.4
+    - 2.0.0-pre.5
+    - 2.0.0-pre.6
+    - 2.0.0-pre.7
+    - 2.0.0-pre.8
+    - 2.0.0-pre.9
+    - 2.0.0-pre.10
+    - 2.0.0-pre.11
+    - 2.0.0-pre.12
+    - 2.0.0-pre.13
+    - 2.0.0-pre.14
+    - 2.0.0-pre.15
+    compatible:
+    - 1.1.0
+    - 1.1.1
+    - 1.2.0
+    - 1.2.1
+    - 2.0.0-pre.2
+    - 2.0.0-pre.3
+    - 2.0.0-pre.4
+    - 2.0.0-pre.5
+    - 2.0.0-pre.6
+    - 2.0.0-pre.7
+    - 2.0.0-pre.8
+    - 2.0.0-pre.9
+    - 2.0.0-pre.10
+    - 2.0.0-pre.11
+    - 2.0.0-pre.12
+    - 2.0.0-pre.13
+    - 2.0.0-pre.14
+    - 2.0.0-pre.15
+    recommended: 1.1.1
+    deprecated: []
+  dependencies:
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.modules.androidjni
+    version: 1.0.0
+  - name: com.unity.modules.uielements
+    version: 1.0.0
+  - name: com.unity.modules.screencapture
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.modules.physics
+    version: 1.0.0
+  - name: com.unity.modules.androidjni
+    version: 1.0.0
+  - name: com.unity.modules.uielements
+    version: 1.0.0
+  - name: com.unity.modules.ui
+    version: 1.0.0
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.modules.hierarchycore
+    version: 1.0.0
+  - name: com.unity.modules.screencapture
+    version: 1.0.0
+  - name: com.unity.modules.imageconversion
+    version: 1.0.0
+  keywords:
+  - app
+  - ui
+  - components
+  - runtime
+  - framework
+  - navigation
+  - dependency-injection
+  - mvvm
+  - undostack
+  - redux
+  - state-management
+  - dark-theme
+  - data-binding
+  - cloud
+  - unity
+  - app-ui
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638695158881300000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.dt.app-ui@2.0/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.com/Unity-Technologies/unity-app-ui.git
+    revision: 9a90453a90475c05f3a3763a33c8f564910ee84e
+    path: 
+  unityLifecycle:
+    version: 1.1.0
+    nextVersion: 2.0.0-pre.6
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Changed\n\n- Refactored switch statement builder
+    for Redux slice construction.\n- Subscribing to a Redux Store returns a `IDisposableSubscription`
+    object instead of a method. You can dispose it by calling its `Dispose` method.\n-
+    Refactored Redux API fore more flexibility. See the migration guide in the package
+    documentation.\n- Changed DropZoneController to support any VisualElement as
+    target instead of a DropZone element.\n- Refactored the dispatch process of Redux
+    AsyncThunk.\n\n### Added\n\n- Added support of Selectors for subscribing to state
+    changes in Redux implementation.\n- Added the support `string` key in Context
+    API to identify a Context not only byt its type. This will give the ability to
+    provide and propagate contexts of the same type but with different keys.\n- Added
+    support of Enhancers and Middlewares in Redux implementation.\n- Added `editorOnly`
+    setting in App UI''s Settings panel. Enabling EditorOnly mode will add a scripting
+    define symbol that will prevent App UI assemblies to get compiled for runtime
+    builds. This can be useful to work in Editor only UI and avoid increasing the
+    footprint of your builds.\n- Added the support of App UI settings asset file
+    from packages. If there''s no persistent App UI settings asset defined for your
+    project, App UI Manager will try to find one not only in the Project assets but
+    also in Packages. You can always switch between settings via the **Project Settings
+    > App UI** settings pane.\n- Added `PreserveAttribute` on certain constructor
+    that are only called via `Activator` reflection class.\n- Added a search bar
+    and \"Save as\" button in the Icon Browser window.\n\n### Fixed\n\n- Fixed drag
+    events in drag and drop samples to disable the Dropzone when leaving the Editor
+    window.\n- Fixed text cursor for selectable text elements such as TextArea.\n-
+    Fixed warnings related to Dialog styling.\n\n### Removed\n\n- Removed the Popup
+    message Handler that was used to dispatch the display or dismissal of Popups.
+    While this removes thread safety, it fixes issues with ordering of events to
+    dismiss popups."}'
+  assetStore:
+    productId: 
+  fingerprint: 8a9a484df850dbde860abc989f6136d035891fd1
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 1.1.0
+    minimumUnityVersion: 2021.3.0a1
+- packageId: com.unity.collections@2.5.1
+  testable: 0
+  isDirectDependency: 0
+  version: 2.5.1
+  source: 1
+  resolvedPath: "/Users/davidepace/Progetti/Realta\u0300 virtuale/ChildProof/Childproof/Library/PackageCache/com.unity.collections"
+  assetPath: Packages/com.unity.collections
+  name: com.unity.collections
+  displayName: Collections
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: 
+  description: A C# collections library providing data structures that can be used
+    in jobs, and optimized by Burst compiler.
+  errors: []
+  versions:
+    all:
+    - 0.0.9-preview.1
+    - 0.0.9-preview.2
+    - 0.0.9-preview.3
+    - 0.0.9-preview.4
+    - 0.0.9-preview.5
+    - 0.0.9-preview.6
+    - 0.0.9-preview.7
+    - 0.0.9-preview.8
+    - 0.0.9-preview.9
+    - 0.0.9-preview.10
+    - 0.0.9-preview.11
+    - 0.0.9-preview.12
+    - 0.0.9-preview.13
+    - 0.0.9-preview.14
+    - 0.0.9-preview.15
+    - 0.0.9-preview.16
+    - 0.0.9-preview.17
+    - 0.0.9-preview.18
+    - 0.0.9-preview.19
+    - 0.0.9-preview.20
+    - 0.1.0-preview
+    - 0.1.1-preview
+    - 0.2.0-preview.13
+    - 0.3.0-preview.0
+    - 0.4.0-preview.6
+    - 0.5.0-preview.9
+    - 0.5.1-preview.11
+    - 0.5.2-preview.8
+    - 0.6.0-preview.9
+    - 0.7.0-preview.2
+    - 0.7.1-preview.3
+    - 0.8.0-preview.5
+    - 0.9.0-preview.5
+    - 0.9.0-preview.6
+    - 0.11.0-preview.17
+    - 0.12.0-preview.13
+    - 0.14.0-preview.16
+    - 0.15.0-preview.21
+    - 0.17.0-preview.18
+    - 1.0.0-pre.3
+    - 1.0.0-pre.5
+    - 1.0.0-pre.6
+    - 1.1.0
+    - 1.2.3-pre.1
+    - 1.2.3
+    - 1.2.4
+    - 1.3.1
+    - 1.4.0
+    - 1.5.1
+    - 2.1.0-exp.4
+    - 2.1.0-pre.2
+    - 2.1.0-pre.6
+    - 2.1.0-pre.11
+    - 2.1.0-pre.18
+    - 2.1.1
+    - 2.1.4
+    - 2.2.0
+    - 2.2.1
+    - 2.3.0-exp.1
+    - 2.3.0-pre.3
+    - 2.4.0-exp.2
+    - 2.4.0-pre.2
+    - 2.4.0-pre.5
+    - 2.4.0
+    - 2.4.1
+    - 2.4.2
+    - 2.4.3
+    - 2.5.0-exp.1
+    - 2.5.0-pre.2
+    - 2.5.1
+    compatible:
+    - 2.5.1
+    recommended: 2.5.1
+    deprecated: []
+  dependencies:
+  - name: com.unity.burst
+    version: 1.8.17
+  - name: com.unity.test-framework
+    version: 1.4.5
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.4
+  - name: com.unity.test-framework.performance
+    version: 3.0.3
+  resolvedDependencies:
+  - name: com.unity.burst
+    version: 1.8.18
+  - name: com.unity.mathematics
+    version: 1.3.2
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  - name: com.unity.test-framework
+    version: 1.4.5
+  - name: com.unity.ext.nunit
+    version: 2.0.5
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.nuget.mono-cecil
+    version: 1.11.4
+  - name: com.unity.test-framework.performance
+    version: 3.0.3
+  keywords:
+  - dots
+  - collections
+  - unity
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638621282722800000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.collections@2.5/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/dots.git
+    revision: 5b0dea6b455f5df005c19fa984ddfa237d6cd707
+    path: 
+  unityLifecycle:
+    version: 2.5.1
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Changed\n* Updated Burst dependency to version
+    1.8.17\n* Updated Unity Test Framework dependency to version 1.4.5\n* Updated
+    entities packages dependencies\n\n### Fixed\n* Certain cases would cause an ILPostProcessor
+    to fail, blocking compilation, but no more."}'
+  assetStore:
+    productId: 
+  fingerprint: 56bff8827a7ef6d44fcee4f36e558a74da89c1a0
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 2.5.1
+    minimumUnityVersion: 2022.3.11f1
+- packageId: com.unity.nuget.newtonsoft-json@3.2.1
+  testable: 0
+  isDirectDependency: 0
+  version: 3.2.1
+  source: 1
+  resolvedPath: "/Users/davidepace/Progetti/Realta\u0300 virtuale/ChildProof/Childproof/Library/PackageCache/com.unity.nuget.newtonsoft-json"
+  assetPath: Packages/com.unity.nuget.newtonsoft-json
+  name: com.unity.nuget.newtonsoft-json
+  displayName: Newtonsoft Json
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: library
+  description: 'Newtonsoft Json for use in Unity projects and Unity packages. Currently
+    synced to version 13.0.2.
+
+
+    This package is used for advanced json serialization
+    and deserialization. Most Unity users will be better suited using the existing
+    json tools built into Unity.
+
+    To avoid assembly clashes, please use this
+    package if you intend to use Newtonsoft Json.'
+  errors: []
+  versions:
+    all:
+    - 3.2.1
+    compatible:
+    - 3.2.1
+    recommended: 3.2.1
+    deprecated: []
+  dependencies: []
+  resolvedDependencies: []
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 0
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.nuget.newtonsoft-json.git
+    revision: d8e49aef8979bef617144382052ec2f479645eaf
+    path: 
+  unityLifecycle:
+    version: 3.2.1
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"* Fixed Newtonsoft DLL when compiling with netstandard
+    2.0."}'
+  assetStore:
+    productId: 
+  fingerprint: 74deb55db2a0c29ddfda576608bcb86abbd13ee6
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 3.2.1
+    minimumUnityVersion: 2018.4.0a1
 - packageId: com.unity.settings-manager@2.0.1
   testable: 0
   isDirectDependency: 0
@@ -3899,12 +4769,19 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: 
+  type: asset
   description: A framework for making any serializable field a setting, complete
     with a pre-built settings interface.
   errors: []
   versions:
     all:
+    - 0.1.0-preview.4
+    - 0.1.0-preview.8
+    - 1.0.0
+    - 1.0.1
+    - 1.0.2
+    - 1.0.3
+    - 2.0.0
     - 2.0.1
     compatible:
     - 2.0.1
@@ -3923,9 +4800,9 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 0
+  datePublishedTicks: 637744099390000000
   documentationUrl: 
   hasRepository: 1
   repository:
@@ -3966,12 +4843,21 @@ m_ResolvedPackages:
     email: 
     url: 
   category: Libraries
-  type: 
+  type: assets
   description: A custom version of NUnit used by Unity Test Framework. Based on NUnit
     version 3.5 and works with all platforms, il2cpp and Mono AOT.
   errors: []
   versions:
     all:
+    - 0.1.5-preview
+    - 0.1.6-preview
+    - 0.1.9-preview
+    - 1.0.0
+    - 1.0.5
+    - 1.0.6
+    - 2.0.2
+    - 2.0.3
+    - 2.0.4
     - 2.0.5
     compatible:
     - 2.0.5
@@ -3993,9 +4879,9 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   entitlements:
-    licensingModel: 0
+    licensingModel: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 0
+  datePublishedTicks: 638236642220000000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.ext.nunit@2.0/manual/index.html
   hasRepository: 1
   repository:
@@ -4022,4 +4908,302 @@ m_ResolvedPackages:
     compatibilityLevel: 0
     minimumPackageVersion: 2.0.5
     minimumUnityVersion: 2019.4.0a1
+- packageId: com.unity.nuget.mono-cecil@1.11.4
+  testable: 0
+  isDirectDependency: 0
+  version: 1.11.4
+  source: 1
+  resolvedPath: "/Users/davidepace/Progetti/Realta\u0300 virtuale/ChildProof/Childproof/Library/PackageCache/com.unity.nuget.mono-cecil"
+  assetPath: Packages/com.unity.nuget.mono-cecil
+  name: com.unity.nuget.mono-cecil
+  displayName: Mono Cecil
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: library
+  description: 'The mono cecil library from https://www.nuget.org/packages/Mono.Cecil/
+
+
+    This
+    package is intended for internal Unity use only. Most Unity users will be better
+    suite using the existing community tooling.
+
+    To avoid assembly clashes, please
+    use this package if you intend to use Mono.Cecil.'
+  errors: []
+  versions:
+    all:
+    - 1.11.4
+    compatible:
+    - 1.11.4
+    recommended: 1.11.4
+    deprecated: []
+  dependencies: []
+  resolvedDependencies: []
+  keywords: []
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 0
+  isAssetStorePackage: 0
+  datePublishedTicks: 0
+  documentationUrl: 
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.nuget.mono-cecil.git
+    revision: d0133ce672d724694b56bfd20672acf6f8737fec
+    path: 
+  unityLifecycle:
+    version: 1.11.4
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: 
+  assetStore:
+    productId: 
+  fingerprint: d6f9955a5d5f84d45442ff1ad0fb694cc6e2fd62
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 1.11.4
+    minimumUnityVersion: 2018.4.0a1
+- packageId: com.unity.test-framework.performance@3.0.3
+  testable: 0
+  isDirectDependency: 0
+  version: 3.0.3
+  source: 1
+  resolvedPath: "/Users/davidepace/Progetti/Realta\u0300 virtuale/ChildProof/Childproof/Library/PackageCache/com.unity.test-framework.performance"
+  assetPath: Packages/com.unity.test-framework.performance
+  name: com.unity.test-framework.performance
+  displayName: Performance testing API
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: assets
+  description: Package that extends Unity Test Framework package. Adds performance
+    testing capabilities and collects configuration metadata.
+  errors: []
+  versions:
+    all:
+    - 0.1.27-preview
+    - 0.1.29-preview
+    - 0.1.31-preview
+    - 0.1.33-preview
+    - 0.1.34-preview
+    - 0.1.36-preview
+    - 0.1.37-preview
+    - 0.1.39-preview
+    - 0.1.40-preview
+    - 0.1.41-preview
+    - 0.1.42-preview
+    - 0.1.44-preview
+    - 0.1.45-preview
+    - 0.1.47-preview
+    - 0.1.48-preview
+    - 0.1.49-preview
+    - 0.1.50-preview
+    - 1.0.4-preview
+    - 1.0.6-preview
+    - 1.0.9-preview
+    - 1.1.2-preview
+    - 1.2.0-preview
+    - 1.2.1-preview
+    - 1.2.3-preview
+    - 1.2.5-preview
+    - 1.2.6-preview
+    - 1.3.0-preview
+    - 1.3.1-preview
+    - 1.3.2-preview
+    - 1.3.3-preview
+    - 2.0.1-preview
+    - 2.0.2-preview
+    - 2.0.3-preview
+    - 2.0.6-preview
+    - 2.0.7-preview
+    - 2.0.8-preview
+    - 2.0.9-preview
+    - 2.1.0-preview
+    - 2.2.0-preview
+    - 2.3.1-preview
+    - 2.4.1-preview
+    - 2.5.1-preview
+    - 2.6.0-preview
+    - 2.7.0-preview
+    - 2.8.0-preview
+    - 2.8.1-preview
+    - 3.0.0-pre.1
+    - 3.0.0-pre.2
+    - 3.0.1
+    - 3.0.2
+    - 3.0.3
+    compatible:
+    - 3.0.3
+    recommended: 3.0.3
+    deprecated: []
+  dependencies:
+  - name: com.unity.test-framework
+    version: 1.1.31
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  resolvedDependencies:
+  - name: com.unity.test-framework
+    version: 1.4.5
+  - name: com.unity.ext.nunit
+    version: 2.0.5
+  - name: com.unity.modules.imgui
+    version: 1.0.0
+  - name: com.unity.modules.jsonserialize
+    version: 1.0.0
+  keywords:
+  - performance
+  - test
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638301960470000000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.test-framework.performance@3.0/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.cds.internal.unity3d.com/unity/com.unity.test-framework.performance.git
+    revision: 10b82691b2d9f4e4aa8385c8d797c7e544bac548
+    path: 
+  unityLifecycle:
+    version: 3.0.3
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"## Fixed \n- Fixed issue where exception in OnTestEnded
+    callback would result in EndTest method not finalising properly\n### Changed\n-
+    Temporarily removed \"Open Script\" from Performance Benchmark Window\n- Some
+    clarifications in documentation were added (\"Extension\" naming changed to \"Package\",
+    Package limitations clarified)"}'
+  assetStore:
+    productId: 
+  fingerprint: fb0dc592af8b524f1a06c50d7caf95552f1bcd2f
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 3.0.3
+    minimumUnityVersion: 2020.3.0a1
+- packageId: com.unity.mathematics@1.3.2
+  testable: 0
+  isDirectDependency: 0
+  version: 1.3.2
+  source: 1
+  resolvedPath: "/Users/davidepace/Progetti/Realta\u0300 virtuale/ChildProof/Childproof/Library/PackageCache/com.unity.mathematics"
+  assetPath: Packages/com.unity.mathematics
+  name: com.unity.mathematics
+  displayName: Mathematics
+  author:
+    name: 
+    email: 
+    url: 
+  category: 
+  type: assets
+  description: Unity's C# SIMD math library providing vector types and math functions
+    with a shader like syntax.
+  errors: []
+  versions:
+    all:
+    - 0.0.12-preview.2
+    - 0.0.12-preview.5
+    - 0.0.12-preview.8
+    - 0.0.12-preview.10
+    - 0.0.12-preview.11
+    - 0.0.12-preview.13
+    - 0.0.12-preview.17
+    - 0.0.12-preview.19
+    - 0.0.12-preview.20
+    - 1.0.0-preview.1
+    - 1.0.1
+    - 1.1.0-preview.1
+    - 1.1.0
+    - 1.2.1
+    - 1.2.4
+    - 1.2.5
+    - 1.2.6
+    - 1.3.1
+    - 1.3.2
+    compatible:
+    - 1.3.2
+    recommended: 1.3.2
+    deprecated: []
+  dependencies: []
+  resolvedDependencies: []
+  keywords:
+  - unity
+  registry:
+    id: main
+    name: 
+    url: https://packages.unity.com
+    scopes: []
+    isDefault: 1
+    capabilities: 7
+    configSource: 0
+  hideInEditor: 1
+  entitlements:
+    licensingModel: 1
+  isAssetStorePackage: 0
+  datePublishedTicks: 638409134840000000
+  documentationUrl: https://docs.unity3d.com/Packages/com.unity.mathematics@1.3/manual/index.html
+  hasRepository: 1
+  repository:
+    type: git
+    url: https://github.com/Unity-Technologies/Unity.Mathematics.git
+    revision: 1695a8503482a3131be78cc26308a93f82c05b04
+    path: 
+  unityLifecycle:
+    version: 1.3.2
+    nextVersion: 
+    recommendedVersion: 
+    isDeprecated: 0
+    deprecationMessage: 
+  isDeprecated: 0
+  deprecationMessage: 
+  git:
+    hash: 
+    revision: 
+  upmReserved: '{"changelog":"### Fixed\n* Fixed `math.hash` crash when using IL2CPP
+    builds on Arm 32 bit devices.\n* Fixed obsolete method usage warnings for `MatrixDrawer.CanCacheInspectorGUI`
+    and `PrimitiveVectorDrawer.CanCacheInspectorGUI` in UNITY_2023_2_OR_NEWER.\n*
+    Updated minimum editor version to 2021.3"}'
+  assetStore:
+    productId: 
+  fingerprint: 8017b507cc74bf0a1dd14b18aa860569f807314d
+  editorCompatibility:
+    compatibilityLevel: 0
+    minimumPackageVersion: 1.3.2
+    minimumUnityVersion: 2021.3.0a1
 m_BuiltInPackagesHash: 75028b1d8028e2ecd08833ba9a3c68ea34610ba9

@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public abstract class Inspectable : MonoBehaviour {
+public class Inspectable : MonoBehaviour {
 
      private int interactionNumber;
     private int maxInteractionNumber;
+    [SerializeField] AchievementManager achievementManager;
 
     private void Awake() {
         foreach (Transform child in transform) {
@@ -22,6 +23,7 @@ public abstract class Inspectable : MonoBehaviour {
         if (interactionNumber == 0) {
             // TODO: animazione dell'oggetto
             // TODO: cambio stato di player manager
+            // TODO: aggiungere riferimento all'achievement sbloccato (preso da DropZone)
             PlayerManager.Instance.SetToExploration();
         }
     }

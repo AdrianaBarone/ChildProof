@@ -10,9 +10,10 @@ public class PlayerInteraction : MonoBehaviour {
     [SerializeField] private LayerMask layerMask;
 
     // Parametri cursore
-    [SerializeField] private Texture2D defaultCursor;
-    [SerializeField] private Texture2D interactCursor;
-    [SerializeField] private Texture2D grabbableCursor;
+    [SerializeField] private Sprite defaultSprite;
+    [SerializeField] private Sprite interactSprite;
+    [SerializeField] private Sprite grabbableSprite;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     //Oggetti con cui interagire
     private Interactable pointingInteractable;
@@ -31,6 +32,10 @@ public class PlayerInteraction : MonoBehaviour {
     void Start() {
         if (fixedCamera != null)
             fixedCamera.gameObject.SetActive(false);
+
+        spriteRenderer.sprite = defaultSprite;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void RaycastForInteractable() {
@@ -45,7 +50,7 @@ public class PlayerInteraction : MonoBehaviour {
             // TODO: capire bene come gestire queste interazioni
 
             if (pointingInteractable != null) {
-                UpdateCursor(interactCursor); // Cambio del cursore per interazione
+                UpdateCursor(interactSprite); // Cambio del cursore per interazione
                 pointingInteractable.BaseInteract();
 
                 if (Input.GetMouseButtonDown(0) && pointingInspectable && !pointingInspectable.IsResolved()) {
@@ -53,18 +58,18 @@ public class PlayerInteraction : MonoBehaviour {
                 }
             }
             else {
-                UpdateCursor(defaultCursor); // Cambio al cursore predefinito
+                UpdateCursor(defaultSprite); // Cambio al cursore predefinito
             }
             
             if (pointingPickable != null) {
-                UpdateCursor(grabbableCursor); // Cambio del cursore per oggetto afferrabile
+                UpdateCursor(grabbableSprite); // Cambio del cursore per oggetto afferrabile
                 if (Input.GetMouseButtonDown(0)) {
                     pointingPickable.OnPick();
                 }
             }
         }
         else {
-            UpdateCursor(defaultCursor); // Se non c'è nulla, cursore predefinito
+            UpdateCursor(defaultSprite); // Se non c'è nulla, cursore predefinito
         }
     }
 
@@ -104,10 +109,9 @@ public class PlayerInteraction : MonoBehaviour {
     }
 
     // Funzione per cambiare il cursore
-    private void UpdateCursor(Texture2D newCursor) {
-        if (newCursor != null) {
-            Vector2 cursorHotspot = new Vector2(newCursor.width / 2, newCursor.height / 2);
-            Cursor.SetCursor(newCursor, cursorHotspot, CursorMode.Auto);
+    private void UpdateCursor(Sprite sprite) {
+        if (sprite != null) {
+            spriteRenderer.sprite = sprite;
         }
     }
 

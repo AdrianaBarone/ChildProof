@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using Unity.VisualScripting;
+using UnityEngine.InputSystem;
 
 public class InventoryManager : MonoBehaviour {
     public static InventoryManager Instance;
@@ -14,10 +15,12 @@ public class InventoryManager : MonoBehaviour {
     bool isItemSelected = false;
     [SerializeField] private PlayerInteraction playerInteraction;
 
+    public GameObject InfoArea;
 
     private void Awake() {
         Instance = this;
         ListItems();
+        InfoArea.SetActive(false);
     }
 
     void Update() {
@@ -38,7 +41,11 @@ public class InventoryManager : MonoBehaviour {
 
         }
 
-
+        if (Input.GetKeyDown(KeyCode.P)) {
+        if (InfoArea.activeSelf) {
+            CloseInfoPanel();
+        }
+    }
     }
 
     public void Add(Item item) {
@@ -47,8 +54,8 @@ public class InventoryManager : MonoBehaviour {
         }
         else {
             Items.Add(item.data.name, new InventoryItem { item = item, quantity = 1 });
+            ShowInfo(item);
         }
-
         ListItems();
     }
 
@@ -60,6 +67,7 @@ public class InventoryManager : MonoBehaviour {
             }
         }
         ListItems();
+
     }
 
     public void SelectItem(int index) {
@@ -104,6 +112,25 @@ public class InventoryManager : MonoBehaviour {
                 ItemQuantity.text = "";
             }
         }
+    }
+
+    public void ShowInfo(Item item){
+        Time.timeScale = 0;
+        var itemNameText = InfoArea.transform.Find("InfoPanel/NamePanel/Name").GetComponent<Text>();
+        var itemDescriptionText = InfoArea.transform.Find("InfoPanel/DescriptionPanel/Description").GetComponent<Text>();
+        var itemImage = InfoArea.transform.Find("InfoPanel/NamePanel/Image").GetComponent<Image>();
+
+        itemNameText.text = item.data.name;
+        itemDescriptionText.text = item.data.description;
+        itemImage.sprite = item.data.icon;
+
+        InfoArea.SetActive(true);
+    }
+
+    public void CloseInfoPanel() {
+        // Nascondi il pannello e riprendi il gioco
+        Time.timeScale = 1;
+        InfoArea.SetActive(false);
     }
 }
 

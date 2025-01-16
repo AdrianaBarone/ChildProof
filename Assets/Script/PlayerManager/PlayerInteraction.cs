@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 
 public class PlayerInteraction : MonoBehaviour {
@@ -8,12 +8,6 @@ public class PlayerInteraction : MonoBehaviour {
     // Parametri per il controllo visibilità
     [SerializeField] private float distance = 2f;
     [SerializeField] private LayerMask layerMask;
-
-    // Parametri cursore
-    [SerializeField] private Sprite defaultSprite;
-    [SerializeField] private Sprite interactSprite;
-    [SerializeField] private Sprite grabbableSprite;
-    [SerializeField] private SpriteRenderer spriteRenderer;
 
     //Oggetti con cui interagire
     private Interactable pointingInteractable;
@@ -29,13 +23,17 @@ public class PlayerInteraction : MonoBehaviour {
     private Vector3 startPosition;
     private Quaternion startRotation;
 
+    //Parametri Cursore
+    [SerializeField] private Sprite defaultSprite;
+    [SerializeField] private Sprite interactSprite;
+    [SerializeField] private Sprite grabbableSprite;
+     private CursorManager cursorManager;
+
     void Start() {
         if (fixedCamera != null)
             fixedCamera.gameObject.SetActive(false);
 
-        spriteRenderer.sprite = defaultSprite;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        cursorManager = FindObjectOfType<CursorManager>();
     }
 
     public void RaycastForInteractable() {
@@ -50,7 +48,7 @@ public class PlayerInteraction : MonoBehaviour {
             // TODO: capire bene come gestire queste interazioni
 
             if (pointingInteractable != null) {
-                UpdateCursor(interactSprite); // Cambio del cursore per interazione
+                cursorManager.UpdateExplorationCursor(interactSprite); // Cambio del cursore per interazione
                 pointingInteractable.BaseInteract();
 
                 if (Input.GetMouseButtonDown(0) && pointingInspectable && !pointingInspectable.IsResolved()) {
@@ -58,21 +56,20 @@ public class PlayerInteraction : MonoBehaviour {
                 }
             }
             else {
-                UpdateCursor(defaultSprite); // Cambio al cursore predefinito
+                cursorManager.UpdateExplorationCursor(defaultSprite); // Cambio al cursore predefinito
             }
-            
+
             if (pointingPickable != null) {
-                UpdateCursor(grabbableSprite); // Cambio del cursore per oggetto afferrabile
+                cursorManager.UpdateExplorationCursor(grabbableSprite); // Cambio del cursore per oggetto afferrabile
                 if (Input.GetMouseButtonDown(0)) {
                     pointingPickable.OnPick();
                 }
             }
         }
         else {
-            UpdateCursor(defaultSprite); // Se non c'è nulla, cursore predefinito
+            cursorManager.UpdateExplorationCursor(defaultSprite); // Se non c'è nulla, cursore predefinito
         }
     }
-
 
     public bool TryDragAndDrop(Item item) {
         DropZone dropZone = RaycastForDropZone();
@@ -92,7 +89,7 @@ public class PlayerInteraction : MonoBehaviour {
     public DropZone RaycastForDropZone() {
         // ray is from mouse position to the world
         Ray ray = fixedCamera.ScreenPointToRay(Input.mousePosition);
-        
+
         Debug.DrawRay(ray.origin, ray.direction * distance * 10, Color.blue); // Visualizza il raycast in scena
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo, distance * 10, layerMask)) {
@@ -106,13 +103,6 @@ public class PlayerInteraction : MonoBehaviour {
         }
 
         return null;
-    }
-
-    // Funzione per cambiare il cursore
-    private void UpdateCursor(Sprite sprite) {
-        if (sprite != null) {
-            spriteRenderer.sprite = sprite;
-        }
     }
 
     private IEnumerator StartInteraction(Interactable interactable) {
@@ -131,7 +121,7 @@ public class PlayerInteraction : MonoBehaviour {
             Vector3 newPosition = Vector3.Lerp(startPosition, targetPosition, elapsedTime / transitionTime);
             Quaternion newRotation = Quaternion.Slerp(startRotation, targetRotation, elapsedTime / transitionTime);
             playerCamera.transform.SetPositionAndRotation(newPosition, newRotation);
-            
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }

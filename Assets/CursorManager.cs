@@ -1,15 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CursorManager : MonoBehaviour {
-    // Start is called before the first frame update
-    void Start() {
+    [SerializeField] private Image cursorImage;
+    [SerializeField] private Sprite defaultEXSprite;
 
+    //public Texture2D dfaultINsprite;
+    public CursorMode cursorMode = CursorMode.Auto;
+    public Vector2 hotSpot = Vector2.zero;
+
+    public void ExplorationCursor() {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        UpdateExplorationCursor(defaultEXSprite);
     }
 
-    // Update is called once per frame
-    void Update() {
-        transform.position = Input.mousePosition;
+    public void InspectionCursor() {
+        Cursor.lockState = CursorLockMode.Confined;
+        cursorImage.enabled = false;
+
+        Cursor.visible = true;
+        Cursor.SetCursor(null, hotSpot, cursorMode);
+    }
+
+    public void UpdateExplorationCursor(Sprite sprite) {
+        if (cursorImage != null && sprite != null) {
+            cursorImage.sprite = sprite;
+            cursorImage.enabled = true;
+        }
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class AchievementManager : MonoBehaviour {
     public static AchievementManager Instance;
     public List<Achievement> achievements = new List<Achievement>();
+    private int achievementCount;
 
     //telefono
     public GameObject smartphoneCanvas;
@@ -14,14 +15,21 @@ public class AchievementManager : MonoBehaviour {
     //Card contenitore REMIND del telefono
     public GameObject achievementCardPrefab;
     public Transform achievementCardParent;
+    private int cardCount;
 
     //PopUp achievement raggiunto
     public GameObject PopUpCanvas;
+
+    //Score update
+    public ScoreManager scoreManager;
 
     private void Awake() {
         Instance = this;
         LoadAchievements();
         PopUpCanvas.SetActive(false);
+
+        scoreManager = FindObjectOfType<ScoreManager>();
+        cardCount = 0;
     }
 
     void Update() {
@@ -41,6 +49,7 @@ public class AchievementManager : MonoBehaviour {
             string json = File.ReadAllText(path);
             AchievementListWrapper wrapper = JsonUtility.FromJson<AchievementListWrapper>(json);
             achievements = new List<Achievement>(wrapper.achievements);
+            achievementCount = achievements.Count;
         }
         else {
             Debug.LogError("File Achievements.json non trovato!");
@@ -56,9 +65,13 @@ public class AchievementManager : MonoBehaviour {
         Achievement achievement = achievements.Find(a => a.targetObject == targetObject);
         if (achievement != null) {
             achievement.IncrementProgress(amount);
+            scoreManager.UpdateScore(achievement.taskScore);
             if (achievement.taskProgress == 1) {
                 CreateAchievementCard(achievement);
                 ShowAchievementPopup(achievement);
+            }
+            else if (achievement.taskProgress == achievement.taskGoal){
+                CheckAchievementCount();
             }
         }
         else {
@@ -78,6 +91,8 @@ public class AchievementManager : MonoBehaviour {
 
         nameText.text = achievement.taskName;
         descriptionText.text = achievement.taskDescription;
+
+        cardCount++;
     }
 
     void ShowAchievementPopup(Achievement achievement) {
@@ -93,5 +108,11 @@ public class AchievementManager : MonoBehaviour {
 
     private void DisableCanvas() {
         PopUpCanvas.SetActive(false);
+    }
+
+    public void CheckAchievementCount(){
+        if (achievementCount == cardCount){
+            // TODO: Passa a schermata di vittoria
+        }
     }
 }

@@ -9,6 +9,7 @@ public class Achievement
     public string targetObject;
     public int taskGoal;
     public int taskProgress;
+    public int taskScore;
 
     public bool IsComplete => taskProgress >= taskGoal;
 

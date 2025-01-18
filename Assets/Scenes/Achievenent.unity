@@ -1359,8 +1359,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19d0c1804b5b9a14d8091237ad96c2b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleText: {fileID: 0}
-  descriptionText: {fileID: 0}
 --- !u!114 &434103041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3455,6 +3453,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1550398476}
   - component: {fileID: 1550398475}
+  - component: {fileID: 1550398477}
   m_Layer: 0
   m_Name: AchievementManager
   m_TagString: Untagged
@@ -3485,6 +3484,7 @@ MonoBehaviour:
   achievementCardPrefab: {fileID: 7308564214950401338, guid: 2e4afa0dc51adb34b87c189dc9ab1f47, type: 3}
   achievementCardParent: {fileID: 659232878}
   PopUpCanvas: {fileID: 934893705}
+  scoreManager: {fileID: 0}
 --- !u!4 &1550398476
 Transform:
   m_ObjectHideFlags: 0
@@ -3500,6 +3500,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1550398477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550398474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f99ffb0f21cf00a4aab256af9a465dd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1550953278
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5972,7 +5984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6628767215116273291, guid: f57feb72b9acb434d8242c40e91ffcc4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

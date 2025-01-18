@@ -5,11 +5,10 @@ public class Inspectable : MonoBehaviour {
 
      private int interactionNumber;
     private int maxInteractionNumber;
-    [SerializeField] AchievementManager achievementManager;
-    public List<DropZone> dropZones = new();
+    public DropZone[] dropZones;
 
     private void Awake() {
-        maxInteractionNumber = dropZones.Count;
+        maxInteractionNumber = dropZones.Length;
         interactionNumber = maxInteractionNumber;
     }
 

@@ -10,6 +10,7 @@ public enum PlayerState {
 public class PlayerManager : MonoBehaviour {
     public static PlayerManager Instance;
     private PlayerState state = PlayerState.EXPLORATION;
+    public Interactable currentInteractable;
 
 
     private PlayerInteraction playerInteraction;
@@ -47,14 +48,20 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
-    public void TransitionToInspection() {
+    public void TransitionToInspection(Interactable interactable) {
         Cursor.lockState = CursorLockMode.None;
         state = PlayerState.INSPECTION;
+        currentInteractable = interactable;
     }
 
     public void TransitionToExploration() {
         Cursor.lockState = CursorLockMode.Locked;
         state = PlayerState.EXPLORATION;
+        currentInteractable = null;
+    }
+
+    public Camera GetInteractableCamera() {
+        return currentInteractable.GetCamera();
     }
 
     public void SetToExploration() {

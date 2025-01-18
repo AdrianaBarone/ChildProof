@@ -28,11 +28,17 @@ public class InventoryManager : MonoBehaviour {
         // if an item is selected make it follow the mouse mosition
 
         if (isItemSelected) {
+            ItemData itemData = ItemSelected.GetComponent<Item>()?.data ?? ItemSelected.GetComponent<Moveable>()?.GetItemData();
             ItemSelected.transform.position = GetMouseScreenPosition();
+
+            DropZone dropZone = playerInteraction.RaycastForDropZone();
+            if (dropZone != null) {
+                dropZone.OnHoverWithItem(itemData);
+            }
 
 
             if (Input.GetMouseButtonDown(0)) {
-                ItemData itemData = ItemSelected.GetComponent<Item>()?.data ?? ItemSelected.GetComponent<Moveable>()?.GetItemData();
+                
                 if (playerInteraction.TryDragAndDrop(itemData)) {
                     if(!moveableItem) {
                         Remove(ItemSelected.GetComponent<Item>());

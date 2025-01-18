@@ -21,7 +21,7 @@ public class PlayerManager : MonoBehaviour {
 
         playerInteraction = GetComponent<PlayerInteraction>();
         playerMovement = GetComponent<PlayerMovement>();
-        cursorManager = FindObjectOfType<CursorManager>();
+        cursorManager = FindFirstObjectByType<CursorManager>();
     }
 
     void Start() {
@@ -37,6 +37,7 @@ public class PlayerManager : MonoBehaviour {
                 break;
             case PlayerState.INSPECTION:
                 cursorManager.InspectionCursor();
+                playerInteraction.TryPickUp();
                 if (Input.GetKeyDown(KeyCode.Tab)) {
                     SetToExploration();
                 }

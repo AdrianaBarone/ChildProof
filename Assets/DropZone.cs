@@ -6,18 +6,19 @@ public class DropZone : MonoBehaviour {
 // TO DO: definire l'achievement (nome) che viene sbloccato da questo successo
 
     [SerializeField] private ItemData acceptedItem;
+    public Inspectable parentInspectable;
 
     private void Start() {
         // TODO: reference to the parent
     }
-    public bool AcceptsItem(Item item) {
-        return item.data == acceptedItem;
+    public bool AcceptsItem(ItemData itemData) {
+        return itemData  == acceptedItem;
     }
 
     public void OnDrop() {
         GetComponent<Renderer>().material.color = Color.green;
         // TODO: animazione di successo
 
-        GetComponentInParent<Inspectable>().Resolve();
+        parentInspectable.Resolve();
     }
 }

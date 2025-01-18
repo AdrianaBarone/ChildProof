@@ -28,7 +28,7 @@ public class AchievementManager : MonoBehaviour {
         LoadAchievements();
         PopUpCanvas.SetActive(false);
 
-        scoreManager = FindObjectOfType<ScoreManager>();
+        scoreManager = FindFirstObjectByType<ScoreManager>();
         cardCount = 0;
     }
 

@@ -33,7 +33,7 @@ public class PlayerInteraction : MonoBehaviour {
         if (fixedCamera != null)
             fixedCamera.gameObject.SetActive(false);
 
-        cursorManager = FindObjectOfType<CursorManager>();
+        cursorManager = FindFirstObjectByType<CursorManager>();
     }
 
     public void RaycastForInteractable() {
@@ -42,8 +42,10 @@ public class PlayerInteraction : MonoBehaviour {
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo, distance, layerMask)) {
             pointingInteractable = hitInfo.collider.GetComponent<Interactable>();
+
             pointingPickable = hitInfo.collider.GetComponent<IPickable>();
             Inspectable pointingInspectable = hitInfo.collider.GetComponent<Inspectable>();
+
 
             // TODO: capire bene come gestire queste interazioni
 
@@ -71,14 +73,53 @@ public class PlayerInteraction : MonoBehaviour {
         }
     }
 
-    public bool TryDragAndDrop(Item item) {
+    public Moveable RaycastForMoveable() {
+        Ray ray = fixedCamera.ScreenPointToRay(Input.mousePosition);
+
+        Debug.DrawRay(ray.origin, ray.direction * distance * 10, Color.blue); // Visualizza il raycast in scena
+
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance * 10, layerMask)) {
+            Moveable moveable = hitInfo.collider.GetComponent<Moveable>();
+
+            if (moveable != null) {
+                return moveable;
+            }
+        }
+
+        return null;
+    }
+
+    public void TryPickUp() {
+        Moveable moveable = RaycastForMoveable();
+        if (moveable == null) {
+            return;
+        }
+
+
+        if(Input.GetMouseButtonDown(0)) {
+            StartCoroutine(DelayedSelectItem(moveable));
+        }
+
+        // ItemData picked = moveable.PickupItem(); -> also disable the object
+        // set selected item to picked
+        // 
+    }
+
+    // ienumerator per ritardare il select item di un frame
+    IEnumerator DelayedSelectItem(Moveable moveable) {
+        yield return null;
+        InventoryManager.Instance.SelectItem(moveable.gameObject);
+    }
+
+    public bool TryDragAndDrop(ItemData itemData) {
         DropZone dropZone = RaycastForDropZone();
+
         if (dropZone == null) {
             return false;
         }
 
 
-        if (dropZone.AcceptsItem(item)) {
+        if (dropZone.AcceptsItem(itemData)) {
             dropZone.OnDrop();
             return true;
         }

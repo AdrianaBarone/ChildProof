@@ -9,6 +9,7 @@ public class InventoryManager : MonoBehaviour {
     public static InventoryManager Instance;
     public Dictionary<string, InventoryItem> Items = new();
     public Transform ItemContent;
+    private GameObject moveableItem;
     public GameObject ItemSelected;
     public Transform selectedItemParent;
     public Camera itemCamera;
@@ -31,10 +32,17 @@ public class InventoryManager : MonoBehaviour {
 
 
             if (Input.GetMouseButtonDown(0)) {
-                if (playerInteraction.TryDragAndDrop(ItemSelected.GetComponent<Item>())){
-                    Remove(ItemSelected.GetComponent<Item>());
+                ItemData itemData = ItemSelected.GetComponent<Item>()?.data ?? ItemSelected.GetComponent<Moveable>()?.GetItemData();
+                if (playerInteraction.TryDragAndDrop(itemData)) {
+                    if(!moveableItem) {
+                        Remove(ItemSelected.GetComponent<Item>());
+                    }
                 }
 
+                if (moveableItem){
+                    moveableItem.GetComponent<Moveable>().Restore();
+                    moveableItem = null;
+                }
                 Destroy(ItemSelected);
                 isItemSelected = false;
             }
@@ -42,10 +50,10 @@ public class InventoryManager : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.P)) {
-        if (InfoArea.activeSelf) {
-            CloseInfoPanel();
+            if (InfoArea.activeSelf) {
+                CloseInfoPanel();
+            }
         }
-    }
     }
 
     public void Add(Item item) {
@@ -70,7 +78,7 @@ public class InventoryManager : MonoBehaviour {
 
     }
 
-    public void SelectItem(int index) {
+    public void SelectItemFromInventorySlot(int index) {
         // if the index is valid (an actual item is present) instantiate the item as the selcted
         if (Items.Count > index) {
             var enumerator = Items.Values.GetEnumerator();
@@ -84,6 +92,18 @@ public class InventoryManager : MonoBehaviour {
             ItemSelected.SetActive(true);
             isItemSelected = true;
         }
+    }
+
+    // TODO: se è selezionato un oggetto e si clicca su un altro aoggetto dell'inventario, sostituire l'oggetto selezionato
+
+    public void SelectItem(GameObject itemObject) {
+        moveableItem = itemObject;
+        itemObject.SetActive(false);
+        
+        ItemSelected = Instantiate(itemObject, GetMouseScreenPosition(), Quaternion.identity, selectedItemParent);
+        ItemSelected.layer = 5; // UI layer
+        ItemSelected.SetActive(true);
+        isItemSelected = true;
     }
 
     Vector3 GetMouseScreenPosition() {
@@ -114,7 +134,7 @@ public class InventoryManager : MonoBehaviour {
         }
     }
 
-    public void ShowInfo(Item item){
+    public void ShowInfo(Item item) {
         Time.timeScale = 0;
         var itemNameText = InfoArea.transform.Find("InfoPanel/NamePanel/Name").GetComponent<Text>();
         var itemDescriptionText = InfoArea.transform.Find("InfoPanel/DescriptionPanel/Description").GetComponent<Text>();

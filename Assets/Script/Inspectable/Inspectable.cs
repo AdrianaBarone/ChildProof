@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Inspectable : MonoBehaviour {
@@ -5,13 +6,10 @@ public class Inspectable : MonoBehaviour {
      private int interactionNumber;
     private int maxInteractionNumber;
     [SerializeField] AchievementManager achievementManager;
+    public List<DropZone> dropZones = new();
 
     private void Awake() {
-        foreach (Transform child in transform) {
-            if (child.GetComponent<DropZone>() != null) {
-                maxInteractionNumber++;
-            }
-        }
+        maxInteractionNumber = dropZones.Count;
         interactionNumber = maxInteractionNumber;
     }
 

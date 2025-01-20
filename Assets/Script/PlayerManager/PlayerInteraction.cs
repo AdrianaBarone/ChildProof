@@ -23,13 +23,11 @@ public class PlayerInteraction : MonoBehaviour {
     private Quaternion startRotation;
 
     //Parametri Cursore
-    [SerializeField] private Sprite defaultSprite;
+    public Sprite defaultSprite;
     [SerializeField] private Sprite interactSprite;
     [SerializeField] private Sprite grabbableSprite;
-    private CursorManager cursorManager;
 
     void Start() {
-        cursorManager = FindFirstObjectByType<CursorManager>();
     }
 
     public void RaycastForInteractable() {
@@ -46,7 +44,7 @@ public class PlayerInteraction : MonoBehaviour {
             // TODO: capire bene come gestire queste interazioni
 
             if (pointingInteractable != null) {
-                cursorManager.UpdateExplorationCursor(interactSprite); // Cambio del cursore per interazione
+                CursorManager.Instance.UpdateExplorationCursor(interactSprite); // Cambio del cursore per interazione
                 pointingInteractable.BaseInteract();
 
                 if (Input.GetMouseButtonDown(0) && pointingInspectable && !pointingInspectable.IsResolved()) {
@@ -54,18 +52,18 @@ public class PlayerInteraction : MonoBehaviour {
                 }
             }
             else {
-                cursorManager.UpdateExplorationCursor(defaultSprite); // Cambio al cursore predefinito
+                CursorManager.Instance.UpdateExplorationCursor(defaultSprite); // Cambio al cursore predefinito
             }
 
             if (pointingPickable != null) {
-                cursorManager.UpdateExplorationCursor(grabbableSprite); // Cambio del cursore per oggetto afferrabile
+                CursorManager.Instance.UpdateExplorationCursor(grabbableSprite); // Cambio del cursore per oggetto afferrabile
                 if (Input.GetMouseButtonDown(0)) {
                     pointingPickable.OnPick();
                 }
             }
         }
         else {
-            cursorManager.UpdateExplorationCursor(defaultSprite); // Se non c'è nulla, cursore predefinito
+            CursorManager.Instance.UpdateExplorationCursor(defaultSprite); // Se non c'è nulla, cursore predefinito
         }
     }
 
@@ -79,7 +77,10 @@ public class PlayerInteraction : MonoBehaviour {
             Moveable moveable = hitInfo.collider.GetComponent<Moveable>();
 
             if (moveable != null) {
+                CursorManager.Instance.PointingMoveable();
                 return moveable;
+            } else {
+                CursorManager.Instance.PointingDefault();
             }
         }
 

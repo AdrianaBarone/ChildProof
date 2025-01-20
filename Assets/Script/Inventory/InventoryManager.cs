@@ -14,7 +14,6 @@ public class InventoryManager : MonoBehaviour {
     public Transform selectedItemParent;
     public Camera itemCamera;
     bool isItemSelected = false;
-    [SerializeField] private PlayerInteraction playerInteraction;
 
     public GameObject InfoArea;
 
@@ -28,10 +27,11 @@ public class InventoryManager : MonoBehaviour {
         // if an item is selected make it follow the mouse mosition
 
         if (isItemSelected) {
+            CursorManager.Instance.PointingMoveableWithItem();
             ItemData itemData = ItemSelected.GetComponent<Item>()?.data ?? ItemSelected.GetComponent<Moveable>()?.GetItemData();
             ItemSelected.transform.position = GetMouseScreenPosition();
 
-            DropZone dropZone = playerInteraction.RaycastForDropZone();
+            DropZone dropZone = PlayerManager.Instance.playerInteraction.RaycastForDropZone();
             if (dropZone != null) {
                 dropZone.OnHoverWithItem(itemData);
             }
@@ -39,7 +39,7 @@ public class InventoryManager : MonoBehaviour {
 
             if (Input.GetMouseButtonDown(0)) {
                 
-                if (playerInteraction.TryDragAndDrop(itemData)) {
+                if (PlayerManager.Instance.playerInteraction.TryDragAndDrop(itemData)) {
                     if(!moveableItem) {
                         Remove(ItemSelected.GetComponent<Item>());
                     }

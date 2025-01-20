@@ -13,31 +13,29 @@ public class PlayerManager : MonoBehaviour {
     public Interactable currentInteractable;
 
 
-    private PlayerInteraction playerInteraction;
+    public PlayerInteraction playerInteraction;
     private PlayerMovement playerMovement;
-    [SerializeField] private CursorManager cursorManager;
 
     void Awake() {
         Instance = this;
 
         playerInteraction = GetComponent<PlayerInteraction>();
         playerMovement = GetComponent<PlayerMovement>();
-        cursorManager = FindFirstObjectByType<CursorManager>();
     }
 
     void Start() {
-        cursorManager.ExplorationCursor();
+        CursorManager.Instance.ExplorationCursor();
     }
 
     void Update() {
         switch (state) {
             case PlayerState.EXPLORATION:
-                cursorManager.ExplorationCursor();
+                CursorManager.Instance.ExplorationCursor();
                 playerInteraction.RaycastForInteractable();
                 playerMovement.HandleMovement();
                 break;
             case PlayerState.INSPECTION:
-                cursorManager.InspectionCursor();
+                CursorManager.Instance.InspectionCursor();
                 playerInteraction.TryPickUp();
                 if (Input.GetKeyDown(KeyCode.Tab)) {
                     SetToExploration();

@@ -15,7 +15,6 @@ public class PlayerInteraction : MonoBehaviour {
 
     // Riferimento alla fotocamera mobile e fissa
     [SerializeField] private Camera playerCamera;
-    [SerializeField] private Camera fixedCamera;
     public CameraPosition cameraPosition;
 
     // Tempo di transizione tra le fotocamere
@@ -27,12 +26,9 @@ public class PlayerInteraction : MonoBehaviour {
     [SerializeField] private Sprite defaultSprite;
     [SerializeField] private Sprite interactSprite;
     [SerializeField] private Sprite grabbableSprite;
-     private CursorManager cursorManager;
+    private CursorManager cursorManager;
 
     void Start() {
-        if (fixedCamera != null)
-            fixedCamera.gameObject.SetActive(false);
-
         cursorManager = FindFirstObjectByType<CursorManager>();
     }
 
@@ -74,6 +70,7 @@ public class PlayerInteraction : MonoBehaviour {
     }
 
     public Moveable RaycastForMoveable() {
+        Camera fixedCamera = PlayerManager.Instance.GetInteractableCamera();
         Ray ray = fixedCamera.ScreenPointToRay(Input.mousePosition);
 
         Debug.DrawRay(ray.origin, ray.direction * distance * 10, Color.blue); // Visualizza il raycast in scena
@@ -96,7 +93,7 @@ public class PlayerInteraction : MonoBehaviour {
         }
 
 
-        if(Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0)) {
             StartCoroutine(DelayedSelectItem(moveable));
         }
 
@@ -128,7 +125,7 @@ public class PlayerInteraction : MonoBehaviour {
     }
 
     public DropZone RaycastForDropZone() {
-        // ray is from mouse position to the world
+        Camera fixedCamera = PlayerManager.Instance.GetInteractableCamera();
         Ray ray = fixedCamera.ScreenPointToRay(Input.mousePosition);
 
         Debug.DrawRay(ray.origin, ray.direction * distance * 10, Color.blue); // Visualizza il raycast in scena
@@ -149,8 +146,8 @@ public class PlayerInteraction : MonoBehaviour {
     private IEnumerator StartInteraction(Interactable interactable) {
         // Inizio della transizione, nascondi cursore
         PlayerManager.Instance.PrepareTransition(); // NOTE: Blocca le interazioni durante la transizione
+        Camera fixedCamera = interactable.GetCamera();
 
-        (Vector3 targetPosition, Quaternion targetRotation) = interactable.GetTargetPositionAndRotation();
 
 
         // Interpolazione per il movimento graduale della fotocamera
@@ -158,9 +155,10 @@ public class PlayerInteraction : MonoBehaviour {
         startPosition = playerCamera.transform.position;
         startRotation = playerCamera.transform.rotation;
 
+
         while (elapsedTime < transitionTime) {
-            Vector3 newPosition = Vector3.Lerp(startPosition, targetPosition, elapsedTime / transitionTime);
-            Quaternion newRotation = Quaternion.Slerp(startRotation, targetRotation, elapsedTime / transitionTime);
+            Vector3 newPosition = Vector3.Lerp(startPosition, fixedCamera.transform.position, elapsedTime / transitionTime);
+            Quaternion newRotation = Quaternion.Slerp(startRotation, fixedCamera.transform.rotation, elapsedTime / transitionTime);
             playerCamera.transform.SetPositionAndRotation(newPosition, newRotation);
 
             elapsedTime += Time.deltaTime;
@@ -168,7 +166,7 @@ public class PlayerInteraction : MonoBehaviour {
         }
 
         // Assicurarsi che la posizione finale e la rotazione siano precise
-        fixedCamera.transform.SetPositionAndRotation(targetPosition, targetRotation);
+        playerCamera.transform.SetPositionAndRotation(fixedCamera.transform.position, fixedCamera.transform.rotation);
 
 
         // Attiva la fotocamera fissa
@@ -176,30 +174,31 @@ public class PlayerInteraction : MonoBehaviour {
         playerCamera.gameObject.SetActive(false);
 
 
-        PlayerManager.Instance.TransitionToInspection();
+        PlayerManager.Instance.TransitionToInspection(interactable);
     }
 
     private IEnumerator EndInteraction() {
         PlayerManager.Instance.PrepareTransition(); // NOTE: Blocca le interazioni durante la transizione
+        Camera fixedCamera = PlayerManager.Instance.GetInteractableCamera();
+
         // Interpolazione per il movimento graduale della fotocamera
         float elapsedTime = 0f;
         Vector3 targetPosition = startPosition;
         Quaternion targetRotation = startRotation;
 
+        // Disabilita la fotocamera fissa
+        fixedCamera.gameObject.SetActive(false);
+        playerCamera.gameObject.SetActive(true);
+
         while (elapsedTime < transitionTime) {
-            fixedCamera.transform.position = Vector3.Lerp(fixedCamera.transform.position, targetPosition, elapsedTime / transitionTime);
-            fixedCamera.transform.rotation = Quaternion.Slerp(fixedCamera.transform.rotation, targetRotation, elapsedTime / transitionTime);
+            playerCamera.transform.position = Vector3.Lerp(fixedCamera.transform.position, targetPosition, elapsedTime / transitionTime);
+            playerCamera.transform.rotation = Quaternion.Slerp(fixedCamera.transform.rotation, targetRotation, elapsedTime / transitionTime);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
 
         playerCamera.transform.SetPositionAndRotation(targetPosition, targetRotation);
-
-        // Disabilita la fotocamera fissa
-        fixedCamera.gameObject.SetActive(false);
-        playerCamera.gameObject.SetActive(true);
-
 
         PlayerManager.Instance.TransitionToExploration();
     }

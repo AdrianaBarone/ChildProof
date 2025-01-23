@@ -38,6 +38,7 @@ public class PlayerManager : MonoBehaviour {
                 CursorManager.Instance.InspectionCursor();
                 playerInteraction.TryPickUp();
                 if (Input.GetKeyDown(KeyCode.Tab)) {
+                    InventoryManager.Instance.ClearSelection();
                     SetToExploration();
                 }
                 break;

@@ -19,8 +19,8 @@ public class Inspectable : MonoBehaviour {
         interactionNumber--;
         if (interactionNumber == 0) {
             // TODO: animazione dell'oggetto
-            // TODO: cambio stato di player manager
             // TODO: aggiungere riferimento all'achievement sbloccato (preso da DropZone)
+            // TODO: aggiungere punti al giocatore
             PlayerManager.Instance.SetToExploration();
         }
     }

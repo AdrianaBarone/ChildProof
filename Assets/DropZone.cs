@@ -6,7 +6,9 @@ public class DropZone : MonoBehaviour {
     // TO DO: definire l'achievement (nome) che viene sbloccato da questo successo
 
     [SerializeField] private ItemData acceptedItem;
+    [SerializeField] private Animation successAnimation;
     public Inspectable parentInspectable;
+    
 
     bool resolved = false;
 
@@ -27,10 +29,14 @@ public class DropZone : MonoBehaviour {
         }
     }
 
+    void PlaySuccessAnimation() {
+        GetComponent<Animator>().SetTrigger("resolveTrigger");
+    }
+
     public void OnDrop() {
         if (resolved) return;
-        GetComponent<Renderer>().material.color = Color.green;
-        // TODO: animazione di successo
+        
+        PlaySuccessAnimation();
         resolved = true;
 
         parentInspectable.Resolve();

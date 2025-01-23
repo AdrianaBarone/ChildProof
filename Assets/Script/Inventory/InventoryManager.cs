@@ -24,8 +24,6 @@ public class InventoryManager : MonoBehaviour {
     }
 
     void Update() {
-        // if an item is selected make it follow the mouse mosition
-
         if (isItemSelected) {
             CursorManager.Instance.PointingMoveableWithItem();
             ItemData itemData = ItemSelected.GetComponent<Item>()?.data ?? ItemSelected.GetComponent<Moveable>()?.GetItemData();
@@ -45,12 +43,7 @@ public class InventoryManager : MonoBehaviour {
                     }
                 }
 
-                if (moveableItem){
-                    moveableItem.GetComponent<Moveable>().Restore();
-                    moveableItem = null;
-                }
-                Destroy(ItemSelected);
-                isItemSelected = false;
+                ClearSelection();
             }
 
         }
@@ -110,6 +103,15 @@ public class InventoryManager : MonoBehaviour {
         ItemSelected.layer = 5; // UI layer
         ItemSelected.SetActive(true);
         isItemSelected = true;
+    }
+
+    public void ClearSelection() {
+        if (moveableItem){
+                    moveableItem.GetComponent<Moveable>().Restore();
+                    moveableItem = null;
+                }
+                Destroy(ItemSelected);
+                isItemSelected = false;
     }
 
     Vector3 GetMouseScreenPosition() {

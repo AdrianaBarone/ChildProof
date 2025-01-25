@@ -4,12 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CursorManager : MonoBehaviour {
-    [SerializeField] private Image cursorImage;
-    [SerializeField] private Sprite defaultEXSprite;
+    private Image cursorImage;
+    private Sprite defaultEXSprite;
+
+    public Texture2D defaultInspectorCursor;
+    public Texture2D movableHoverCursor;
+    public Texture2D movableWithItemCursor;
 
     //public Texture2D dfaultINsprite;
     public CursorMode cursorMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
+    public static CursorManager Instance;
+
+    private void Awake() {
+        Instance = this;
+        defaultEXSprite = PlayerManager.Instance.playerInteraction.defaultSprite;
+    }
+
+    private void Start() {
+        cursorImage = GetComponentInChildren<Image>();
+    }
 
     public void ExplorationCursor() {
         Cursor.lockState = CursorLockMode.Locked;
@@ -23,7 +37,7 @@ public class CursorManager : MonoBehaviour {
         cursorImage.enabled = false;
 
         Cursor.visible = true;
-        Cursor.SetCursor(null, hotSpot, cursorMode);
+        Cursor.SetCursor(defaultInspectorCursor, hotSpot, cursorMode);
     }
 
     public void UpdateExplorationCursor(Sprite sprite) {
@@ -31,5 +45,17 @@ public class CursorManager : MonoBehaviour {
             cursorImage.sprite = sprite;
             cursorImage.enabled = true;
         }
+    }
+
+    public void PointingMoveable() {
+        Cursor.SetCursor(movableHoverCursor, hotSpot, cursorMode);
+    }
+
+    public void PointingMoveableWithItem() {
+        Cursor.SetCursor(movableWithItemCursor, hotSpot, cursorMode);
+    }
+
+    public void PointingDefault() {
+        Cursor.SetCursor(defaultInspectorCursor, hotSpot, cursorMode);
     }
 }

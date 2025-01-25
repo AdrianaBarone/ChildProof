@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     // Parametri movimento FPS
     public Camera playerCamera;
+    Rigidbody rb;
     public float speed = 20f;
     public float sensitivity = 5f;
     private float rotationX = 0;
@@ -13,10 +14,11 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         playerCamera = GetComponentInChildren<Camera>();
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
     }
 
-    public void HandleMovement()
-    {
+    public void HandleRotation() {
         // Rotazione del mouse
         float mouseX = Input.GetAxis("Mouse X") * sensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
@@ -25,9 +27,12 @@ public class PlayerMovement : MonoBehaviour
         rotationX = Mathf.Clamp(rotationX, -90f, 90f);
         playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
+    }
 
+    public void HandleMovement() {
         // Movimento del giocatore
-        Vector3 playerMovement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        transform.Translate(playerMovement * speed * Time.deltaTime);
+        Vector3 playerMovement = transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
+        //rb.MovePosition(transform.position + playerMovement.normalized * speed * Time.fixedDeltaTime);
+        rb.linearVelocity = playerMovement * speed;
     }
 }

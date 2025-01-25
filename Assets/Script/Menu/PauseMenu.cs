@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour{
     public static bool GameIsPaused = false;
-    public GameObject pauseMenuUI;
+    //public GameObject pauseMenuUI;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)){
+        if (Input.GetKeyDown(KeyCode.G)){
             if (GameIsPaused){
                 Resume();
             }else{
@@ -18,14 +18,16 @@ public class PauseMenu : MonoBehaviour{
     }
 
     void Resume(){
-        pauseMenuUI.SetActive(false);
+        //pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        PlayerManager.Instance.ReturnToPreviousState();
     }
 
     void Pause(){
-        pauseMenuUI.SetActive(true);
+        //pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        PlayerManager.Instance.PrepareTransition();
     }
 }

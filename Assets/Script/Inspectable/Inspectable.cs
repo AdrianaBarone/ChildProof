@@ -5,11 +5,10 @@ public class Inspectable : MonoBehaviour {
 
      private int interactionNumber;
     private int maxInteractionNumber;
-    [SerializeField] AchievementManager achievementManager;
-    public List<DropZone> dropZones = new();
+    public DropZone[] dropZones;
 
     private void Awake() {
-        maxInteractionNumber = dropZones.Count;
+        maxInteractionNumber = dropZones.Length;
         interactionNumber = maxInteractionNumber;
     }
 
@@ -20,8 +19,8 @@ public class Inspectable : MonoBehaviour {
         interactionNumber--;
         if (interactionNumber == 0) {
             // TODO: animazione dell'oggetto
-            // TODO: cambio stato di player manager
             // TODO: aggiungere riferimento all'achievement sbloccato (preso da DropZone)
+            // TODO: aggiungere punti al giocatore
             PlayerManager.Instance.SetToExploration();
         }
     }

@@ -14,7 +14,6 @@ public class InventoryManager : MonoBehaviour {
     public Transform selectedItemParent;
     public Camera itemCamera;
     bool isItemSelected = false;
-    [SerializeField] private PlayerInteraction playerInteraction;
 
     public GameObject InfoArea;
 
@@ -24,31 +23,33 @@ public class InventoryManager : MonoBehaviour {
         InfoArea.SetActive(false);
     }
 
-    void Update() {
-        // if an item is selected make it follow the mouse mosition
-
+    public void HandleInventory() {
         if (isItemSelected) {
+            CursorManager.Instance.PointingMoveableWithItem();
+            ItemData itemData = ItemSelected.GetComponent<Item>()?.data ?? ItemSelected.GetComponent<Moveable>()?.GetItemData();
             ItemSelected.transform.position = GetMouseScreenPosition();
+
+            DropZone dropZone = PlayerManager.Instance.playerInteraction.RaycastForDropZone();
+            if (dropZone != null) {
+                dropZone.OnHoverWithItem(itemData);
+            }
 
 
             if (Input.GetMouseButtonDown(0)) {
-                ItemData itemData = ItemSelected.GetComponent<Item>()?.data ?? ItemSelected.GetComponent<Moveable>()?.GetItemData();
-                if (playerInteraction.TryDragAndDrop(itemData)) {
+                
+                if (PlayerManager.Instance.playerInteraction.TryDragAndDrop(itemData)) {
                     if(!moveableItem) {
                         Remove(ItemSelected.GetComponent<Item>());
                     }
                 }
 
-                if (moveableItem){
-                    moveableItem.GetComponent<Moveable>().Restore();
-                    moveableItem = null;
-                }
-                Destroy(ItemSelected);
-                isItemSelected = false;
+                ClearSelection();
             }
 
         }
+    }
 
+    void Update(){
         if (Input.GetKeyDown(KeyCode.P)) {
             if (InfoArea.activeSelf) {
                 CloseInfoPanel();
@@ -104,6 +105,15 @@ public class InventoryManager : MonoBehaviour {
         ItemSelected.layer = 5; // UI layer
         ItemSelected.SetActive(true);
         isItemSelected = true;
+    }
+
+    public void ClearSelection() {
+        if (moveableItem){
+                    moveableItem.GetComponent<Moveable>().Restore();
+                    moveableItem = null;
+                }
+                Destroy(ItemSelected);
+                isItemSelected = false;
     }
 
     Vector3 GetMouseScreenPosition() {

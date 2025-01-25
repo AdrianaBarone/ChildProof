@@ -23,7 +23,7 @@ public class InventoryManager : MonoBehaviour {
         InfoArea.SetActive(false);
     }
 
-    void Update() {
+    public void HandleInventory() {
         if (isItemSelected) {
             CursorManager.Instance.PointingMoveableWithItem();
             ItemData itemData = ItemSelected.GetComponent<Item>()?.data ?? ItemSelected.GetComponent<Moveable>()?.GetItemData();
@@ -47,7 +47,9 @@ public class InventoryManager : MonoBehaviour {
             }
 
         }
+    }
 
+    void Update(){
         if (Input.GetKeyDown(KeyCode.P)) {
             if (InfoArea.activeSelf) {
                 CloseInfoPanel();

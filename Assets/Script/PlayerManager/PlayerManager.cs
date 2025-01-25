@@ -10,6 +10,7 @@ public enum PlayerState {
 public class PlayerManager : MonoBehaviour {
     public static PlayerManager Instance;
     private PlayerState state = PlayerState.EXPLORATION;
+    private PlayerState lastState = PlayerState.EXPLORATION;
     public Interactable currentInteractable;
 
 
@@ -27,20 +28,33 @@ public class PlayerManager : MonoBehaviour {
         CursorManager.Instance.ExplorationCursor();
     }
 
-    void Update() {
+    void Update(){
         switch (state) {
             case PlayerState.EXPLORATION:
                 CursorManager.Instance.ExplorationCursor();
                 playerInteraction.RaycastForInteractable();
-                playerMovement.HandleMovement();
+                playerMovement.HandleRotation();
                 break;
             case PlayerState.INSPECTION:
                 CursorManager.Instance.InspectionCursor();
+                InventoryManager.Instance.HandleInventory();
                 playerInteraction.TryPickUp();
                 if (Input.GetKeyDown(KeyCode.Tab)) {
                     InventoryManager.Instance.ClearSelection();
                     SetToExploration();
                 }
+                break;
+            default:
+                break;
+        }
+    }
+
+    void FixedUpdate() {
+        switch (state) {
+            case PlayerState.EXPLORATION:
+                playerMovement.HandleMovement();
+                break;
+            case PlayerState.INSPECTION:
                 break;
             default:
                 break;
@@ -68,7 +82,12 @@ public class PlayerManager : MonoBehaviour {
     }
 
     public void PrepareTransition(){
+        lastState = state;
         state = PlayerState.TRANSITION;
+    }
+
+    public void ReturnToPreviousState() {
+        state = lastState;
     }
 
     public bool InStateInspection() {

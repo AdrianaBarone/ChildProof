@@ -9,13 +9,12 @@ public class AchievementManager : MonoBehaviour {
     public List<Achievement> achievements = new List<Achievement>();
     private int achievementCount;
 
+    /*
     //telefono
     public GameObject smartphoneCanvas;
+    */
 
-    //Card contenitore REMIND del telefono
-    public GameObject achievementCardPrefab;
-    public Transform achievementCardParent;
-    private int cardCount;
+ 
 
     //PopUp achievement raggiunto
     public GameObject PopUpCanvas;
@@ -29,19 +28,22 @@ public class AchievementManager : MonoBehaviour {
         PopUpCanvas.SetActive(false);
 
         scoreManager = FindFirstObjectByType<ScoreManager>();
-        cardCount = 0;
+        AppManager.Instance.cardCount = 0;
     }
 
+/*
     void Update() {
         if (Input.GetKeyDown(KeyCode.E)) {
             ToggleSmartphone();
         }
     }
 
+    /*
     void ToggleSmartphone() {
         bool isActive = smartphoneCanvas.gameObject.activeSelf;
         smartphoneCanvas.gameObject.SetActive(!isActive);
     }
+    */
 
     void LoadAchievements() {
         string path = Application.dataPath + "/Achievements.json";
@@ -67,7 +69,7 @@ public class AchievementManager : MonoBehaviour {
             achievement.IncrementProgress(amount);
             scoreManager.UpdateScore(achievement.taskScore);
             if (achievement.taskProgress == 1) {
-                CreateAchievementCard(achievement);
+                AppManager.Instance.CreateAchievementCard(achievement);
                 ShowAchievementPopup(achievement);
             }
             else if (achievement.taskProgress == achievement.taskGoal){
@@ -79,21 +81,6 @@ public class AchievementManager : MonoBehaviour {
         }
     }
 
-    void CreateAchievementCard(Achievement achievement) {
-        if (achievement == null) {
-            Debug.LogError("Achievement è null!");
-            return;
-        }
-        GameObject card = Instantiate(achievementCardPrefab, achievementCardParent);
-
-        TMP_Text nameText = card.transform.Find("NameTask").GetComponent<TMP_Text>();
-        TMP_Text descriptionText = card.transform.Find("DescriptionTask").GetComponent<TMP_Text>();
-
-        nameText.text = achievement.taskName;
-        descriptionText.text = achievement.taskDescription;
-
-        cardCount++;
-    }
 
     void ShowAchievementPopup(Achievement achievement) {
         var titleText = PopUpCanvas.transform.Find("PanelPopUp/titleText").GetComponent<Text>();
@@ -111,7 +98,7 @@ public class AchievementManager : MonoBehaviour {
     }
 
     public void CheckAchievementCount(){
-        if (achievementCount == cardCount){
+        if (achievementCount == AppManager.Instance.cardCount){
             // TODO: Passa a schermata di vittoria
         }
     }

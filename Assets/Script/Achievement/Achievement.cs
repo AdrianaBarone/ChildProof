@@ -21,4 +21,8 @@ public class Achievement
             }
         }
     }
+
+    public int GetProgress() {
+        return taskProgress;
+    }
 }

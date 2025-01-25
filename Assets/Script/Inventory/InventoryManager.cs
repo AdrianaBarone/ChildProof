@@ -102,6 +102,7 @@ public class InventoryManager : MonoBehaviour {
         itemObject.SetActive(false);
         
         ItemSelected = Instantiate(itemObject, GetMouseScreenPosition(), Quaternion.identity, selectedItemParent);
+        ItemSelected.GetComponent<Animator>().enabled = false;
         ItemSelected.layer = 5; // UI layer
         ItemSelected.SetActive(true);
         isItemSelected = true;

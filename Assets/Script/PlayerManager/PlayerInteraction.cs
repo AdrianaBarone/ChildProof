@@ -9,9 +9,6 @@ public class PlayerInteraction : MonoBehaviour {
     [SerializeField] private float distance = 2f;
     [SerializeField] private LayerMask layerMask;
 
-    //Oggetti con cui interagire
-    private Interactable pointingInteractable;
-    private IPickable pointingPickable;
 
     // Riferimento alla fotocamera mobile e fissa
     [SerializeField] private Camera playerCamera;
@@ -30,25 +27,23 @@ public class PlayerInteraction : MonoBehaviour {
     void Start() {
     }
 
-    public void RaycastForInteractable() {
+    public void RaycastForInspectable() {
         Ray ray = new(playerCamera.transform.position, playerCamera.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * distance, Color.red); // Visualizza il raycast in scena
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo, distance, layerMask)) {
-            pointingInteractable = hitInfo.collider.GetComponent<Interactable>();
-
-            pointingPickable = hitInfo.collider.GetComponent<IPickable>();
+            IPickable pointingPickable = hitInfo.collider.GetComponent<IPickable>();
             Inspectable pointingInspectable = hitInfo.collider.GetComponent<Inspectable>();
 
 
             // TODO: capire bene come gestire queste interazioni
 
-            if (pointingInteractable != null) {
+            if (pointingInspectable != null) {
                 CursorManager.Instance.UpdateExplorationCursor(interactSprite); // Cambio del cursore per interazione
-                pointingInteractable.BaseInteract();
+                pointingInspectable.BaseInteract();
 
-                if (Input.GetMouseButtonDown(0) && pointingInspectable && !pointingInspectable.IsResolved()) {
-                    StartCoroutine(StartInteraction(pointingInteractable));
+                if (Input.GetMouseButtonDown(0) && !pointingInspectable.IsResolved()) {
+                    StartCoroutine(StartInteraction(pointingInspectable));
                 }
             }
             else {
@@ -68,7 +63,7 @@ public class PlayerInteraction : MonoBehaviour {
     }
 
     public Moveable RaycastForMoveable() {
-        Camera fixedCamera = PlayerManager.Instance.GetInteractableCamera();
+        Camera fixedCamera = PlayerManager.Instance.GetInspectableCamera();
         Ray ray = fixedCamera.ScreenPointToRay(Input.mousePosition);
 
         Debug.DrawRay(ray.origin, ray.direction * distance * 10, Color.blue); // Visualizza il raycast in scena
@@ -126,7 +121,7 @@ public class PlayerInteraction : MonoBehaviour {
     }
 
     public DropZone RaycastForDropZone() {
-        Camera fixedCamera = PlayerManager.Instance.GetInteractableCamera();
+        Camera fixedCamera = PlayerManager.Instance.GetInspectableCamera();
         Ray ray = fixedCamera.ScreenPointToRay(Input.mousePosition);
 
         Debug.DrawRay(ray.origin, ray.direction * distance * 10, Color.blue); // Visualizza il raycast in scena
@@ -144,10 +139,10 @@ public class PlayerInteraction : MonoBehaviour {
         return null;
     }
 
-    private IEnumerator StartInteraction(Interactable interactable) {
+    private IEnumerator StartInteraction(Inspectable inspectable) {
         // Inizio della transizione, nascondi cursore
         PlayerManager.Instance.PrepareTransition(); // NOTE: Blocca le interazioni durante la transizione
-        Camera fixedCamera = interactable.GetCamera();
+        Camera fixedCamera = inspectable.GetCamera();
 
 
 
@@ -175,12 +170,12 @@ public class PlayerInteraction : MonoBehaviour {
         playerCamera.gameObject.SetActive(false);
 
 
-        PlayerManager.Instance.TransitionToInspection(interactable);
+        PlayerManager.Instance.TransitionToInspection(inspectable);
     }
 
     private IEnumerator EndInteraction() {
         PlayerManager.Instance.PrepareTransition(); // NOTE: Blocca le interazioni durante la transizione
-        Camera fixedCamera = PlayerManager.Instance.GetInteractableCamera();
+        Camera fixedCamera = PlayerManager.Instance.GetInspectableCamera();
 
         // Interpolazione per il movimento graduale della fotocamera
         float elapsedTime = 0f;

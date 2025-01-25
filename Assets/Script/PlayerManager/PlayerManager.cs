@@ -11,7 +11,7 @@ public class PlayerManager : MonoBehaviour {
     public static PlayerManager Instance;
     private PlayerState state = PlayerState.EXPLORATION;
     private PlayerState lastState = PlayerState.EXPLORATION;
-    public Interactable currentInteractable;
+    public Inspectable currentInspectable;
 
 
     public PlayerInteraction playerInteraction;
@@ -32,7 +32,7 @@ public class PlayerManager : MonoBehaviour {
         switch (state) {
             case PlayerState.EXPLORATION:
                 CursorManager.Instance.ExplorationCursor();
-                playerInteraction.RaycastForInteractable();
+                playerInteraction.RaycastForInspectable();
                 playerMovement.HandleRotation();
                 break;
             case PlayerState.INSPECTION:
@@ -61,20 +61,20 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
-    public void TransitionToInspection(Interactable interactable) {
+    public void TransitionToInspection(Inspectable inspectable) {
         Cursor.lockState = CursorLockMode.None;
         state = PlayerState.INSPECTION;
-        currentInteractable = interactable;
+        currentInspectable = inspectable;
     }
 
     public void TransitionToExploration() {
         Cursor.lockState = CursorLockMode.Locked;
         state = PlayerState.EXPLORATION;
-        currentInteractable = null;
+        currentInspectable = null;
     }
 
-    public Camera GetInteractableCamera() {
-        return currentInteractable.GetCamera();
+    public Camera GetInspectableCamera() {
+        return currentInspectable.GetCamera();
     }
 
     public void SetToExploration() {

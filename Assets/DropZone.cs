@@ -23,7 +23,6 @@ public class DropZone : MonoBehaviour {
     }
 
     public void OnHoverWithItem(ItemData itemData) {
-        // TODO: animazione di successo?
         if (AcceptsItem(itemData) && !resolved) {
             hoverWithCorrectItemParticles.Play();
         }

@@ -8,7 +8,6 @@ public class Moveable : Inspectable {
 
     public void Restore() {
         if (!IsResolved()) {
-
             gameObject.SetActive(true);
         }
     }
@@ -16,7 +15,6 @@ public class Moveable : Inspectable {
 
     public new void Resolve() {
         base.Resolve();
-        Debug.Log("inactive");
         gameObject.SetActive(false);
     }
 

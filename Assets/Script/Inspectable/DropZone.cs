@@ -6,7 +6,6 @@ public class DropZone : MonoBehaviour {
     // TO DO: definire l'achievement (nome) che viene sbloccato da questo successo
 
     [SerializeField] private ItemData acceptedItem;
-    [SerializeField] private Animation successAnimation;
     public Inspectable parentInspectable;
     
 
@@ -15,7 +14,6 @@ public class DropZone : MonoBehaviour {
     ParticleSystem hoverWithCorrectItemParticles;
 
     private void Start() {
-        // TODO: reference to the parent
         hoverWithCorrectItemParticles = GetComponentInChildren<ParticleSystem>();
     }
     public bool AcceptsItem(ItemData itemData) {

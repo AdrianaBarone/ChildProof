@@ -1,28 +1,23 @@
 using System;
 
 [Serializable]
-public class Achievement
-{
-    public string taskName;
-    public string taskDescription;
-    public string taskFullDescription;
-    public string targetObject;
-    public int taskGoal;
+public class Achievement {
+    public AchievementData data;
     public int taskProgress;
-    public int taskScore;
 
-    public bool IsComplete => taskProgress >= taskGoal;
+    public bool IsComplete => taskProgress >= data.goal;
+
+    public Achievement(AchievementData data) {
+        this.data = data;
+        taskProgress = 0;
+    }
 
     public void IncrementProgress(int amount = 1) {
         if (!IsComplete) {
             taskProgress += amount;
-            if (taskProgress > taskGoal) {
-                taskProgress = taskGoal;
+            if (taskProgress > data.goal) {
+                taskProgress = data.goal;
             }
         }
-    }
-
-    public int GetProgress() {
-        return taskProgress;
     }
 }

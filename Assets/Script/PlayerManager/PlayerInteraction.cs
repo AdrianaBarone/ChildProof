@@ -34,9 +34,20 @@ public class PlayerInteraction : MonoBehaviour {
         if (Physics.Raycast(ray, out RaycastHit hitInfo, distance, layerMask)) {
             IPickable pointingPickable = hitInfo.collider.GetComponent<IPickable>();
             Inspectable pointingInspectable = hitInfo.collider.GetComponent<Inspectable>();
+            bool pointingChild = false; // TODO: aggiungere il caso di puntamento alla bambina
 
-
-            // TODO: capire bene come gestire queste interazioni
+            if(GameManager.Instance.InDangerMode) {
+                if (pointingChild){
+                    CursorManager.Instance.UpdateExplorationCursor(interactSprite);
+                    // TODO: capire se ha senso aggiungere la condizione se la bambina sta toccando qualcosa, in teoria basta InDangerMode
+                    if (Input.GetMouseButtonDown(0)) {
+                        // TODO: interazione per fermare la bambina
+                        Debug.Log("Interazione con la bambina");
+                    }
+                }
+                CursorManager.Instance.UpdateExplorationCursor(defaultSprite);
+                return; // NOTE: queste return impedisce di interagire con gli oggetti in DangerMode
+            }
 
             if (pointingInspectable != null) {
                 CursorManager.Instance.UpdateExplorationCursor(interactSprite); // Cambio del cursore per interazione
@@ -92,13 +103,9 @@ public class PlayerInteraction : MonoBehaviour {
         if (Input.GetMouseButtonDown(0)) {
             StartCoroutine(DelayedSelectItem(moveable));
         }
-
-        // ItemData picked = moveable.PickupItem(); -> also disable the object
-        // set selected item to picked
-        // 
     }
 
-    // ienumerator per ritardare il select item di un frame
+    // Coroutine per ritardare il select item di un frame
     IEnumerator DelayedSelectItem(Moveable moveable) {
         yield return null;
         InventoryManager.Instance.SelectItem(moveable.gameObject);
@@ -128,10 +135,6 @@ public class PlayerInteraction : MonoBehaviour {
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo, distance * 10, layerMask)) {
             DropZone dropZone = hitInfo.collider.GetComponent<DropZone>();
-
-            if (dropZone != null) {
-                // TODO: ritorna true? cambia colore?
-            }
 
             return dropZone;
         }

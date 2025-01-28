@@ -15,7 +15,7 @@ public class AchievementTest : MonoBehaviour {
 
         // Chiama il metodo IncrementAchievement del manager
 
-        AchievementManager.Instance.IncrementAchievement(objectName, 1);
+        // AchievementManager.Instance.IncrementAchievement(objectName, 1);
     }
 
     void TestInteractionWithSphere() {

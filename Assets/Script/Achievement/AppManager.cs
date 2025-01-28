@@ -75,18 +75,18 @@ public class AppManager : MonoBehaviour
             Text titleText = singleRemindPanel.transform.Find("TitleText").GetComponent<Text>();
             Text progressText = singleRemindPanel.transform.Find("ProgressText").GetComponent<Text>();
 
-            titleText.text = achievement.taskName;
-            infoText.text = achievement.taskFullDescription;
-            int progress = achievement.GetProgress(); // AchievementManager.Instance.GetProgressFor(achievement)
-            if(progress >= achievement.taskGoal){
+            titleText.text = achievement.data.name;
+            infoText.text = achievement.data.fullDescription;
+            int progress = achievement.taskProgress; // AchievementManager.Instance.GetProgressFor(achievement)
+            if(progress >= achievement.data.goal){
                 progressText.text = "Completato";
             } else {
-                progressText.text = progress + "/" + achievement.taskGoal;
+                progressText.text = progress + "/" + achievement.data.goal;
             }
         });
 
-        nameText.text = achievement.taskName;
-        descriptionText.text = achievement.taskDescription;
+        nameText.text = achievement.data.name;
+        descriptionText.text = achievement.data.description;
 
         cardCount++;
     }

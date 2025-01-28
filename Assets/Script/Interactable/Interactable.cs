@@ -2,6 +2,7 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour {
 
+    
     [SerializeField] Camera interactableCamera;
         
     public void BaseInteract() {

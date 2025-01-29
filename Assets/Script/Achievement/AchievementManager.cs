@@ -53,7 +53,7 @@ public class AchievementManager : MonoBehaviour {
         achievementCount = achievements.Count;
     }
 
-    // TODO: REFACTOR INIZIA QUI
+
     public void IncrementAchievement(AchievementData completedAchievementData) {
 
         Achievement achievement = achievements.Find(a => a.data == completedAchievementData);

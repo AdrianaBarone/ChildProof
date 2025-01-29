@@ -7,15 +7,12 @@ public class DropZone : MonoBehaviour {
 
     [SerializeField] private ItemData acceptedItem;
     public Inspectable parentInspectable;
-    
+
 
     bool resolved = false;
 
-    ParticleSystem hoverWithCorrectItemParticles;
+    [SerializeField] ParticleSystem hoverWithCorrectItemParticles;
 
-    private void Start() {
-        hoverWithCorrectItemParticles = GetComponentInChildren<ParticleSystem>();
-    }
     public bool AcceptsItem(ItemData itemData) {
         return (itemData == acceptedItem) && !resolved;
     }
@@ -32,7 +29,7 @@ public class DropZone : MonoBehaviour {
 
     public void OnDrop() {
         if (resolved) return;
-        
+
         PlaySuccessAnimation();
         resolved = true;
 

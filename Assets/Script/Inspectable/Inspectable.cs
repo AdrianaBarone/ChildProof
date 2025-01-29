@@ -2,7 +2,8 @@ using System.Collections;
 using UnityEngine;
 
 public class Inspectable : MonoBehaviour {
-    [SerializeField] private AchievementData achievementData;
+
+    [SerializeField] AchievementData achievementData;
     [SerializeField] Camera interactionCamera;
     private int interactionNumber;
     private int maxInteractionNumber;
@@ -29,6 +30,10 @@ public class Inspectable : MonoBehaviour {
             StartCoroutine(Debounce());
             GetComponent<Animator>().SetTrigger("isInteracting");
         }
+    }
+
+    public AchievementData GetAchievementData() {
+        return achievementData;
     }
 
     IEnumerator Debounce() {

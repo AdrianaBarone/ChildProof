@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
-{
+public class PlayerMovement : MonoBehaviour {
     // Parametri movimento FPS
     public Camera playerCamera;
     Rigidbody rb;
-    public float speed = 20f;
-    public float sensitivity = 5f;
+    public float speed;
+    public float sensitivity;
     private float rotationX = 0;
 
-    void Start()
-    {
+    void Start() {
         playerCamera = GetComponentInChildren<Camera>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;

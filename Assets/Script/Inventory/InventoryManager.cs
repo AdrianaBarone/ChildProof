@@ -31,14 +31,15 @@ public class InventoryManager : MonoBehaviour {
 
             DropZone dropZone = PlayerManager.Instance.playerInteraction.RaycastForDropZone();
             if (dropZone != null) {
+                // TODO: solo se la dropzone è del currentInspectable
                 dropZone.OnHoverWithItem(itemData);
             }
 
 
             if (Input.GetMouseButtonDown(0)) {
-                
+
                 if (PlayerManager.Instance.playerInteraction.TryDragAndDrop(itemData)) {
-                    if(!moveableItem) {
+                    if (!moveableItem) {
                         Remove(ItemSelected.GetComponent<Item>());
                     }
                 }
@@ -49,7 +50,7 @@ public class InventoryManager : MonoBehaviour {
         }
     }
 
-    void Update(){
+    void Update() {
         if (Input.GetKeyDown(KeyCode.P)) {
             if (InfoArea.activeSelf) {
                 CloseInfoPanel();
@@ -89,32 +90,36 @@ public class InventoryManager : MonoBehaviour {
             InventoryItem entry = enumerator.Current;
 
             ItemSelected = Instantiate(entry.item.gameObject, GetMouseScreenPosition(), Quaternion.identity, selectedItemParent);
-            ItemSelected.layer = 5; // UI layer
-            ItemSelected.SetActive(true);
-            isItemSelected = true;
+            CreateSelectedItem(entry.item.gameObject);
         }
     }
-
-    // TODO: se è selezionato un oggetto e si clicca su un altro aoggetto dell'inventario, sostituire l'oggetto selezionato
 
     public void SelectItem(GameObject itemObject) {
         moveableItem = itemObject;
         itemObject.SetActive(false);
-        
-        ItemSelected = Instantiate(itemObject, GetMouseScreenPosition(), Quaternion.identity, selectedItemParent);
+
+        CreateSelectedItem(itemObject);
         ItemSelected.GetComponent<Animator>().enabled = false;
+    }
+
+    public void CreateSelectedItem(GameObject gameObject) {
+        ItemSelected = Instantiate(gameObject, GetMouseScreenPosition(), Quaternion.identity, selectedItemParent);
+        ItemSelected.transform.localScale *= 10f;
         ItemSelected.layer = 5; // UI layer
+        foreach (Transform child in ItemSelected.transform) {
+            child.gameObject.layer = 5;
+        }
         ItemSelected.SetActive(true);
         isItemSelected = true;
     }
 
     public void ClearSelection() {
-        if (moveableItem){
-                    moveableItem.GetComponent<Moveable>().Restore();
-                    moveableItem = null;
-                }
-                Destroy(ItemSelected);
-                isItemSelected = false;
+        if (moveableItem) {
+            moveableItem.GetComponent<Moveable>().Restore();
+            moveableItem = null;
+        }
+        Destroy(ItemSelected);
+        isItemSelected = false;
     }
 
     Vector3 GetMouseScreenPosition() {

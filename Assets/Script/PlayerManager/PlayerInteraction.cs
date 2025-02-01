@@ -36,10 +36,9 @@ public class PlayerInteraction : MonoBehaviour {
             Inspectable pointingInspectable = hitInfo.collider.GetComponent<Inspectable>();
             bool pointingChild = false; // TODO: aggiungere il caso di puntamento alla bambina
 
-            if(GameManager.Instance.InDangerMode) {
-                if (pointingChild){
+            if (GameManager.Instance.InDangerMode) {
+                if (pointingChild) {
                     CursorManager.Instance.UpdateExplorationCursor(interactSprite);
-                    // TODO: capire se ha senso aggiungere la condizione se la bambina sta toccando qualcosa, in teoria basta InDangerMode
                     if (Input.GetMouseButtonDown(0)) {
                         // TODO: interazione per fermare la bambina
                         Debug.Log("Interazione con la bambina");
@@ -85,7 +84,8 @@ public class PlayerInteraction : MonoBehaviour {
             if (moveable != null) {
                 CursorManager.Instance.PointingMoveable();
                 return moveable;
-            } else {
+            }
+            else {
                 CursorManager.Instance.PointingDefault();
             }
         }
@@ -96,6 +96,11 @@ public class PlayerInteraction : MonoBehaviour {
     public void TryPickUp() {
         Moveable moveable = RaycastForMoveable();
         if (moveable == null) {
+            return;
+        }
+
+        // TODO: solo se il moveable è il currentInspectable
+        if (moveable != PlayerManager.Instance.currentInspectable) {
             return;
         }
 
@@ -115,6 +120,11 @@ public class PlayerInteraction : MonoBehaviour {
         DropZone dropZone = RaycastForDropZone();
 
         if (dropZone == null) {
+            return false;
+        }
+
+        // TODO: solo se la dropzone è del currentInspectable
+        if (dropZone.parentInspectable = PlayerManager.Instance.currentInspectable) {
             return false;
         }
 

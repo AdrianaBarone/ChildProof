@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,10 @@ public class DropZone : MonoBehaviour {
     }
 
     public void OnHoverWithItem(ItemData itemData) {
+        // TODO: solo se la dropzone è del currentInspectable
+        if (parentInspectable == PlayerManager.Instance.currentInspectable) {
+            return;
+        }
         if (AcceptsItem(itemData) && !resolved) {
             hoverWithCorrectItemParticles.Play();
         }

@@ -105,7 +105,6 @@ GameObject:
   - component: {fileID: 7067435396428617038}
   - component: {fileID: 5456135509529755773}
   - component: {fileID: 5557704722024717872}
-  - component: {fileID: 626743759229228433}
   - component: {fileID: 1889419855819284049}
   - component: {fileID: 2029407041694800557}
   - component: {fileID: 399969154173210471}
@@ -233,21 +232,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!114 &626743759229228433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6628767215116273291}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d20c2feff4f9524ab9454ff0bafbff0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCamera: {fileID: 1326062376019105503}
-  speed: 20
-  sensitivity: 5
 --- !u!114 &1889419855819284049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d397f6daab65f4cc4927498968661bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentInteractable: {fileID: 0}
+  currentInspectable: {fileID: 0}
   playerInteraction: {fileID: 0}
 --- !u!114 &2029407041694800557
 MonoBehaviour:

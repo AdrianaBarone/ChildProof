@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 5880629387239504556}
   - component: {fileID: 623957355704197367}
   - component: {fileID: 7074864094280389179}
+  - component: {fileID: 5501332640795224507}
   m_Layer: 0
   m_Name: porta_ingresso
   m_TagString: Untagged
@@ -119,6 +120,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5501332640795224507
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6632296154968723402}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5695471270007474284, guid: 1401973bb78b53048a227dec156b5425, type: 3}
 --- !u!1 &6980625618317655890
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,6 +153,7 @@ GameObject:
   - component: {fileID: 7608404558887418005}
   - component: {fileID: 246611379905825867}
   - component: {fileID: 4811325031199685388}
+  - component: {fileID: 1923811206671925967}
   m_Layer: 0
   m_Name: Parete_Porta.001
   m_TagString: Untagged
@@ -205,3 +229,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1923811206671925967
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6980625618317655890}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5314902310232423873, guid: 1401973bb78b53048a227dec156b5425, type: 3}

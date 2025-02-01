@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1695547533677880551}
   - component: {fileID: 2317120609158949698}
   - component: {fileID: 562078741597462408}
+  - component: {fileID: 942823575725459870}
   m_Layer: 0
   m_Name: telaio_porta_scorrevole
   m_TagString: Untagged
@@ -86,3 +87,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &942823575725459870
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2075064121465290333}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -6316569666962769568, guid: afd68d6c642ee0d4e8080cfe883b9986, type: 3}

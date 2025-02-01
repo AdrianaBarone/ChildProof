@@ -20,10 +20,12 @@ public class DropZone : MonoBehaviour {
 
     public void OnHoverWithItem(ItemData itemData) {
         // TODO: solo se la dropzone è del currentInspectable
-        if (parentInspectable == PlayerManager.Instance.currentInspectable) {
-            return;
-        }
+        // if (parentInspectable == PlayerManager.Instance.currentInspectable) {
+        //     return;
+        // }
+        Debug.Log(AcceptsItem(itemData));
         if (AcceptsItem(itemData) && !resolved) {
+            Debug.Log("GGiusto");
             hoverWithCorrectItemParticles.Play();
         }
     }

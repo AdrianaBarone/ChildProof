@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     public bool InDangerMode { get; private set; }
-    public Inspectable currentDangerInspectable { get; private set; }
+    public Inspectable currentDangerInspectable;
     public static GameManager Instance { get; private set; }
     Coroutine timerCoroutine;
 
@@ -20,6 +20,19 @@ public class GameManager : MonoBehaviour {
             Instance = this;
         }
         score = 0;
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.D)) {
+            if (!InDangerMode) {
+
+                StartDangerModeForInspectable(currentDangerInspectable);
+            }
+            else {
+                EndDangerMode();
+
+            }
+        }
     }
 
     public void StartDangerModeForInspectable(Inspectable inspectable) {

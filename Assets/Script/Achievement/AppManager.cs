@@ -66,7 +66,6 @@ public class AppManager : MonoBehaviour {
     public void EnableHelpBuyPanel(Inspectable dangerInspectable) {
         Debug.Log(dangerInspectable);
         AchievementData achievement = dangerInspectable.GetAchievementData();
-        // prefill del caso
         helpButton.interactable = true;
         helpPrice = achievement.scoreIncrease * GameManager.Instance.HelpPricePercent / 100;
 
@@ -96,10 +95,10 @@ public class AppManager : MonoBehaviour {
 
     }
 
-    public void CreateAchievementCard(Achievement achievement) {
+    public GameObject CreateAchievementCard(Achievement achievement) {
         if (achievement == null) {
             Debug.LogError("Achievement è null!");
-            return;
+            return null;
         }
         GameObject card = Instantiate(achievementCardPrefab, achievementCardParent);
 
@@ -108,9 +107,12 @@ public class AppManager : MonoBehaviour {
         TMP_Text descriptionText = card.transform.Find("DescriptionTask").GetComponent<TMP_Text>();
 
         Button cardButton = card.GetComponent<Button>();
+        cardButton.interactable = false;
         cardButton.onClick.AddListener(() => {
-            // NOTE: qui funzione per aprire singleRemind e popolare i testi con i dati dell'achievement
-            AppManager.Instance.ShowPanel(AppManager.PanelType.LabelSingleRemind);
+            // TODO: reset scroll position of singleRemindPanel
+            ScrollRect scrollRect = singleRemindPanel.transform.Find("ScrollView").GetComponent<ScrollRect>();
+            scrollRect.verticalNormalizedPosition = 1f; // Torna in cima
+            ShowPanel(PanelType.LabelSingleRemind);
 
             Text infoText = singleRemindPanel.transform.Find("ScrollView/Viewport/Content/InfoText").GetComponent<Text>();
             Text titleText = singleRemindPanel.transform.Find("TitleText").GetComponent<Text>();
@@ -118,7 +120,7 @@ public class AppManager : MonoBehaviour {
 
             titleText.text = achievement.data.name;
             infoText.text = achievement.data.fullDescription;
-            int progress = achievement.taskProgress; // AchievementManager.Instance.GetProgressFor(achievement)
+            int progress = achievement.taskProgress;
             if (progress >= achievement.data.goal) {
                 progressText.text = "Completato";
             }
@@ -131,5 +133,7 @@ public class AppManager : MonoBehaviour {
         descriptionText.text = achievement.data.description;
 
         cardCount++;
+
+        return card;
     }
 }

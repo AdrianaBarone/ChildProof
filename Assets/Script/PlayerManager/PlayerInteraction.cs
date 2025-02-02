@@ -139,9 +139,9 @@ public class PlayerInteraction : MonoBehaviour {
         Camera fixedCamera = PlayerManager.Instance.GetInspectableCamera();
         Ray ray = fixedCamera.ScreenPointToRay(Input.mousePosition);
 
-        Debug.DrawRay(ray.origin, ray.direction * distance * 10, Color.blue); // Visualizza il raycast in scena
+        Debug.DrawRay(ray.origin, ray.direction * distance * 50, Color.blue); // Visualizza il raycast in scena
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance * 10, layerMask)) {
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance * 50, layerMask)) {
             DropZone dropZone = hitInfo.collider.GetComponent<DropZone>();
 
             return dropZone;

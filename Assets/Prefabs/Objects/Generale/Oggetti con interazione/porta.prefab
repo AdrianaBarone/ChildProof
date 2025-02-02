@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 7346271772527119612}
   - component: {fileID: 8171981175625407026}
   - component: {fileID: 8852583020199274639}
-  - component: {fileID: 2313484866304643554}
+  - component: {fileID: 8707170064738975165}
   m_Layer: 0
   m_Name: porta
   m_TagString: Untagged
@@ -207,8 +207,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2313484866304643554
-MeshCollider:
+--- !u!65 &8707170064738975165
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -225,10 +225,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 2619086233303812490, guid: 8821914f818b4c44f9de708a000c6a6b, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.0088, y: 0.00040000348, z: 0.020800004}
+  m_Center: {x: 0.004399999, y: 0.00020000023, z: 0.010400002}
 --- !u!1 &8611933455875037739
 GameObject:
   m_ObjectHideFlags: 0

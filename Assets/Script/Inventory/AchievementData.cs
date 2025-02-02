@@ -6,7 +6,8 @@ public class AchievementData : ScriptableObject {
     public new string name;
     public string description;
     public string fullDescription;
-    public Image solutionImage;
+    public string helpDescription;
+    public Sprite solutionImage;
     public int goal;
     public int scoreIncrease;
 }

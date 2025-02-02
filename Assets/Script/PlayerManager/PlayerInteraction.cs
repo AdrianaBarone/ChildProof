@@ -99,7 +99,6 @@ public class PlayerInteraction : MonoBehaviour {
             return;
         }
 
-        // TODO: solo se il moveable è il currentInspectable
         if (moveable != PlayerManager.Instance.currentInspectable) {
             return;
         }
@@ -123,8 +122,7 @@ public class PlayerInteraction : MonoBehaviour {
             return false;
         }
 
-        // TODO: solo se la dropzone è del currentInspectable
-        if (dropZone.parentInspectable = PlayerManager.Instance.currentInspectable) {
+        if (dropZone.parentInspectable != PlayerManager.Instance.currentInspectable) {
             return false;
         }
 

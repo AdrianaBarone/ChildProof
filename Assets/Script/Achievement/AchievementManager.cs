@@ -9,38 +9,18 @@ public class AchievementManager : MonoBehaviour {
     // directory to load achievements from
     public List<Achievement> achievements = new List<Achievement>();
     private int achievementCount;
-
-    /*
-    //telefono
-    public GameObject smartphoneCanvas;
-    */
-
-
-
-    //PopUp achievement raggiunto
     public GameObject PopUpCanvas;
 
     private void Awake() {
         Instance = this;
+    }
+
+    private void Start() {
         LoadAchievements();
         PopUpCanvas.SetActive(false);
         if (AppManager.Instance != null)
             AppManager.Instance.cardCount = 0;
     }
-
-    /*
-        void Update() {
-            if (Input.GetKeyDown(KeyCode.E)) {
-                ToggleSmartphone();
-            }
-        }
-
-        /*
-        void ToggleSmartphone() {
-            bool isActive = smartphoneCanvas.gameObject.activeSelf;
-            smartphoneCanvas.gameObject.SetActive(!isActive);
-        }
-        */
 
     void LoadAchievements() {
         Debug.Log("Loading Achievements");
@@ -48,7 +28,7 @@ public class AchievementManager : MonoBehaviour {
         foreach (var achievementData in Resources.LoadAll<AchievementData>("Achievements")) {
             Achievement achievement = new Achievement(achievementData);
             achievements.Add(achievement);
-            // TODO: capire se creare anche la card nel telefono qui o in IncrementAchievement
+            AppManager.Instance.CreateAchievementCard(achievement);
         }
         achievementCount = achievements.Count;
     }
@@ -68,7 +48,6 @@ public class AchievementManager : MonoBehaviour {
 
         if (achievement.taskProgress == 1) {
             // NOTE: achievement appena sbloccato
-            AppManager.Instance.CreateAchievementCard(achievement);
             ShowAchievementPopup(achievement);
         }
         else if (achievement.IsComplete) {
@@ -76,6 +55,8 @@ public class AchievementManager : MonoBehaviour {
             CheckAchievementCount();
         }
     }
+
+
 
 
     void ShowAchievementPopup(Achievement achievement) {

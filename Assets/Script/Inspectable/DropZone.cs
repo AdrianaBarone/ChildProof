@@ -19,8 +19,7 @@ public class DropZone : MonoBehaviour {
     }
 
     public void OnHoverWithItem(ItemData itemData) {
-        // TODO: solo se la dropzone è del currentInspectable
-        if (parentInspectable == PlayerManager.Instance.currentInspectable) {
+        if (parentInspectable != PlayerManager.Instance.currentInspectable) {
             return;
         }
         if (AcceptsItem(itemData) && !resolved) {

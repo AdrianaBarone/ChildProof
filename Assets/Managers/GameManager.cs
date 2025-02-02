@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
 
     public int PointDecreasePercent = 5;
     public float PointDecreaseRate = 1f;
+    public int HelpPricePercent = 50;
 
 
     private void Awake() {
@@ -25,13 +26,14 @@ public class GameManager : MonoBehaviour {
         InDangerMode = true;
         currentDangerInspectable = inspectable;
         // TODO: animazioni e suoni di attivazione
-        // TODO: attiva la sezione 'help' del menu
+        AppManager.Instance.EnableHelpBuyPanel(currentDangerInspectable);
         timerCoroutine = StartCoroutine(LosePointsCoroutine());
     }
 
     public void EndDangerMode() {
         InDangerMode = false;
         currentDangerInspectable = null;
+        AppManager.Instance.DisableHelpBuyPanel();
         if (timerCoroutine != null) {
             StopCoroutine(timerCoroutine);
         }
@@ -60,7 +62,6 @@ public class GameManager : MonoBehaviour {
 
     public void DecreaseScore(int value) {
         score -= value;
-        Debug.Log($"Score Decreased: {score}");
 
         if (score <= 0) {
             GameOver();

@@ -9355,7 +9355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &551664133
 Transform:
   m_ObjectHideFlags: 0
@@ -20960,7 +20960,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera_presa_cameretta
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8397943992675258829, guid: 0a1c3665caef4674388efa0f7967f29a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 505916012847226276, guid: 0a1c3665caef4674388efa0f7967f29a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -14,6 +14,7 @@ namespace Unity.Behavior.Example
     {
         [SerializeReference] public BlackboardVariable<GameObject> Target;
         [SerializeReference] public BlackboardVariable<string> TagValue;
+        //public SharedString TargetAnimation;
 
         protected override Status OnUpdate()
         {
@@ -25,6 +26,7 @@ namespace Unity.Behavior.Example
 
             int randomNumber = UnityEngine.Random.Range(0, tagged.Length);
             Target.Value = tagged[randomNumber];
+            //TargetAnimation.Value = tagged[randomNumber].GetComponent<Animation>();
             return Status.Success;
         }
     }

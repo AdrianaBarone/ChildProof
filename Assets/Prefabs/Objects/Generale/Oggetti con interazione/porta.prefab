@@ -131,6 +131,8 @@ GameObject:
   - component: {fileID: 8171981175625407026}
   - component: {fileID: 8852583020199274639}
   - component: {fileID: 8707170064738975165}
+  - component: {fileID: 7498287506820677090}
+  - component: {fileID: 7870034492494567173}
   m_Layer: 0
   m_Name: porta
   m_TagString: Untagged
@@ -228,6 +230,36 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.008800004, y: 0.0004000071, z: 0.020800006}
   m_Center: {x: 0.004399998, y: 0.00019999653, z: 0.010400001}
+--- !u!114 &7498287506820677090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231409105666750654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ddd3ffec458668459f007fd1268bd56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _doorHindge: {fileID: 0}
+  _openingTime: 1
+  _closingTime: 0.5
+--- !u!114 &7870034492494567173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1231409105666750654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62864eb58ac5e5a42bc4f2d3570439e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _door: {fileID: 0}
+  _openOnEnter: 1
+  _closeOnExit: 1
 --- !u!1 &8611933455875037739
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,23 +6,18 @@ using UnityEngine.AI;
 public class CarachterAnimator : MonoBehaviour
 {
     
-    private Animator animator;
+    public Animator animator;
     private NavMeshAgent agent;
     private float turn = 0f;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
         
     }
 
     void Update()
     {
-        //if (targetTransforms.Count == 0) return;
-
-        
-
         if (agent.velocity.sqrMagnitude > Mathf.Epsilon)
         {
             Quaternion targetRotation = Quaternion.LookRotation(agent.velocity.normalized);
@@ -41,6 +36,19 @@ public class CarachterAnimator : MonoBehaviour
         else
         {
             turn = 0f;
+            if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+            {
+                if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
+                {
+                    // Face the target
+                    Vector3 direction = (agent.destination - transform.position).normalized;
+                    if (direction != Vector3.zero)
+                    {
+                        Quaternion lookRotation = Quaternion.LookRotation(direction);
+                        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * agent.angularSpeed);
+                    }
+                }
+            }
         }
 
         animator.SetFloat("turn", turn);

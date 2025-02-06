@@ -89,7 +89,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 638d24d2bb262754984d89dc61a2bc70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -589,7 +589,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 638d24d2bb262754984d89dc61a2bc70, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1394,6 +1394,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5455420795983680403}
     m_Modifications:
+    - target: {fileID: 1581897210543639129, guid: f6fcbdd3cdd197444ad3f478f777808e, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 6667490286564312222, guid: fb7ecb303ad13eb468107e0ec66b1f44, type: 3}
     - target: {fileID: 3520966828594896840, guid: f6fcbdd3cdd197444ad3f478f777808e, type: 3}
       propertyPath: m_Name
       value: Palo_cucina
@@ -1439,6 +1443,30 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6721447895219376298, guid: f6fcbdd3cdd197444ad3f478f777808e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6721447895219376298, guid: f6fcbdd3cdd197444ad3f478f777808e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6721447895219376298, guid: f6fcbdd3cdd197444ad3f478f777808e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6721447895219376298, guid: f6fcbdd3cdd197444ad3f478f777808e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6721447895219376298, guid: f6fcbdd3cdd197444ad3f478f777808e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.259
+      objectReference: {fileID: 0}
+    - target: {fileID: 6721447895219376298, guid: f6fcbdd3cdd197444ad3f478f777808e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.121
+      objectReference: {fileID: 0}
+    - target: {fileID: 6721447895219376298, guid: f6fcbdd3cdd197444ad3f478f777808e, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0
       objectReference: {fileID: 0}
@@ -1448,15 +1476,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6721447895219376298, guid: f6fcbdd3cdd197444ad3f478f777808e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7072302
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6721447895219376298, guid: f6fcbdd3cdd197444ad3f478f777808e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.7069834
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6721447895219376298, guid: f6fcbdd3cdd197444ad3f478f777808e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -89.98
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6721447895219376298, guid: f6fcbdd3cdd197444ad3f478f777808e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y

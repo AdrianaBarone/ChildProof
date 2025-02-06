@@ -26,21 +26,8 @@ public class GameManager : MonoBehaviour {
         score = 0;
     }
 
-    private void Start(){
+    private void Start() {
         AudioManager.Instance.PlayAudioWithFadeIn(audioClipSafe);
-    }
-
-    private void Update() {
-        if (Input.GetKeyDown(KeyCode.D)) {
-            if (!InDangerMode) {
-
-                StartDangerModeForInspectable(currentDangerInspectable);
-            }
-            else {
-                EndDangerMode();
-
-            }
-        }
     }
 
     public void StartDangerModeForInspectable(Inspectable inspectable) {
@@ -57,7 +44,7 @@ public class GameManager : MonoBehaviour {
     public void EndDangerMode() {
         AudioManager.Instance.PlayAudioWithFadeIn(audioClipSafe);
         AudioManager.Instance.StopAudioWithFadeOut(audioClipDanger);
-        
+
         InDangerMode = false;
         currentDangerInspectable = null;
         AppManager.Instance.DisableHelpBuyPanel();

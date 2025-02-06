@@ -1717,8 +1717,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1821295418}
-  - {fileID: 2074290966}
   - {fileID: 1652214445}
+  - {fileID: 2074290966}
   m_Father: {fileID: 1110780160}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &89998616 stripped
@@ -9056,6 +9056,7 @@ GameObject:
   m_Component:
   - component: {fileID: 467141827}
   - component: {fileID: 467141826}
+  - component: {fileID: 467141828}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -9079,6 +9080,8 @@ MonoBehaviour:
   PointDecreasePercent: 5
   PointDecreaseRate: 1
   HelpPricePercent: 50
+  audioClipSafe: {fileID: 8300000, guid: 9717fef9e811f1948a8d7eda40db80b0, type: 3}
+  audioClipDanger: {fileID: 8300000, guid: 48e7a2be9ca295c409c87a17dc2e862a, type: 3}
 --- !u!4 &467141827
 Transform:
   m_ObjectHideFlags: 0
@@ -9096,6 +9099,20 @@ Transform:
   - {fileID: 464110648}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &467141828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467141825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee739d39c49e6d49969cc7893468742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInDuration: 3
+  fadeOutDuration: 3
 --- !u!1001 &479143214
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18993,6 +19010,7 @@ MonoBehaviour:
   interactionCamera: {fileID: 6096285746790510120}
   dropZones:
   - {fileID: 6096285746790510123}
+  audioClips: []
   itemData: {fileID: 11400000, guid: 1dcfeca13e1bb724b991b5a6a2089802, type: 2}
 --- !u!136 &1087642514
 CapsuleCollider:
@@ -31641,6 +31659,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2029407041694800557, guid: f57feb72b9acb434d8242c40e91ffcc4, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029407041694800557, guid: f57feb72b9acb434d8242c40e91ffcc4, type: 3}
       propertyPath: fixedCamera
       value: 
       objectReference: {fileID: 0}
@@ -39466,6 +39488,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5693437235402975404, guid: deee38a610d953f4a8e76ddd6f0ae386, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6249282238315364139, guid: deee38a610d953f4a8e76ddd6f0ae386, type: 3}
       propertyPath: m_Name
       value: interazione_presa_bagno
@@ -39686,6 +39712,7 @@ MonoBehaviour:
   interactionCamera: {fileID: 835800275137717751}
   dropZones:
   - {fileID: 835800275137717754}
+  audioClips: []
 --- !u!95 &835800275137717756
 Animator:
   serializedVersion: 7
@@ -40090,6 +40117,7 @@ MonoBehaviour:
   dropZones:
   - {fileID: 304059561}
   - {fileID: 3926190809227651060}
+  audioClips: []
 --- !u!95 &3926190809227651062
 Animator:
   serializedVersion: 7
@@ -40385,6 +40413,7 @@ MonoBehaviour:
   interactionCamera: {fileID: 3943632523688828304}
   dropZones:
   - {fileID: 3943632523688828308}
+  audioClips: []
   itemData: {fileID: 11400000, guid: 09c0504b159613b4db9d5982a4c45eb0, type: 2}
 --- !u!1001 &4483405771882099333
 PrefabInstance:
@@ -41448,6 +41477,7 @@ MonoBehaviour:
   interactionCamera: {fileID: 6096285746790510120}
   dropZones:
   - {fileID: 6096285746790510123}
+  audioClips: []
   itemData: {fileID: 11400000, guid: 1dcfeca13e1bb724b991b5a6a2089802, type: 2}
 --- !u!1001 &6911424494541231642
 PrefabInstance:
@@ -41460,6 +41490,14 @@ PrefabInstance:
     - target: {fileID: 4612396398945536936, guid: a8e53aff1151aa647839447519d37390, type: 3}
       propertyPath: m_Name
       value: interazione_mobiletto_lavandino
+      objectReference: {fileID: 0}
+    - target: {fileID: 7261830200322429424, guid: a8e53aff1151aa647839447519d37390, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: a7b22bb84ae9c1b4b938f220e987c750, type: 3}
+    - target: {fileID: 7261830200322429424, guid: a8e53aff1151aa647839447519d37390, type: 3}
+      propertyPath: audioClips.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8009588815873484883, guid: a8e53aff1151aa647839447519d37390, type: 3}
       propertyPath: m_LocalPosition.x
@@ -42213,6 +42251,7 @@ MonoBehaviour:
   dropZones:
   - {fileID: 8585438984106915126}
   - {fileID: 1150247274}
+  audioClips: []
 --- !u!114 &8585438984106915126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42570,6 +42609,7 @@ MonoBehaviour:
   interactionCamera: {fileID: 9171940770125265951}
   dropZones:
   - {fileID: 9171940770125265955}
+  audioClips: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

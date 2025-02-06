@@ -14,12 +14,20 @@ public class GameManager : MonoBehaviour {
     public float PointDecreaseRate = 1f;
     public int HelpPricePercent = 50;
 
+    //AUDIO
+    public AudioClip audioClipSafe;
+    public AudioClip audioClipDanger;
+
 
     private void Awake() {
         if (Instance == null) {
             Instance = this;
         }
         score = 0;
+    }
+
+    private void Start(){
+        AudioManager.Instance.PlayAudioWithFadeIn(audioClipSafe);
     }
 
     private void Update() {
@@ -36,6 +44,9 @@ public class GameManager : MonoBehaviour {
     }
 
     public void StartDangerModeForInspectable(Inspectable inspectable) {
+        AudioManager.Instance.PlayAudioWithFadeIn(audioClipDanger);
+        AudioManager.Instance.StopAudioWithFadeOut(audioClipSafe);
+
         InDangerMode = true;
         currentDangerInspectable = inspectable;
         // TODO: animazioni e suoni di attivazione
@@ -44,6 +55,9 @@ public class GameManager : MonoBehaviour {
     }
 
     public void EndDangerMode() {
+        AudioManager.Instance.PlayAudioWithFadeIn(audioClipSafe);
+        AudioManager.Instance.StopAudioWithFadeOut(audioClipDanger);
+        
         InDangerMode = false;
         currentDangerInspectable = null;
         AppManager.Instance.DisableHelpBuyPanel();
@@ -83,12 +97,15 @@ public class GameManager : MonoBehaviour {
 
     private void GameOver() {
         Debug.Log("Game Over! Punteggio raggiunto: 0");
+        //TODO: animazioni e suoni di sconfitta
+        //TODO: cambio scena con parametro
         SceneManager.LoadSceneAsync(3);
     }
 
     public void VictoryScreen() {
         Debug.Log("Hai vinto!");
         // TODO: animazioni e suoni di vittoria
-        // TODO: cambio scena
+        // TODO: cambio scena con parametro
+        SceneManager.LoadSceneAsync(3);
     }
 }

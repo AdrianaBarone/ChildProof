@@ -10,9 +10,36 @@ public class Inspectable : MonoBehaviour {
     private bool canInteract = true;
     public DropZone[] dropZones;
 
+    //AUDIO
+    private AudioSource[] audioSources;
+    public AudioClip[] audioClips;
+
+
     private void Awake() {
         maxInteractionNumber = dropZones.Length;
         interactionNumber = maxInteractionNumber;
+    }
+
+private void Start()
+    {
+        // Rimuove AudioSource esistenti per evitarne la duplicazione
+        foreach (var source in GetComponents<AudioSource>())
+        {
+            Destroy(source);
+        }
+
+        audioSources = new AudioSource[audioClips.Length];
+
+        for (int i = 0; i < audioClips.Length; i++)
+        {
+            audioSources[i] = gameObject.AddComponent<AudioSource>();
+            audioSources[i].clip = audioClips[i];
+        }
+
+        if (audioClips.Length == 0)
+        {
+            Debug.LogWarning("Nessun audio clip assegnato.");
+        }
     }
 
     public bool IsResolved() {
@@ -29,6 +56,7 @@ public class Inspectable : MonoBehaviour {
             canInteract = false;
             StartCoroutine(Debounce());
             GetComponent<Animator>().SetTrigger("isInteracting");
+            PlayAudioOnAnimation();
         }
     }
 
@@ -47,4 +75,17 @@ public class Inspectable : MonoBehaviour {
             PlayerManager.Instance.SetToExploration();
         }
     }
+
+    // AUDIO
+    public void PlayAudioOnAnimation()
+    {
+        foreach (var source in audioSources)
+        {
+            if (source.clip != null && !source.isPlaying)
+            {
+                source.Play();
+            }
+        }
+    }
+
 }

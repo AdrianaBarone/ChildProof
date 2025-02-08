@@ -262,7 +262,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5160356530785816777}
-  - {fileID: 1167342038913405831}
   - {fileID: 1941836832651710909}
   - {fileID: 3528555876734997782}
   m_Father: {fileID: 0}
@@ -273,31 +272,43 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3096513142721271296}
+    m_TransformParent: {fileID: 1941836832651710909}
     m_Modifications:
     - target: {fileID: 1639871892617107678, guid: 3eb9554051b318840a9bd94bb778c464, type: 3}
       propertyPath: m_Name
       value: stand_TV
       objectReference: {fileID: 0}
     - target: {fileID: 2128564767464833636, guid: 3eb9554051b318840a9bd94bb778c464, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128564767464833636, guid: 3eb9554051b318840a9bd94bb778c464, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128564767464833636, guid: 3eb9554051b318840a9bd94bb778c464, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2128564767464833636, guid: 3eb9554051b318840a9bd94bb778c464, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.28999996
+      value: -0.0059000016
       objectReference: {fileID: 0}
     - target: {fileID: 2128564767464833636, guid: 3eb9554051b318840a9bd94bb778c464, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7621567
+      value: 0.00014999925
       objectReference: {fileID: 0}
     - target: {fileID: 2128564767464833636, guid: 3eb9554051b318840a9bd94bb778c464, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.89100003
+      value: -0.0066800015
       objectReference: {fileID: 0}
     - target: {fileID: 2128564767464833636, guid: 3eb9554051b318840a9bd94bb778c464, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071068
+      value: -0.00000008940697
       objectReference: {fileID: 0}
     - target: {fileID: 2128564767464833636, guid: 3eb9554051b318840a9bd94bb778c464, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.7071068
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2128564767464833636, guid: 3eb9554051b318840a9bd94bb778c464, type: 3}
       propertyPath: m_LocalRotation.y
@@ -508,7 +519,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5584258572692052594, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1167342038913405831}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5058832354924888264, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
       insertIndex: -1
@@ -535,6 +549,7 @@ MonoBehaviour:
   interactionCamera: {fileID: 7128330750762538332}
   dropZones:
   - {fileID: 7839082276927148837}
+  audioClips: []
 --- !u!4 &1941836832651710909 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5584258572692052594, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}

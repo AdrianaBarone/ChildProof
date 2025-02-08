@@ -40,6 +40,16 @@ public class AppManager : MonoBehaviour {
     void ToggleSmartphone() {
         bool isActive = smartphoneCanvas.gameObject.activeSelf;
         smartphoneCanvas.gameObject.SetActive(!isActive);
+
+        if (!isActive) {
+            // NOTE: Apre il telefono
+            PlayerManager.Instance.SetToPhoneUp();
+        }
+        else {
+            // NOTE: Chiude il telefono
+            PlayerManager.Instance.TransitionToExploration();
+        }
+
     }
 
     public void ShowPanel(PanelType panelType) {
@@ -109,7 +119,6 @@ public class AppManager : MonoBehaviour {
         Button cardButton = card.GetComponent<Button>();
         cardButton.interactable = false;
         cardButton.onClick.AddListener(() => {
-            // TODO: reset scroll position of singleRemindPanel
             ScrollRect scrollRect = singleRemindPanel.transform.Find("ScrollView").GetComponent<ScrollRect>();
             scrollRect.verticalNormalizedPosition = 1f; // Torna in cima
             ShowPanel(PanelType.LabelSingleRemind);

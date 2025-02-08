@@ -33,4 +33,8 @@ public class PlayerMovement : MonoBehaviour {
         //rb.MovePosition(transform.position + playerMovement.normalized * speed * Time.fixedDeltaTime);
         rb.linearVelocity = playerMovement * speed;
     }
+
+    public void StopMovement() {
+        rb.linearVelocity = Vector3.zero;
+    }
 }

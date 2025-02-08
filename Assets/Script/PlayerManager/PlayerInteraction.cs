@@ -8,6 +8,8 @@ public class PlayerInteraction : MonoBehaviour {
     // Parametri per il controllo visibilità
     [SerializeField] private float distance = 2f;
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] private ChildInteracted childInteractedEvent;
+
 
 
     // Riferimento alla fotocamera mobile e fissa
@@ -32,17 +34,14 @@ public class PlayerInteraction : MonoBehaviour {
     void Start() {
         //AUDIO
         audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-        {
+        if (audioSource == null) {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
 
-        if (audioClip != null)
-        {
+        if (audioClip != null) {
             audioSource.clip = audioClip;
         }
-        else
-        {
+        else {
             Debug.LogWarning("Nessun audio clip assegnato a " + gameObject.name);
         }
     }
@@ -54,17 +53,20 @@ public class PlayerInteraction : MonoBehaviour {
         if (Physics.Raycast(ray, out RaycastHit hitInfo, distance, layerMask)) {
             IPickable pointingPickable = hitInfo.collider.GetComponent<IPickable>();
             Inspectable pointingInspectable = hitInfo.collider.GetComponent<Inspectable>();
-            bool pointingChild = false; // TODO: aggiungere il caso di puntamento alla bambina
+            CarachterAnimator pointingChild = hitInfo.collider.GetComponent<CarachterAnimator>();
 
             if (GameManager.Instance.InDangerMode) {
-                if (pointingChild) {
+                if (pointingChild != null) {
                     CursorManager.Instance.UpdateExplorationCursor(interactSprite);
                     if (Input.GetMouseButtonDown(0)) {
-                        // TODO: interazione per fermare la bambina
-                        Debug.Log("Interazione con la bambina");
+                        childInteractedEvent.SendEventMessage();
+                        GameManager.Instance.EndDangerMode();
+
                     }
                 }
-                CursorManager.Instance.UpdateExplorationCursor(defaultSprite);
+                else {
+                    CursorManager.Instance.UpdateExplorationCursor(defaultSprite);
+                }
                 return; // NOTE: queste return impedisce di interagire con gli oggetti in DangerMode
             }
 

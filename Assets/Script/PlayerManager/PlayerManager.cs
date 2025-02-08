@@ -4,6 +4,7 @@ using UnityEngine;
 public enum PlayerState {
     EXPLORATION,
     INSPECTION,
+    PHONE_UP,
     TRANSITION, // NOTE: stato dummy, per bloccare le interazioni durante le transizioni
 }
 
@@ -28,14 +29,16 @@ public class PlayerManager : MonoBehaviour {
         CursorManager.Instance.ExplorationCursor();
     }
 
-    void Update(){
+    void Update() {
         switch (state) {
             case PlayerState.EXPLORATION:
+                InventoryManager.Instance.ShowInventory();
                 CursorManager.Instance.ExplorationCursor();
                 playerInteraction.RaycastForInspectable();
                 playerMovement.HandleRotation();
                 break;
             case PlayerState.INSPECTION:
+                InventoryManager.Instance.ShowInventory();
                 CursorManager.Instance.InspectionCursor();
                 InventoryManager.Instance.HandleInventory();
                 playerInteraction.TryPickUp();
@@ -43,6 +46,11 @@ public class PlayerManager : MonoBehaviour {
                     InventoryManager.Instance.ClearSelection();
                     SetToExploration();
                 }
+                break;
+            case PlayerState.PHONE_UP:
+                CursorManager.Instance.InspectionCursor();
+                playerMovement.StopMovement();
+                InventoryManager.Instance.HideInventory();
                 break;
             default:
                 break;
@@ -81,7 +89,11 @@ public class PlayerManager : MonoBehaviour {
         playerInteraction.EndInteractionExternal();
     }
 
-    public void PrepareTransition(){
+    public void SetToPhoneUp() {
+        state = PlayerState.PHONE_UP;
+    }
+
+    public void PrepareTransition() {
         lastState = state;
         state = PlayerState.TRANSITION;
     }

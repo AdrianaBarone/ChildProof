@@ -21,9 +21,6 @@ public class AchievementManager : MonoBehaviour {
         PopUpCanvas.SetActive(false);
         if (AppManager.Instance != null)
             AppManager.Instance.cardCount = 0;
-
-
-        IncrementAchievement(GameManager.Instance.currentDangerInspectable.GetAchievementData());
     }
 
     void LoadAchievements() {
@@ -51,7 +48,6 @@ public class AchievementManager : MonoBehaviour {
             achievementCard.transform.SetAsFirstSibling();
             achievementCard.GetComponent<Button>().interactable = true;
 
-            // TODO: popup solo se il task non ha 1 interazione massima
             if (achievement.data.goal != 1) {
                 ShowUnlockAchievementPopup(achievement);
             }

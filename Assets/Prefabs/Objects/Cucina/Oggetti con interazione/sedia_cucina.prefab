@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2725189402124539778
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8382954157219507927, guid: 07d8a7179680efb4faa7cf0bff3cd1fb, type: 3}
+      propertyPath: m_Name
+      value: sedia_cucina
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159737564096345197, guid: 07d8a7179680efb4faa7cf0bff3cd1fb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.04599965
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159737564096345197, guid: 07d8a7179680efb4faa7cf0bff3cd1fb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159737564096345197, guid: 07d8a7179680efb4faa7cf0bff3cd1fb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.7150023
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159737564096345197, guid: 07d8a7179680efb4faa7cf0bff3cd1fb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.444565
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159737564096345197, guid: 07d8a7179680efb4faa7cf0bff3cd1fb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.444565
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159737564096345197, guid: 07d8a7179680efb4faa7cf0bff3cd1fb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5498745
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159737564096345197, guid: 07d8a7179680efb4faa7cf0bff3cd1fb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5498745
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159737564096345197, guid: 07d8a7179680efb4faa7cf0bff3cd1fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159737564096345197, guid: 07d8a7179680efb4faa7cf0bff3cd1fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 192.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159737564096345197, guid: 07d8a7179680efb4faa7cf0bff3cd1fb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8382954157219507927, guid: 07d8a7179680efb4faa7cf0bff3cd1fb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3627271668895388781}
+    - targetCorrespondingSourceObject: {fileID: 8382954157219507927, guid: 07d8a7179680efb4faa7cf0bff3cd1fb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2300571374383013680}
+  m_SourcePrefab: {fileID: 100100000, guid: 07d8a7179680efb4faa7cf0bff3cd1fb, type: 3}
+--- !u!1 &5874925058169321813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8382954157219507927, guid: 07d8a7179680efb4faa7cf0bff3cd1fb, type: 3}
+  m_PrefabInstance: {fileID: 2725189402124539778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3627271668895388781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5874925058169321813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da84fbdd010eb48f282c9f86f2156d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  achievementData: {fileID: 11400000, guid: 6ec451b0dab585e4391bce1bf91b48c2, type: 2}
+  interactionCamera: {fileID: 0}
+  dropZones:
+  - {fileID: 0}
+  audioClips: []
+  itemData: {fileID: 11400000, guid: 1dcfeca13e1bb724b991b5a6a2089802, type: 2}
+--- !u!95 &2300571374383013680
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5874925058169321813}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a33f707a9d4fd57459adfc6d63f1d15b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

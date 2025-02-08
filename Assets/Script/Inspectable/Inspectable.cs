@@ -20,24 +20,20 @@ public class Inspectable : MonoBehaviour {
         interactionNumber = maxInteractionNumber;
     }
 
-private void Start()
-    {
+    private void Start() {
         // Rimuove AudioSource esistenti per evitarne la duplicazione
-        foreach (var source in GetComponents<AudioSource>())
-        {
+        foreach (var source in GetComponents<AudioSource>()) {
             Destroy(source);
         }
 
         audioSources = new AudioSource[audioClips.Length];
 
-        for (int i = 0; i < audioClips.Length; i++)
-        {
+        for (int i = 0; i < audioClips.Length; i++) {
             audioSources[i] = gameObject.AddComponent<AudioSource>();
             audioSources[i].clip = audioClips[i];
         }
 
-        if (audioClips.Length == 0)
-        {
+        if (audioClips.Length == 0) {
             Debug.LogWarning("Nessun audio clip assegnato.");
         }
     }
@@ -71,18 +67,21 @@ private void Start()
     public void Resolve() {
         interactionNumber--;
         if (interactionNumber == 0) {
+            foreach (Transform child in transform) {
+                if (child.gameObject.tag == "NotSolvedTarget") {
+                    child.gameObject.tag = "SolvedTarget";
+                }
+            }
+
             AchievementManager.Instance.IncrementAchievement(achievementData);
             PlayerManager.Instance.SetToExploration();
         }
     }
 
     // AUDIO
-    public void PlayAudioOnAnimation()
-    {
-        foreach (var source in audioSources)
-        {
-            if (source.clip != null && !source.isPlaying)
-            {
+    public void PlayAudioOnAnimation() {
+        foreach (var source in audioSources) {
+            if (source.clip != null && !source.isPlaying) {
                 source.Play();
             }
         }

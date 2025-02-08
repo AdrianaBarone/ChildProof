@@ -23,6 +23,14 @@ public class InventoryManager : MonoBehaviour {
         InfoArea.SetActive(false);
     }
 
+    public void ShowInventory() {
+        ItemContent.gameObject.SetActive(true);
+    }
+
+    public void HideInventory() {
+        ItemContent.gameObject.SetActive(false);
+    }
+
     public void HandleInventory() {
         if (isItemSelected) {
             CursorManager.Instance.PointingMoveableWithItem();
@@ -31,7 +39,6 @@ public class InventoryManager : MonoBehaviour {
 
             DropZone dropZone = PlayerManager.Instance.playerInteraction.RaycastForDropZone();
             if (dropZone != null) {
-                // TODO: solo se la dropzone è del currentInspectable
                 dropZone.OnHoverWithItem(itemData);
             }
 

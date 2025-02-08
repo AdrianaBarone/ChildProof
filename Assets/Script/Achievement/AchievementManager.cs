@@ -51,7 +51,6 @@ public class AchievementManager : MonoBehaviour {
             achievementCard.transform.SetAsFirstSibling();
             achievementCard.GetComponent<Button>().interactable = true;
 
-            // TODO: popup solo se il task non ha 1 interazione massima
             if (achievement.data.goal != 1) {
                 ShowUnlockAchievementPopup(achievement);
             }

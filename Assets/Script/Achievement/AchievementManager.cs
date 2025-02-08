@@ -21,9 +21,6 @@ public class AchievementManager : MonoBehaviour {
         PopUpCanvas.SetActive(false);
         if (AppManager.Instance != null)
             AppManager.Instance.cardCount = 0;
-
-
-        IncrementAchievement(GameManager.Instance.currentDangerInspectable.GetAchievementData());
     }
 
     void LoadAchievements() {

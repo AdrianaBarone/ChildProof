@@ -10490,7 +10490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 927278248180899029, guid: 3ac992dcdc12d64489de58a10b0c6535, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.3357096
+      value: -6.319
       objectReference: {fileID: 0}
     - target: {fileID: 927278248180899029, guid: 3ac992dcdc12d64489de58a10b0c6535, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12769,6 +12769,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1483703884}
     m_Modifications:
+    - target: {fileID: 5524080849919060975, guid: 899bedbb863f15d418080c0f7bcc9fa7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d968ec6649b22c541ae4f3dd5cfb5fb2, type: 2}
     - target: {fileID: 6316727509578222138, guid: 899bedbb863f15d418080c0f7bcc9fa7, type: 3}
       propertyPath: m_Name
       value: tovaglia_arrotolata (2)
@@ -15734,6 +15738,63 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1778208870}
   m_SourcePrefab: {fileID: 100100000, guid: 9814417f03bc55542b888a1e0126c101, type: 3}
+--- !u!1001 &678423909
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1281049714039673566, guid: 50dcf4a7423761b4196ab7f095ca9b88, type: 3}
+      propertyPath: m_Name
+      value: Specchio
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913153813834041444, guid: 50dcf4a7423761b4196ab7f095ca9b88, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.4943275
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913153813834041444, guid: 50dcf4a7423761b4196ab7f095ca9b88, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.4521635
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913153813834041444, guid: 50dcf4a7423761b4196ab7f095ca9b88, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.846017
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913153813834041444, guid: 50dcf4a7423761b4196ab7f095ca9b88, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913153813834041444, guid: 50dcf4a7423761b4196ab7f095ca9b88, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913153813834041444, guid: 50dcf4a7423761b4196ab7f095ca9b88, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913153813834041444, guid: 50dcf4a7423761b4196ab7f095ca9b88, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913153813834041444, guid: 50dcf4a7423761b4196ab7f095ca9b88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913153813834041444, guid: 50dcf4a7423761b4196ab7f095ca9b88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913153813834041444, guid: 50dcf4a7423761b4196ab7f095ca9b88, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 50dcf4a7423761b4196ab7f095ca9b88, type: 3}
 --- !u!1001 &679231041
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24295,45 +24356,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ecb222b383320142a2532657134fd76, type: 3}
---- !u!1 &1047803652
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1047803653}
-  m_Layer: 0
-  m_Name: luci
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1047803653
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1047803652}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.494508, y: 1.2161341, z: -1.0032451}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 618987193}
-  - {fileID: 1996969073}
-  - {fileID: 1341333449}
-  - {fileID: 1352019265}
-  - {fileID: 1901344299}
-  - {fileID: 411023134}
-  - {fileID: 2020648871}
-  - {fileID: 1168398767}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1046105782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24408,6 +24430,45 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5799110628233352078, guid: 5ddd1cda8967f7447ac3da26142741df, type: 3}
   m_PrefabInstance: {fileID: 1046105782}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1047803652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1047803653}
+  m_Layer: 0
+  m_Name: luci
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1047803653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047803652}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.494508, y: 1.2161341, z: -1.0032451}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 618987193}
+  - {fileID: 1996969073}
+  - {fileID: 1341333449}
+  - {fileID: 1352019265}
+  - {fileID: 1901344299}
+  - {fileID: 411023134}
+  - {fileID: 2020648871}
+  - {fileID: 1168398767}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1047870944 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6898663837924890636, guid: 8ea1584de95d51944bfcb3715fb78c62, type: 3}
@@ -48317,6 +48378,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1483703884}
     m_Modifications:
+    - target: {fileID: 5524080849919060975, guid: 899bedbb863f15d418080c0f7bcc9fa7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d683946b1de0b514abfaa4a936681fa4, type: 2}
     - target: {fileID: 6316727509578222138, guid: 899bedbb863f15d418080c0f7bcc9fa7, type: 3}
       propertyPath: m_Name
       value: tovaglia_arrotolata (1)
@@ -59351,3 +59416,4 @@ SceneRoots:
   - {fileID: 466161835}
   - {fileID: 1422823924}
   - {fileID: 1485045488}
+  - {fileID: 678423909}

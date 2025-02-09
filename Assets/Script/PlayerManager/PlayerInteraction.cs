@@ -8,6 +8,7 @@ public class PlayerInteraction : MonoBehaviour {
     // Parametri per il controllo visibilità
     [SerializeField] private float distance = 2f;
     [SerializeField] private LayerMask layerMask;
+    [SerializeField] private LayerMask dropZoneLayerMask;
     [SerializeField] private ChildInteracted childInteractedEvent;
 
 
@@ -163,7 +164,7 @@ public class PlayerInteraction : MonoBehaviour {
 
         Debug.DrawRay(ray.origin, ray.direction * distance * 50, Color.blue); // Visualizza il raycast in scena
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance * 50, layerMask)) {
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance * 50, dropZoneLayerMask)) {
             DropZone dropZone = hitInfo.collider.GetComponent<DropZone>();
 
             return dropZone;

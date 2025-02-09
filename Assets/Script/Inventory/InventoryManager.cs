@@ -96,7 +96,7 @@ public class InventoryManager : MonoBehaviour {
             }
             InventoryItem entry = enumerator.Current;
 
-            ItemSelected = Instantiate(entry.item.gameObject, GetMouseScreenPosition(), Quaternion.identity, selectedItemParent);
+            ItemSelected = Instantiate(entry.item.gameObject, GetMouseScreenPosition(), gameObject.transform.rotation, selectedItemParent);
             CreateSelectedItem(entry.item.gameObject);
         }
     }
@@ -110,7 +110,7 @@ public class InventoryManager : MonoBehaviour {
     }
 
     public void CreateSelectedItem(GameObject gameObject) {
-        ItemSelected = Instantiate(gameObject, GetMouseScreenPosition(), Quaternion.identity, selectedItemParent);
+        ItemSelected = Instantiate(gameObject, GetMouseScreenPosition(), gameObject.transform.rotation, selectedItemParent);
         ItemSelected.transform.localScale *= 10f;
         ItemSelected.layer = 5; // UI layer
         foreach (Transform child in ItemSelected.transform) {

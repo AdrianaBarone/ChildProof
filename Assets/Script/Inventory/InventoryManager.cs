@@ -96,7 +96,6 @@ public class InventoryManager : MonoBehaviour {
             }
             InventoryItem entry = enumerator.Current;
 
-            ItemSelected = Instantiate(entry.item.gameObject, GetMouseScreenPosition(), gameObject.transform.rotation, selectedItemParent);
             CreateSelectedItem(entry.item.gameObject);
         }
     }

@@ -73,11 +73,13 @@ public class PlayerManager : MonoBehaviour {
         Cursor.lockState = CursorLockMode.None;
         state = PlayerState.INSPECTION;
         currentInspectable = inspectable;
+        inspectable.RemoveObject();
     }
 
     public void TransitionToExploration() {
         Cursor.lockState = CursorLockMode.Locked;
         state = PlayerState.EXPLORATION;
+        currentInspectable.RestoreObject();
         currentInspectable = null;
     }
 

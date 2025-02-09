@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7030805260139249560, guid: 581590a7e28c85044a3686612f20592a, type: 3}
       propertyPath: m_Name
-      value: padella Variant
+      value: padella_fuoco
       objectReference: {fileID: 0}
     - target: {fileID: 7030805260139249560, guid: 581590a7e28c85044a3686612f20592a, type: 3}
       propertyPath: m_IsActive
@@ -55,6 +55,54 @@ PrefabInstance:
     - target: {fileID: 7699361571947701538, guid: 581590a7e28c85044a3686612f20592a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -63.806
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111544368431057767, guid: 581590a7e28c85044a3686612f20592a, type: 3}
+      propertyPath: ShapeModule.type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111544368431057767, guid: 581590a7e28c85044a3686612f20592a, type: 3}
+      propertyPath: ShapeModule.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111544368431057767, guid: 581590a7e28c85044a3686612f20592a, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111544368431057767, guid: 581590a7e28c85044a3686612f20592a, type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111544368431057767, guid: 581590a7e28c85044a3686612f20592a, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111544368431057767, guid: 581590a7e28c85044a3686612f20592a, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111544368431057767, guid: 581590a7e28c85044a3686612f20592a, type: 3}
+      propertyPath: InitialModule.startSize.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111544368431057767, guid: 581590a7e28c85044a3686612f20592a, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8111544368431057767, guid: 581590a7e28c85044a3686612f20592a, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8241053178598950529, guid: 581590a7e28c85044a3686612f20592a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.000735
+      objectReference: {fileID: 0}
+    - target: {fileID: 8241053178598950529, guid: 581590a7e28c85044a3686612f20592a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.000318
+      objectReference: {fileID: 0}
+    - target: {fileID: 8241053178598950529, guid: 581590a7e28c85044a3686612f20592a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.00004
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

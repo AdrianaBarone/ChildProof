@@ -495,6 +495,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: NotSolvedTarget
       objectReference: {fileID: 0}
+    - target: {fileID: 3913687962035021762, guid: 8861d84109c14294ea1f1e563d646f4e, type: 3}
+      propertyPath: parentInspectable
+      value: 
+      objectReference: {fileID: 9141925766781282784}
     - target: {fileID: 4128080617239989595, guid: 8861d84109c14294ea1f1e563d646f4e, type: 3}
       propertyPath: m_Name
       value: BloccaCassetto 3
@@ -521,7 +525,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4646428396186777440, guid: 8861d84109c14294ea1f1e563d646f4e, type: 3}
       propertyPath: m_Name
-      value: interazione_mobiletto_lavandino 1
+      value: interazione_mobiletto_lavandino
       objectReference: {fileID: 0}
     - target: {fileID: 4646428396186777440, guid: 8861d84109c14294ea1f1e563d646f4e, type: 3}
       propertyPath: m_IsActive
@@ -643,6 +647,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BloccaCassetto 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7946243972799443697, guid: 8861d84109c14294ea1f1e563d646f4e, type: 3}
+      propertyPath: parentInspectable
+      value: 
+      objectReference: {fileID: 9141925766781282784}
     - target: {fileID: 8024902726471390363, guid: 8861d84109c14294ea1f1e563d646f4e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.20787501
@@ -755,6 +763,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5627270447919099706, guid: 8861d84109c14294ea1f1e563d646f4e, type: 3}
   m_PrefabInstance: {fileID: 1900652149455553752}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9141925766781282784 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7259481558335925560, guid: 8861d84109c14294ea1f1e563d646f4e, type: 3}
+  m_PrefabInstance: {fileID: 1900652149455553752}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8143d4774db4f474e8fa8d916cdca4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1947967540691272673
 PrefabInstance:
   m_ObjectHideFlags: 0

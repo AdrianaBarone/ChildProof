@@ -3789,11 +3789,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f142794ee5c71c04a87bd80cf4de184d, type: 3}
---- !u!4 &150077467 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1327970262301008547, guid: f142794ee5c71c04a87bd80cf4de184d, type: 3}
-  m_PrefabInstance: {fileID: 150077466}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &150936696
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15383,7 +15378,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1361784327}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1327970262301008547, guid: f142794ee5c71c04a87bd80cf4de184d, type: 3}
       propertyPath: m_LocalScale.x
@@ -15454,11 +15449,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f142794ee5c71c04a87bd80cf4de184d, type: 3}
---- !u!4 &616717538 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1327970262301008547, guid: f142794ee5c71c04a87bd80cf4de184d, type: 3}
-  m_PrefabInstance: {fileID: 616717537}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &618987192
 GameObject:
   m_ObjectHideFlags: 0
@@ -34380,7 +34370,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceptedItem: {fileID: 11400000, guid: d6890d618f3b93442b16d26cbd0a38f9, type: 2}
   parentInspectable: {fileID: 8585438984106915125}
-  hoverWithCorrectItemParticles: {fileID: 518071095}
+  hoverWithCorrectItemParticles: {fileID: 0}
 --- !u!95 &1454787592
 Animator:
   serializedVersion: 7
@@ -43595,10 +43585,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2029407041694800557, guid: f57feb72b9acb434d8242c40e91ffcc4, type: 3}
       propertyPath: layerMask.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 2029407041694800557, guid: f57feb72b9acb434d8242c40e91ffcc4, type: 3}
-      propertyPath: dropZoneLayerMask.m_Bits
       value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 2435013194993660597, guid: f57feb72b9acb434d8242c40e91ffcc4, type: 3}
@@ -57428,3 +57414,4 @@ SceneRoots:
   - {fileID: 510179704}
   - {fileID: 149579184}
   - {fileID: 251216066}
+  - {fileID: 616717537}

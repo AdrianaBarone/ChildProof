@@ -79,7 +79,7 @@ public class AppManager : MonoBehaviour {
         helpButton.interactable = true;
         helpPrice = achievement.scoreIncrease * GameManager.Instance.HelpPricePercent / 100;
 
-        panels[(int)PanelType.LabelHelpBuy].transform.Find("PanelBuy/PriceText").GetComponent<Text>().text = helpPrice.ToString() + " Punti";
+        panels[(int)PanelType.LabelHelpBuy].transform.Find("PanelBuy/PointText/PriceText").GetComponent<Text>().text = helpPrice.ToString() + " Punti";
         FillHelpPanel(dangerInspectable);
     }
 
@@ -99,7 +99,7 @@ public class AppManager : MonoBehaviour {
         AchievementData achievement = dangerInspectable.GetAchievementData();
         Transform panelHelp = panels[(int)PanelType.LabelHelp].transform.Find("PanelHelp");
 
-        panelHelp.Find("TextHelp").GetComponent<Text>().text = achievement.helpDescription;
+        panelHelp.Find("TextHelp").GetComponent<TMP_Text>().text = achievement.helpDescription;
         panelHelp.Find("ImageHelp").GetComponent<Image>().sprite = achievement.solutionImage;
 
 
@@ -123,9 +123,9 @@ public class AppManager : MonoBehaviour {
             scrollRect.verticalNormalizedPosition = 1f; // Torna in cima
             ShowPanel(PanelType.LabelSingleRemind);
 
-            Text infoText = singleRemindPanel.transform.Find("ScrollView/Viewport/Content/InfoText").GetComponent<Text>();
-            Text titleText = singleRemindPanel.transform.Find("TitleText").GetComponent<Text>();
-            Text progressText = singleRemindPanel.transform.Find("ProgressText").GetComponent<Text>();
+            TMP_Text infoText = singleRemindPanel.transform.Find("ScrollView/Viewport/Content/InfoText").GetComponent<TMP_Text>();
+            TMP_Text titleText = singleRemindPanel.transform.Find("Header/TitleText").GetComponent<TMP_Text>();
+            TMP_Text progressText = singleRemindPanel.transform.Find("Header/ProgressText").GetComponent<TMP_Text>();
 
             titleText.text = achievement.data.name;
             infoText.text = achievement.data.fullDescription;

@@ -10,7 +10,6 @@ public class AchievementManager : MonoBehaviour {
     // dictionary Card, GameObject for the cards
     public Dictionary<Achievement, GameObject> achievementCards = new Dictionary<Achievement, GameObject>();
     private int achievementCount;
-    public GameObject PopUpCanvas;
 
     private void Awake() {
         Instance = this;
@@ -18,7 +17,6 @@ public class AchievementManager : MonoBehaviour {
 
     private void Start() {
         LoadAchievements();
-        PopUpCanvas.SetActive(false);
         if (AppManager.Instance != null)
             AppManager.Instance.cardCount = 0;
     }
@@ -49,7 +47,7 @@ public class AchievementManager : MonoBehaviour {
             achievementCard.GetComponent<Button>().interactable = true;
 
             if (achievement.data.goal != 1) {
-                ShowUnlockAchievementPopup(achievement);
+                UIManager.Instance.ShowUnlockAchievementPopup(achievement);
             }
         }
 
@@ -57,36 +55,9 @@ public class AchievementManager : MonoBehaviour {
         GameManager.Instance.UpdateScore(achievement.data.scoreIncrease);
 
         if (achievement.IsComplete) {
-            ShowCompleteAchievementPopup(achievement);
+            UIManager.Instance.ShowCompleteAchievementPopup(achievement);
             CheckAchievementCount();
         }
-    }
-
-
-    void ShowUnlockAchievementPopup(Achievement achievement) {
-        var titleText = PopUpCanvas.transform.Find("PanelPopUp/titleText").GetComponent<Text>();
-        var descriptionText = PopUpCanvas.transform.Find("PanelPopUp/descriptionText").GetComponent<Text>();
-
-        descriptionText.text = "Nuovo Achievement Sbloccato!";
-        titleText.text = achievement.data.name;
-
-        PopUpCanvas.SetActive(true);
-        Invoke("DisableCanvas", 3f);
-    }
-
-    void ShowCompleteAchievementPopup(Achievement achievement) {
-        var titleText = PopUpCanvas.transform.Find("PanelPopUp/titleText").GetComponent<Text>();
-        var descriptionText = PopUpCanvas.transform.Find("PanelPopUp/descriptionText").GetComponent<Text>();
-
-        descriptionText.text = "Nuovo Achievement Completato!";
-        titleText.text = achievement.data.name;
-
-        PopUpCanvas.SetActive(true);
-        Invoke("DisableCanvas", 3f);
-    }
-
-    private void DisableCanvas() {
-        PopUpCanvas.SetActive(false);
     }
 
     public void CheckAchievementCount() {

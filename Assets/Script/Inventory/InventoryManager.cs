@@ -15,12 +15,9 @@ public class InventoryManager : MonoBehaviour {
     public Camera itemCamera;
     bool isItemSelected = false;
 
-    public GameObject InfoArea;
-
     private void Awake() {
         Instance = this;
         ListItems();
-        InfoArea.SetActive(false);
     }
 
     public void ShowInventory() {
@@ -57,21 +54,13 @@ public class InventoryManager : MonoBehaviour {
         }
     }
 
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.P)) {
-            if (InfoArea.activeSelf) {
-                CloseInfoPanel();
-            }
-        }
-    }
-
     public void Add(Item item) {
         if (Items.ContainsKey(item.data.name)) {
             Items[item.data.name].quantity += 1;
         }
         else {
             Items.Add(item.data.name, new InventoryItem { item = item, quantity = 1 });
-            ShowInfo(item);
+            UIManager.Instance.ShowInfo(item);
         }
         ListItems();
     }
@@ -154,25 +143,6 @@ public class InventoryManager : MonoBehaviour {
                 ItemQuantity.text = "";
             }
         }
-    }
-
-    public void ShowInfo(Item item) {
-        Time.timeScale = 0;
-        var itemNameText = InfoArea.transform.Find("InfoPanel/NamePanel/Name").GetComponent<Text>();
-        var itemDescriptionText = InfoArea.transform.Find("InfoPanel/DescriptionPanel/Description").GetComponent<Text>();
-        var itemImage = InfoArea.transform.Find("InfoPanel/NamePanel/Image").GetComponent<Image>();
-
-        itemNameText.text = item.data.name;
-        itemDescriptionText.text = item.data.description;
-        itemImage.sprite = item.data.icon;
-
-        InfoArea.SetActive(true);
-    }
-
-    public void CloseInfoPanel() {
-        // Nascondi il pannello e riprendi il gioco
-        Time.timeScale = 1;
-        InfoArea.SetActive(false);
     }
 }
 

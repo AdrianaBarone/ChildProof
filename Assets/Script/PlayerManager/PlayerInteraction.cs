@@ -7,7 +7,8 @@ public class PlayerInteraction : MonoBehaviour {
 
     // Parametri per il controllo visibilità
     [SerializeField] private float distance = 2f;
-    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private LayerMask allLayerMask;
+    [SerializeField] private LayerMask dropZoneLayerMask;
     [SerializeField] private ChildInteracted childInteractedEvent;
 
 
@@ -50,7 +51,7 @@ public class PlayerInteraction : MonoBehaviour {
         Ray ray = new(playerCamera.transform.position, playerCamera.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * distance, Color.red); // Visualizza il raycast in scena
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance, layerMask)) {
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance, allLayerMask)) {
             IPickable pointingPickable = hitInfo.collider.GetComponent<IPickable>();
             Inspectable pointingInspectable = hitInfo.collider.GetComponent<Inspectable>();
             CarachterAnimator pointingChild = hitInfo.collider.GetComponent<CarachterAnimator>();
@@ -70,7 +71,7 @@ public class PlayerInteraction : MonoBehaviour {
                 return; // NOTE: queste return impedisce di interagire con gli oggetti in DangerMode
             }
 
-            if (pointingInspectable != null) {
+            if (pointingInspectable != null && !pointingInspectable.IsResolved()) {
                 CursorManager.Instance.UpdateExplorationCursor(interactSprite); // Cambio del cursore per interazione
                 pointingInspectable.BaseInteract();
 
@@ -100,10 +101,10 @@ public class PlayerInteraction : MonoBehaviour {
 
         Debug.DrawRay(ray.origin, ray.direction * distance * 10, Color.blue); // Visualizza il raycast in scena
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance * 10, layerMask)) {
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance * 10, allLayerMask)) {
             Moveable moveable = hitInfo.collider.GetComponent<Moveable>();
 
-            if (moveable != null) {
+            if (moveable != null && moveable == PlayerManager.Instance.currentInspectable) {
                 CursorManager.Instance.PointingMoveable();
                 return moveable;
             }
@@ -117,6 +118,9 @@ public class PlayerInteraction : MonoBehaviour {
 
     public void TryPickUp() {
         Moveable moveable = RaycastForMoveable();
+
+
+
         if (moveable == null) {
             return;
         }
@@ -163,7 +167,7 @@ public class PlayerInteraction : MonoBehaviour {
 
         Debug.DrawRay(ray.origin, ray.direction * distance * 50, Color.blue); // Visualizza il raycast in scena
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance * 50, layerMask)) {
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance * 50, dropZoneLayerMask)) {
             DropZone dropZone = hitInfo.collider.GetComponent<DropZone>();
 
             return dropZone;

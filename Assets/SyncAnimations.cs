@@ -1,12 +1,14 @@
 using UnityEngine;
 
 //Funzione di sincronizzazione con il fuoco
+//Funzione di sincroniccazione animazioni
+
 public class AnimationAutoStart : MonoBehaviour
 {
     public Animator firstStarter;
     public Animator secondStarter; 
 
-    private bool isPlaying = false; 
+    private bool hasStarted = false; 
 
     void Update()
     {
@@ -14,15 +16,11 @@ public class AnimationAutoStart : MonoBehaviour
 
         AnimatorStateInfo firstState = firstStarter.GetCurrentAnimatorStateInfo(0);
 
-        if (!isPlaying && firstState.normalizedTime > 0)
+        if (!hasStarted && firstState.normalizedTime >= 1)
         {
-            isPlaying = true; 
-            secondStarter.SetTrigger("fireActive");
-        }
-
-        if (firstState.normalizedTime >= 1)
-        {
-            isPlaying = false;
+            hasStarted = true; 
+            //secondStarter.SetTrigger("activeSecondAnimation");
         }
     }
 }
+

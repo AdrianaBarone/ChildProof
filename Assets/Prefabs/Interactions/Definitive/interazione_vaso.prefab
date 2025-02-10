@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1253390636931313890}
   - component: {fileID: 6376218314683555967}
+  - component: {fileID: 3088039317944910751}
   m_Layer: 0
   m_Name: Interactable
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2172207662857490615}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.85, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -56,6 +57,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &3088039317944910751
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2172207662857490615}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2325833987578064128
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,7 +424,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2488346426630863248, guid: 8042c9f223a8afe4787c50e6d94d49f8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.921
+      value: 0.07099998
       objectReference: {fileID: 0}
     - target: {fileID: 2488346426630863248, guid: 8042c9f223a8afe4787c50e6d94d49f8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -512,7 +534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8574232028360866743, guid: cd546467abff99e4290441f239640e7c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.8911252
+      value: 0.04112518
       objectReference: {fileID: 0}
     - target: {fileID: 8574232028360866743, guid: cd546467abff99e4290441f239640e7c, type: 3}
       propertyPath: m_LocalPosition.y

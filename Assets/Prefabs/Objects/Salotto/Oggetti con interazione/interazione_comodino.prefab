@@ -939,6 +939,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6521821030389194033, guid: 36ddf43127f139a43a102d438aac0d74, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1015,6 +1019,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   achievementData: {fileID: 11400000, guid: a092a094b70e29d4ca9ba9ce775d5190, type: 2}
   interactionCamera: {fileID: 7061554062194056933}
+  objectsToDisable: []
   dropZones:
   - {fileID: 1779353835986252837}
   - {fileID: 2054300578153565882}

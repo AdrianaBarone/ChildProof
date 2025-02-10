@@ -366,6 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   achievementData: {fileID: 11400000, guid: 933de1c00e5d8ea4cb999510922332ed, type: 2}
   interactionCamera: {fileID: 5305461107973397547}
+  objectsToDisable: []
   dropZones:
   - {fileID: 1626834938560963229}
   audioClips: []
@@ -762,6 +763,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: camino_fix
       objectReference: {fileID: 0}
+    - target: {fileID: 3759514736491407606, guid: 60a75f8ac0128384789cbed0cab49e2b, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -708549927136682747, guid: 01ce610fbf515cf49b004dfde3a132a1, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

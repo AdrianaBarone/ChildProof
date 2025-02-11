@@ -37,20 +37,18 @@ public class PlayerMovement : MonoBehaviour {
 
     public void HandleMovement() {
         // Movimento del giocatore
-        
+
         Vector3 playerMovement = transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
         //rb.MovePosition(transform.position + playerMovement.normalized * speed * Time.fixedDeltaTime);
         rb.linearVelocity = playerMovement * speed;
 
-        if (playerMovement.magnitude > 0){
-            if (!audioSource.isPlaying){
+        if (playerMovement.magnitude > 0) {
+            if (!audioSource.isPlaying) {
                 audioSource.Play();
-                Debug.Log("audio riprodotto");
             }
         }
-        else{
+        else {
             audioSource.Stop();
-            Debug.Log("audio fermato");
         }
     }
 

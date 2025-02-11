@@ -11,7 +11,7 @@ public class Inspectable : MonoBehaviour {
     private bool canInteract = true;
     public DropZone[] dropZones;
 
-    
+
     [Header("Audio Animazione")]
     public AudioClip[] audioClips;
     private AudioSource[] audioSources;
@@ -82,7 +82,9 @@ public class Inspectable : MonoBehaviour {
     }
     public void Resolve() {
         interactionNumber--;
+        Debug.Log("Risoluzione parziale");
         if (interactionNumber == 0) {
+            Debug.Log("Risolto");
             foreach (Transform child in transform) {
                 if (child.gameObject.tag == "NotSolvedTarget") {
                     child.gameObject.tag = "SolvedTarget";

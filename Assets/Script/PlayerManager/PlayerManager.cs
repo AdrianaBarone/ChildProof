@@ -79,7 +79,9 @@ public class PlayerManager : MonoBehaviour {
     public void TransitionToExploration() {
         Cursor.lockState = CursorLockMode.Locked;
         state = PlayerState.EXPLORATION;
-        currentInspectable.RestoreObject();
+
+        if (currentInspectable != null)
+            currentInspectable.RestoreObject();
         currentInspectable = null;
     }
 

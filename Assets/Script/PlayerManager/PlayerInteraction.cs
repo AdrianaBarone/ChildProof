@@ -57,6 +57,14 @@ public class PlayerInteraction : MonoBehaviour {
             Inspectable pointingInspectable = hitInfo.collider.GetComponent<Inspectable>();
             CarachterAnimator pointingChild = hitInfo.collider.GetComponent<CarachterAnimator>();
 
+            if (pointingPickable != null) {
+                CursorManager.Instance.UpdateExplorationCursor(grabbableSprite); // Cambio del cursore per oggetto afferrabile
+                if (Input.GetMouseButtonDown(0)) {
+                    pointingPickable.OnPick();
+                }
+                return;
+            }
+
             if (GameManager.Instance.InDangerMode) {
                 if (pointingChild != null) {
                     CursorManager.Instance.UpdateExplorationCursor(interactSprite);
@@ -82,13 +90,6 @@ public class PlayerInteraction : MonoBehaviour {
             }
             else {
                 CursorManager.Instance.UpdateExplorationCursor(defaultSprite); // Cambio al cursore predefinito
-            }
-
-            if (pointingPickable != null) {
-                CursorManager.Instance.UpdateExplorationCursor(grabbableSprite); // Cambio del cursore per oggetto afferrabile
-                if (Input.GetMouseButtonDown(0)) {
-                    pointingPickable.OnPick();
-                }
             }
         }
         else {

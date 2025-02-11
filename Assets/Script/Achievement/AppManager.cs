@@ -79,7 +79,7 @@ public class AppManager : MonoBehaviour {
         helpButton.interactable = true;
         helpPrice = achievement.scoreIncrease * GameManager.Instance.HelpPricePercent / 100;
 
-        panels[(int)PanelType.LabelHelpBuy].transform.Find("PanelBuy/PointText/PriceText").GetComponent<Text>().text = helpPrice.ToString() + " Punti";
+        panels[(int)PanelType.LabelHelpBuy].transform.Find("PanelBuy/PointText/PriceText").GetComponent<TMP_Text>().text = helpPrice.ToString() + " Punti";
         FillHelpPanel(dangerInspectable);
     }
 

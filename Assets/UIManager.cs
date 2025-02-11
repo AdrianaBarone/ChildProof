@@ -40,6 +40,7 @@ public class UIManager : MonoBehaviour {
 
         animator.SetTrigger("PopUp");
     }
+
     // Update is called once per frame
     void Update() {
         if (Input.GetKeyDown(KeyCode.P)) {

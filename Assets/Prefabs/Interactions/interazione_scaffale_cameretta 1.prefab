@@ -292,6 +292,37 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &7054314179282660112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1170761187981829150}
+  m_Layer: 0
+  m_Name: scaffale_cameretta_target
+  m_TagString: NotSolvedTarget
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1170761187981829150
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7054314179282660112}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.008459757, y: -0.014005363, z: 0.009824553}
+  m_LocalScale: {x: 0.009999997, y: 0.009999998, z: 0.009999996}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3338694987598491597}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &8361625745849229947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1694,6 +1725,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8355629743003972069, guid: 4d7c617169c3977439b01f7d0406afed, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1114822423529275948}
+    - targetCorrespondingSourceObject: {fileID: 8355629743003972069, guid: 4d7c617169c3977439b01f7d0406afed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1170761187981829150}
     - targetCorrespondingSourceObject: {fileID: 8355629743003972069, guid: 4d7c617169c3977439b01f7d0406afed, type: 3}
       insertIndex: -1
       addedObject: {fileID: 297707654047183092}

@@ -269,6 +269,37 @@ Transform:
   - {fileID: 9181969378331395612}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -0.252, y: -0.019, z: -0.045}
+--- !u!1 &7006061174494553126
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6085562903549071095}
+  m_Layer: 0
+  m_Name: bogglia_alcolico_target
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6085562903549071095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7006061174494553126}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8300586245794360654}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3009870624312992472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -327,7 +358,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6554055036050067350, guid: c839d3a39144d4e498273d8932ee28da, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6085562903549071095}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5890566441453720876, guid: c839d3a39144d4e498273d8932ee28da, type: 3}
       insertIndex: -1
@@ -384,6 +418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   achievementData: {fileID: 11400000, guid: f4c096fc5ed3e714d9337c785af3aa74, type: 2}
   interactionCamera: {fileID: 6757680913556804799}
+  objectsToDisable: []
   dropZones:
   - {fileID: 4519339687375374286}
   audioClips: []

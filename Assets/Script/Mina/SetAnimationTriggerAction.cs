@@ -13,25 +13,26 @@ public partial class SetAnimationTriggerAction : Action
     // Dizionario che mappa i tag ai trigger dell'Animator
     private Dictionary<string, string> triggerMap = new Dictionary<string, string>
     {
-        { "scala", "Scala_Bool" },
-        { "lavandino_bagno", "Lavandino_Bool" },
-        { "libreria", "Libreria_Bool" },
-        { "comodino", "Comodino_Bool" },
-        { "piantana", "Piantana_Bool" },
-        { "presa", "Presa_Bool" },
-        { "tovaglia", "Tovaglia_Bool" },
-        { "prolunga", "Prolunga_Bool" },
-        { "tavolo_salotto", "Tavolo_salotto_Bool" },
-        { "forno", "Forno_Bool" },
-        { "mobiletto_salotto", "Mobiletto_salotto_Bool" },
-        { "sedia_salotto", "Sedia_salotto_Bool" },
-        { "runner", "Runner_Bool" },
-        { "tavolino", "Tavolino_Bool" },
-        { "boccia_pesce_rosso", "Boccia_pesce_rosso_Bool" },
-        { "TV", "TV_Bool" },
-        { "sedia_cucina", "Sedia_cucina_Bool"},
-        { "camino", "Camino_Bool"},
-        { "Sedia_Cameretta", "Sedia_cameretta_Bool"},
+           { "scala_target", "Scala_Bool" },
+    { "lavandino_bagno_target", "Lavandino_Bool" },
+    { "libreria_target", "Libreria_Bool" },
+    { "comodino_target", "Comodino_Bool" },
+    { "piantana_target", "Piantana_Bool" },
+    { "presa_target", "Presa_Bool" },
+    { "tovaglia_target", "Tovaglia_Bool" },
+    { "prolunga_target", "Prolunga_Bool" },
+    { "tavolo_salotto_target", "Tavolo_salotto_Bool" },
+    { "forno_target", "Forno_Bool" },
+    { "mobiletto_salotto_target", "Mobiletto_salotto_Bool" },
+    { "sedia_salotto_target", "Sedia_salotto_Bool" },
+    { "runner_target", "Runner_Bool" },
+    { "tavolino_target", "Tavolino_Bool" },
+    { "boccia_pesce_rosso_target", "Boccia_pesce_rosso_Bool" },
+    { "TV_target", "TV_Bool" },
+    { "sedia_cucina_target", "Sedia_cucina_Bool" },
+    { "camino_target", "Camino_Bool" },
+    { "Sedia_Cameretta_target", "Sedia_cameretta_Bool" }
+
     };
     private string currentTarget;
     [SerializeReference] public BlackboardVariable<string> Trigger;

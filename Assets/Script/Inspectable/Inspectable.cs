@@ -11,9 +11,10 @@ public class Inspectable : MonoBehaviour {
     private bool canInteract = true;
     public DropZone[] dropZones;
 
-    //AUDIO
-    private AudioSource[] audioSources;
+    
+    [Header("Audio Animazione")]
     public AudioClip[] audioClips;
+    private AudioSource[] audioSources;
 
 
     private void Awake() {

@@ -28,6 +28,7 @@ public class PlayerInteraction : MonoBehaviour {
     [SerializeField] private Sprite grabbableSprite;
 
 
+    [Header("Audio cambio camera")]
     //AUDIO
     private AudioSource audioSource;
     public AudioClip audioClip;

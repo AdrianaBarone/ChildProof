@@ -10,10 +10,18 @@ public class PlayerMovement : MonoBehaviour {
     public float sensitivity;
     private float rotationX = 0;
 
+    [Header("Audio Passi")]
+    public AudioClip audioClip;
+    private AudioSource audioSource;
+
     void Start() {
         playerCamera = GetComponentInChildren<Camera>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = audioClip;
+        audioSource.loop = true;
     }
 
     public void HandleRotation() {
@@ -29,12 +37,25 @@ public class PlayerMovement : MonoBehaviour {
 
     public void HandleMovement() {
         // Movimento del giocatore
+        
         Vector3 playerMovement = transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
         //rb.MovePosition(transform.position + playerMovement.normalized * speed * Time.fixedDeltaTime);
         rb.linearVelocity = playerMovement * speed;
+
+        if (playerMovement.magnitude > 0){
+            if (!audioSource.isPlaying){
+                audioSource.Play();
+                Debug.Log("audio riprodotto");
+            }
+        }
+        else{
+            audioSource.Stop();
+            Debug.Log("audio fermato");
+        }
     }
 
     public void StopMovement() {
         rb.linearVelocity = Vector3.zero;
+        audioSource.Stop();
     }
 }

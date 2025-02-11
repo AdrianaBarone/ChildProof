@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
     public float PointDecreaseRate = 1f;
     public int HelpPricePercent = 50;
 
-    //AUDIO
+    [Header("Audio SoundTrack")]
     public AudioClip audioClipSafe;
     public AudioClip audioClipDanger;
 

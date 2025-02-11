@@ -68,6 +68,7 @@ public class AudioManager : MonoBehaviour
     {
         audioSource.clip = clip;
         audioSource.volume = 0f;
+        audioSource.loop = true;
         audioSource.Play();
 
         float timeElapsed = 0f;

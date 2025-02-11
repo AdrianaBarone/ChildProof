@@ -54,10 +54,12 @@ public class AchievementManager : MonoBehaviour {
         achievement.IncrementProgress(1);
         GameManager.Instance.UpdateScore(achievement.data.scoreIncrease);
 
+        
         if (achievement.IsComplete) {
             UIManager.Instance.ShowCompleteAchievementPopup(achievement);
             CheckAchievementCount();
         }
+        
     }
 
     public void CheckAchievementCount() {

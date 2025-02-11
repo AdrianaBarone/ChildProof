@@ -13478,7 +13478,7 @@ MonoBehaviour:
   PointDecreasePercent: 5
   PointDecreaseRate: 1
   HelpPricePercent: 50
-  audioClipSafe: {fileID: 8300000, guid: 9717fef9e811f1948a8d7eda40db80b0, type: 3}
+  audioClipSafe: {fileID: 0}
   audioClipDanger: {fileID: 8300000, guid: 48e7a2be9ca295c409c87a17dc2e862a, type: 3}
 --- !u!4 &467141827
 Transform:
@@ -47527,6 +47527,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 399969154173210471, guid: f57feb72b9acb434d8242c40e91ffcc4, type: 3}
+      propertyPath: audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e9a487aac16b327459f2d3706f48d095, type: 3}
     - target: {fileID: 1326062376019105503, guid: f57feb72b9acb434d8242c40e91ffcc4, type: 3}
       propertyPath: near clip plane
       value: 0.01
@@ -52951,7 +52955,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1924158943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61782,6 +61786,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1368900246}
     m_Modifications:
+    - target: {fileID: 622835940297471602, guid: 31c443b728fe4de49800dc57dee52d81, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1233440842054246901, guid: 31c443b728fe4de49800dc57dee52d81, type: 3}
       propertyPath: m_Name
       value: interazione_presa_bagno

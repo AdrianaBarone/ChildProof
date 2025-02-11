@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 5150806450666528903}
   - component: {fileID: 5890280720258776867}
   - component: {fileID: 8864437543515310533}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Paraspigoli_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5890280720258776867
 MonoBehaviour:
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 4089197878724909472}
   - component: {fileID: 5300883964524093994}
   - component: {fileID: 2306230636172467698}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Paraspigoli_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5300883964524093994
 MonoBehaviour:
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 7555043970852170799}
   - component: {fileID: 4137512215320872162}
   - component: {fileID: 1710946527672413889}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Paraspigoli_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,7 +491,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4137512215320872162
 MonoBehaviour:
@@ -559,10 +559,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2191082839503288352}
+  - {fileID: 3678534003539064713}
   - {fileID: 8073882837093288436}
   - {fileID: 3610207890669162144}
-  - {fileID: 3678534003539064713}
+  - {fileID: 2191082839503288352}
   m_Father: {fileID: 7081206284031820273}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7325328291833571696
@@ -579,7 +579,7 @@ GameObject:
   - component: {fileID: 8409012435471553976}
   - component: {fileID: 7496222470078407933}
   - component: {fileID: 5512926762005526419}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Paraspigoli_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -675,7 +675,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7496222470078407933
 MonoBehaviour:
@@ -724,7 +724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7081206284031820273}
   m_Layer: 0
-  m_Name: interazione_paraspigoli
+  m_Name: interazione_paraspigoli 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1247,19 +1247,19 @@ PrefabInstance:
     - target: {fileID: 8569775219402708407, guid: be20e79cb4453694eb0bd5105ac77097, type: 3}
       propertyPath: 'dropZones.Array.data[0]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4137512215320872162}
     - target: {fileID: 8569775219402708407, guid: be20e79cb4453694eb0bd5105ac77097, type: 3}
       propertyPath: 'dropZones.Array.data[1]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5890280720258776867}
     - target: {fileID: 8569775219402708407, guid: be20e79cb4453694eb0bd5105ac77097, type: 3}
       propertyPath: 'dropZones.Array.data[2]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 7496222470078407933}
     - target: {fileID: 8569775219402708407, guid: be20e79cb4453694eb0bd5105ac77097, type: 3}
       propertyPath: 'dropZones.Array.data[3]'
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5300883964524093994}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

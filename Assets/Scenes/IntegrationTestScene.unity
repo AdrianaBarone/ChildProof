@@ -43283,6 +43283,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88bd170529d7ba14c8fa5e805832effc, type: 3}
+--- !u!1001 &1371712390
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6288735869368924939, guid: be20e79cb4453694eb0bd5105ac77097, type: 3}
+      propertyPath: m_Name
+      value: tavolo_salotto
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633172611617366449, guid: be20e79cb4453694eb0bd5105ac77097, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.782
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633172611617366449, guid: be20e79cb4453694eb0bd5105ac77097, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633172611617366449, guid: be20e79cb4453694eb0bd5105ac77097, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.682
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633172611617366449, guid: be20e79cb4453694eb0bd5105ac77097, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633172611617366449, guid: be20e79cb4453694eb0bd5105ac77097, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633172611617366449, guid: be20e79cb4453694eb0bd5105ac77097, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633172611617366449, guid: be20e79cb4453694eb0bd5105ac77097, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633172611617366449, guid: be20e79cb4453694eb0bd5105ac77097, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633172611617366449, guid: be20e79cb4453694eb0bd5105ac77097, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6633172611617366449, guid: be20e79cb4453694eb0bd5105ac77097, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8320534910746581354, guid: be20e79cb4453694eb0bd5105ac77097, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: b9edaff4cd6485243b52998dde48bf9a, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: be20e79cb4453694eb0bd5105ac77097, type: 3}
 --- !u!1001 &1373624056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -71886,10 +71947,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1226236888}
     m_Modifications:
-    - target: {fileID: 4050416965733425897, guid: 28977480e5635c442857a81465f347bb, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 7815125995368775541, guid: 840bc738aef27504ebe1345af61f7761, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -71901,6 +71958,10 @@ PrefabInstance:
     - target: {fileID: 8544972692960748337, guid: 840bc738aef27504ebe1345af61f7761, type: 3}
       propertyPath: m_Name
       value: CopriPresa
+      objectReference: {fileID: 0}
+    - target: {fileID: 4050416965733425897, guid: 28977480e5635c442857a81465f347bb, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -74724,3 +74785,4 @@ SceneRoots:
   - {fileID: 433909545}
   - {fileID: 757261871}
   - {fileID: 10186509}
+  - {fileID: 1371712390}

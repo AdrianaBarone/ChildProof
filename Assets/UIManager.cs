@@ -5,7 +5,10 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour {
 
     public GameObject PopUpCanvas;
+    public GameObject PauseCanvas;
+    public GameObject CursorCanvas;
     public GameObject InfoArea;
+    public GameObject InventoryCanvas;
 
     public static UIManager Instance;
 
@@ -50,6 +53,40 @@ public class UIManager : MonoBehaviour {
                 animator.SetTrigger("HideInfo");
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (PauseCanvas.activeSelf) {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                InventoryCanvas.SetActive(true);
+                CursorCanvas.SetActive(true);
+                PauseCanvas.SetActive(false);
+                Time.timeScale = 1;
+                PlayerManager.Instance.ReturnToPreviousState();
+            }
+            else if (Time.timeScale == 1) {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                InventoryCanvas.SetActive(false);
+                CursorCanvas.SetActive(false);
+                PauseCanvas.SetActive(true);
+                Time.timeScale = 0;
+                PlayerManager.Instance.PrepareTransition();
+            }
+        }
+    }
+
+    public void UnpauseGame() {
+        Cursor.lockState = CursorLockMode.Locked;
+        PauseCanvas.SetActive(false);
+        CursorCanvas.SetActive(true);
+        InventoryCanvas.SetActive(true);
+        PlayerManager.Instance.ReturnToPreviousState();
+        Time.timeScale = 1;
+    }
+
+    public void ExitGame() {
+        // TODO: naviga al menu principale
     }
 
     public void PauseGameTime() {

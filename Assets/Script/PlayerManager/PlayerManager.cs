@@ -110,6 +110,10 @@ public class PlayerManager : MonoBehaviour {
         return state == PlayerState.INSPECTION;
     }
 
+    public bool InStatePhoneUp() {
+        return state == PlayerState.PHONE_UP;
+    }
+
     public bool IsInStateExploration() {
         return state == PlayerState.EXPLORATION;
     }

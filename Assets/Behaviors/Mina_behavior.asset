@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c02bb70996b49eba31d0c206e28da24, type: 3}
   m_Name: Mina_behavior Blackboard
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   VersionTimestamp: 638748998862538960
+=======
+  VersionTimestamp: 638749196976849713
+>>>>>>> origin/mari9feb
   AssetID:
     m_Value0: 8378062469437997206
     m_Value1: 4100880592396210155
@@ -155,7 +159,11 @@ MonoBehaviour:
   - rid: 170928058486751409
   - rid: 170928058486751565
   - rid: 8821244610072805581
+<<<<<<< HEAD
   m_VersionTimestamp: 638748998862280720
+=======
+  m_VersionTimestamp: 638749196976338705
+>>>>>>> origin/mari9feb
   m_DebugInfo: {fileID: -132542291990532000}
   m_RuntimeGraph: {fileID: 3963938351799569527}
   AssetID:
@@ -3522,7 +3530,11 @@ MonoBehaviour:
   - rid: 8821244430044627659
   - rid: 4246305233529471640
   - rid: 170928058486751489
+<<<<<<< HEAD
   m_VersionTimestamp: 638748998862538960
+=======
+  m_VersionTimestamp: 638749196976849713
+>>>>>>> origin/mari9feb
   m_CommandBuffer:
     m_Commands: []
   m_RuntimeBlackboardAsset: {fileID: -1709178892736341623}
@@ -3622,16 +3634,26 @@ MonoBehaviour:
   m_Name: Mina_behavior
   m_EditorClassIdentifier: 
   Graphs:
+<<<<<<< HEAD
   - rid: 4246305377178091593
   RootGraph:
     rid: 4246305377178091593
+=======
+  - rid: 8821244622252277896
+  RootGraph:
+    rid: 8821244622252277896
+>>>>>>> origin/mari9feb
   m_DebugInfo: {fileID: -132542291990532000}
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+<<<<<<< HEAD
     - rid: 4246305377178091593
+=======
+    - rid: 8821244622252277896
+>>>>>>> origin/mari9feb
       type: {class: BehaviorGraphModule, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         AuthoringAssetID:
@@ -3639,18 +3661,28 @@ MonoBehaviour:
           m_Value1: 4100880592396210155
         m_DebugInfo: {fileID: 0}
         Root:
+<<<<<<< HEAD
           rid: 4246305377178091594
         BlackboardReference:
           rid: 4246305377178091595
         BlackboardGroupReferences: []
         m_VersionTimestamp: 638748998862280720
     - rid: 4246305377178091594
+=======
+          rid: 8821244622252277897
+        BlackboardReference:
+          rid: 8821244622252277898
+        BlackboardGroupReferences: []
+        m_VersionTimestamp: 638749196976338705
+    - rid: 8821244622252277897
+>>>>>>> origin/mari9feb
       type: {class: ParallelAllComposite, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 0
           m_Value1: 0
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: -2
@@ -3664,12 +3696,28 @@ MonoBehaviour:
           rid: 4246305377178091598
         m_Source: {fileID: -1709178892736341623}
     - rid: 4246305377178091596
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: -2
+        m_Children:
+        - rid: 8821244622252277899
+        - rid: 8821244622252277900
+    - rid: 8821244622252277898
+      type: {class: BlackboardReference, ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        m_Blackboard:
+          rid: 8821244622252277901
+        m_Source: {fileID: -1709178892736341623}
+    - rid: 8821244622252277899
+>>>>>>> origin/mari9feb
       type: {class: StartOnEvent, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 16900367288021255971
           m_Value1: 4307715718335571797
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091594
@@ -3677,19 +3725,33 @@ MonoBehaviour:
           rid: 4246305377178091599
         ChannelVariable:
           rid: 4246305377178091600
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277897
+        m_Child:
+          rid: 8821244622252277902
+        ChannelVariable:
+          rid: 8821244622252277903
+>>>>>>> origin/mari9feb
         MessageVariables:
         - rid: -2
         - rid: -2
         - rid: -2
         - rid: -2
         Mode: 0
+<<<<<<< HEAD
     - rid: 4246305377178091597
+=======
+    - rid: 8821244622252277900
+>>>>>>> origin/mari9feb
       type: {class: Start, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 12379754181687141768
           m_Value1: 13485303402297663854
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091594
@@ -3709,12 +3771,34 @@ MonoBehaviour:
         - rid: 4246305377178091608
         - rid: 4246305377178091600
     - rid: 4246305377178091599
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277897
+        m_Child:
+          rid: 8821244622252277904
+        Repeat: 1
+    - rid: 8821244622252277901
+      type: {class: Blackboard, ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        m_Variables:
+        - rid: 8821244622252277905
+        - rid: 8821244622252277906
+        - rid: 8821244622252277907
+        - rid: 8821244622252277908
+        - rid: 8821244622252277909
+        - rid: 8821244622252277910
+        - rid: 8821244622252277911
+        - rid: 8821244622252277903
+    - rid: 8821244622252277902
+>>>>>>> origin/mari9feb
       type: {class: SetVariableValueAction, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 5694449808235820665
           m_Value1: 24257120462962692
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091596
@@ -3723,6 +3807,16 @@ MonoBehaviour:
         Value:
           rid: 4246305377178091609
     - rid: 4246305377178091600
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277899
+        Variable:
+          rid: 8821244622252277908
+        Value:
+          rid: 8821244622252277912
+    - rid: 8821244622252277903
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[ChildInteracted, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -3730,13 +3824,18 @@ MonoBehaviour:
           m_Value1: 18163993169780393964
         Name: ChildInteracted
         m_Value: {fileID: 11400000, guid: 8e1a7495630864f32b84d14b2d9b1261, type: 2}
+<<<<<<< HEAD
     - rid: 4246305377178091601
+=======
+    - rid: 8821244622252277904
+>>>>>>> origin/mari9feb
       type: {class: RestartModifier, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 16792248609515193220
           m_Value1: 8082621575735550775
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091597
@@ -3746,6 +3845,17 @@ MonoBehaviour:
         - rid: 4246305377178091611
         m_RequiresAllConditions: 0
     - rid: 4246305377178091602
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277900
+        m_Child:
+          rid: 8821244622252277913
+        m_Conditions:
+        - rid: 8821244622252277914
+        m_RequiresAllConditions: 0
+    - rid: 8821244622252277905
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -3753,7 +3863,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 0}
+<<<<<<< HEAD
     - rid: 4246305377178091603
+=======
+    - rid: 8821244622252277906
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -3761,7 +3875,11 @@ MonoBehaviour:
           m_Value1: 8207153035551351330
         Name: Target
         m_Value: {fileID: 0}
+<<<<<<< HEAD
     - rid: 4246305377178091604
+=======
+    - rid: 8821244622252277907
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -3769,7 +3887,11 @@ MonoBehaviour:
           m_Value1: 13527523694109721219
         Name: Animator
         m_Value: {fileID: 0}
+<<<<<<< HEAD
     - rid: 4246305377178091605
+=======
+    - rid: 8821244622252277908
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[States, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -3777,7 +3899,11 @@ MonoBehaviour:
           m_Value1: 7385857405049849532
         Name: States
         m_Value: 0
+<<<<<<< HEAD
     - rid: 4246305377178091606
+=======
+    - rid: 8821244622252277909
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.String, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -3785,7 +3911,11 @@ MonoBehaviour:
           m_Value1: 16837522813082823559
         Name: ObjectBool
         m_Value: 
+<<<<<<< HEAD
     - rid: 4246305377178091607
+=======
+    - rid: 8821244622252277910
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -3793,7 +3923,11 @@ MonoBehaviour:
           m_Value1: 13195222464121971882
         Name: Pause_Point
         m_Value: {fileID: 0}
+<<<<<<< HEAD
     - rid: 4246305377178091608
+=======
+    - rid: 8821244622252277911
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[UnityEngine.Transform, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -3801,7 +3935,11 @@ MonoBehaviour:
           m_Value1: 16957700987387784670
         Name: rotate_target
         m_Value: {fileID: 0}
+<<<<<<< HEAD
     - rid: 4246305377178091609
+=======
+    - rid: 8821244622252277912
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[States, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -3809,13 +3947,18 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: 0
+<<<<<<< HEAD
     - rid: 4246305377178091610
+=======
+    - rid: 8821244622252277913
+>>>>>>> origin/mari9feb
       type: {class: SwitchComposite, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 11194997367499290473
           m_Value1: 5533320519475824824
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091601
@@ -3833,12 +3976,32 @@ MonoBehaviour:
         Variable:
           rid: 4246305377178091605
     - rid: 4246305377178091612
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277904
+        m_Children:
+        - rid: 8821244622252277915
+        - rid: 8821244622252277916
+        - rid: 8821244622252277917
+        EnumVariable:
+          rid: 8821244622252277908
+    - rid: 8821244622252277914
+      type: {class: VariableValueChangedCondition, ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        Graph:
+          rid: 8821244622252277896
+        Variable:
+          rid: 8821244622252277908
+    - rid: 8821244622252277915
+>>>>>>> origin/mari9feb
       type: {class: RandomComposite, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 556480706245304087
           m_Value1: 16537121996343474702
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091610
@@ -3846,12 +4009,21 @@ MonoBehaviour:
         - rid: 4246305377178091615
         - rid: 4246305377178091616
     - rid: 4246305377178091613
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277913
+        m_Children:
+        - rid: 8821244622252277918
+    - rid: 8821244622252277916
+>>>>>>> origin/mari9feb
       type: {class: SequenceComposite, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 14427906845555635565
           m_Value1: 12100433291404287587
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091610
@@ -3861,12 +4033,24 @@ MonoBehaviour:
         - rid: 4246305377178091619
         - rid: 4246305377178091620
     - rid: 4246305377178091614
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277913
+        m_Children:
+        - rid: 8821244622252277919
+        - rid: 8821244622252277920
+        - rid: 8821244622252277921
+        - rid: 8821244622252277922
+    - rid: 8821244622252277917
+>>>>>>> origin/mari9feb
       type: {class: SequenceComposite, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 1887697278420354847
           m_Value1: 2792833370273098770
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091610
@@ -3893,12 +4077,27 @@ MonoBehaviour:
         Value:
           rid: 4246305377178091628
     - rid: 4246305377178091616
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277913
+        m_Children:
+        - rid: 8821244622252277923
+        - rid: 8821244622252277924
+        - rid: 8821244622252277925
+        - rid: 8821244622252277926
+        - rid: 8821244622252277927
+        - rid: 8821244622252277928
+        - rid: 8821244622252277929
+    - rid: 8821244622252277918
+>>>>>>> origin/mari9feb
       type: {class: SequenceComposite, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 8777026524284804252
           m_Value1: 10820115293582763806
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091612
@@ -3911,12 +4110,27 @@ MonoBehaviour:
         - rid: 4246305377178091634
         - rid: 4246305377178091635
     - rid: 4246305377178091617
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277915
+        m_Children:
+        - rid: 8821244622252277930
+        - rid: 8821244622252277931
+        - rid: 8821244622252277932
+        - rid: 8821244622252277933
+        - rid: 8821244622252277934
+        - rid: 8821244622252277935
+        - rid: 8821244622252277936
+    - rid: 8821244622252277919
+>>>>>>> origin/mari9feb
       type: {class: SetAnimatorFloatAction, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 10228668738098051445
           m_Value1: 16541475408703864383
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091613
@@ -3927,24 +4141,46 @@ MonoBehaviour:
         Value:
           rid: 4246305377178091637
     - rid: 4246305377178091618
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277916
+        Parameter:
+          rid: 8821244622252277937
+        Animator:
+          rid: 8821244622252277907
+        Value:
+          rid: 8821244622252277938
+    - rid: 8821244622252277920
+>>>>>>> origin/mari9feb
       type: {class: StartDangerModeAction, ns: , asm: Assembly-CSharp}
       data:
         ID:
           m_Value0: 12247260079123403963
           m_Value1: 5235501726436057973
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091613
         Target:
           rid: 4246305377178091603
     - rid: 4246305377178091619
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277916
+        Target:
+          rid: 8821244622252277906
+    - rid: 8821244622252277921
+>>>>>>> origin/mari9feb
       type: {class: SetTriggerInAnimatorAction, ns: , asm: Assembly-CSharp}
       data:
         ID:
           m_Value0: 8171209569837090315
           m_Value1: 16471297207370219365
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091613
@@ -3955,24 +4191,46 @@ MonoBehaviour:
         Switch:
           rid: 4246305377178091638
     - rid: 4246305377178091620
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277916
+        Trigger:
+          rid: 8821244622252277909
+        Animator:
+          rid: 8821244622252277907
+        Switch:
+          rid: 8821244622252277939
+    - rid: 8821244622252277922
+>>>>>>> origin/mari9feb
       type: {class: RepeatUntilSuccessModifier, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 6335977818666618679
           m_Value1: 15589270370259386570
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091613
         m_Child:
           rid: 4246305377178091639
     - rid: 4246305377178091621
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277916
+        m_Child:
+          rid: 8821244622252277940
+    - rid: 8821244622252277923
+>>>>>>> origin/mari9feb
       type: {class: SetTriggerInAnimatorAction, ns: , asm: Assembly-CSharp}
       data:
         ID:
           m_Value0: 6132514655929998657
           m_Value1: 5237139864054758751
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091614
@@ -3983,12 +4241,25 @@ MonoBehaviour:
         Switch:
           rid: 4246305377178091640
     - rid: 4246305377178091622
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277917
+        Trigger:
+          rid: 8821244622252277909
+        Animator:
+          rid: 8821244622252277907
+        Switch:
+          rid: 8821244622252277941
+    - rid: 8821244622252277924
+>>>>>>> origin/mari9feb
       type: {class: SetAnimatorFloatAction, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 14400782499378158341
           m_Value1: 859917341692145162
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091614
@@ -3999,12 +4270,25 @@ MonoBehaviour:
         Value:
           rid: 4246305377178091642
     - rid: 4246305377178091623
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277917
+        Parameter:
+          rid: 8821244622252277942
+        Animator:
+          rid: 8821244622252277907
+        Value:
+          rid: 8821244622252277943
+    - rid: 8821244622252277925
+>>>>>>> origin/mari9feb
       type: {class: SetRandomTargetAction, ns: Unity.Behavior.Example, asm: Assembly-CSharp}
       data:
         ID:
           m_Value0: 17204202592126325932
           m_Value1: 7082796250354632757
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091614
@@ -4013,12 +4297,23 @@ MonoBehaviour:
         TagValue:
           rid: 4246305377178091643
     - rid: 4246305377178091624
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277917
+        Target:
+          rid: 8821244622252277910
+        TagValue:
+          rid: 8821244622252277944
+    - rid: 8821244622252277926
+>>>>>>> origin/mari9feb
       type: {class: NavigateToTargetAction, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 12917628506043573243
           m_Value1: 8794307778583035793
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091614
@@ -4035,12 +4330,31 @@ MonoBehaviour:
         SlowDownDistance:
           rid: 4246305377178091647
     - rid: 4246305377178091625
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277917
+        Agent:
+          rid: 8821244622252277905
+        Target:
+          rid: 8821244622252277910
+        Speed:
+          rid: 8821244622252277945
+        DistanceThreshold:
+          rid: 8821244622252277946
+        AnimatorSpeedParam:
+          rid: 8821244622252277947
+        SlowDownDistance:
+          rid: 8821244622252277948
+    - rid: 8821244622252277927
+>>>>>>> origin/mari9feb
       type: {class: SetAnimatorFloatAction, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 536723569043947325
           m_Value1: 1524569453795885890
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091614
@@ -4051,24 +4365,46 @@ MonoBehaviour:
         Value:
           rid: 4246305377178091649
     - rid: 4246305377178091626
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277917
+        Parameter:
+          rid: 8821244622252277949
+        Animator:
+          rid: 8821244622252277907
+        Value:
+          rid: 8821244622252277950
+    - rid: 8821244622252277928
+>>>>>>> origin/mari9feb
       type: {class: WaitAction, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 12967384026143971411
           m_Value1: 13660372029840251725
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091614
         SecondsToWait:
           rid: 4246305377178091650
     - rid: 4246305377178091627
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277917
+        SecondsToWait:
+          rid: 8821244622252277951
+    - rid: 8821244622252277929
+>>>>>>> origin/mari9feb
       type: {class: SetVariableValueAction, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 10990201930253433508
           m_Value1: 2608271494506503048
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091614
@@ -4085,12 +4421,23 @@ MonoBehaviour:
         Name: 
         m_Value: 2
     - rid: 4246305377178091629
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277917
+        Variable:
+          rid: 8821244622252277908
+        Value:
+          rid: 8821244622252277952
+    - rid: 8821244622252277930
+>>>>>>> origin/mari9feb
       type: {class: SetTriggerInAnimatorAction, ns: , asm: Assembly-CSharp}
       data:
         ID:
           m_Value0: 9678198782406250450
           m_Value1: 5236287928703036021
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091616
@@ -4101,12 +4448,25 @@ MonoBehaviour:
         Switch:
           rid: 4246305377178091652
     - rid: 4246305377178091630
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277918
+        Trigger:
+          rid: 8821244622252277909
+        Animator:
+          rid: 8821244622252277907
+        Switch:
+          rid: 8821244622252277953
+    - rid: 8821244622252277931
+>>>>>>> origin/mari9feb
       type: {class: SetAnimatorFloatAction, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 11794624500784561802
           m_Value1: 8832571636917618225
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091616
@@ -4117,12 +4477,25 @@ MonoBehaviour:
         Value:
           rid: 4246305377178091654
     - rid: 4246305377178091631
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277918
+        Parameter:
+          rid: 8821244622252277954
+        Animator:
+          rid: 8821244622252277907
+        Value:
+          rid: 8821244622252277955
+    - rid: 8821244622252277932
+>>>>>>> origin/mari9feb
       type: {class: SetRandomTargetAction, ns: Unity.Behavior.Example, asm: Assembly-CSharp}
       data:
         ID:
           m_Value0: 2087420721280339823
           m_Value1: 5145437668278840808
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091616
@@ -4131,12 +4504,23 @@ MonoBehaviour:
         TagValue:
           rid: 4246305377178091655
     - rid: 4246305377178091632
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277918
+        Target:
+          rid: 8821244622252277906
+        TagValue:
+          rid: 8821244622252277956
+    - rid: 8821244622252277933
+>>>>>>> origin/mari9feb
       type: {class: SetAnimationTriggerAction, ns: , asm: Assembly-CSharp}
       data:
         ID:
           m_Value0: 12524968995714031545
           m_Value1: 1568704062144619989
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091616
@@ -4145,24 +4529,44 @@ MonoBehaviour:
         Target:
           rid: 4246305377178091603
     - rid: 4246305377178091633
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277918
+        Trigger:
+          rid: 8821244622252277909
+        Target:
+          rid: 8821244622252277906
+    - rid: 8821244622252277934
+>>>>>>> origin/mari9feb
       type: {class: LogVariableToConsoleAction, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 9699919282998524070
           m_Value1: 18172968047437883276
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091616
         Variable:
           rid: 4246305377178091603
     - rid: 4246305377178091634
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277918
+        Variable:
+          rid: 8821244622252277906
+    - rid: 8821244622252277935
+>>>>>>> origin/mari9feb
       type: {class: NavigateToTargetAction, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 15975116396848919848
           m_Value1: 9334920300801098228
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091616
@@ -4179,12 +4583,31 @@ MonoBehaviour:
         SlowDownDistance:
           rid: 4246305377178091659
     - rid: 4246305377178091635
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277918
+        Agent:
+          rid: 8821244622252277905
+        Target:
+          rid: 8821244622252277906
+        Speed:
+          rid: 8821244622252277957
+        DistanceThreshold:
+          rid: 8821244622252277958
+        AnimatorSpeedParam:
+          rid: 8821244622252277959
+        SlowDownDistance:
+          rid: 8821244622252277960
+    - rid: 8821244622252277936
+>>>>>>> origin/mari9feb
       type: {class: SetVariableValueAction, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 1743700017893473778
           m_Value1: 4544559855872478987
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091616
@@ -4193,6 +4616,16 @@ MonoBehaviour:
         Value:
           rid: 4246305377178091660
     - rid: 4246305377178091636
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277918
+        Variable:
+          rid: 8821244622252277908
+        Value:
+          rid: 8821244622252277961
+    - rid: 8821244622252277937
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.String, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4200,7 +4633,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: SpeedParam
+<<<<<<< HEAD
     - rid: 4246305377178091637
+=======
+    - rid: 8821244622252277938
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4208,7 +4645,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: 0
+<<<<<<< HEAD
     - rid: 4246305377178091638
+=======
+    - rid: 8821244622252277939
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.Boolean, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4216,13 +4657,18 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: 1
+<<<<<<< HEAD
     - rid: 4246305377178091639
+=======
+    - rid: 8821244622252277940
+>>>>>>> origin/mari9feb
       type: {class: SequenceComposite, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 11344772897239841380
           m_Value1: 15348399489715448471
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091620
@@ -4230,6 +4676,15 @@ MonoBehaviour:
         - rid: 4246305377178091661
         - rid: 4246305377178091662
     - rid: 4246305377178091640
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277922
+        m_Children:
+        - rid: 8821244622252277962
+        - rid: 8821244622252277963
+    - rid: 8821244622252277941
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.Boolean, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4237,7 +4692,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: 0
+<<<<<<< HEAD
     - rid: 4246305377178091641
+=======
+    - rid: 8821244622252277942
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.String, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4245,7 +4704,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: SpeedParam
+<<<<<<< HEAD
     - rid: 4246305377178091642
+=======
+    - rid: 8821244622252277943
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4253,7 +4716,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: 1
+<<<<<<< HEAD
     - rid: 4246305377178091643
+=======
+    - rid: 8821244622252277944
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.String, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4261,7 +4728,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: PausePoint
+<<<<<<< HEAD
     - rid: 4246305377178091644
+=======
+    - rid: 8821244622252277945
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4269,7 +4740,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: 1
+<<<<<<< HEAD
     - rid: 4246305377178091645
+=======
+    - rid: 8821244622252277946
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4277,7 +4752,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: 0.2
+<<<<<<< HEAD
     - rid: 4246305377178091646
+=======
+    - rid: 8821244622252277947
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.String, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4285,7 +4764,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: SpeedParam
+<<<<<<< HEAD
     - rid: 4246305377178091647
+=======
+    - rid: 8821244622252277948
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4293,7 +4776,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: 1
+<<<<<<< HEAD
     - rid: 4246305377178091648
+=======
+    - rid: 8821244622252277949
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.String, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4301,7 +4788,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: SpeedParam
+<<<<<<< HEAD
     - rid: 4246305377178091649
+=======
+    - rid: 8821244622252277950
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4309,7 +4800,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: -1
+<<<<<<< HEAD
     - rid: 4246305377178091650
+=======
+    - rid: 8821244622252277951
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4317,7 +4812,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: 10
+<<<<<<< HEAD
     - rid: 4246305377178091651
+=======
+    - rid: 8821244622252277952
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[States, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4325,7 +4824,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: 0
+<<<<<<< HEAD
     - rid: 4246305377178091652
+=======
+    - rid: 8821244622252277953
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.Boolean, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4333,7 +4836,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: 0
+<<<<<<< HEAD
     - rid: 4246305377178091653
+=======
+    - rid: 8821244622252277954
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.String, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4341,7 +4848,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: SpeedParam
+<<<<<<< HEAD
     - rid: 4246305377178091654
+=======
+    - rid: 8821244622252277955
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4349,7 +4860,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: 1
+<<<<<<< HEAD
     - rid: 4246305377178091655
+=======
+    - rid: 8821244622252277956
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.String, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4357,7 +4872,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: NotSolvedTarget
+<<<<<<< HEAD
     - rid: 4246305377178091656
+=======
+    - rid: 8821244622252277957
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4365,7 +4884,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: 1
+<<<<<<< HEAD
     - rid: 4246305377178091657
+=======
+    - rid: 8821244622252277958
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4373,7 +4896,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: 0.2
+<<<<<<< HEAD
     - rid: 4246305377178091658
+=======
+    - rid: 8821244622252277959
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.String, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4381,7 +4908,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: SpeedParam
+<<<<<<< HEAD
     - rid: 4246305377178091659
+=======
+    - rid: 8821244622252277960
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.Single, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4389,7 +4920,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: 1
+<<<<<<< HEAD
     - rid: 4246305377178091660
+=======
+    - rid: 8821244622252277961
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[States, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4397,13 +4932,18 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: 1
+<<<<<<< HEAD
     - rid: 4246305377178091661
+=======
+    - rid: 8821244622252277962
+>>>>>>> origin/mari9feb
       type: {class: ConditionalGuardAction, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 11344772897239841380
           m_Value1: 15348399489715448471
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091639
@@ -4411,12 +4951,22 @@ MonoBehaviour:
         - rid: 4246305377178091663
         m_RequiresAllConditions: 0
     - rid: 4246305377178091662
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277940
+        m_Conditions:
+        - rid: 8821244622252277964
+        m_RequiresAllConditions: 0
+    - rid: 8821244622252277963
+>>>>>>> origin/mari9feb
       type: {class: SetVariableValueAction, ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         ID:
           m_Value0: 11574451375969277868
           m_Value1: 11295736395784167410
         Graph:
+<<<<<<< HEAD
           rid: 4246305377178091593
         m_Parent:
           rid: 4246305377178091639
@@ -4434,6 +4984,25 @@ MonoBehaviour:
         Tag:
           rid: 4246305377178091665
     - rid: 4246305377178091664
+=======
+          rid: 8821244622252277896
+        m_Parent:
+          rid: 8821244622252277940
+        Variable:
+          rid: 8821244622252277908
+        Value:
+          rid: 8821244622252277965
+    - rid: 8821244622252277964
+      type: {class: TagChangeCondition, ns: , asm: Assembly-CSharp}
+      data:
+        Graph:
+          rid: 8821244622252277896
+        Target:
+          rid: 8821244622252277906
+        Tag:
+          rid: 8821244622252277966
+    - rid: 8821244622252277965
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[States, Assembly-CSharp]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:
@@ -4441,7 +5010,11 @@ MonoBehaviour:
           m_Value1: 0
         Name: 
         m_Value: 0
+<<<<<<< HEAD
     - rid: 4246305377178091665
+=======
+    - rid: 8821244622252277966
+>>>>>>> origin/mari9feb
       type: {class: 'BlackboardVariable`1[[System.String, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
         GUID:

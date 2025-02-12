@@ -54,16 +54,16 @@ public class AchievementManager : MonoBehaviour {
         achievement.IncrementProgress(1);
         GameManager.Instance.UpdateScore(achievement.data.scoreIncrease);
 
-        
+
         if (achievement.IsComplete) {
             UIManager.Instance.ShowCompleteAchievementPopup(achievement);
             CheckAchievementCount();
         }
-        
+
     }
 
     public void CheckAchievementCount() {
-        if (achievementCount == AppManager.Instance.cardCount) {
+        if (achievements.TrueForAll(a => a.IsComplete)) {
             GameManager.Instance.VictoryScreen();
         }
     }

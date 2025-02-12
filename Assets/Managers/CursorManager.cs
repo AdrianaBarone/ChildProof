@@ -27,7 +27,7 @@ public class CursorManager : MonoBehaviour {
 
     public void ExplorationCursor() {
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.visible = false;
 
         UpdateExplorationCursor(defaultEXSprite);
     }
@@ -36,7 +36,7 @@ public class CursorManager : MonoBehaviour {
         Cursor.lockState = CursorLockMode.Confined;
         cursorImage.enabled = false;
 
-        Cursor.visible = true;
+        //Cursor.visible = true;
         Cursor.SetCursor(defaultInspectorCursor, hotSpot, cursorMode);
     }
 
@@ -48,14 +48,20 @@ public class CursorManager : MonoBehaviour {
     }
 
     public void PointingMoveable() {
+        //Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.SetCursor(movableHoverCursor, hotSpot, cursorMode);
     }
 
     public void PointingMoveableWithItem() {
+        //Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.SetCursor(movableWithItemCursor, hotSpot, cursorMode);
     }
 
     public void PointingDefault() {
+        //Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         Cursor.SetCursor(defaultInspectorCursor, hotSpot, cursorMode);
     }
 }

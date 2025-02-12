@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
@@ -57,7 +58,7 @@ public class UIManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (PauseCanvas.activeSelf) {
                 Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+                //Cursor.visible = false;
                 InventoryCanvas.SetActive(true);
                 CursorCanvas.SetActive(true);
                 PauseCanvas.SetActive(false);
@@ -66,7 +67,7 @@ public class UIManager : MonoBehaviour {
             }
             else if (Time.timeScale == 1) {
                 Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
+                //Cursor.visible = true;
                 InventoryCanvas.SetActive(false);
                 CursorCanvas.SetActive(false);
                 PauseCanvas.SetActive(true);
@@ -86,7 +87,7 @@ public class UIManager : MonoBehaviour {
     }
 
     public void ExitGame() {
-        // TODO: naviga al menu principale
+        SceneManager.LoadSceneAsync("MainMenu");
     }
 
     public void PauseGameTime() {

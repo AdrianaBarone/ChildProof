@@ -39,7 +39,6 @@ public class PlayerManager : MonoBehaviour {
                 break;
             case PlayerState.INSPECTION:
                 InventoryManager.Instance.ShowInventory();
-                CursorManager.Instance.InspectionCursor();
                 InventoryManager.Instance.HandleInventory();
                 playerInteraction.TryPickUp();
                 if (Input.GetKeyDown(KeyCode.Tab)) {
@@ -70,14 +69,18 @@ public class PlayerManager : MonoBehaviour {
     }
 
     public void TransitionToInspection(Inspectable inspectable) {
+        CursorManager.Instance.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
+        //Cursor.visible = true;
         state = PlayerState.INSPECTION;
         currentInspectable = inspectable;
         inspectable.RemoveObject();
     }
 
     public void TransitionToExploration() {
+        CursorManager.Instance.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
         state = PlayerState.EXPLORATION;
 
         if (currentInspectable != null)
@@ -99,6 +102,7 @@ public class PlayerManager : MonoBehaviour {
 
     public void PrepareTransition() {
         lastState = state;
+        Debug.Log("PrepareTransition: " + lastState);
         state = PlayerState.TRANSITION;
     }
 

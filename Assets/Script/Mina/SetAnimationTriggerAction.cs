@@ -4,12 +4,10 @@ using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
 
 [Serializable, GeneratePropertyBag]
 [NodeDescription(name: "Set Animation Trigger", story: "Set Animation [Trigger] from [Target]", category: "Action", id: "4fa82efa9e9127cd5e717b92118f8147")]
-public partial class SetAnimationTriggerAction : Action
-{
+public partial class SetAnimationTriggerAction : Action {
     // Dizionario che mappa i tag ai trigger dell'Animator
     private Dictionary<string, string> triggerMap = new Dictionary<string, string>
     {
@@ -37,23 +35,19 @@ public partial class SetAnimationTriggerAction : Action
     private string currentTarget;
     [SerializeReference] public BlackboardVariable<string> Trigger;
     [SerializeReference] public BlackboardVariable<GameObject> Target;
-    protected override Status OnStart()
-    {
+    protected override Status OnStart() {
         return Status.Running;
     }
 
-    protected override Status OnUpdate()
-    {
-        if (Trigger == null || Target == null)
-        {
+    protected override Status OnUpdate() {
+        if (Trigger == null || Target == null) {
             return Status.Failure;
         }
         Trigger.Value = triggerMap[Target.Value.name];
         return Status.Success;
     }
 
-    protected override void OnEnd()
-    {
+    protected override void OnEnd() {
     }
 }
 

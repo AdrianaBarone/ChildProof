@@ -86,13 +86,13 @@ public class GameManager : MonoBehaviour {
         Debug.Log("Game Over! Punteggio raggiunto: 0");
         //TODO: animazioni e suoni di sconfitta
         //TODO: cambio scena con parametro
-        SceneManager.LoadSceneAsync(3);
+        SceneManager.LoadSceneAsync("GameOver");
     }
 
     public void VictoryScreen() {
         Debug.Log("Hai vinto!");
         // TODO: animazioni e suoni di vittoria
         // TODO: cambio scena con parametro
-        SceneManager.LoadSceneAsync(3);
+        SceneManager.LoadSceneAsync("Win");
     }
 }

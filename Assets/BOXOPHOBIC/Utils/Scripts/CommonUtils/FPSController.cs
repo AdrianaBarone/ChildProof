@@ -4,11 +4,9 @@
 
 using UnityEngine;
 
-namespace Boxophobic.Utils
-{
+namespace Boxophobic.Utils {
     [RequireComponent(typeof(UnityEngine.CharacterController))]
-    public class FPSController : MonoBehaviour
-    {
+    public class FPSController : MonoBehaviour {
         public float walkingSpeed = 2.0f;
         public float lookSpeed = 2.0f;
         public float lookXLimit = 45.0f;
@@ -19,20 +17,17 @@ namespace Boxophobic.Utils
         UnityEngine.CharacterController characterController;
         float rotationX = 0;
 
-        void Start()
-        {
+        void Start() {
             characterController = GetComponent<UnityEngine.CharacterController>();
 
             Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            //Cursor.visible = false;
         }
 
-        void Update()
-        {
+        void Update() {
             var runSpeed = 1.0f;
 
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
+            if (Input.GetKey(KeyCode.LeftShift)) {
                 runSpeed = 3.0f;
             }
 
@@ -40,8 +35,7 @@ namespace Boxophobic.Utils
             Vector3 right = transform.TransformDirection(Vector3.right);
             Vector3 moveDirection = (forward * walkingSpeed * runSpeed * Input.GetAxis("Vertical")) + (right * walkingSpeed * runSpeed * Input.GetAxis("Horizontal"));
 
-            if (characterController.isGrounded == false)
-            {
+            if (characterController.isGrounded == false) {
                 moveDirection += Physics.gravity;
             }
 

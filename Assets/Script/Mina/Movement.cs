@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
-{
+public class Movement : MonoBehaviour {
     Rigidbody rb;
     Vector2 rawRotation;
     Vector2 rotation;
@@ -12,15 +11,15 @@ public class Movement : MonoBehaviour
     public float moveSpeed = 2f;
     public float jumpStrength = 5f;
 
-    void Start(){
+    void Start() {
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.visible = false;
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update(){
+    void Update() {
         Vector2 move = Vector2.zero;
-        int w,a,s,d;
+        int w, a, s, d;
         if (Input.GetKey("w")) w = 1; else w = 0;
         if (Input.GetKey("a")) a = 1; else a = 0;
         if (Input.GetKey("s")) s = 1; else s = 0;
@@ -33,19 +32,18 @@ public class Movement : MonoBehaviour
         rawRotation.x = Input.GetAxis("Mouse Y");
         rotation = Vector2.Lerp(rotation, rawRotation, Time.deltaTime * 10f);
         cam.transform.eulerAngles = new Vector3(0, rotation.y * lookSensitivity);
-        cam.transform.position = Vector3.Lerp(cam.transform.position, transform.position + new Vector3(0,1,0), 1f); //smooth cam
+        cam.transform.position = Vector3.Lerp(cam.transform.position, transform.position + new Vector3(0, 1, 0), 1f); //smooth cam
 
         transform.eulerAngles = new Vector2(0, rotation.y * lookSensitivity);
         Vector3 desiredVelocity = transform.TransformDirection(moveSpeed * new Vector3(move.x, 0, move.y));
         rb.linearVelocity = new Vector3(desiredVelocity.x * moveSpeed, rb.linearVelocity.y, desiredVelocity.z * moveSpeed);
-        
+
         if (Input.GetButtonDown("Jump")) Jump();
     }
 
-    void Jump(){
+    void Jump() {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, -transform.up, out hit, 1.2f))
-        {
+        if (Physics.Raycast(transform.position, -transform.up, out hit, 1.2f)) {
             rb.AddForce(transform.up * jumpStrength, ForceMode.Impulse);
         }
     }

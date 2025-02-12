@@ -32,7 +32,7 @@ public class AppManager : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.E) && PlayerManager.Instance.IsInStateExploration() || PlayerManager.Instance.InStatePhoneUp()) {
+        if (Input.GetKeyDown(KeyCode.E) && (PlayerManager.Instance.IsInStateExploration() || PlayerManager.Instance.InStatePhoneUp())) {
             ToggleSmartphone();
         }
     }

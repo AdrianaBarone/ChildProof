@@ -190,9 +190,12 @@ public class PlayerInteraction : MonoBehaviour {
         float elapsedTime = 0f;
         startPosition = playerCamera.transform.position;
         startRotation = playerCamera.transform.rotation;
+        Debug.Log("Start position: " + startPosition);
+        Debug.Log("Start rotation: " + startRotation);
 
 
         while (elapsedTime < transitionTime) {
+            Debug.Log("Elapsed time: " + elapsedTime);
             Vector3 newPosition = Vector3.Lerp(startPosition, fixedCamera.transform.position, elapsedTime / transitionTime);
             Quaternion newRotation = Quaternion.Slerp(startRotation, fixedCamera.transform.rotation, elapsedTime / transitionTime);
             playerCamera.transform.SetPositionAndRotation(newPosition, newRotation);

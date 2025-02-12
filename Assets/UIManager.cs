@@ -43,9 +43,10 @@ public class UIManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(KeyCode.P)) {
+        if (Input.GetKeyDown(KeyCode.Q)) {
             if (InfoArea.activeSelf) {
                 Time.timeScale = 1;
+                PlayerManager.Instance.TransitionToExploration();
                 animator.SetTrigger("HideInfo");
             }
         }
@@ -56,6 +57,7 @@ public class UIManager : MonoBehaviour {
     }
 
     public void ShowInfo(Item item) {
+        PlayerManager.Instance.PrepareTransition();
         var itemNameText = InfoArea.transform.Find("InfoPanel/NamePanel/Name").GetComponent<TMP_Text>();
         var itemDescriptionText = InfoArea.transform.Find("InfoPanel/DescriptionPanel/Description").GetComponent<TMP_Text>();
         var itemImage = InfoArea.transform.Find("InfoPanel/NamePanel/Image").GetComponent<Image>();

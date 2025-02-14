@@ -19,7 +19,6 @@ public class AnimationAutoStart : MonoBehaviour
         if (!hasStarted && firstState.normalizedTime >= 1)
         {
             hasStarted = true; 
-            //secondStarter.SetTrigger("activeSecondAnimation");
         }
     }
 }

@@ -34001,11 +34001,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SerializedVersion: 0
-  m_OverrideArea: 0
-  m_Area: 0
+  m_OverrideArea: 1
+  m_Area: 1
   m_OverrideGenerateLinks: 0
   m_GenerateLinks: 0
-  m_IgnoreFromBuild: 1
+  m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
 --- !u!1001 &1085177454
@@ -58125,7 +58125,7 @@ NavMeshAgent:
   m_Acceleration: 1
   avoidancePriority: 50
   m_AngularSpeed: 10
-  m_StoppingDistance: 0.5
+  m_StoppingDistance: 0.1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -72668,15 +72668,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 219315334209739491, guid: 40a1fe7488650a242b22731d1184f6ec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.013280001
+      value: -0.01175
       objectReference: {fileID: 0}
     - target: {fileID: 219315334209739491, guid: 40a1fe7488650a242b22731d1184f6ec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.00090000033
+      value: 0.01521
       objectReference: {fileID: 0}
     - target: {fileID: 219315334209739491, guid: 40a1fe7488650a242b22731d1184f6ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.012439998
+      value: -0.01458
       objectReference: {fileID: 0}
     - target: {fileID: 772902330942515922, guid: 40a1fe7488650a242b22731d1184f6ec, type: 3}
       propertyPath: m_Enabled
@@ -72757,6 +72757,10 @@ PrefabInstance:
     - target: {fileID: 3528555876734997782, guid: 40a1fe7488650a242b22731d1184f6ec, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1.533
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644160958224425881, guid: 40a1fe7488650a242b22731d1184f6ec, type: 3}
+      propertyPath: m_TagString
+      value: NotSolvedTarget
       objectReference: {fileID: 0}
     - target: {fileID: 6016108584511456897, guid: 40a1fe7488650a242b22731d1184f6ec, type: 3}
       propertyPath: m_Layer
@@ -75039,6 +75043,10 @@ PrefabInstance:
       propertyPath: 'audioClips.Array.data[0]'
       value: 
       objectReference: {fileID: 8300000, guid: cfac17015fccf7344b05737ed5bb3b96, type: 3}
+    - target: {fileID: 8772019404047518634, guid: 490f8b3fe52644c4890decb03d2ce361, type: 3}
+      propertyPath: m_TagString
+      value: NotSolvedTarget
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2045468232101488769, guid: 490f8b3fe52644c4890decb03d2ce361, type: 3}
     - {fileID: 2304760097562346022, guid: 490f8b3fe52644c4890decb03d2ce361, type: 3}

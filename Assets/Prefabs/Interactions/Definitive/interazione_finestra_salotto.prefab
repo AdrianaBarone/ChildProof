@@ -490,9 +490,6 @@ PrefabInstance:
       addedObject: {fileID: 4303105943571485543}
     - targetCorrespondingSourceObject: {fileID: 8382954157219507927, guid: 07d8a7179680efb4faa7cf0bff3cd1fb, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 714067239424074105}
-    - targetCorrespondingSourceObject: {fileID: 8382954157219507927, guid: 07d8a7179680efb4faa7cf0bff3cd1fb, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 8182033649025413501}
   m_SourcePrefab: {fileID: 100100000, guid: 07d8a7179680efb4faa7cf0bff3cd1fb, type: 3}
 --- !u!1 &3831007510809968116 stripped
@@ -543,26 +540,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.004062759, y: 0.005333558, z: 0.009036047}
   m_Center: {x: -0.000001020343, y: 0.00042641477, z: 0.004455852}
---- !u!114 &714067239424074105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3831007510809968116}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SerializedVersion: 0
-  m_OverrideArea: 1
-  m_Area: 0
-  m_OverrideGenerateLinks: 0
-  m_GenerateLinks: 0
-  m_IgnoreFromBuild: 1
-  m_ApplyToChildren: 1
-  m_AffectedAgents: ffffffff
 --- !u!114 &8182033649025413501
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -578,6 +555,7 @@ MonoBehaviour:
   achievementData: {fileID: 11400000, guid: 6ec451b0dab585e4391bce1bf91b48c2, type: 2}
   interactionCamera: {fileID: 9012883558039250549}
   objectsToDisable: []
+  objectToEnableOnRestore: []
   dropZones:
   - {fileID: 3091992340872461650}
   audioClips: []

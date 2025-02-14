@@ -6,6 +6,7 @@ public class Inspectable : MonoBehaviour {
     [SerializeField] AchievementData achievementData;
     [SerializeField] Camera interactionCamera;
     [SerializeField] GameObject[] objectsToDisable;
+    [SerializeField] GameObject[] objectToEnableOnRestore;
     private int interactionNumber;
     private int maxInteractionNumber;
     private bool canInteract = true;
@@ -49,15 +50,24 @@ public class Inspectable : MonoBehaviour {
     }
 
     public void RemoveObject() {
+
         foreach (var obj in objectsToDisable) {
             obj.SetActive(false);
         }
+
+        foreach (var obj in objectToEnableOnRestore) {
+            obj.SetActive(true);
+        }
     }
+
 
     public void RestoreObject() {
         if (!IsResolved()) {
             foreach (var obj in objectsToDisable) {
                 obj.SetActive(true);
+            }
+            foreach (var obj in objectToEnableOnRestore) {
+                obj.SetActive(false);
             }
         }
     }

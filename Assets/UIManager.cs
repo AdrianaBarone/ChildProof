@@ -16,12 +16,15 @@ public class UIManager : MonoBehaviour
 
     private Animator animator;
 
+    [Header("Suoni UI")]
+    public AudioClip InfoItem;
+    public AudioClip SbloccoAchivement;
+
     private void Awake()
     {
         Instance = this;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -36,6 +39,7 @@ public class UIManager : MonoBehaviour
         titleText.text = achievement.data.name;
 
         animator.SetTrigger("PopUp");
+        AudioManager.Instance.PlaySound(SbloccoAchivement);
     }
 
 
@@ -122,5 +126,6 @@ public class UIManager : MonoBehaviour
         itemImage.sprite = item.data.icon;
 
         animator.SetTrigger("ShowInfo");
+        AudioManager.Instance.PlaySound(InfoItem);
     }
 }

@@ -16,7 +16,7 @@ public class Inspectable : MonoBehaviour
 
     [Header("Audio Animazione")]
     public AudioClip[] audioClips;
-    private AudioSource[] audioSources;
+
 
 
     private void Awake()
@@ -25,27 +25,22 @@ public class Inspectable : MonoBehaviour
         interactionNumber = maxInteractionNumber;
     }
 
-    private void Start()
-    {
-        // Rimuove AudioSource esistenti per evitarne la duplicazione
-        foreach (var source in GetComponents<AudioSource>())
-        {
-            Destroy(source);
-        }
+    /*
+        private void Start() {
+            // Rimuove AudioSource esistenti per evitarne la duplicazione
+            foreach (var source in GetComponents<AudioSource>()) {
+                Destroy(source);
+            }
 
-        audioSources = new AudioSource[audioClips.Length];
+            audioSources = new AudioSource[audioClips.Length];
 
-        for (int i = 0; i < audioClips.Length; i++)
-        {
+        for (int i = 0; i < audioClips.Length; i++) {
             audioSources[i] = gameObject.AddComponent<AudioSource>();
             audioSources[i].clip = audioClips[i];
         }
 
-        if (audioClips.Length == 0)
-        {
-            Debug.LogWarning("Nessun audio clip assegnato.");
         }
-    }
+        */
 
     public bool IsResolved()
     {
@@ -95,7 +90,10 @@ public class Inspectable : MonoBehaviour
             canInteract = false;
             StartCoroutine(Debounce());
             GetComponent<Animator>().SetTrigger("isInteracting");
-            PlayAudioOnAnimation();
+            for (int i = 0; i < audioClips.Length; i++)
+            {
+                AudioManager.Instance.PlaySound(audioClips[i]);
+            }
         }
     }
 
@@ -126,17 +124,4 @@ public class Inspectable : MonoBehaviour
             PlayerManager.Instance.SetToExploration();
         }
     }
-
-    // AUDIO
-    public void PlayAudioOnAnimation()
-    {
-        foreach (var source in audioSources)
-        {
-            if (source.clip != null && !source.isPlaying)
-            {
-                source.Play();
-            }
-        }
-    }
-
 }

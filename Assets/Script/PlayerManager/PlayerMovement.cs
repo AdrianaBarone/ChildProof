@@ -10,18 +10,11 @@ public class PlayerMovement : MonoBehaviour {
     public float sensitivity;
     private float rotationX = 0;
 
-    [Header("Audio Passi")]
-    public AudioClip audioClip;
-    private AudioSource audioSource;
 
     void Start() {
         playerCamera = GetComponentInChildren<Camera>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
-
-        audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = audioClip;
-        audioSource.loop = true;
     }
 
     public void HandleRotation() {
@@ -42,18 +35,12 @@ public class PlayerMovement : MonoBehaviour {
         //rb.MovePosition(transform.position + playerMovement.normalized * speed * Time.fixedDeltaTime);
         rb.linearVelocity = playerMovement * speed;
 
-        if (playerMovement.magnitude > 0) {
-            if (!audioSource.isPlaying) {
-                audioSource.Play();
-            }
-        }
-        else {
-            audioSource.Stop();
-        }
+        bool isMoving = playerMovement.magnitude > 0;
+        AudioManager.Instance.PlayFootsteps(isMoving);
     }
 
     public void StopMovement() {
         rb.linearVelocity = Vector3.zero;
-        audioSource.Stop();
+        AudioManager.Instance.PlayFootsteps(false);
     }
 }

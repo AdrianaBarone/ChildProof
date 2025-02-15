@@ -29,6 +29,11 @@ public class AppManager : MonoBehaviour
 
     public GameObject[] panels;
 
+    [Header("Suoni Telefono")]
+    public AudioClip SbloccoTelefono;
+    public AudioClip BloccoTelefono;
+
+
     void Awake()
     {
         Instance = this;
@@ -51,11 +56,13 @@ public class AppManager : MonoBehaviour
         {
             // NOTE: Apre il telefono
             PlayerManager.Instance.SetToPhoneUp();
+            AudioManager.Instance.PlaySound(SbloccoTelefono);
         }
         else
         {
             // NOTE: Chiude il telefono
             PlayerManager.Instance.TransitionToExploration();
+            AudioManager.Instance.PlaySound(BloccoTelefono);
         }
 
     }
@@ -118,8 +125,6 @@ public class AppManager : MonoBehaviour
 
         panelHelp.Find("TextHelp").GetComponent<TMP_Text>().text = achievement.helpDescription;
         panelHelp.Find("ImageHelp").GetComponent<Image>().sprite = achievement.solutionImage;
-
-
     }
 
     public GameObject CreateAchievementCard(Achievement achievement)

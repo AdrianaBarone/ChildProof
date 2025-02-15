@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour
+{
     // Parametri movimento FPS
     public Camera playerCamera;
     Rigidbody rb;
@@ -11,13 +12,15 @@ public class PlayerMovement : MonoBehaviour {
     private float rotationX = 0;
 
 
-    void Start() {
+    void Start()
+    {
         playerCamera = GetComponentInChildren<Camera>();
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
     }
 
-    public void HandleRotation() {
+    public void HandleRotation()
+    {
         // Rotazione del mouse
         float mouseX = Input.GetAxis("Mouse X") * sensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
@@ -28,7 +31,8 @@ public class PlayerMovement : MonoBehaviour {
         transform.Rotate(Vector3.up * mouseX);
     }
 
-    public void HandleMovement() {
+    public void HandleMovement()
+    {
         // Movimento del giocatore
 
         Vector3 playerMovement = transform.right * Input.GetAxisRaw("Horizontal") + transform.forward * Input.GetAxisRaw("Vertical");
@@ -36,10 +40,11 @@ public class PlayerMovement : MonoBehaviour {
         rb.linearVelocity = playerMovement * speed;
 
         bool isMoving = playerMovement.magnitude > 0;
-        AudioManager.Instance.PlayFootsteps(isMoving);
+        // AudioManager.Instance.PlayFootsteps(isMoving);
     }
 
-    public void StopMovement() {
+    public void StopMovement()
+    {
         rb.linearVelocity = Vector3.zero;
         AudioManager.Instance.PlayFootsteps(false);
     }

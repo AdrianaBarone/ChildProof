@@ -7715,8 +7715,6 @@ MonoBehaviour:
   InventoryCanvas: {fileID: 2066271106}
   InfoItem: {fileID: 0}
   SbloccoAchivement: {fileID: 0}
-  SbloccoTelefono: {fileID: 0}
-  Tasti: {fileID: 0}
 --- !u!95 &265524484
 Animator:
   serializedVersion: 7
@@ -14938,7 +14936,6 @@ GameObject:
   m_Component:
   - component: {fileID: 467141827}
   - component: {fileID: 467141826}
-  - component: {fileID: 467141828}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -14978,29 +14975,6 @@ Transform:
   - {fileID: 464110648}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &467141828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 467141825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ee739d39c49e6d49969cc7893468742, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadeInDuration: 3
-  fadeOutDuration: 3
-  audioMixer: {fileID: 0}
-  snapshot1: {fileID: 0}
-  snapshot2: {fileID: 0}
-  snapshot3: {fileID: 0}
-  snapshot4: {fileID: 0}
-  passiClip: {fileID: 0}
-  cameraTransitionClip: {fileID: 0}
-  audioClipSafe: {fileID: 0}
-  audioClipDanger: {fileID: 0}
 --- !u!4 &468569076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1468928772869660300, guid: 75121dee3397cf042ab5e8125a935eef, type: 3}
@@ -65562,6 +65536,7 @@ MonoBehaviour:
   ItemSelected: {fileID: 0}
   selectedItemParent: {fileID: 1291810819}
   itemCamera: {fileID: 968004417}
+  isItemSelected: 0
 --- !u!114 &2066271109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68635,6 +68610,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1226236888}
     m_Modifications:
+    - target: {fileID: 4050416965733425897, guid: 28977480e5635c442857a81465f347bb, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 6736354180858709347, guid: 840bc738aef27504ebe1345af61f7761, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -68650,10 +68629,6 @@ PrefabInstance:
     - target: {fileID: 8544972692960748337, guid: 840bc738aef27504ebe1345af61f7761, type: 3}
       propertyPath: m_Name
       value: CopriPresa
-      objectReference: {fileID: 0}
-    - target: {fileID: 4050416965733425897, guid: 28977480e5635c442857a81465f347bb, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -69248,6 +69223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3be53bf034e3c414babb20341e05dbff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstStarter: {fileID: 0}
+  secondStarter: {fileID: 0}
 --- !u!4 &2971764736103221947 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 302627449141111550, guid: 8596381b4a937b54384a11e1a503835e, type: 3}

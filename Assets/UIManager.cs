@@ -18,8 +18,6 @@ public class UIManager : MonoBehaviour {
     [Header("Suoni UI")]
     public AudioClip InfoItem;
     public AudioClip SbloccoAchivement;
-    public AudioClip SbloccoTelefono;
-    public AudioClip Tasti;
 
     private void Awake() {
         Instance = this;
@@ -36,8 +34,8 @@ public class UIManager : MonoBehaviour {
         descriptionText.text = "Nuovo Achievement Sbloccato!";
         titleText.text = achievement.data.name;
 
-
         animator.SetTrigger("PopUp");
+        AudioManager.Instance.PlaySound(SbloccoAchivement);
     }
 
     /*
@@ -111,5 +109,6 @@ public class UIManager : MonoBehaviour {
         itemImage.sprite = item.data.icon;
 
         animator.SetTrigger("ShowInfo");
+        AudioManager.Instance.PlaySound(InfoItem);
     }
 }

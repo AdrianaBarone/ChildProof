@@ -41,28 +41,24 @@ public class AudioManager : MonoBehaviour {
     private void Start() {
         passiSource = CreateAudioSource(passiClip, true);
         cameraAudioSource = CreateAudioSource(cameraTransitionClip, false);
-        audioSafeSource = CreateAudioSource(audioClipSafe,true);
-        audioDangerSource = CreateAudioSource(audioClipDanger,true);
+        audioSafeSource = CreateAudioSource(audioClipSafe, true);
+        audioDangerSource = CreateAudioSource(audioClipDanger, true);
     }
 
     private AudioSource CreateAudioSource(AudioClip audioClip, bool loop) {
-        AudioSource source = GetAvailableAudioSource(audioClip);
-
-        source.clip = audioClip;
-        source.loop = loop;
-        return source;
-    }
-
-    private AudioSource GetAvailableAudioSource(AudioClip clip) {
         foreach (var source in audioSources) {
-            if (source.clip == clip) {
+            if (source.clip == audioClip) {
                 return source;
             }
         }
 
         AudioSource newSource = gameObject.AddComponent<AudioSource>();
+        newSource.clip = audioClip;
+        newSource.loop = loop;
         newSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Master")[0];
+
         audioSources.Add(newSource);
+
         return newSource;
     }
 
@@ -89,12 +85,12 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void PlaySound(AudioClip audioClip) {
-        AudioSource audioSource = GetAvailableAudioSource(audioClip);
+        AudioSource audioSource = CreateAudioSource(audioClip, false);
         audioSource.Play();
     }
 
     public void StopSound(AudioClip audioClip) {
-        AudioSource audioSource = GetAvailableAudioSource(audioClip);
+        AudioSource audioSource = CreateAudioSource(audioClip, false);
         audioSource.Stop();
     }
 
@@ -108,7 +104,7 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void StopAudioWithFadeOut(bool InDangerMode) {
-        if (!InDangerMode){
+        if (!InDangerMode) {
             if (audioDangerSource.isPlaying) {
                 StartCoroutine(FadeOutAudio(audioDangerSource, audioClipDanger));
             }

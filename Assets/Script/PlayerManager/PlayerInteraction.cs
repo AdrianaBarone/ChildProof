@@ -27,27 +27,6 @@ public class PlayerInteraction : MonoBehaviour {
     [SerializeField] private Sprite interactSprite;
     [SerializeField] private Sprite grabbableSprite;
 
-
-    [Header("Audio cambio camera")]
-    //AUDIO
-    private AudioSource audioSource;
-    public AudioClip audioClip;
-
-    void Start() {
-        //AUDIO
-        audioSource = GetComponent<AudioSource>();
-        if (audioSource == null) {
-            audioSource = gameObject.AddComponent<AudioSource>();
-        }
-
-        if (audioClip != null) {
-            audioSource.clip = audioClip;
-        }
-        else {
-            Debug.LogWarning("Nessun audio clip assegnato a " + gameObject.name);
-        }
-    }
-
     public void RaycastForInspectable() {
         Ray ray = new(playerCamera.transform.position, playerCamera.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * distance, Color.red); // Visualizza il raycast in scena
@@ -184,7 +163,7 @@ public class PlayerInteraction : MonoBehaviour {
         Camera fixedCamera = inspectable.GetCamera();
 
         //AUDIO
-        audioSource.Play();
+        AudioManager.Instance.PlayCameraTransitionSound();
 
         // Interpolazione per il movimento graduale della fotocamera
         float elapsedTime = 0f;
@@ -213,7 +192,7 @@ public class PlayerInteraction : MonoBehaviour {
         playerCamera.gameObject.SetActive(false);
 
         //AUDIO
-        audioSource.Stop();
+        AudioManager.Instance.StopCameraTransitionSound();
 
         PlayerManager.Instance.TransitionToInspection(inspectable);
     }
@@ -223,7 +202,7 @@ public class PlayerInteraction : MonoBehaviour {
         Camera fixedCamera = PlayerManager.Instance.GetInspectableCamera();
 
         //AUDIO
-        audioSource.Play();
+        AudioManager.Instance.PlayCameraTransitionSound();
 
         // Interpolazione per il movimento graduale della fotocamera
         float elapsedTime = 0f;
@@ -245,7 +224,7 @@ public class PlayerInteraction : MonoBehaviour {
         playerCamera.transform.SetPositionAndRotation(targetPosition, targetRotation);
 
         //AUDIO
-        audioSource.Stop();
+        AudioManager.Instance.StopCameraTransitionSound();
 
         PlayerManager.Instance.TransitionToExploration();
     }

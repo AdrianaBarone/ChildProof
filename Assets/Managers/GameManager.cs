@@ -14,10 +14,6 @@ public class GameManager : MonoBehaviour {
     public float PointDecreaseRate = 1f;
     public int HelpPricePercent = 50;
 
-    [Header("Audio SoundTrack")]
-    public AudioClip audioClipSafe;
-    public AudioClip audioClipDanger;
-
 
     private void Awake() {
         if (Instance == null) {
@@ -27,14 +23,16 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start() {
-        AudioManager.Instance.PlayAudioWithFadeIn(audioClipSafe);
+        InDangerMode = false;
+        AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
     }
 
     public void StartDangerModeForInspectable(Inspectable inspectable) {
-        AudioManager.Instance.PlayAudioWithFadeIn(audioClipDanger);
-        AudioManager.Instance.StopAudioWithFadeOut(audioClipSafe);
-
         InDangerMode = true;
+
+        AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
+        AudioManager.Instance.StopAudioWithFadeOut(InDangerMode);
+
         currentDangerInspectable = inspectable;
         // TODO: animazioni e suoni di attivazione
         AppManager.Instance.EnableHelpBuyPanel(currentDangerInspectable);
@@ -42,10 +40,11 @@ public class GameManager : MonoBehaviour {
     }
 
     public void EndDangerMode() {
-        AudioManager.Instance.PlayAudioWithFadeIn(audioClipSafe);
-        AudioManager.Instance.StopAudioWithFadeOut(audioClipDanger);
-
         InDangerMode = false;
+        
+        AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
+        AudioManager.Instance.StopAudioWithFadeOut(InDangerMode);
+
         currentDangerInspectable = null;
         AppManager.Instance.DisableHelpBuyPanel();
         if (timerCoroutine != null) {

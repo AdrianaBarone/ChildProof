@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
-public class AudioManager : MonoBehaviour
-{
+public class AudioManager : MonoBehaviour {
     public static AudioManager Instance;
 
     private List<AudioSource> audioSources = new List<AudioSource>();
@@ -11,61 +11,136 @@ public class AudioManager : MonoBehaviour
     public float fadeInDuration = 3f;
     public float fadeOutDuration = 3f;
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
+    [Header("Info Mixer Audio")]
+    public AudioMixer audioMixer;
+    public AudioMixerSnapshot snapshot1;
+    public AudioMixerSnapshot snapshot2;
+    public AudioMixerSnapshot snapshot3;
+    public AudioMixerSnapshot snapshot4;
+
+    [Header("Suoni Giocatore")]
+    public AudioClip passiClip;
+    private AudioSource passiSource;
+
+
+    [Header("Audio cambio camera")]
+    public AudioClip cameraTransitionClip;
+    private AudioSource cameraAudioSource;
+
+
+    [Header("Audio SoundTrack")]
+    public AudioClip audioClipSafe;
+    public AudioClip audioClipDanger;
+    private AudioSource audioSafeSource;
+    private AudioSource audioDangerSource;
+
+    private void Awake() {
+        Instance = this;
     }
 
-    public void PlayAudioWithFadeIn(AudioClip clip)
-    {
-        if (clip != null)
-        {
-            AudioSource availableSource = GetAvailableAudioSource();
-            if (availableSource != null)
-            {
-                StartCoroutine(FadeInAudio(availableSource, clip));
-            }
-            else
-            {
-                AudioSource newSource = gameObject.AddComponent<AudioSource>();
-                audioSources.Add(newSource);
-                StartCoroutine(FadeInAudio(newSource, clip));
-            }
-        }
-        else
-        {
-            Debug.LogWarning("AudioClip non assegnato.");
-        }
+    private void Start() {
+        passiSource = CreateAudioSource(passiClip, true);
+        cameraAudioSource = CreateAudioSource(cameraTransitionClip, false);
+        audioSafeSource = CreateAudioSource(audioClipSafe,true);
+        audioDangerSource = CreateAudioSource(audioClipDanger,true);
     }
 
-    private AudioSource GetAvailableAudioSource()
-    {
-        foreach (var source in audioSources)
-        {
-            if (!source.isPlaying) 
-            {
+    private AudioSource CreateAudioSource(AudioClip audioClip, bool loop) {
+        AudioSource source = GetAvailableAudioSource(audioClip);
+
+        source.clip = audioClip;
+        source.loop = loop;
+        return source;
+    }
+
+    private AudioSource GetAvailableAudioSource(AudioClip clip) {
+        foreach (var source in audioSources) {
+            if (source.clip == clip) {
                 return source;
             }
         }
-        return null;
+
+        AudioSource newSource = gameObject.AddComponent<AudioSource>();
+        newSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Master")[0];
+        audioSources.Add(newSource);
+        return newSource;
     }
 
-    public void StopAudioWithFadeOut(AudioClip clip)
-    {
-        foreach (var source in audioSources)
-        {
-            if (source.isPlaying && source.clip == clip)
-            {
-                StartCoroutine(FadeOutAudio(source, clip));
+
+    public void PlayFootsteps(bool isMoving) {
+        if (isMoving && !passiSource.isPlaying) {
+            passiSource.Play();
+        }
+        else if (!isMoving && passiSource.isPlaying) {
+            passiSource.Stop();
+        }
+    }
+
+    public void PlayCameraTransitionSound() {
+        if (cameraTransitionClip != null) {
+            cameraAudioSource.Play();
+        }
+    }
+
+    public void StopCameraTransitionSound() {
+        if (cameraAudioSource.isPlaying) {
+            cameraAudioSource.Stop();
+        }
+    }
+
+    public void PlaySound(AudioClip audioClip) {
+        AudioSource audioSource = GetAvailableAudioSource(audioClip);
+        audioSource.Play();
+    }
+
+    public void StopSound(AudioClip audioClip) {
+        AudioSource audioSource = GetAvailableAudioSource(audioClip);
+        audioSource.Stop();
+    }
+
+    public void PlayAudioWithFadeIn(bool InDangerMode) {
+        if (!InDangerMode) {
+            StartCoroutine(FadeInAudio(audioSafeSource, audioClipSafe));
+        }
+        else if (InDangerMode) {
+            StartCoroutine(FadeInAudio(audioDangerSource, audioClipDanger));
+        }
+    }
+
+    public void StopAudioWithFadeOut(bool InDangerMode) {
+        if (!InDangerMode){
+            if (audioDangerSource.isPlaying) {
+                StartCoroutine(FadeOutAudio(audioDangerSource, audioClipDanger));
+            }
+        }
+        else if (InDangerMode) {
+            if (audioDangerSource.isPlaying) {
+                StartCoroutine(FadeOutAudio(audioSafeSource, audioClipSafe));
             }
         }
     }
 
-    private IEnumerator FadeInAudio(AudioSource audioSource, AudioClip clip)
-    {
+    public void ChangeToSnapshot(int snapshotIndex, float transitionTime) {
+        switch (snapshotIndex) {
+            case 1:
+                snapshot1.TransitionTo(transitionTime);
+                break;
+            case 2:
+                snapshot2.TransitionTo(transitionTime);
+                break;
+            case 3:
+                snapshot3.TransitionTo(transitionTime);
+                break;
+            case 4:
+                snapshot4.TransitionTo(transitionTime);
+                break;
+            default:
+                Debug.LogWarning("Snapshot index non valido.");
+                break;
+        }
+    }
+
+    private IEnumerator FadeInAudio(AudioSource audioSource, AudioClip clip) {
         audioSource.clip = clip;
         audioSource.volume = 0f;
         audioSource.loop = true;
@@ -73,8 +148,7 @@ public class AudioManager : MonoBehaviour
 
         float timeElapsed = 0f;
 
-        while (timeElapsed < fadeInDuration)
-        {
+        while (timeElapsed < fadeInDuration) {
             audioSource.volume = Mathf.Lerp(0f, 1f, timeElapsed / fadeInDuration);
             timeElapsed += Time.deltaTime;
             yield return null;
@@ -83,17 +157,14 @@ public class AudioManager : MonoBehaviour
         audioSource.volume = 1f;
     }
 
-    private IEnumerator FadeOutAudio(AudioSource audioSource, AudioClip clip)
-    {
-        if (audioSource.clip != clip)
-        {
+    private IEnumerator FadeOutAudio(AudioSource audioSource, AudioClip clip) {
+        if (audioSource.clip != clip) {
             yield break;
         }
 
         float timeElapsed = 0f;
 
-        while (timeElapsed < fadeOutDuration)
-        {
+        while (timeElapsed < fadeOutDuration) {
             audioSource.volume = Mathf.Lerp(1f, 0f, timeElapsed / fadeOutDuration);
             timeElapsed += Time.deltaTime;
             yield return null;
@@ -102,4 +173,5 @@ public class AudioManager : MonoBehaviour
         audioSource.Stop();
         audioSource.volume = 0f;
     }
+
 }

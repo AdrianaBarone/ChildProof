@@ -15,11 +15,16 @@ public class UIManager : MonoBehaviour {
 
     private Animator animator;
 
+    [Header("Suoni UI")]
+    public AudioClip InfoItem;
+    public AudioClip SbloccoAchivement;
+    public AudioClip SbloccoTelefono;
+    public AudioClip Tasti;
+
     private void Awake() {
         Instance = this;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() {
         animator = GetComponent<Animator>();
     }
@@ -31,10 +36,11 @@ public class UIManager : MonoBehaviour {
         descriptionText.text = "Nuovo Achievement Sbloccato!";
         titleText.text = achievement.data.name;
 
+
         animator.SetTrigger("PopUp");
     }
 
-
+    /*
     public void ShowCompleteAchievementPopup(Achievement achievement) {
         var titleText = PopUpCanvas.transform.Find("PanelPopUp/titleText").GetComponent<TMP_Text>();
         var descriptionText = PopUpCanvas.transform.Find("PanelPopUp/descriptionText").GetComponent<TMP_Text>();
@@ -44,8 +50,8 @@ public class UIManager : MonoBehaviour {
 
         animator.SetTrigger("PopUp");
     }
+    */
 
-    // Update is called once per frame
     void Update() {
         if (Input.GetKeyDown(KeyCode.Q)) {
             if (InfoArea.activeSelf) {

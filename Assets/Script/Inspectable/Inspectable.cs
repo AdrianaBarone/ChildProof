@@ -35,10 +35,7 @@ public class Inspectable : MonoBehaviour {
             audioSources[i] = gameObject.AddComponent<AudioSource>();
             audioSources[i].clip = audioClips[i];
         }
-
-        if (audioClips.Length == 0) {
-            Debug.LogWarning("Nessun audio clip assegnato.");
-        }
+        
     }
 
     public bool IsResolved() {
@@ -111,6 +108,7 @@ public class Inspectable : MonoBehaviour {
         foreach (var source in audioSources) {
             if (source.clip != null && !source.isPlaying) {
                 source.Play();
+                //TO DO: COLLEGAMENTO SNAPSHOT
             }
         }
     }

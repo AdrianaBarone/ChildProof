@@ -8375,6 +8375,10 @@ MonoBehaviour:
   CursorCanvas: {fileID: 1201069484}
   InfoArea: {fileID: 1034568904}
   InventoryCanvas: {fileID: 2066271106}
+  InfoItem: {fileID: 0}
+  SbloccoAchivement: {fileID: 0}
+  SbloccoTelefono: {fileID: 0}
+  Tasti: {fileID: 0}
 --- !u!95 &265524484
 Animator:
   serializedVersion: 7
@@ -15902,8 +15906,6 @@ MonoBehaviour:
   PointDecreasePercent: 5
   PointDecreaseRate: 1
   HelpPricePercent: 50
-  audioClipSafe: {fileID: 0}
-  audioClipDanger: {fileID: 8300000, guid: 48e7a2be9ca295c409c87a17dc2e862a, type: 3}
 --- !u!4 &467141827
 Transform:
   m_ObjectHideFlags: 0
@@ -15934,6 +15936,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeInDuration: 3
   fadeOutDuration: 3
+  audioMixer: {fileID: 0}
+  snapshot1: {fileID: 0}
+  snapshot2: {fileID: 0}
+  snapshot3: {fileID: 0}
+  snapshot4: {fileID: 0}
+  passiClip: {fileID: 0}
+  cameraTransitionClip: {fileID: 0}
+  audioClipSafe: {fileID: 0}
+  audioClipDanger: {fileID: 0}
 --- !u!4 &468569076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1468928772869660300, guid: 75121dee3397cf042ab5e8125a935eef, type: 3}

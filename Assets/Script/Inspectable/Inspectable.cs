@@ -14,8 +14,8 @@ public class Inspectable : MonoBehaviour {
 
 
     [Header("Audio Animazione")]
-    public AudioClip[] audioClips;
-    private AudioSource[] audioSources;
+    private AudioClip[] audioClips;
+    public AudioSource[] audioSources;
 
 
     private void Awake() {

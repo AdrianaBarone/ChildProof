@@ -71,6 +71,7 @@ public class UIManager : MonoBehaviour {
                 InventoryCanvas.SetActive(false);
                 CursorCanvas.SetActive(false);
                 PauseCanvas.SetActive(true);
+                Debug.Log("Pause");
                 Time.timeScale = 0;
                 PlayerManager.Instance.PrepareTransition();
             }
@@ -91,6 +92,7 @@ public class UIManager : MonoBehaviour {
     }
 
     public void PauseGameTime() {
+        Debug.Log("PauseGameTime");
         Time.timeScale = 0;
     }
 

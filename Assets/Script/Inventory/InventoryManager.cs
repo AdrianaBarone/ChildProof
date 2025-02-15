@@ -1,13 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
-using Unity.VisualScripting;
-using UnityEngine.InputSystem;
+
 
 public class InventoryManager : MonoBehaviour {
     public static InventoryManager Instance;
-    public Dictionary<string, InventoryItem> Items = new();
+    public Dictionary<string, Item> Items = new();
     public Transform ItemContent;
     private GameObject moveableItem;
     public GameObject ItemSelected;
@@ -41,13 +39,7 @@ public class InventoryManager : MonoBehaviour {
 
 
             if (Input.GetMouseButtonDown(0)) {
-
-                if (PlayerManager.Instance.playerInteraction.TryDragAndDrop(itemData)) {
-                    if (!moveableItem) {
-                        Remove(ItemSelected.GetComponent<Item>());
-                    }
-                }
-
+                PlayerManager.Instance.playerInteraction.TryDragAndDrop(itemData);
                 ClearSelection();
             }
 
@@ -55,25 +47,9 @@ public class InventoryManager : MonoBehaviour {
     }
 
     public void Add(Item item) {
-        if (Items.ContainsKey(item.data.name)) {
-            Items[item.data.name].quantity += 1;
-        }
-        else {
-            Items.Add(item.data.name, new InventoryItem { item = item, quantity = 1 });
-            UIManager.Instance.ShowInfo(item);
-        }
+        Items.Add(item.data.name, item);
+        UIManager.Instance.ShowInfo(item);
         ListItems();
-    }
-
-    public void Remove(Item item) {
-        if (Items.ContainsKey(item.data.name)) {
-            Items[item.data.name].quantity -= 1;
-            if (Items[item.data.name].quantity <= 0) {
-                Items.Remove(item.data.name);
-            }
-        }
-        ListItems();
-
     }
 
     public void SelectItemFromInventorySlot(int index) {
@@ -83,9 +59,9 @@ public class InventoryManager : MonoBehaviour {
             for (int i = 0; i <= index; i++) {
                 enumerator.MoveNext();
             }
-            InventoryItem entry = enumerator.Current;
+            Item entry = enumerator.Current;
 
-            CreateSelectedItem(entry.item.gameObject);
+            CreateSelectedItem(entry.gameObject);
         }
     }
 
@@ -130,23 +106,15 @@ public class InventoryManager : MonoBehaviour {
         for (int i = 0; i < ItemContent.childCount; i++) {
             Transform obj = ItemContent.GetChild(i);
             var ItemIcon = obj.transform.Find("Border/ItemIcon").GetComponent<Image>();
-            var ItemQuantity = obj.transform.Find("Border/ItemQuantity").GetComponent<Text>();
 
             if (enumerator.MoveNext()) {
-                InventoryItem entry = enumerator.Current;
-                ItemIcon.sprite = entry.item.data.icon;
-                ItemQuantity.text = "x" + entry.quantity.ToString();
+                Item entry = enumerator.Current;
+                ItemIcon.sprite = entry.data.icon;
             }
             else {
                 // Slot vuoto
                 ItemIcon.sprite = null;
-                ItemQuantity.text = "";
             }
         }
     }
-}
-
-public class InventoryItem {
-    public Item item;
-    public int quantity;
 }

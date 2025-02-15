@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start() {
+        // NOTE: non ha senso ma funziona, quindi non toccare
+        Time.timeScale = 1;
         AudioManager.Instance.PlayAudioWithFadeIn(audioClipSafe);
     }
 

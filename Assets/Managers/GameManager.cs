@@ -2,7 +2,8 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
     public bool InDangerMode { get; private set; }
     public Inspectable currentDangerInspectable;
     public static GameManager Instance { get; private set; }
@@ -19,20 +20,24 @@ public class GameManager : MonoBehaviour {
     public AudioClip audioClipDanger;
 
 
-    private void Awake() {
-        if (Instance == null) {
+    private void Awake()
+    {
+        if (Instance == null)
+        {
             Instance = this;
         }
         score = 0;
     }
 
-    private void Start() {
+    private void Start()
+    {
         // NOTE: non ha senso ma funziona, quindi non toccare
         Time.timeScale = 1;
         AudioManager.Instance.PlayAudioWithFadeIn(audioClipSafe);
     }
 
-    public void StartDangerModeForInspectable(Inspectable inspectable) {
+    public void StartDangerModeForInspectable(Inspectable inspectable)
+    {
         AudioManager.Instance.PlayAudioWithFadeIn(audioClipDanger);
         AudioManager.Instance.StopAudioWithFadeOut(audioClipSafe);
 
@@ -43,56 +48,64 @@ public class GameManager : MonoBehaviour {
         timerCoroutine = StartCoroutine(LosePointsCoroutine());
     }
 
-    public void EndDangerMode() {
+    public void EndDangerMode()
+    {
         AudioManager.Instance.PlayAudioWithFadeIn(audioClipSafe);
         AudioManager.Instance.StopAudioWithFadeOut(audioClipDanger);
 
         InDangerMode = false;
         currentDangerInspectable = null;
         AppManager.Instance.DisableHelpBuyPanel();
-        if (timerCoroutine != null) {
+        if (timerCoroutine != null)
+        {
             StopCoroutine(timerCoroutine);
         }
     }
 
-    IEnumerator LosePointsCoroutine() {
-        while (true) {
+    IEnumerator LosePointsCoroutine()
+    {
+        while (true)
+        {
             int scoreDecrease = currentDangerInspectable.GetAchievementData().scoreIncrease * PointDecreasePercent / 100;
 
             DecreaseScore(scoreDecrease);
             // TODO: animazioni e suoni periodici? collegamentu UI
-            Debug.Log(score);
             yield return new WaitForSeconds(PointDecreaseRate);
         }
     }
 
-    public void UpdateScore(int value) {
-        if (value > 0) {
+    public void UpdateScore(int value)
+    {
+        if (value > 0)
+        {
             score += value;
             Debug.Log($"Score Updated: {score}");
         }
-        else {
+        else
+        {
             Debug.LogWarning("UpdateScore accetta solo valori positivi.");
         }
     }
 
-    public void DecreaseScore(int value) {
+    public void DecreaseScore(int value)
+    {
         score -= value;
 
-        if (score <= 0) {
+        if (score <= 0)
+        {
             GameOver();
         }
     }
 
-    private void GameOver() {
-        Debug.Log("Game Over! Punteggio raggiunto: 0");
+    private void GameOver()
+    {
         //TODO: animazioni e suoni di sconfitta
         //TODO: cambio scena con parametro
         SceneManager.LoadSceneAsync("GameOver");
     }
 
-    public void VictoryScreen() {
-        Debug.Log("Hai vinto!");
+    public void VictoryScreen()
+    {
         // TODO: animazioni e suoni di vittoria
         // TODO: cambio scena con parametro
         SceneManager.LoadSceneAsync("Win");

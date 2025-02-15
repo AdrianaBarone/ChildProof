@@ -6,7 +6,7 @@ public class findCollider : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -16,6 +16,6 @@ public class findCollider : MonoBehaviour
 
     void OnTriggerEnter(Collider triggerCollider)
     {
-        Debug.Log(gameObject.name);
+        // Debug.Log(gameObject.name);
     }
 }

@@ -1,14 +1,16 @@
 using System.Collections;
 using UnityEngine;
 
-public enum PlayerState {
+public enum PlayerState
+{
     EXPLORATION,
     INSPECTION,
     PHONE_UP,
     TRANSITION, // NOTE: stato dummy, per bloccare le interazioni durante le transizioni
 }
 
-public class PlayerManager : MonoBehaviour {
+public class PlayerManager : MonoBehaviour
+{
     public static PlayerManager Instance;
     private PlayerState state = PlayerState.EXPLORATION;
     private PlayerState lastState = PlayerState.EXPLORATION;
@@ -18,19 +20,23 @@ public class PlayerManager : MonoBehaviour {
     public PlayerInteraction playerInteraction;
     private PlayerMovement playerMovement;
 
-    void Awake() {
+    void Awake()
+    {
         Instance = this;
 
         playerInteraction = GetComponent<PlayerInteraction>();
         playerMovement = GetComponent<PlayerMovement>();
     }
 
-    void Start() {
+    void Start()
+    {
         CursorManager.Instance.ExplorationCursor();
     }
 
-    void Update() {
-        switch (state) {
+    void Update()
+    {
+        switch (state)
+        {
             case PlayerState.EXPLORATION:
                 InventoryManager.Instance.ShowInventory();
                 CursorManager.Instance.ExplorationCursor();
@@ -41,7 +47,8 @@ public class PlayerManager : MonoBehaviour {
                 InventoryManager.Instance.ShowInventory();
                 InventoryManager.Instance.HandleInventory();
                 playerInteraction.TryPickUp();
-                if (Input.GetKeyDown(KeyCode.Tab)) {
+                if (Input.GetKeyDown(KeyCode.Tab))
+                {
                     InventoryManager.Instance.ClearSelection();
                     SetToExploration();
                 }
@@ -56,8 +63,10 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
-    void FixedUpdate() {
-        switch (state) {
+    void FixedUpdate()
+    {
+        switch (state)
+        {
             case PlayerState.EXPLORATION:
                 playerMovement.HandleMovement();
                 break;
@@ -68,7 +77,8 @@ public class PlayerManager : MonoBehaviour {
         }
     }
 
-    public void TransitionToInspection(Inspectable inspectable) {
+    public void TransitionToInspection(Inspectable inspectable)
+    {
         CursorManager.Instance.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.None;
         //Cursor.visible = true;
@@ -77,7 +87,8 @@ public class PlayerManager : MonoBehaviour {
         inspectable.RemoveObject();
     }
 
-    public void TransitionToExploration() {
+    public void TransitionToExploration()
+    {
         CursorManager.Instance.gameObject.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
@@ -88,37 +99,44 @@ public class PlayerManager : MonoBehaviour {
         currentInspectable = null;
     }
 
-    public Camera GetInspectableCamera() {
+    public Camera GetInspectableCamera()
+    {
         return currentInspectable.GetCamera();
     }
 
-    public void SetToExploration() {
+    public void SetToExploration()
+    {
         playerInteraction.EndInteractionExternal();
     }
 
-    public void SetToPhoneUp() {
+    public void SetToPhoneUp()
+    {
         state = PlayerState.PHONE_UP;
     }
 
-    public void PrepareTransition() {
+    public void PrepareTransition()
+    {
         lastState = state;
-        Debug.Log("PrepareTransition: " + lastState);
         state = PlayerState.TRANSITION;
     }
 
-    public void ReturnToPreviousState() {
+    public void ReturnToPreviousState()
+    {
         state = lastState;
     }
 
-    public bool InStateInspection() {
+    public bool InStateInspection()
+    {
         return state == PlayerState.INSPECTION;
     }
 
-    public bool InStatePhoneUp() {
+    public bool InStatePhoneUp()
+    {
         return state == PlayerState.PHONE_UP;
     }
 
-    public bool IsInStateExploration() {
+    public bool IsInStateExploration()
+    {
         return state == PlayerState.EXPLORATION;
     }
 }

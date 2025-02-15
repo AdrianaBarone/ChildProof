@@ -3,13 +3,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class PlayerInteraction : MonoBehaviour {
+public class PlayerInteraction : MonoBehaviour
+{
 
     // Parametri per il controllo visibilità
     [SerializeField] private float distance = 2f;
     [SerializeField] private LayerMask allLayerMask;
     [SerializeField] private LayerMask dropZoneLayerMask;
     [SerializeField] private ChildInteracted childInteractedEvent;
+
+    private bool interactingTrigger = false;
 
 
 
@@ -33,129 +36,167 @@ public class PlayerInteraction : MonoBehaviour {
     private AudioSource audioSource;
     public AudioClip audioClip;
 
-    void Start() {
+    void Start()
+    {
         //AUDIO
         audioSource = GetComponent<AudioSource>();
-        if (audioSource == null) {
+        if (audioSource == null)
+        {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
 
-        if (audioClip != null) {
+        if (audioClip != null)
+        {
             audioSource.clip = audioClip;
         }
-        else {
+        else
+        {
             Debug.LogWarning("Nessun audio clip assegnato a " + gameObject.name);
         }
     }
 
-    public void RaycastForInspectable() {
+    public void RaycastForInspectable()
+    {
         Ray ray = new(playerCamera.transform.position, playerCamera.transform.forward);
         Debug.DrawRay(ray.origin, ray.direction * distance, Color.red); // Visualizza il raycast in scena
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance, allLayerMask)) {
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance, allLayerMask))
+        {
             IPickable pointingPickable = hitInfo.collider.GetComponent<IPickable>();
             Inspectable pointingInspectable = hitInfo.collider.GetComponent<Inspectable>();
             CarachterAnimator pointingChild = hitInfo.collider.GetComponent<CarachterAnimator>();
 
-            if (pointingPickable != null) {
+            if (pointingPickable != null)
+            {
                 CursorManager.Instance.UpdateExplorationCursor(grabbableSprite); // Cambio del cursore per oggetto afferrabile
-                if (Input.GetMouseButtonDown(0)) {
+                if (Input.GetMouseButtonDown(0))
+                {
                     pointingPickable.OnPick();
                 }
                 return;
             }
 
-            if (GameManager.Instance.InDangerMode) {
-                if (pointingChild != null) {
+            if (GameManager.Instance.InDangerMode)
+            {
+                if (pointingChild != null)
+                {
                     CursorManager.Instance.UpdateExplorationCursor(interactSprite);
-                    if (Input.GetMouseButtonDown(0)) {
+                    if (Input.GetMouseButtonDown(0))
+                    {
                         childInteractedEvent.SendEventMessage();
                         GameManager.Instance.EndDangerMode();
 
                     }
                 }
-                else {
+                else
+                {
                     CursorManager.Instance.UpdateExplorationCursor(defaultSprite);
                 }
                 return; // NOTE: queste return impedisce di interagire con gli oggetti in DangerMode
             }
 
-            if (pointingInspectable != null && !pointingInspectable.IsResolved()) {
+            if (pointingInspectable != null && !pointingInspectable.IsResolved())
+            {
                 CursorManager.Instance.UpdateExplorationCursor(interactSprite); // Cambio del cursore per interazione
                 pointingInspectable.BaseInteract();
 
-                if (Input.GetMouseButtonDown(0) && !pointingInspectable.IsResolved()) {
+                if (Input.GetMouseButtonDown(0) && !pointingInspectable.IsResolved())
+                {
                     StartCoroutine(StartInteraction(pointingInspectable));
                 }
             }
-            else {
+            else
+            {
                 CursorManager.Instance.UpdateExplorationCursor(defaultSprite); // Cambio al cursore predefinito
             }
         }
-        else {
+        else
+        {
             CursorManager.Instance.UpdateExplorationCursor(defaultSprite); // Se non c'è nulla, cursore predefinito
         }
     }
 
-    public Moveable RaycastForMoveable() {
+    public Moveable RaycastForMoveable()
+    {
         Camera fixedCamera = PlayerManager.Instance.GetInspectableCamera();
         Ray ray = fixedCamera.ScreenPointToRay(Input.mousePosition);
 
         Debug.DrawRay(ray.origin, ray.direction * distance * 10, Color.blue); // Visualizza il raycast in scena
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance * 10, allLayerMask)) {
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance * 10, allLayerMask))
+        {
             Moveable moveable = hitInfo.collider.GetComponent<Moveable>();
 
-            if (moveable != null && moveable == PlayerManager.Instance.currentInspectable) {
-                CursorManager.Instance.PointingMoveable();
+            if (moveable != null && moveable == PlayerManager.Instance.currentInspectable)
+            {
+                if (!interactingTrigger)
+                {
+                    CursorManager.Instance.PointingMoveable();
+                    interactingTrigger = true;
+                }
+
                 return moveable;
             }
-            else {
-                CursorManager.Instance.PointingDefault();
+            else
+            {
+                if (interactingTrigger && !InventoryManager.Instance.isItemSelected)
+                {
+                    CursorManager.Instance.PointingDefault();
+                    interactingTrigger = false;
+                }
             }
         }
 
         return null;
     }
 
-    public void TryPickUp() {
+    public void TryPickUp()
+    {
         Moveable moveable = RaycastForMoveable();
 
 
 
-        if (moveable == null) {
+        if (moveable == null)
+        {
             return;
         }
 
-        if (moveable != PlayerManager.Instance.currentInspectable) {
+        if (moveable != PlayerManager.Instance.currentInspectable)
+        {
             return;
         }
 
 
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0))
+        {
             StartCoroutine(DelayedSelectItem(moveable));
         }
     }
 
     // Coroutine per ritardare il select item di un frame
-    IEnumerator DelayedSelectItem(Moveable moveable) {
-        yield return null;
+    IEnumerator DelayedSelectItem(Moveable moveable)
+    {
+        yield return new WaitForSeconds(0.1f);
         InventoryManager.Instance.SelectItem(moveable.gameObject);
     }
 
-    public bool TryDragAndDrop(ItemData itemData) {
+    public bool TryDragAndDrop(ItemData itemData)
+    {
         DropZone dropZone = RaycastForDropZone();
 
-        if (dropZone == null) {
+        if (dropZone == null)
+        {
             return false;
         }
 
-        if (dropZone.parentInspectable != PlayerManager.Instance.currentInspectable) {
+        if (dropZone.parentInspectable != PlayerManager.Instance.currentInspectable)
+        {
             return false;
         }
 
 
-        if (dropZone.AcceptsItem(itemData)) {
+        if (dropZone.AcceptsItem(itemData))
+        {
             dropZone.OnDrop();
             return true;
         }
@@ -163,13 +204,15 @@ public class PlayerInteraction : MonoBehaviour {
         return false;
     }
 
-    public DropZone RaycastForDropZone() {
+    public DropZone RaycastForDropZone()
+    {
         Camera fixedCamera = PlayerManager.Instance.GetInspectableCamera();
         Ray ray = fixedCamera.ScreenPointToRay(Input.mousePosition);
 
         Debug.DrawRay(ray.origin, ray.direction * distance * 50, Color.blue); // Visualizza il raycast in scena
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance * 50, dropZoneLayerMask)) {
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, distance * 50, dropZoneLayerMask))
+        {
             DropZone dropZone = hitInfo.collider.GetComponent<DropZone>();
 
             return dropZone;
@@ -178,7 +221,8 @@ public class PlayerInteraction : MonoBehaviour {
         return null;
     }
 
-    private IEnumerator StartInteraction(Inspectable inspectable) {
+    private IEnumerator StartInteraction(Inspectable inspectable)
+    {
         // Inizio della transizione, nascondi cursore
         PlayerManager.Instance.PrepareTransition(); // NOTE: Blocca le interazioni durante la transizione
         Camera fixedCamera = inspectable.GetCamera();
@@ -190,12 +234,9 @@ public class PlayerInteraction : MonoBehaviour {
         float elapsedTime = 0f;
         startPosition = playerCamera.transform.position;
         startRotation = playerCamera.transform.rotation;
-        Debug.Log("Start position: " + startPosition);
-        Debug.Log("Start rotation: " + startRotation);
 
-
-        while (elapsedTime < transitionTime) {
-            Debug.Log("Elapsed time: " + elapsedTime);
+        while (elapsedTime < transitionTime)
+        {
             Vector3 newPosition = Vector3.Lerp(startPosition, fixedCamera.transform.position, elapsedTime / transitionTime);
             Quaternion newRotation = Quaternion.Slerp(startRotation, fixedCamera.transform.rotation, elapsedTime / transitionTime);
             playerCamera.transform.SetPositionAndRotation(newPosition, newRotation);
@@ -218,7 +259,8 @@ public class PlayerInteraction : MonoBehaviour {
         PlayerManager.Instance.TransitionToInspection(inspectable);
     }
 
-    private IEnumerator EndInteraction() {
+    private IEnumerator EndInteraction()
+    {
         PlayerManager.Instance.PrepareTransition(); // NOTE: Blocca le interazioni durante la transizione
         Camera fixedCamera = PlayerManager.Instance.GetInspectableCamera();
 
@@ -234,7 +276,8 @@ public class PlayerInteraction : MonoBehaviour {
         fixedCamera.gameObject.SetActive(false);
         playerCamera.gameObject.SetActive(true);
 
-        while (elapsedTime < transitionTime) {
+        while (elapsedTime < transitionTime)
+        {
             playerCamera.transform.position = Vector3.Lerp(fixedCamera.transform.position, targetPosition, elapsedTime / transitionTime);
             playerCamera.transform.rotation = Quaternion.Slerp(fixedCamera.transform.rotation, targetRotation, elapsedTime / transitionTime);
             elapsedTime += Time.deltaTime;
@@ -250,7 +293,8 @@ public class PlayerInteraction : MonoBehaviour {
         PlayerManager.Instance.TransitionToExploration();
     }
 
-    public void EndInteractionExternal() {
+    public void EndInteractionExternal()
+    {
         StartCoroutine(EndInteraction());
     }
 }

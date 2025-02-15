@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 
-public class Inspectable : MonoBehaviour {
+public class Inspectable : MonoBehaviour
+{
 
     [SerializeField] AchievementData achievementData;
     [SerializeField] Camera interactionCamera;
@@ -18,63 +19,79 @@ public class Inspectable : MonoBehaviour {
     private AudioSource[] audioSources;
 
 
-    private void Awake() {
+    private void Awake()
+    {
         maxInteractionNumber = dropZones.Length;
         interactionNumber = maxInteractionNumber;
     }
 
-    private void Start() {
+    private void Start()
+    {
         // Rimuove AudioSource esistenti per evitarne la duplicazione
-        foreach (var source in GetComponents<AudioSource>()) {
+        foreach (var source in GetComponents<AudioSource>())
+        {
             Destroy(source);
         }
 
         audioSources = new AudioSource[audioClips.Length];
 
-        for (int i = 0; i < audioClips.Length; i++) {
+        for (int i = 0; i < audioClips.Length; i++)
+        {
             audioSources[i] = gameObject.AddComponent<AudioSource>();
             audioSources[i].clip = audioClips[i];
         }
 
-        if (audioClips.Length == 0) {
+        if (audioClips.Length == 0)
+        {
             Debug.LogWarning("Nessun audio clip assegnato.");
         }
     }
 
-    public bool IsResolved() {
+    public bool IsResolved()
+    {
         return interactionNumber == 0;
     }
 
-    public Camera GetCamera() {
+    public Camera GetCamera()
+    {
         return interactionCamera;
     }
 
-    public void RemoveObject() {
+    public void RemoveObject()
+    {
 
-        foreach (var obj in objectsToDisable) {
+        foreach (var obj in objectsToDisable)
+        {
             obj.SetActive(false);
         }
 
-        foreach (var obj in objectToEnableOnRestore) {
+        foreach (var obj in objectToEnableOnRestore)
+        {
             obj.SetActive(true);
         }
     }
 
 
-    public void RestoreObject() {
-        if (!IsResolved()) {
-            foreach (var obj in objectsToDisable) {
+    public void RestoreObject()
+    {
+        if (!IsResolved())
+        {
+            foreach (var obj in objectsToDisable)
+            {
                 obj.SetActive(true);
             }
-            foreach (var obj in objectToEnableOnRestore) {
+            foreach (var obj in objectToEnableOnRestore)
+            {
                 obj.SetActive(false);
             }
         }
     }
 
-    public void BaseInteract() {
+    public void BaseInteract()
+    {
         // NOTE: aggiungere debounce per evitare che l'interazione venga chiamata più volte
-        if (canInteract && !IsResolved()) {
+        if (canInteract && !IsResolved())
+        {
             canInteract = false;
             StartCoroutine(Debounce());
             GetComponent<Animator>().SetTrigger("isInteracting");
@@ -82,21 +99,25 @@ public class Inspectable : MonoBehaviour {
         }
     }
 
-    public AchievementData GetAchievementData() {
+    public AchievementData GetAchievementData()
+    {
         return achievementData;
     }
 
-    IEnumerator Debounce() {
+    IEnumerator Debounce()
+    {
         yield return new WaitForSeconds(1);
         canInteract = true;
     }
-    public void Resolve() {
+    public void Resolve()
+    {
         interactionNumber--;
-        Debug.Log("Risoluzione parziale");
-        if (interactionNumber == 0) {
-            Debug.Log("Risolto");
-            foreach (Transform child in transform) {
-                if (child.gameObject.tag == "NotSolvedTarget") {
+        if (interactionNumber == 0)
+        {
+            foreach (Transform child in transform)
+            {
+                if (child.gameObject.tag == "NotSolvedTarget")
+                {
                     child.gameObject.tag = "SolvedTarget";
                 }
             }
@@ -107,9 +128,12 @@ public class Inspectable : MonoBehaviour {
     }
 
     // AUDIO
-    public void PlayAudioOnAnimation() {
-        foreach (var source in audioSources) {
-            if (source.clip != null && !source.isPlaying) {
+    public void PlayAudioOnAnimation()
+    {
+        foreach (var source in audioSources)
+        {
+            if (source.clip != null && !source.isPlaying)
+            {
                 source.Play();
             }
         }

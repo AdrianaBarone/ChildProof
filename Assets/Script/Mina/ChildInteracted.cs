@@ -8,31 +8,37 @@ using Unity.Properties;
 #endif
 [Serializable, GeneratePropertyBag]
 [EventChannelDescription(name: "ChildInteracted", message: "Touch", category: "Events", id: "a5f059df021a4d5ec3d84c7527935700")]
-public partial class ChildInteracted : EventChannelBase {
+public partial class ChildInteracted : EventChannelBase
+{
     public delegate void ChildInteractedEventHandler();
     public event ChildInteractedEventHandler Event;
 
-    public void SendEventMessage() {
-        Debug.Log("ChildInteracted");
+    public void SendEventMessage()
+    {
         Event?.Invoke();
     }
 
-    public override void SendEventMessage(BlackboardVariable[] messageData) {
+    public override void SendEventMessage(BlackboardVariable[] messageData)
+    {
         Event?.Invoke();
     }
 
-    public override Delegate CreateEventHandler(BlackboardVariable[] vars, System.Action callback) {
-        ChildInteractedEventHandler del = () => {
+    public override Delegate CreateEventHandler(BlackboardVariable[] vars, System.Action callback)
+    {
+        ChildInteractedEventHandler del = () =>
+        {
             callback();
         };
         return del;
     }
 
-    public override void RegisterListener(Delegate del) {
+    public override void RegisterListener(Delegate del)
+    {
         Event += del as ChildInteractedEventHandler;
     }
 
-    public override void UnregisterListener(Delegate del) {
+    public override void UnregisterListener(Delegate del)
+    {
         Event -= del as ChildInteractedEventHandler;
     }
 }

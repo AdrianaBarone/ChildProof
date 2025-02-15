@@ -2,8 +2,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class AppManager : MonoBehaviour {
-    public enum PanelType {
+public class AppManager : MonoBehaviour
+{
+    public enum PanelType
+    {
         LabelMenu,
         LabelRemind,
         LabelSingleRemind,
@@ -27,54 +29,66 @@ public class AppManager : MonoBehaviour {
 
     public GameObject[] panels;
 
-    void Awake() {
+    void Awake()
+    {
         Instance = this;
     }
 
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.E) && (PlayerManager.Instance.IsInStateExploration() || PlayerManager.Instance.InStatePhoneUp())) {
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && (PlayerManager.Instance.IsInStateExploration() || PlayerManager.Instance.InStatePhoneUp()))
+        {
             ToggleSmartphone();
         }
     }
 
-    void ToggleSmartphone() {
+    void ToggleSmartphone()
+    {
         bool isActive = smartphoneCanvas.gameObject.activeSelf;
         smartphoneCanvas.gameObject.SetActive(!isActive);
 
-        if (!isActive) {
+        if (!isActive)
+        {
             // NOTE: Apre il telefono
             PlayerManager.Instance.SetToPhoneUp();
         }
-        else {
+        else
+        {
             // NOTE: Chiude il telefono
             PlayerManager.Instance.TransitionToExploration();
         }
 
     }
 
-    public void ShowPanel(PanelType panelType) {
-        for (int i = 0; i < panels.Length; i++) {
+    public void ShowPanel(PanelType panelType)
+    {
+        for (int i = 0; i < panels.Length; i++)
+        {
             panels[i].SetActive(false);
         }
 
         panels[(int)panelType].SetActive(true);
     }
 
-    public void ShowPanelByIndex(int panelIndex) {
+    public void ShowPanelByIndex(int panelIndex)
+    {
         ShowPanel((PanelType)panelIndex);
     }
 
-    public void ShowHelpPanel() {
-        if (helpBought) {
+    public void ShowHelpPanel()
+    {
+        if (helpBought)
+        {
             ShowPanel(PanelType.LabelHelp);
         }
-        else {
+        else
+        {
             ShowPanel(PanelType.LabelHelpBuy);
         }
     }
 
-    public void EnableHelpBuyPanel(Inspectable dangerInspectable) {
-        Debug.Log(dangerInspectable);
+    public void EnableHelpBuyPanel(Inspectable dangerInspectable)
+    {
         AchievementData achievement = dangerInspectable.GetAchievementData();
         helpButton.interactable = true;
         helpPrice = achievement.scoreIncrease * GameManager.Instance.HelpPricePercent / 100;
@@ -83,19 +97,22 @@ public class AppManager : MonoBehaviour {
         FillHelpPanel(dangerInspectable);
     }
 
-    public void DisableHelpBuyPanel() {
+    public void DisableHelpBuyPanel()
+    {
         helpPrice = 0;
         helpBought = false;
         helpButton.interactable = false;
     }
 
-    public void TryBuyHelp() {
+    public void TryBuyHelp()
+    {
         GameManager.Instance.DecreaseScore(helpPrice);
         helpBought = true;
         ShowPanel(PanelType.LabelHelp);
     }
 
-    void FillHelpPanel(Inspectable dangerInspectable) {
+    void FillHelpPanel(Inspectable dangerInspectable)
+    {
         AchievementData achievement = dangerInspectable.GetAchievementData();
         Transform panelHelp = panels[(int)PanelType.LabelHelp].transform.Find("PanelHelp");
 
@@ -105,8 +122,10 @@ public class AppManager : MonoBehaviour {
 
     }
 
-    public GameObject CreateAchievementCard(Achievement achievement) {
-        if (achievement == null) {
+    public GameObject CreateAchievementCard(Achievement achievement)
+    {
+        if (achievement == null)
+        {
             Debug.LogError("Achievement è null!");
             return null;
         }
@@ -118,7 +137,8 @@ public class AppManager : MonoBehaviour {
 
         Button cardButton = card.GetComponent<Button>();
         cardButton.interactable = false;
-        cardButton.onClick.AddListener(() => {
+        cardButton.onClick.AddListener(() =>
+        {
             ScrollRect scrollRect = singleRemindPanel.transform.Find("ScrollView").GetComponent<ScrollRect>();
             scrollRect.verticalNormalizedPosition = 1f; // Torna in cima
             ShowPanel(PanelType.LabelSingleRemind);
@@ -130,10 +150,12 @@ public class AppManager : MonoBehaviour {
             titleText.text = achievement.data.name;
             infoText.text = achievement.data.fullDescription;
             int progress = achievement.taskProgress;
-            if (progress >= achievement.data.goal) {
+            if (progress >= achievement.data.goal)
+            {
                 progressText.text = "Completato";
             }
-            else {
+            else
+            {
                 progressText.text = progress + "/" + achievement.data.goal;
             }
         });

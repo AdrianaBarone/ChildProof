@@ -6,8 +6,6 @@ using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class SettingMenu : MonoBehaviour {
-    public AudioMixer audioMixer;
-
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown qualityDropdown;
     public Toggle fullScreenToggle;
@@ -43,7 +41,8 @@ public class SettingMenu : MonoBehaviour {
     }
 
     public void SetVolume(float volume) {
-        audioMixer.SetFloat("volume", volume);
+        // TODO: collegare con AudioManager
+        // audioMixer.SetFloat("volume", volume);
 
     }
 
@@ -52,6 +51,7 @@ public class SettingMenu : MonoBehaviour {
     }
 
     public void SetFullScreen(bool isfullScreen) {
+        Debug.Log(isfullScreen);
         Screen.fullScreen = isfullScreen;
     }
 }

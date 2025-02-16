@@ -119,6 +119,7 @@ Transform:
   m_Children:
   - {fileID: 8219796012868601516}
   - {fileID: 6120489524526327287}
+  - {fileID: 6326039011787152383}
   m_Father: {fileID: 3096513142721271296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5601900946627619779
@@ -461,6 +462,84 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 1a2eae1c27e6241258c44ebe237a8cf9, type: 2}
+--- !u!1001 &1924690032802349453
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3528555876734997782}
+    m_Modifications:
+    - target: {fileID: 5058832354924888264, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
+      propertyPath: m_Name
+      value: TV_placeholder
+      objectReference: {fileID: 0}
+    - target: {fileID: 5058832354924888264, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5584258572692052594, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 57.142853
+      objectReference: {fileID: 0}
+    - target: {fileID: 5584258572692052594, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5584258572692052594, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5584258572692052594, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.064
+      objectReference: {fileID: 0}
+    - target: {fileID: 5584258572692052594, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.026
+      objectReference: {fileID: 0}
+    - target: {fileID: 5584258572692052594, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.447
+      objectReference: {fileID: 0}
+    - target: {fileID: 5584258572692052594, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 5584258572692052594, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5584258572692052594, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5584258572692052594, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5584258572692052594, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5584258572692052594, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5584258572692052594, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
+--- !u!4 &6326039011787152383 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5584258572692052594, guid: 419887c2cf405bd419aee2768a154a2e, type: 3}
+  m_PrefabInstance: {fileID: 1924690032802349453}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6308856820870204367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -552,6 +631,7 @@ MonoBehaviour:
   achievementData: {fileID: 11400000, guid: ca6bbe0dcab7aea47a57d2e97e5c4034, type: 2}
   interactionCamera: {fileID: 7128330750762538332}
   objectsToDisable: []
+  objectToEnableOnRestore: []
   dropZones:
   - {fileID: 7839082276927148837}
   audioClips: []

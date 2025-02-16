@@ -13,20 +13,22 @@ public class AudioManager : MonoBehaviour
     public float fadeInDuration = 3f;
     public float fadeOutDuration = 3f;
 
-    [Header("Mixer Audio")]
+    [Header("Info Mixer Audio")]
     public AudioMixer audioMixer;
-    public AudioMixerSnapshot snapshotDefault;
-    public AudioMixerSnapshot snapshotSafe;
-    public AudioMixerSnapshot snapshotDanger;
-    public AudioMixerSnapshot snapshotMute;
+    public AudioMixerSnapshot snapshot1;
+    public AudioMixerSnapshot snapshot2;
+    public AudioMixerSnapshot snapshot3;
+    public AudioMixerSnapshot snapshot4;
 
     [Header("Suoni Giocatore")]
     public AudioClip passiClip;
     private AudioSource passiSource;
 
+
     [Header("Audio cambio camera")]
     public AudioClip cameraTransitionClip;
     private AudioSource cameraAudioSource;
+
 
     [Header("Audio SoundTrack")]
     public AudioClip audioClipSafe;
@@ -36,47 +38,37 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+        Instance = this;
     }
 
     private void Start()
     {
-        passiSource = CreateAudioSource(passiClip, true, "Player");
-        cameraAudioSource = CreateAudioSource(cameraTransitionClip, false, "SFX");
-        audioSafeSource = CreateAudioSource(audioClipSafe, true, "Music");
-        audioDangerSource = CreateAudioSource(audioClipDanger, true, "Music");
-
-        // Avvia l'audio iniziale (es. Safe)
-        PlayAudioWithFadeIn(false);
+        passiSource = CreateAudioSource(passiClip, true);
+        cameraAudioSource = CreateAudioSource(cameraTransitionClip, false);
+        audioSafeSource = CreateAudioSource(audioClipSafe, true);
+        audioDangerSource = CreateAudioSource(audioClipDanger, true);
     }
 
-    private AudioSource CreateAudioSource(AudioClip audioClip, bool loop, string groupName)
+    private AudioSource CreateAudioSource(AudioClip audioClip, bool loop)
     {
-        if (audioClip == null) return null;
+        foreach (var source in audioSources)
+        {
+            if (source.clip == audioClip)
+            {
+                return source;
+            }
+        }
 
         AudioSource newSource = gameObject.AddComponent<AudioSource>();
         newSource.clip = audioClip;
         newSource.loop = loop;
-        newSource.volume = 1f;
-
-        // Assegna il gruppo audio corretto
-        AudioMixerGroup[] groups = audioMixer.FindMatchingGroups(groupName);
-        if (groups.Length > 0)
-        {
-            newSource.outputAudioMixerGroup = groups[0];
-        }
+        newSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Master")[0];
 
         audioSources.Add(newSource);
+
         return newSource;
     }
+
 
     public void PlayFootsteps(bool isMoving)
     {
@@ -108,20 +100,14 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySound(AudioClip audioClip)
     {
-        AudioSource audioSource = CreateAudioSource(audioClip, false, "SFX");
+        AudioSource audioSource = CreateAudioSource(audioClip, false);
         audioSource.Play();
     }
 
     public void StopSound(AudioClip audioClip)
     {
-        foreach (var source in audioSources)
-        {
-            if (source.clip == audioClip)
-            {
-                source.Stop();
-                break;
-            }
-        }
+        AudioSource audioSource = CreateAudioSource(audioClip, false);
+        audioSource.Stop();
     }
 
     public void PlayAudioWithFadeIn(bool InDangerMode)
@@ -130,7 +116,7 @@ public class AudioManager : MonoBehaviour
         {
             StartCoroutine(FadeInAudio(audioSafeSource, audioClipSafe));
         }
-        else
+        else if (InDangerMode)
         {
             StartCoroutine(FadeInAudio(audioDangerSource, audioClipDanger));
         }
@@ -140,16 +126,16 @@ public class AudioManager : MonoBehaviour
     {
         if (!InDangerMode)
         {
-            if (audioSafeSource.isPlaying)
-            {
-                StartCoroutine(FadeOutAudio(audioSafeSource, audioClipSafe));
-            }
-        }
-        else
-        {
             if (audioDangerSource.isPlaying)
             {
                 StartCoroutine(FadeOutAudio(audioDangerSource, audioClipDanger));
+            }
+        }
+        else if (InDangerMode)
+        {
+            if (audioDangerSource.isPlaying)
+            {
+                StartCoroutine(FadeOutAudio(audioSafeSource, audioClipSafe));
             }
         }
     }
@@ -159,16 +145,16 @@ public class AudioManager : MonoBehaviour
         switch (snapshotIndex)
         {
             case 1:
-                snapshotDefault.TransitionTo(transitionTime);
+                snapshot1.TransitionTo(transitionTime);
                 break;
             case 2:
-                snapshotSafe.TransitionTo(transitionTime);
+                snapshot2.TransitionTo(transitionTime);
                 break;
             case 3:
-                snapshotDanger.TransitionTo(transitionTime);
+                snapshot3.TransitionTo(transitionTime);
                 break;
             case 4:
-                snapshotMute.TransitionTo(transitionTime);
+                snapshot4.TransitionTo(transitionTime);
                 break;
             default:
                 Debug.LogWarning("Snapshot index non valido.");
@@ -178,8 +164,6 @@ public class AudioManager : MonoBehaviour
 
     private IEnumerator FadeInAudio(AudioSource audioSource, AudioClip clip)
     {
-        if (audioSource == null || clip == null) yield break;
-
         audioSource.clip = clip;
         audioSource.volume = 0f;
         audioSource.loop = true;
@@ -199,7 +183,10 @@ public class AudioManager : MonoBehaviour
 
     private IEnumerator FadeOutAudio(AudioSource audioSource, AudioClip clip)
     {
-        if (audioSource == null || clip == null || audioSource.clip != clip) yield break;
+        if (audioSource.clip != clip)
+        {
+            yield break;
+        }
 
         float timeElapsed = 0f;
 
@@ -213,4 +200,5 @@ public class AudioManager : MonoBehaviour
         audioSource.Stop();
         audioSource.volume = 0f;
     }
+
 }

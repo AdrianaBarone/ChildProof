@@ -15275,7 +15275,7 @@ MonoBehaviour:
   PointDecreasePercent: 5
   PointDecreaseRate: 1
   HelpPricePercent: 50
-  audioClipSafe: {fileID: 0}
+  audioClipSafe: {fileID: 8300000, guid: f40e294e8ed76451aa8fac3ac311d8c6, type: 3}
   audioClipDanger: {fileID: 8300000, guid: 48e7a2be9ca295c409c87a17dc2e862a, type: 3}
 --- !u!4 &467141827
 Transform:
@@ -71934,6 +71934,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6111513910057754426, guid: ad9e3987c5bb28f4395094cecba7245a, type: 3}
+      propertyPath: audioClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6111513910057754426, guid: ad9e3987c5bb28f4395094cecba7245a, type: 3}
+      propertyPath: 'audioClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: f103642b5d03cad478b08d33d5281c3d, type: 3}
     - target: {fileID: 6111513910057754426, guid: ad9e3987c5bb28f4395094cecba7245a, type: 3}
       propertyPath: objectsToDisable.Array.size
       value: 1

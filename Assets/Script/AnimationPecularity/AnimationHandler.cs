@@ -5,7 +5,7 @@ public class AnimationHandler : MonoBehaviour
     [System.Serializable]
     public class AnimationObject
     {
-        public GameObject targetObject;
+        public GameObject[] targetObjects; // Array di oggetti da distruggere
         public Animator animator;
         public string animationStateName;
         [HideInInspector] public bool isDestroyed = false;
@@ -23,7 +23,11 @@ public class AnimationHandler : MonoBehaviour
 
                 if (stateInfo.IsName(animObj.animationStateName))
                 {
-                    Destroy(animObj.targetObject);
+                    foreach (var obj in animObj.targetObjects)
+                    {
+                        if (obj != null)
+                            Destroy(obj);
+                    }
                     animObj.isDestroyed = true;
                 }
             }

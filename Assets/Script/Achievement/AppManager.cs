@@ -17,10 +17,12 @@ public class AppManager : MonoBehaviour
     public GameObject singleRemindPanel;
     public static AppManager Instance;
 
-    //Card contenitore REMIND del telefono
+    public GameObject remindCardPrefab;
+    public Transform remindCardParent;
+
+
     public GameObject achievementCardPrefab;
     public Transform achievementCardParent;
-    public int cardCount;
 
     public GameObject[] panels;
 
@@ -88,7 +90,7 @@ public class AppManager : MonoBehaviour
         ShowPanel((PanelType)panelIndex);
     }
 
-    public GameObject CreateRemindCard(Achievement achievement)
+    public GameObject CreateAchievementCard(Achievement achievement)
     {
         if (achievement == null)
         {
@@ -96,6 +98,53 @@ public class AppManager : MonoBehaviour
             return null;
         }
         GameObject card = Instantiate(achievementCardPrefab, achievementCardParent);
+
+        TMP_Text titleText = card.transform.Find("NameTask").GetComponent<TMP_Text>();
+        TMP_Text progressText = card.transform.Find("ProgressText").GetComponent<TMP_Text>();
+        Slider progressSlider = card.transform.Find("ProgressSlider").GetComponent<Slider>();
+
+        titleText.text = achievement.data.name;
+        progressText.text = achievement.taskProgress + "/" + achievement.data.goal;
+        progressSlider.value = (float)achievement.taskProgress / achievement.data.goal;
+
+
+        return card;
+    }
+
+    public void UpdateAchievementCard(GameObject card, Achievement achievement)
+    {
+        if (achievement == null)
+        {
+            Debug.LogError("Achievement è null!");
+            return;
+        }
+
+        if (achievement.taskProgress >= achievement.data.goal)
+        {
+
+            card.transform.Find("Background").GetComponent<Image>().color = new Color(0.144777f, 0.144777f, 0.144777f);
+            card.transform.Find("NameTask").GetComponent<TMP_Text>().color = new Color(0.8396226f, 0.9176471f, 0.972549f);
+            card.transform.Find("Icon").GetComponent<Image>().sprite = achievement.data.achievementIcon;
+        }
+
+        TMP_Text progressText = card.transform.Find("ProgressText").GetComponent<TMP_Text>();
+        Slider progressSlider = card.transform.Find("ProgressSlider").GetComponent<Slider>();
+
+        progressText.text = achievement.taskProgress + "/" + achievement.data.goal;
+        progressSlider.value = (float)achievement.taskProgress / achievement.data.goal;
+
+
+        // TODO: show popup with achievement card in top right
+    }
+
+    public GameObject CreateRemindCard(Achievement achievement)
+    {
+        if (achievement == null)
+        {
+            Debug.LogError("Achievement è null!");
+            return null;
+        }
+        GameObject card = Instantiate(remindCardPrefab, remindCardParent);
 
         TMP_Text nameText = card.transform.Find("NameTask").GetComponent<TMP_Text>();
 
@@ -128,8 +177,6 @@ public class AppManager : MonoBehaviour
 
         nameText.text = achievement.data.name;
         descriptionText.text = achievement.data.description;
-
-        cardCount++;
 
         return card;
     }

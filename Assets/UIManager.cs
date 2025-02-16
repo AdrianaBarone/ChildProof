@@ -61,57 +61,57 @@ public class UIManager : MonoBehaviour
         {
             if (InfoArea.activeSelf)
             {
-                Time.timeScale = 1;
                 PlayerManager.Instance.TransitionToExploration();
                 animator.SetTrigger("HideInfo");
+                Time.timeScale = 1;
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (InventoryCanvas.activeSelf)
         {
-            if (PauseCanvas.activeSelf)
+            // NOTE: probabilmente esiste un modo più efficiente per fare questa cosa
+            for (int i = 0; i < 10; i++)
             {
-                Cursor.lockState = CursorLockMode.Locked;
-                //Cursor.visible = false;
-                InventoryCanvas.SetActive(true);
-                CursorCanvas.SetActive(true);
-                PauseCanvas.SetActive(false);
-                Time.timeScale = 1;
-                PlayerManager.Instance.ReturnToPreviousState();
+                if (Input.GetKeyDown(KeyCode.Alpha0 + i))
+                {
+                    Item item = InventoryManager.Instance.GetItem(i);
+                    if (item != null)
+                    {
+                        ShowInfo(item);
+                    }
+                }
             }
-            else if (Time.timeScale == 1)
-            {
-                Cursor.lockState = CursorLockMode.None;
-                //Cursor.visible = true;
-                InventoryCanvas.SetActive(false);
-                CursorCanvas.SetActive(false);
-                PauseCanvas.SetActive(true);
+        }
 
-                Time.timeScale = 0;
-                PlayerManager.Instance.PrepareTransition();
+        if (Input.GetKeyDown(KeyCode.Escape) && !PauseCanvas.activeSelf)
+        {
+
+            if (PlayerManager.Instance.InStatePhoneUp())
+            {
+                // TODO: close phone, transition to exploration
+
+
             }
+
+            Cursor.lockState = CursorLockMode.None;
+            //Cursor.visible = true;
+            InventoryCanvas.SetActive(false);
+            CursorCanvas.SetActive(false);
+            PauseCanvas.SetActive(true);
+
+            Time.timeScale = 0;
+            PlayerManager.Instance.PrepareTransition();
         }
     }
 
-    public void UnpauseGame()
+    public void ShowInventory(bool show)
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        PauseCanvas.SetActive(false);
-        CursorCanvas.SetActive(true);
-        InventoryCanvas.SetActive(true);
-        PlayerManager.Instance.ReturnToPreviousState();
-        Time.timeScale = 1;
+        InventoryCanvas.SetActive(show);
     }
 
     public void ExitGame()
     {
         SceneManager.LoadSceneAsync("MainMenu");
-    }
-
-    public void PauseGameTime()
-    {
-
-        Time.timeScale = 0;
     }
 
     public void ShowInfo(Item item)
@@ -126,6 +126,7 @@ public class UIManager : MonoBehaviour
         itemImage.sprite = item.data.icon;
 
         animator.SetTrigger("ShowInfo");
-        AudioManager.Instance.PlaySound(InfoItem);
+        Time.timeScale = 0;
+        // AudioManager.Instance.PlaySound(InfoItem);
     }
 }

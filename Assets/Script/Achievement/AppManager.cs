@@ -10,9 +10,7 @@ public class AppManager : MonoBehaviour
         LabelRemind,
         LabelSingleRemind,
         LabelFind,
-        LabelHelpBuy,
-
-        LabelHelp,
+        LabelAchievements
     }
 
     public GameObject smartphoneCanvas;
@@ -23,9 +21,6 @@ public class AppManager : MonoBehaviour
     public GameObject achievementCardPrefab;
     public Transform achievementCardParent;
     public int cardCount;
-    int helpPrice = 0;
-    bool helpBought = false;
-    public Button helpButton;
 
     public GameObject[] panels;
 
@@ -41,7 +36,7 @@ public class AppManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && (PlayerManager.Instance.IsInStateExploration() || PlayerManager.Instance.InStatePhoneUp()))
+        if (Input.GetKeyDown(KeyCode.E) && Time.timeScale != 0)
         {
             ToggleSmartphone();
         }
@@ -56,15 +51,26 @@ public class AppManager : MonoBehaviour
         {
             // NOTE: Apre il telefono
             PlayerManager.Instance.SetToPhoneUp();
-            AudioManager.Instance.PlaySound(SbloccoTelefono);
+            UIManager.Instance.ShowInventory(false);
+            // UIMManager.Instance.ShowPhoneAnimation();
+            // AudioManager.Instance.PlaySound(SbloccoTelefono);
         }
         else
         {
             // NOTE: Chiude il telefono
             PlayerManager.Instance.TransitionToExploration();
-            AudioManager.Instance.PlaySound(BloccoTelefono);
+            UIManager.Instance.ShowInventory(true);
+            // UIMManager.Instance.HidePhoneAnimation();
+            // AudioManager.Instance.PlaySound(BloccoTelefono);
         }
 
+    }
+
+    public void HidePhone()
+    {
+        PlayerManager.Instance.TransitionToExploration();
+        // UIMManager.Instance.HidePhoneAnimation();
+        AudioManager.Instance.PlaySound(BloccoTelefono);
     }
 
     public void ShowPanel(PanelType panelType)
@@ -82,52 +88,7 @@ public class AppManager : MonoBehaviour
         ShowPanel((PanelType)panelIndex);
     }
 
-    public void ShowHelpPanel()
-    {
-        if (helpBought)
-        {
-            ShowPanel(PanelType.LabelHelp);
-        }
-        else
-        {
-            ShowPanel(PanelType.LabelHelpBuy);
-        }
-    }
-
-    public void EnableHelpBuyPanel(Inspectable dangerInspectable)
-    {
-        AchievementData achievement = dangerInspectable.GetAchievementData();
-        helpButton.interactable = true;
-        helpPrice = achievement.scoreIncrease * GameManager.Instance.HelpPricePercent / 100;
-
-        panels[(int)PanelType.LabelHelpBuy].transform.Find("PanelBuy/PointText/PriceText").GetComponent<TMP_Text>().text = helpPrice.ToString() + " Punti";
-        FillHelpPanel(dangerInspectable);
-    }
-
-    public void DisableHelpBuyPanel()
-    {
-        helpPrice = 0;
-        helpBought = false;
-        helpButton.interactable = false;
-    }
-
-    public void TryBuyHelp()
-    {
-        GameManager.Instance.DecreaseScore(helpPrice);
-        helpBought = true;
-        ShowPanel(PanelType.LabelHelp);
-    }
-
-    void FillHelpPanel(Inspectable dangerInspectable)
-    {
-        AchievementData achievement = dangerInspectable.GetAchievementData();
-        Transform panelHelp = panels[(int)PanelType.LabelHelp].transform.Find("PanelHelp");
-
-        panelHelp.Find("TextHelp").GetComponent<TMP_Text>().text = achievement.helpDescription;
-        panelHelp.Find("ImageHelp").GetComponent<Image>().sprite = achievement.solutionImage;
-    }
-
-    public GameObject CreateAchievementCard(Achievement achievement)
+    public GameObject CreateRemindCard(Achievement achievement)
     {
         if (achievement == null)
         {

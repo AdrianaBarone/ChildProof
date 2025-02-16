@@ -46,6 +46,6 @@ public class PlayerMovement : MonoBehaviour
     public void StopMovement()
     {
         rb.linearVelocity = Vector3.zero;
-        AudioManager.Instance.PlayFootsteps(false);
+        // AudioManager.Instance.PlayFootsteps(false);
     }
 }

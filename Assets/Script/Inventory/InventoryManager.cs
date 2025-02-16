@@ -30,6 +30,22 @@ public class InventoryManager : MonoBehaviour
         ItemContent.gameObject.SetActive(false);
     }
 
+    public Item GetItem(int index)
+    {
+        if (Items.Count > index)
+        {
+            var enumerator = Items.Values.GetEnumerator();
+            for (int i = 0; i <= index; i++)
+            {
+                enumerator.MoveNext();
+            }
+            Item entry = enumerator.Current;
+            return entry;
+        }
+
+        return null;
+    }
+
     public void HandleInventory()
     {
         if (isItemSelected)
@@ -131,6 +147,7 @@ public class InventoryManager : MonoBehaviour
             if (enumerator.MoveNext())
             {
                 Item entry = enumerator.Current;
+                ItemIcon.color = new Color(ItemIcon.color.r, ItemIcon.color.g, ItemIcon.color.b, 255);
                 ItemIcon.sprite = entry.data.icon;
             }
             else

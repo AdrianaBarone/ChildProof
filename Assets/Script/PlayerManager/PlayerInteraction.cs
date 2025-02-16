@@ -169,7 +169,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            StartCoroutine(DelayedSelectItem(moveable));
+            InventoryManager.Instance.SelectItem(moveable.gameObject);
         }
     }
 

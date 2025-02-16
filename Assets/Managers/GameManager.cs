@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
 
     public int PointDecreasePercent = 5;
     public float PointDecreaseRate = 1f;
-    public int HelpPricePercent = 50;
 
 
     private void Awake()
@@ -42,7 +41,6 @@ public class GameManager : MonoBehaviour
 
         currentDangerInspectable = inspectable;
         // TODO: animazioni e suoni di attivazione
-        AppManager.Instance.EnableHelpBuyPanel(currentDangerInspectable);
         timerCoroutine = StartCoroutine(LosePointsCoroutine());
     }
 
@@ -54,7 +52,6 @@ public class GameManager : MonoBehaviour
         AudioManager.Instance.StopAudioWithFadeOut(InDangerMode);
 
         currentDangerInspectable = null;
-        AppManager.Instance.DisableHelpBuyPanel();
         if (timerCoroutine != null)
         {
             StopCoroutine(timerCoroutine);
@@ -99,14 +96,21 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         //TODO: animazioni e suoni di sconfitta
-        //TODO: cambio scena con parametro
-        SceneManager.LoadSceneAsync("GameOver");
+        StartCoroutine(DelayedGameOverScreen(false));
     }
 
     public void VictoryScreen()
     {
         // TODO: animazioni e suoni di vittoria
-        // TODO: cambio scena con parametro
-        SceneManager.LoadSceneAsync("Win");
+        StartCoroutine(DelayedGameOverScreen(true));
+    }
+
+    public IEnumerator DelayedGameOverScreen(bool win) {
+        // NOTE: impostare qui il tempo di attesa per tutte le eventuali animazioni e suoni
+        yield return new WaitForSeconds(1f);
+        PlayerPrefs.SetInt("score", score);
+        PlayerPrefs.SetInt("winGame", win ? 1 : 0);
+
+        SceneManager.LoadSceneAsync("GameOver");
     }
 }

@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
+
 
 public class AppManager : MonoBehaviour
 {
@@ -17,13 +18,19 @@ public class AppManager : MonoBehaviour
     public GameObject singleRemindPanel;
     public static AppManager Instance;
 
+    [Header("Reminders")]
+
+    public ScrollView remindScrollView;
+
     public GameObject remindCardPrefab;
     public Transform remindCardParent;
 
+    [Header("Achievements")]
+    public ScrollView achievementScrollView;
 
     public GameObject achievementCardPrefab;
     public Transform achievementCardParent;
-
+    [SerializeField] private Sprite completedAchievementSprite;
     public GameObject[] panels;
 
     [Header("Suoni Telefono")]
@@ -83,6 +90,8 @@ public class AppManager : MonoBehaviour
         }
 
         panels[(int)panelType].SetActive(true);
+        remindScrollView.ScrollTo(remindScrollView.ElementAt(0));
+        achievementScrollView.ScrollTo(achievementScrollView.ElementAt(0));
     }
 
     public void ShowPanelByIndex(int panelIndex)
@@ -99,9 +108,9 @@ public class AppManager : MonoBehaviour
         }
         GameObject card = Instantiate(achievementCardPrefab, achievementCardParent);
 
-        TMP_Text titleText = card.transform.Find("NameTask").GetComponent<TMP_Text>();
-        TMP_Text progressText = card.transform.Find("ProgressText").GetComponent<TMP_Text>();
-        Slider progressSlider = card.transform.Find("ProgressSlider").GetComponent<Slider>();
+        TMP_Text titleText = card.transform.Find("Body/Titolo").GetComponent<TMP_Text>();
+        TMP_Text progressText = card.transform.Find("Body/Progresso/Testo").GetComponent<TMP_Text>();
+        Slider progressSlider = card.transform.Find("Body/Progresso/Slider").GetComponent<Slider>();
 
         titleText.text = achievement.data.name;
         progressText.text = achievement.taskProgress + "/" + achievement.data.goal;
@@ -122,13 +131,14 @@ public class AppManager : MonoBehaviour
         if (achievement.taskProgress >= achievement.data.goal)
         {
 
-            card.transform.Find("Background").GetComponent<Image>().color = new Color(0.144777f, 0.144777f, 0.144777f);
-            card.transform.Find("NameTask").GetComponent<TMP_Text>().color = new Color(0.8396226f, 0.9176471f, 0.972549f);
+            card.GetComponent<Image>().sprite = completedAchievementSprite;
+            card.transform.Find("Body/Titolo").GetComponent<TMP_Text>().color = new Color(0.8396226f, 0.9176471f, 0.972549f);
+            card.transform.Find("Body/Progresso/Testo").GetComponent<TMP_Text>().color = new Color(0.8396226f, 0.9176471f, 0.972549f);
             card.transform.Find("Icon").GetComponent<Image>().sprite = achievement.data.achievementIcon;
         }
 
-        TMP_Text progressText = card.transform.Find("ProgressText").GetComponent<TMP_Text>();
-        Slider progressSlider = card.transform.Find("ProgressSlider").GetComponent<Slider>();
+        TMP_Text progressText = card.transform.Find("Body/Progresso/Testo").GetComponent<TMP_Text>();
+        Slider progressSlider = card.transform.Find("Body/Progresso/Slider").GetComponent<Slider>();
 
         progressText.text = achievement.taskProgress + "/" + achievement.data.goal;
         progressSlider.value = (float)achievement.taskProgress / achievement.data.goal;
@@ -151,11 +161,8 @@ public class AppManager : MonoBehaviour
         TMP_Text descriptionText = card.transform.Find("DescriptionTask").GetComponent<TMP_Text>();
 
         Button cardButton = card.GetComponent<Button>();
-        cardButton.interactable = false;
-        cardButton.onClick.AddListener(() =>
+        cardButton.clicked += () =>
         {
-            ScrollRect scrollRect = singleRemindPanel.transform.Find("ScrollView").GetComponent<ScrollRect>();
-            scrollRect.verticalNormalizedPosition = 1f; // Torna in cima
             ShowPanel(PanelType.LabelSingleRemind);
 
             TMP_Text infoText = singleRemindPanel.transform.Find("ScrollView/Viewport/Content/InfoText").GetComponent<TMP_Text>();
@@ -173,7 +180,7 @@ public class AppManager : MonoBehaviour
             {
                 progressText.text = progress + "/" + achievement.data.goal;
             }
-        });
+        };
 
         nameText.text = achievement.data.name;
         descriptionText.text = achievement.data.description;

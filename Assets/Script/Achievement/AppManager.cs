@@ -54,12 +54,11 @@ public class AppManager : MonoBehaviour
     void ToggleSmartphone()
     {
         bool isActive = smartphoneCanvas.gameObject.activeSelf;
-        smartphoneCanvas.gameObject.SetActive(!isActive);
+        InventoryManager.Instance.ClearSelection();
 
         if (!isActive)
         {
             // NOTE: Apre il telefono
-            InventoryManager.Instance.ClearSelection();
             PlayerManager.Instance.SetToPhoneUp();
             UIManager.Instance.ShowInventory(false);
             UIManager.Instance.ShowPhoneAnimation();
@@ -76,8 +75,9 @@ public class AppManager : MonoBehaviour
 
     public void ClosePhone()
     {
-        PlayerManager.Instance.TransitionToExploration();
-        // UIMManager.Instance.HidePhoneAnimation();
+        PlayerManager.Instance.ReturnToPreviousState();
+        UIManager.Instance.ShowInventory(true);
+        UIManager.Instance.HidePhoneAnimation();
         // AudioManager.Instance.ChangeToSnapshot(1,3f)
         // AudioManager.Instance.PlaySound(BloccoTelefono);
     }

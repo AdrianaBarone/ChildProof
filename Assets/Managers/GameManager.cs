@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,9 +11,11 @@ public class GameManager : MonoBehaviour
     Coroutine timerCoroutine;
 
     public int score { get; private set; }
+    public int startingScore = 100;
 
     public int PointDecreasePercent = 5;
     public float PointDecreaseRate = 1f;
+    public TMP_Text pointsText;
 
 
     private void Awake()
@@ -21,7 +24,8 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
-        score = 0;
+        score = startingScore;
+        StartCoroutine(AnimatePointsText());
     }
 
     private void Start()
@@ -29,7 +33,7 @@ public class GameManager : MonoBehaviour
         // NOTE: non ha senso ma funziona, quindi non toccare
         Time.timeScale = 1;
         InDangerMode = false;
-        // AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
+        AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
     }
 
     public void StartDangerModeForInspectable(Inspectable inspectable)
@@ -58,6 +62,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    IEnumerator AnimatePointsText()
+    {
+        int pointsStart = int.Parse(pointsText.text);
+        int pointsEnd = score;
+        int step = pointsStart < pointsEnd ? 1 : -1;
+        float time = step > 0 ? 0.01f : 0.1f;
+
+        for (int i = pointsStart; i != pointsEnd; i += step)
+        {
+            pointsText.text = i >= 0 ? i.ToString("D4") : "0000";
+            yield return new WaitForSeconds(time);
+        }
+        pointsText.text = pointsEnd.ToString("D4");
+    }
+
     IEnumerator LosePointsCoroutine()
     {
         while (true)
@@ -65,7 +84,8 @@ public class GameManager : MonoBehaviour
             int scoreDecrease = currentDangerInspectable.GetAchievementData().scoreIncrease * PointDecreasePercent / 100;
 
             DecreaseScore(scoreDecrease);
-            // TODO: animazioni e suoni periodici? collegamentu UI
+            // TODO: animazioni e suoni periodici?
+            StartCoroutine(AnimatePointsText());
             yield return new WaitForSeconds(PointDecreaseRate);
         }
     }
@@ -75,7 +95,7 @@ public class GameManager : MonoBehaviour
         if (value > 0)
         {
             score += value;
-            Debug.Log($"Score Updated: {score}");
+            StartCoroutine(AnimatePointsText());
         }
         else
         {
@@ -96,6 +116,7 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         //TODO: animazioni e suoni di sconfitta
+        Cursor.lockState = CursorLockMode.None;
         StartCoroutine(DelayedGameOverScreen(false));
     }
 
@@ -105,7 +126,8 @@ public class GameManager : MonoBehaviour
         StartCoroutine(DelayedGameOverScreen(true));
     }
 
-    public IEnumerator DelayedGameOverScreen(bool win) {
+    public IEnumerator DelayedGameOverScreen(bool win)
+    {
         // NOTE: impostare qui il tempo di attesa per tutte le eventuali animazioni e suoni
         yield return new WaitForSeconds(1f);
         PlayerPrefs.SetInt("score", score);

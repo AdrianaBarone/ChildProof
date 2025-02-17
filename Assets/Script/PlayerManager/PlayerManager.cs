@@ -80,8 +80,10 @@ public class PlayerManager : MonoBehaviour
     public void TransitionToInspection(Inspectable inspectable)
     {
         CursorManager.Instance.gameObject.SetActive(false);
+        UIManager.Instance.ShowInspectionTooltip(true);
         Cursor.lockState = CursorLockMode.None;
         //Cursor.visible = true;
+        lastState = state;
         state = PlayerState.INSPECTION;
         currentInspectable = inspectable;
         inspectable.RemoveObject();
@@ -90,6 +92,7 @@ public class PlayerManager : MonoBehaviour
     public void TransitionToExploration()
     {
         CursorManager.Instance.gameObject.SetActive(true);
+        UIManager.Instance.ShowInspectionTooltip(false);
         Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
         state = PlayerState.EXPLORATION;
@@ -106,11 +109,13 @@ public class PlayerManager : MonoBehaviour
 
     public void SetToExploration()
     {
+        lastState = state;
         playerInteraction.EndInteractionExternal();
     }
 
     public void SetToPhoneUp()
     {
+        lastState = state;
         state = PlayerState.PHONE_UP;
     }
 
@@ -123,6 +128,16 @@ public class PlayerManager : MonoBehaviour
     public void ReturnToPreviousState()
     {
         state = lastState;
+        if (state == PlayerState.EXPLORATION)
+        {
+            Debug.Log("cursor locked");
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Debug.Log("cursor none");
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     public bool InStateInspection()

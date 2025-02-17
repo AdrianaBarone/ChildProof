@@ -1,6 +1,6 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 
 public class AppManager : MonoBehaviour
@@ -18,15 +18,15 @@ public class AppManager : MonoBehaviour
     public GameObject singleRemindPanel;
     public static AppManager Instance;
 
-    [Header("Reminders")]
+    [Header("Find")]
+    public TMP_Text roomText;
 
-    public ScrollView remindScrollView;
+    [Header("Reminders")]
 
     public GameObject remindCardPrefab;
     public Transform remindCardParent;
 
     [Header("Achievements")]
-    public ScrollView achievementScrollView;
 
     public GameObject achievementCardPrefab;
     public Transform achievementCardParent;
@@ -59,26 +59,25 @@ public class AppManager : MonoBehaviour
         if (!isActive)
         {
             // NOTE: Apre il telefono
+            InventoryManager.Instance.ClearSelection();
             PlayerManager.Instance.SetToPhoneUp();
             UIManager.Instance.ShowInventory(false);
-            // UIMManager.Instance.ShowPhoneAnimation();
-            // AudioManager.Instance.PlaySound(SbloccoTelefono);
+            UIManager.Instance.ShowPhoneAnimation();
+            AudioManager.Instance.PlaySound(SbloccoTelefono);
         }
         else
         {
             // NOTE: Chiude il telefono
-            PlayerManager.Instance.TransitionToExploration();
-            UIManager.Instance.ShowInventory(true);
-            // UIMManager.Instance.HidePhoneAnimation();
-            // AudioManager.Instance.PlaySound(BloccoTelefono);
+            ClosePhone();
         }
 
     }
 
-    public void HidePhone()
+    public void ClosePhone()
     {
-        PlayerManager.Instance.TransitionToExploration();
-        // UIMManager.Instance.HidePhoneAnimation();
+        PlayerManager.Instance.ReturnToPreviousState();
+        UIManager.Instance.ShowInventory(true);
+        UIManager.Instance.HidePhoneAnimation();
         AudioManager.Instance.PlaySound(BloccoTelefono);
     }
 
@@ -90,8 +89,8 @@ public class AppManager : MonoBehaviour
         }
 
         panels[(int)panelType].SetActive(true);
-        remindScrollView.ScrollTo(remindScrollView.ElementAt(0));
-        achievementScrollView.ScrollTo(achievementScrollView.ElementAt(0));
+        // remindScrollView.ScrollTo(remindScrollView.ElementAt(0));
+        // achievementScrollView.ScrollTo(achievementScrollView.ElementAt(0));
     }
 
     public void ShowPanelByIndex(int panelIndex)
@@ -147,6 +146,12 @@ public class AppManager : MonoBehaviour
         // TODO: show popup with achievement card in top right
     }
 
+    public void UpdateChildPosition(string roomName)
+    {
+        Debug.Log("Room: " + roomName);
+        roomText.text = roomName;
+    }
+
     public GameObject CreateRemindCard(Achievement achievement)
     {
         if (achievement == null)
@@ -161,7 +166,7 @@ public class AppManager : MonoBehaviour
         TMP_Text descriptionText = card.transform.Find("DescriptionTask").GetComponent<TMP_Text>();
 
         Button cardButton = card.GetComponent<Button>();
-        cardButton.clicked += () =>
+        cardButton.onClick.AddListener(() =>
         {
             ShowPanel(PanelType.LabelSingleRemind);
 
@@ -172,15 +177,8 @@ public class AppManager : MonoBehaviour
             titleText.text = achievement.data.name;
             infoText.text = achievement.data.fullDescription;
             int progress = achievement.taskProgress;
-            if (progress >= achievement.data.goal)
-            {
-                progressText.text = "Completato";
-            }
-            else
-            {
-                progressText.text = progress + "/" + achievement.data.goal;
-            }
-        };
+            progressText.text = progress + "/" + achievement.data.goal;
+        });
 
         nameText.text = achievement.data.name;
         descriptionText.text = achievement.data.description;

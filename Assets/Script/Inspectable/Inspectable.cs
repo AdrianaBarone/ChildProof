@@ -92,7 +92,7 @@ public class Inspectable : MonoBehaviour
             GetComponent<Animator>().SetTrigger("isInteracting");
             for (int i = 0; i < audioClips.Length; i++)
             {
-                // AudioManager.Instance.PlaySound(audioClips[i]);
+                AudioManager.Instance.PlaySound(audioClips[i]);
             }
         }
     }

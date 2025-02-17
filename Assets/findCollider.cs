@@ -14,8 +14,11 @@ public class findCollider : MonoBehaviour
     {
     }
 
-    void OnTriggerEnter(Collider triggerCollider)
+    void OnTriggerEnter(Collider triggerColliderEnter)
     {
-        // Debug.Log(gameObject.name);
+        if (triggerColliderEnter.gameObject.name == "Mina")
+        {
+            AppManager.Instance.UpdateChildPosition(gameObject.name);
+        }
     }
 }

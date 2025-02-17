@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     public GameObject InfoArea;
     public GameObject InventoryCanvas;
 
+    public Image tooltipSprite;
+
     public static UIManager Instance;
 
     private Animator animator;
@@ -39,7 +41,7 @@ public class UIManager : MonoBehaviour
         titleText.text = achievement.data.name;
 
         animator.SetTrigger("PopUp");
-        // AudioManager.Instance.PlaySound(SbloccoAchivement);
+        AudioManager.Instance.PlaySound(SbloccoAchivement);
     }
 
 
@@ -52,6 +54,11 @@ public class UIManager : MonoBehaviour
         titleText.text = achievement.data.name;
 
         animator.SetTrigger("PopUp");
+    }
+
+    public void ShowInspectionTooltip(bool show)
+    {
+        tooltipSprite.gameObject.SetActive(show);
     }
 
     // Update is called once per frame
@@ -88,9 +95,8 @@ public class UIManager : MonoBehaviour
 
             if (PlayerManager.Instance.InStatePhoneUp())
             {
-                // TODO: close phone, transition to exploration
-
-
+                AppManager.Instance.ClosePhone();
+                PlayerManager.Instance.ReturnToPreviousState();
             }
 
             Cursor.lockState = CursorLockMode.None;
@@ -104,9 +110,29 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void HidePhoneAnimation()
+    {
+        animator.SetTrigger("HidePhone");
+    }
+
+    public void ShowPhoneAnimation()
+    {
+        animator.SetTrigger("ShowPhone");
+    }
+
     public void ShowInventory(bool show)
     {
         InventoryCanvas.SetActive(show);
+    }
+
+    public void Resume()
+    {
+        //Cursor.visible = false;
+        CursorCanvas.SetActive(true);
+        InventoryCanvas.SetActive(true);
+        PauseCanvas.SetActive(false);
+        Time.timeScale = 1;
+        PlayerManager.Instance.ReturnToPreviousState();
     }
 
     public void ExitGame()
@@ -127,6 +153,6 @@ public class UIManager : MonoBehaviour
 
         animator.SetTrigger("ShowInfo");
         Time.timeScale = 0;
-        // AudioManager.Instance.PlaySound(InfoItem);
+        AudioManager.Instance.PlaySound(InfoItem);
     }
 }

@@ -58,14 +58,14 @@ public class CursorManager : MonoBehaviour
     {
         //Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        Cursor.SetCursor(movableHoverCursor, hotSpot, cursorMode);
+        Cursor.SetCursor(movableHoverCursor, Vector2.zero, cursorMode);
     }
 
     public void PointingMoveableWithItem()
     {
         //Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        Cursor.SetCursor(movableWithItemCursor, hotSpot, cursorMode);
+        Cursor.SetCursor(movableWithItemCursor, Vector2.zero, cursorMode);
     }
 
     public void PointingDefault()

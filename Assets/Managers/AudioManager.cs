@@ -13,10 +13,10 @@ public class AudioManager : MonoBehaviour {
 
     [Header("Info Mixer Audio")]
     public AudioMixer audioMixer;
-    public AudioMixerSnapshot snapshot1;
-    public AudioMixerSnapshot snapshot2;
-    public AudioMixerSnapshot snapshot3;
-    public AudioMixerSnapshot snapshot4;
+    public AudioMixerSnapshot sfx;
+    public AudioMixerSnapshot player;
+    public AudioMixerSnapshot voice;
+    //public AudioMixerSnapshot music;
 
     [Header("Suoni Giocatore")]
     public AudioClip passiClip;
@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour {
         audioDangerSource = CreateAudioSource(audioClipDanger, true);
     }
 
-    private AudioSource CreateAudioSource(AudioClip audioClip, bool loop) {
+    public AudioSource CreateAudioSource(AudioClip audioClip, bool loop) {
         foreach (var source in audioSources) {
             if (source.clip == audioClip) {
                 return source;
@@ -73,6 +73,7 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void PlayCameraTransitionSound() {
+        ChangeToSnapshot(1,3f);
         if (cameraTransitionClip != null) {
             cameraAudioSource.Play();
         }
@@ -116,26 +117,6 @@ public class AudioManager : MonoBehaviour {
         }
     }
 
-    public void ChangeToSnapshot(int snapshotIndex, float transitionTime) {
-        switch (snapshotIndex) {
-            case 1:
-                snapshot1.TransitionTo(transitionTime);
-                break;
-            case 2:
-                snapshot2.TransitionTo(transitionTime);
-                break;
-            case 3:
-                snapshot3.TransitionTo(transitionTime);
-                break;
-            case 4:
-                snapshot4.TransitionTo(transitionTime);
-                break;
-            default:
-                Debug.LogWarning("Snapshot index non valido.");
-                break;
-        }
-    }
-
     private IEnumerator FadeInAudio(AudioSource audioSource, AudioClip clip) {
         audioSource.clip = clip;
         audioSource.volume = 0f;
@@ -168,6 +149,29 @@ public class AudioManager : MonoBehaviour {
 
         audioSource.Stop();
         audioSource.volume = 0f;
+    }
+
+    public void ChangeToSnapshot(int snapshotIndex, float transitionTime) {
+        switch (snapshotIndex) {
+            case 1:
+                sfx.TransitionTo(transitionTime);
+                break;
+            case 2:
+                player.TransitionTo(transitionTime);
+                break;
+            case 3:
+                voice.TransitionTo(transitionTime);
+                break;
+            
+            /*
+            case 4:
+                music.TransitionTo(transitionTime);
+                break;
+            */
+            default:
+                Debug.LogWarning("Snapshot index non valido.");
+                break;
+        }
     }
 
 }

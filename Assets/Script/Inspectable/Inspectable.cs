@@ -17,7 +17,7 @@ public class Inspectable : MonoBehaviour
     [Header("Audio Animazione")]
     public AudioClip[] audioClips;
 
-
+    private bool hasPlayedAchievementAudio = false;
 
     private void Awake()
     {
@@ -92,7 +92,8 @@ public class Inspectable : MonoBehaviour
             GetComponent<Animator>().SetTrigger("isInteracting");
             for (int i = 0; i < audioClips.Length; i++)
             {
-                AudioManager.Instance.PlaySound(audioClips[i]);
+                // AudioManager.Instance.ChangeToSnapshot(1,3f)
+                // AudioManager.Instance.PlaySound(audioClips[i]);
             }
         }
     }
@@ -122,6 +123,23 @@ public class Inspectable : MonoBehaviour
 
             AchievementManager.Instance.IncrementAchievement(achievementData);
             PlayerManager.Instance.SetToExploration();
+        }
+    }
+
+    public void OnCameraActivated()
+    {
+        if (!hasPlayedAchievementAudio && achievementData != null && achievementData.audioClipMum != null && achievementData.audioClipDad != null)
+        {
+            //AudioManager.Instance.ChangeToSnapshot(3,3f)
+            // AudioSource audioSourceMum = AudioManager.Instance.CreateAudioSource(achievementData.audioClipMum, false);
+            // audioSourceMum.panStereo = 1.0f;
+            // audioSourceMum.Play();
+
+            // AudioSource audioSourceDad = AudioManager.Instance.CreateAudioSource(achievementData.audioClipDad, false);
+            // audioSourceDad.panStereo = -1.0f;
+            // audioSourceDad.PlayScheduled(AudioSettings.dspTime + audioSourceMum.clip.length);
+
+            // hasPlayedAchievementAudio = true;
         }
     }
 }

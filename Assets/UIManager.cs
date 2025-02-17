@@ -41,7 +41,8 @@ public class UIManager : MonoBehaviour
         titleText.text = achievement.data.name;
 
         animator.SetTrigger("PopUp");
-        AudioManager.Instance.PlaySound(SbloccoAchivement);
+        // AudioManager.Instance.PlaySound(SbloccoAchivement);
+        //AudioManager.Instance.ChangeToSnapshot(1,3f)
     }
 
 
@@ -153,6 +154,7 @@ public class UIManager : MonoBehaviour
 
         animator.SetTrigger("ShowInfo");
         Time.timeScale = 0;
-        AudioManager.Instance.PlaySound(InfoItem);
+        // AudioManager.Instance.PlaySound(InfoItem);
+        //AudioManager.Instance.ChangeToSnapshot(1,3f)
     }
 }

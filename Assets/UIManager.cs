@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
         titleText.text = achievement.data.name;
 
         animator.SetTrigger("PopUp");
-        // AudioManager.Instance.PlaySound(SbloccoAchivement);
+        AudioManager.Instance.PlaySound(SbloccoAchivement);
     }
 
 

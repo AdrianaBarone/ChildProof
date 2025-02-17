@@ -93,7 +93,7 @@ public class Inspectable : MonoBehaviour
             for (int i = 0; i < audioClips.Length; i++)
             {
                 //AudioManager.Instance.ChangeToSnapshot(1,3f)
-                // AudioManager.Instance.PlaySound(audioClips[i]);
+                AudioManager.Instance.PlaySound(audioClips[i]);
             }
         }
     }

@@ -62,8 +62,8 @@ public class AppManager : MonoBehaviour
             PlayerManager.Instance.SetToPhoneUp();
             UIManager.Instance.ShowInventory(false);
             // UIMManager.Instance.ShowPhoneAnimation();
-            // AudioManager.Instance.ChangeToSnapshot(1,3f)
-            // AudioManager.Instance.PlaySound(SbloccoTelefono);
+            //AudioManager.Instance.ChangeToSnapshot(1,3f)
+            AudioManager.Instance.PlaySound(SbloccoTelefono);
         }
         else
         {
@@ -71,8 +71,8 @@ public class AppManager : MonoBehaviour
             PlayerManager.Instance.TransitionToExploration();
             UIManager.Instance.ShowInventory(true);
             // UIMManager.Instance.HidePhoneAnimation();
-            // AudioManager.Instance.ChangeToSnapshot(1,3f)
-            // AudioManager.Instance.PlaySound(BloccoTelefono);
+            //AudioManager.Instance.ChangeToSnapshot(1,3f)
+            AudioManager.Instance.PlaySound(BloccoTelefono);
         }
 
     }

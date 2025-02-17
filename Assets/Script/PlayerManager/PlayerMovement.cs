@@ -40,12 +40,12 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = playerMovement * speed;
 
         bool isMoving = playerMovement.magnitude > 0;
-        // AudioManager.Instance.PlayFootsteps(isMoving);
+        AudioManager.Instance.PlayFootsteps(isMoving);
     }
 
     public void StopMovement()
     {
         rb.linearVelocity = Vector3.zero;
-        // AudioManager.Instance.PlayFootsteps(false);
+        AudioManager.Instance.PlayFootsteps(false);
     }
 }

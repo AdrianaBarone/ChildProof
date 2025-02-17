@@ -19,8 +19,6 @@ public class AchievementManager : MonoBehaviour
     private void Start()
     {
         LoadAchievements();
-        if (AppManager.Instance != null)
-            AppManager.Instance.cardCount = 0;
     }
 
     void LoadAchievements()
@@ -30,8 +28,10 @@ public class AchievementManager : MonoBehaviour
             Achievement achievement = new Achievement(achievementData);
             achievements.Add(achievement);
 
+            GameObject card = AppManager.Instance.CreateAchievementCard(achievement);
+
             // GameObject card = AppManager.Instance.CreateRemindCard(achievement);
-            // achievementCards.Add(achievement, card);
+            achievementCards.Add(achievement, card);
         }
         achievementCount = achievements.Count;
     }
@@ -48,22 +48,22 @@ public class AchievementManager : MonoBehaviour
             return;
         }
 
-        return;
-
-        if (achievement.taskProgress == 0)
+        /* if (achievement.taskProgress == 0)
         {
-            GameObject achievementCard = achievementCards[achievement];
-            achievementCard.transform.SetAsFirstSibling();
-            achievementCard.GetComponent<Button>().interactable = true;
+
 
             if (achievement.data.goal != 1)
             {
                 UIManager.Instance.ShowUnlockAchievementPopup(achievement);
             }
-        }
+        } */
 
+        GameObject achievementCard = achievementCards[achievement];
+
+        achievementCard.transform.SetAsFirstSibling();
         achievement.IncrementProgress(1);
         GameManager.Instance.UpdateScore(achievement.data.scoreIncrease);
+        AppManager.Instance.UpdateAchievementCard(achievementCard, achievement);
 
         /*
         if (achievement.IsComplete) {

@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         // NOTE: non ha senso ma funziona, quindi non toccare
         Time.timeScale = 1;
         InDangerMode = false;
-        // AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
+        AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
     }
 
     public void StartDangerModeForInspectable(Inspectable inspectable)

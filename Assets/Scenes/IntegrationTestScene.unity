@@ -4019,6 +4019,61 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88bd170529d7ba14c8fa5e805832effc, type: 3}
+--- !u!1 &112669288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 112669290}
+  - component: {fileID: 112669289}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &112669289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112669288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee739d39c49e6d49969cc7893468742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInDuration: 3
+  fadeOutDuration: 3
+  audioMixer: {fileID: 24100000, guid: 0d111de3707b041c7942cb9576d5db6d, type: 2}
+  snapshot1: {fileID: 7225742634938903041, guid: 0d111de3707b041c7942cb9576d5db6d, type: 2}
+  snapshot2: {fileID: 3382857353756136267, guid: 0d111de3707b041c7942cb9576d5db6d, type: 2}
+  snapshot3: {fileID: 2450039964051913610, guid: 0d111de3707b041c7942cb9576d5db6d, type: 2}
+  snapshot4: {fileID: 3976339524538128585, guid: 0d111de3707b041c7942cb9576d5db6d, type: 2}
+  passiClip: {fileID: 8300000, guid: e9a487aac16b327459f2d3706f48d095, type: 3}
+  cameraTransitionClip: {fileID: 8300000, guid: 9247f62b6f8734d4ebbfbdfbeaa4f7ed, type: 3}
+  audioClipSafe: {fileID: 8300000, guid: 236c9b863cc124d46a798721ab7dc4e0, type: 3}
+  audioClipDanger: {fileID: 8300000, guid: 2534211640f4e4303b635f3a0d6ce7d8, type: 3}
+--- !u!4 &112669290
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112669288}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 455.43512, y: 418.581, z: 5.023838}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &116521490 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6898663837924890636, guid: 8ea1584de95d51944bfcb3715fb78c62, type: 3}
@@ -13799,8 +13854,8 @@ MonoBehaviour:
   CursorCanvas: {fileID: 1201069484}
   InfoArea: {fileID: 1034568904}
   InventoryCanvas: {fileID: 2066271106}
-  InfoItem: {fileID: 0}
-  SbloccoAchivement: {fileID: 0}
+  InfoItem: {fileID: 8300000, guid: 5a5e8a1612ce648b08f85bad7b37f645, type: 3}
+  SbloccoAchivement: {fileID: 8300000, guid: 70dde3ed3334642e197f2be41f2085be, type: 3}
 --- !u!95 &265524484
 Animator:
   serializedVersion: 7
@@ -16891,7 +16946,7 @@ RectTransform:
   m_LocalScale: {x: 1.0000129, y: 1.0000129, z: 1.0000129}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 82866820}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -96209,6 +96264,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6111513910057754426, guid: ad9e3987c5bb28f4395094cecba7245a, type: 3}
+      propertyPath: audioClips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6111513910057754426, guid: ad9e3987c5bb28f4395094cecba7245a, type: 3}
+      propertyPath: 'audioClips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: f103642b5d03cad478b08d33d5281c3d, type: 3}
+    - target: {fileID: 6111513910057754426, guid: ad9e3987c5bb28f4395094cecba7245a, type: 3}
       propertyPath: objectsToDisable.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -97463,3 +97526,6 @@ SceneRoots:
   - {fileID: 1833990547}
   - {fileID: 10186509}
   - {fileID: 2523458222669070594}
+  - {fileID: 336223797}
+  - {fileID: 1749721434}
+  - {fileID: 112669290}

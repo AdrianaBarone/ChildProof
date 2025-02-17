@@ -10,4 +10,6 @@ public class AchievementData : ScriptableObject
     public Sprite achievementIcon;
     public int goal;
     public int scoreIncrease;
+    public AudioClip audioClipMum;
+    public AudioClip audioClipDad;
 }

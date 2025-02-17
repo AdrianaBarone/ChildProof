@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
         // NOTE: non ha senso ma funziona, quindi non toccare
         Time.timeScale = 1;
         InDangerMode = false;
+        //AudioManager.Instance.ChangeToSnapshot(2,3f)
         // AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
     }
 
@@ -36,9 +37,10 @@ public class GameManager : MonoBehaviour
     {
         InDangerMode = true;
 
+        //AudioManager.Instance.ChangeToSnapshot(2,3f)
         AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
         AudioManager.Instance.StopAudioWithFadeOut(InDangerMode);
-
+        
         currentDangerInspectable = inspectable;
         // TODO: animazioni e suoni di attivazione
         timerCoroutine = StartCoroutine(LosePointsCoroutine());
@@ -48,6 +50,7 @@ public class GameManager : MonoBehaviour
     {
         InDangerMode = false;
 
+        //AudioManager.Instance.ChangeToSnapshot(2,3f)
         AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
         AudioManager.Instance.StopAudioWithFadeOut(InDangerMode);
 

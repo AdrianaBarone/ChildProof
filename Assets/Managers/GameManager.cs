@@ -33,17 +33,15 @@ public class GameManager : MonoBehaviour
         // NOTE: non ha senso ma funziona, quindi non toccare
         Time.timeScale = 1;
         InDangerMode = false;
-        //AudioManager.Instance.ChangeToSnapshot(2,3f)
-        // AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
+        AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
     }
 
     public void StartDangerModeForInspectable(Inspectable inspectable)
     {
         InDangerMode = true;
 
-        // AudioManager.Instance.ChangeToSnapshot(2,3f)
-        // AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
-        // AudioManager.Instance.StopAudioWithFadeOut(InDangerMode);
+        AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
+         AudioManager.Instance.StopAudioWithFadeOut(InDangerMode);
 
         currentDangerInspectable = inspectable;
         // TODO: animazioni e suoni di attivazione
@@ -54,9 +52,8 @@ public class GameManager : MonoBehaviour
     {
         InDangerMode = false;
 
-        // AudioManager.Instance.ChangeToSnapshot(2,3f)
-        // AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
-        // AudioManager.Instance.StopAudioWithFadeOut(InDangerMode);
+        AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
+        AudioManager.Instance.StopAudioWithFadeOut(InDangerMode);
 
         currentDangerInspectable = null;
         if (timerCoroutine != null)

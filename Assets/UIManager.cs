@@ -30,6 +30,8 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        AudioManager.Instance.CreateAudioSource(InfoItem, false, "SFX");
+        AudioManager.Instance.CreateAudioSource(SbloccoAchivement, false, "SFX");
     }
 
     public void ShowUnlockAchievementPopup(Achievement achievement)
@@ -41,8 +43,7 @@ public class UIManager : MonoBehaviour
         titleText.text = achievement.data.name;
 
         animator.SetTrigger("PopUp");
-        // AudioManager.Instance.PlaySound(SbloccoAchivement);
-        //AudioManager.Instance.ChangeToSnapshot(1,3f)
+        AudioManager.Instance.PlaySound(SbloccoAchivement);
     }
 
 
@@ -154,7 +155,7 @@ public class UIManager : MonoBehaviour
 
         animator.SetTrigger("ShowInfo");
         Time.timeScale = 0;
-        // AudioManager.Instance.PlaySound(InfoItem);
-        //AudioManager.Instance.ChangeToSnapshot(1,3f)
+        AudioManager.Instance.PlaySound(InfoItem);
+
     }
 }

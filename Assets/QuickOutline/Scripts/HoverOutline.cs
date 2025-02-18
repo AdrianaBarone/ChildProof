@@ -15,7 +15,7 @@ public class HoverOutline : MonoBehaviour
     {
         // Recupera il componente Outline e lo disabilita all'avvio
         outline = GetComponent<Outline>();
-        if (outline != null)
+        if (outline != null){
             outline.enabled = false;
         outline.precomputeOutline = false;
     }

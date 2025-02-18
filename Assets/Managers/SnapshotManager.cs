@@ -18,32 +18,29 @@ public class SnapshotManager : MonoBehaviour
     private SnapshotState currentState;
 
     private void Start() {
-        // Impostiamo lo stato predefinito su "player" al start
         currentState = SnapshotState.Player;
-        ChangeSnapshot(currentState, 0); // Iniziamo con lo snapshot "player"
+        ChangeSnapshot(currentState, 0);
     }
 
-    // Metodo per cambiare snapshot
     public void ChangeSnapshot(SnapshotState state, float transitionTime) {
         switch (state) {
             case SnapshotState.Player:
                 player.TransitionTo(transitionTime);
-                Debug.Log($"Snapshot attivo: Player (transizione in {transitionTime}s)");
                 break;
             case SnapshotState.SFX:
                 sfx.TransitionTo(transitionTime);
-                Debug.Log($"Snapshot attivo: SFX (transizione in {transitionTime}s)");
                 break;
             case SnapshotState.Voice:
                 voice.TransitionTo(transitionTime);
-                Debug.Log($"Snapshot attivo: Voice (transizione in {transitionTime}s)");
                 break;
             default:
                 Debug.LogWarning("Snapshot non valido.");
-                break;
+                return;
         }
-
-        // Impostiamo lo stato corrente
         currentState = state;
+    }
+
+    public SnapshotState GetCurrentSnapshot() {
+        return currentState;
     }
 }

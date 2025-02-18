@@ -113,6 +113,11 @@ public class AudioManager : MonoBehaviour {
         StartCoroutine(WaitForSoundToFinish(audioSource));
     }
 
+    public void PlayDialogs(AudioSource audioSourceQuestion, AudioSource audioSourceAnswer){
+        audioSourceQuestion.Play();
+        audioSourceAnswer.PlayScheduled(AudioSettings.dspTime + audioSourceAnswer.clip.length);
+    }
+
     private IEnumerator WaitForSoundToFinish(AudioSource audioSource) {
         yield return new WaitForSeconds(audioSource.clip.length);
         yield return new WaitForSeconds(1f);

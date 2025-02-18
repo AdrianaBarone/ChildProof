@@ -106,26 +106,4 @@ public class Inspectable : MonoBehaviour
             PlayerManager.Instance.SetToExploration();
         }
     }
-
-/*
-    public void OnCameraActivated()
-    {
-        if (InStateInspection){
-        if (!hasPlayedAchievementAudio && achievementData != null && achievementData.audioClipMum != null && achievementData.audioClipDad != null)
-        {
-            AudioSource audioSourceMum = AudioManager.Instance.CreateAudioSource(achievementData.audioClipMum, false, "Dialoghi");
-            audioSourceMum.panStereo = 1.0f;
-
-            AudioSource audioSourceDad = AudioManager.Instance.CreateAudioSource(achievementData.audioClipDad, false, "Dialoghi");
-            audioSourceDad.panStereo = -1.0f;
-
-            // TO DO: funzione in audio che fa partire l'audio della mamma con il corretto snapshot
-            //audioSourceMum.Play();
-            //audioSourceDad.PlayScheduled(AudioSettings.dspTime + audioSourceMum.clip.length);
-
-            hasPlayedAchievementAudio = true;
-        }
-        }
-    }
-    */
 }

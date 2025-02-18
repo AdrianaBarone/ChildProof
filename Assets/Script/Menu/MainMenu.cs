@@ -3,37 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour {
+public class MainMenu : MonoBehaviour
+{
 
-    public enum PanelType {
+    public enum PanelType
+    {
         MenuPanel,
         SettingsPanel,
         InstructionsPanel,
         ConfirmPanel
     }
-    
+
     public GameObject[] panels;
 
-    void Awake() {
+    void Awake()
+    {
         ShowPanel(PanelType.MenuPanel);
     }
 
-    public void ShowPanel(PanelType panelType) {
-        for (int i = 0; i < panels.Length; i++) {
+    public void ShowPanel(PanelType panelType)
+    {
+        for (int i = 0; i < panels.Length; i++)
+        {
             panels[i].SetActive(false);
         }
         panels[(int)panelType].SetActive(true);
     }
 
-    public void ShowPanelByIndex(int panelIndex) {
+    public void ShowPanelByIndex(int panelIndex)
+    {
         ShowPanel((PanelType)panelIndex);
     }
 
-    public void PlayGame() {
+    public void PlayGame()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void QuitGame() {
+    public void PlayTutorial()
+    {
+        SceneManager.LoadScene("Tutorial_scena 1");
+    }
+
+    public void QuitGame()
+    {
         Application.Quit();
     }
 }

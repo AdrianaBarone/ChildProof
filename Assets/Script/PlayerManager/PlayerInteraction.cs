@@ -174,6 +174,10 @@ public class PlayerInteraction : MonoBehaviour
         if (dropZone.AcceptsItem(itemData))
         {
             dropZone.OnDrop();
+            if (TutorialManager.Instance && gameObject.tag == "Tutorial")
+            {
+                TutorialManager.Instance.OnReceiveEvent("OggettoPosizionato");
+            }
             return true;
         }
 
@@ -231,6 +235,10 @@ public class PlayerInteraction : MonoBehaviour
         AudioManager.Instance.StopCameraTransitionSound();
 
         PlayerManager.Instance.TransitionToInspection(inspectable);
+        if (TutorialManager.Instance && gameObject.tag == "Tutorial")
+        {
+            TutorialManager.Instance.OnReceiveEvent("TavoloCliccato");
+        }
     }
 
     private IEnumerator EndInteraction()

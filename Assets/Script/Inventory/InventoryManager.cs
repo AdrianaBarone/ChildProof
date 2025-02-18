@@ -156,5 +156,13 @@ public class InventoryManager : MonoBehaviour
                 ItemIcon.sprite = null;
             }
         }
+
+        if (ItemContent.childCount == 9)
+        {
+            if (TutorialManager.Instance && gameObject.tag == "Tutorial")
+            {
+                TutorialManager.Instance.OnReceiveEvent("InventarioPieno");
+            }
+        }
     }
 }

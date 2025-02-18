@@ -31,30 +31,6 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private Sprite grabbableSprite;
 
 
-    [Header("Audio cambio camera")]
-    //AUDIO
-    private AudioSource audioSource;
-    public AudioClip audioClip;
-
-    void Start()
-    {
-        //AUDIO
-        audioSource = GetComponent<AudioSource>();
-        if (audioSource == null)
-        {
-            audioSource = gameObject.AddComponent<AudioSource>();
-        }
-
-        if (audioClip != null)
-        {
-            audioSource.clip = audioClip;
-        }
-        else
-        {
-            Debug.LogWarning("Nessun audio clip assegnato a " + gameObject.name);
-        }
-    }
-
     public void RaycastForInspectable()
     {
         Ray ray = new(playerCamera.transform.position, playerCamera.transform.forward);

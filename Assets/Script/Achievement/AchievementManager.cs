@@ -74,9 +74,7 @@ public class AchievementManager : MonoBehaviour
             CheckAchievementCount();
         }
 
-
-        // TODO: mostra notifica popup
-
+        UIManager.Instance.ShowAchievement(achievement);
     }
 
     IEnumerator<WaitForSeconds> AnimateProgressSlider()

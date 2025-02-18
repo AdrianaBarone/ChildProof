@@ -9,14 +9,18 @@ public class UIManager : MonoBehaviour
     public GameObject PopUpCanvas;
     public GameObject PauseCanvas;
     public GameObject CursorCanvas;
-    public GameObject InfoArea;
     public GameObject InventoryCanvas;
+    public GameObject ItemPopup;
+    public GameObject achievementCard;
+
+    [SerializeField] private Sprite completedAchievementSprite;
 
     public Image tooltipSprite;
 
     public static UIManager Instance;
 
     private Animator animator;
+    private bool isInspecting = false;
 
     [Header("Suoni UI")]
     public AudioClip InfoItem;
@@ -66,17 +70,13 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && isInspecting)
         {
-            if (InfoArea.activeSelf)
-            {
-                PlayerManager.Instance.TransitionToExploration();
-                animator.SetTrigger("HideInfo");
-                Time.timeScale = 1;
-            }
+            PlayerManager.Instance.ReturnToPreviousState();
+            CloseInfo();
         }
 
-        if (InventoryCanvas.activeSelf)
+        if (InventoryCanvas.activeSelf && !isInspecting)
         {
             // NOTE: probabilmente esiste un modo più efficiente per fare questa cosa
             for (int i = 0; i < 10; i++)
@@ -98,6 +98,12 @@ public class UIManager : MonoBehaviour
             if (PlayerManager.Instance.InStatePhoneUp())
             {
                 AppManager.Instance.ClosePhone();
+                PlayerManager.Instance.ReturnToPreviousState();
+            }
+
+            if (isInspecting)
+            {
+                CloseInfo();
                 PlayerManager.Instance.ReturnToPreviousState();
             }
 
@@ -144,10 +150,11 @@ public class UIManager : MonoBehaviour
 
     public void ShowInfo(Item item)
     {
+        isInspecting = true;
         PlayerManager.Instance.PrepareTransition();
-        var itemNameText = InfoArea.transform.Find("InfoPanel/NamePanel/Name").GetComponent<TMP_Text>();
-        var itemDescriptionText = InfoArea.transform.Find("InfoPanel/DescriptionPanel/Description").GetComponent<TMP_Text>();
-        var itemImage = InfoArea.transform.Find("InfoPanel/NamePanel/Image").GetComponent<Image>();
+        var itemNameText = ItemPopup.transform.Find("ImageTitle/Title").GetComponent<TMP_Text>();
+        var itemDescriptionText = ItemPopup.transform.Find("Description").GetComponent<TMP_Text>();
+        var itemImage = ItemPopup.transform.Find("ImageTitle/Image").GetComponent<Image>();
 
         itemNameText.text = item.data.name;
         itemDescriptionText.text = item.data.description;
@@ -156,6 +163,39 @@ public class UIManager : MonoBehaviour
         animator.SetTrigger("ShowInfo");
         Time.timeScale = 0;
         AudioManager.Instance.PlaySound(InfoItem);
+    }
 
+    public void CloseInfo()
+    {
+        isInspecting = false;
+        animator.SetTrigger("HideInfo");
+        Time.timeScale = 1;
+    }
+
+    public void ShowAchievement(Achievement achievement)
+    {
+        if (achievement == null)
+        {
+            Debug.LogError("Achievement è null!");
+            return;
+        }
+
+        achievementCard.transform.Find("Body/Titolo").GetComponent<TMP_Text>().text = achievement.data.name;
+        if (achievement.taskProgress >= achievement.data.goal)
+        {
+
+            achievementCard.GetComponent<Image>().sprite = completedAchievementSprite;
+            achievementCard.transform.Find("Body/Titolo").GetComponent<TMP_Text>().color = new Color(0.8396226f, 0.9176471f, 0.972549f);
+            achievementCard.transform.Find("Body/Progresso/Testo").GetComponent<TMP_Text>().color = new Color(0.8396226f, 0.9176471f, 0.972549f);
+            achievementCard.transform.Find("Icon").GetComponent<Image>().sprite = achievement.data.achievementIcon;
+        }
+
+        TMP_Text progressText = achievementCard.transform.Find("Body/Progresso/Testo").GetComponent<TMP_Text>();
+        Slider progressSlider = achievementCard.transform.Find("Body/Progresso/Slider").GetComponent<Slider>();
+
+        progressText.text = achievement.taskProgress + "/" + achievement.data.goal;
+        progressSlider.value = (float)achievement.taskProgress / achievement.data.goal;
+
+        animator.SetTrigger("ShowAchievementPopup");
     }
 }

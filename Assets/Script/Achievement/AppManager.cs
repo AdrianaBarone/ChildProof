@@ -140,9 +140,6 @@ public class AppManager : MonoBehaviour
 
         progressText.text = achievement.taskProgress + "/" + achievement.data.goal;
         progressSlider.value = (float)achievement.taskProgress / achievement.data.goal;
-
-
-        // TODO: show popup with achievement card in top right
     }
 
     public void UpdateChildPosition(string roomName)

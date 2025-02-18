@@ -41,7 +41,7 @@ public class HoverOutline : MonoBehaviour
     void Update()
     {
         // Se il mouse è sopra l'oggetto, controlla continuamente la distanza dalla camera
-        if (mouseOver)
+        if (mouseOver && PlayerManager.Instance.IsInStateExploration())
         {
             if (IsWithinDistance())
             {
@@ -56,7 +56,6 @@ public class HoverOutline : MonoBehaviour
         }
     }
 
-    // Restituisce true se la distanza dalla camera all'oggetto è minore o uguale a maxDistance
     bool IsWithinDistance()
     {
         if (Camera.main == null)

@@ -87,7 +87,23 @@ public class PlayerManager : MonoBehaviour
         state = PlayerState.INSPECTION;
         currentInspectable = inspectable;
         inspectable.RemoveObject();
+        OnCameraActivated(currentInspectable.GetAchievementData());
     }
+
+    
+    public void OnCameraActivated(AchievementData achievementData)
+    {
+        
+        if (achievementData != null && achievementData.audioClipQuestion != null && achievementData.audioClipAnswer != null)
+        {
+            AudioSource audioSourceQuestion = AudioManager.Instance.CreateAudioSource(achievementData.audioClipQuestion, false, "Dialoghi");
+            audioSourceQuestion.panStereo = 1.0f;
+
+            AudioSource audioSourceAnswer = AudioManager.Instance.CreateAudioSource(achievementData.audioClipAnswer, false, "Dialoghi");
+            audioSourceAnswer.panStereo = -1.0f;
+        }
+    }
+    
 
     public void TransitionToExploration()
     {

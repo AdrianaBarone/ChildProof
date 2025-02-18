@@ -62,8 +62,7 @@ public class AppManager : MonoBehaviour
             PlayerManager.Instance.SetToPhoneUp();
             UIManager.Instance.ShowInventory(false);
             UIManager.Instance.ShowPhoneAnimation();
-            // AudioManager.Instance.ChangeToSnapshot(1,3f)
-            // AudioManager.Instance.PlaySound(SbloccoTelefono);
+            AudioManager.Instance.PlaySound(SbloccoTelefono);
         }
         else
         {
@@ -78,8 +77,7 @@ public class AppManager : MonoBehaviour
         PlayerManager.Instance.ReturnToPreviousState();
         UIManager.Instance.ShowInventory(true);
         UIManager.Instance.HidePhoneAnimation();
-        // AudioManager.Instance.ChangeToSnapshot(1,3f)
-        // AudioManager.Instance.PlaySound(BloccoTelefono);
+        AudioManager.Instance.PlaySound(BloccoTelefono);
     }
 
     public void ShowPanel(PanelType panelType)

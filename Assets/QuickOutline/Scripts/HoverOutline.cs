@@ -20,50 +20,50 @@ public class HoverOutline : MonoBehaviour
             outline.enabled = false;
             outline.precomputeOutline = false;
         }
+    }
 
-        void OnMouseEnter()
+    void OnMouseEnter()
+    {
+        mouseOver = true;
+        // Attiva l'outline solo se l'oggetto è entro la distanza desiderata
+        if (IsWithinDistance())
         {
-            mouseOver = true;
-            // Attiva l'outline solo se l'oggetto è entro la distanza desiderata
+            outline.enabled = true;
+        }
+    }
+
+    void OnMouseExit()
+    {
+        mouseOver = false;
+        // Disabilita l'outline quando il mouse esce
+        if (outline != null)
+            outline.enabled = false;
+    }
+
+    void Update()
+    {
+        // Se il mouse è sopra l'oggetto, controlla continuamente la distanza dalla camera
+        if (mouseOver && PlayerManager.Instance.IsInStateExploration())
+        {
             if (IsWithinDistance())
             {
-                outline.enabled = true;
+                if (!outline.enabled)
+                    outline.enabled = true;
             }
-        }
-
-        void OnMouseExit()
-        {
-            mouseOver = false;
-            // Disabilita l'outline quando il mouse esce
-            if (outline != null)
-                outline.enabled = false;
-        }
-
-        void Update()
-        {
-            // Se il mouse è sopra l'oggetto, controlla continuamente la distanza dalla camera
-            if (mouseOver && PlayerManager.Instance.IsInStateExploration())
+            else
             {
-                if (IsWithinDistance())
-                {
-                    if (!outline.enabled)
-                        outline.enabled = true;
-                }
-                else
-                {
-                    if (outline.enabled)
-                        outline.enabled = false;
-                }
+                if (outline.enabled)
+                    outline.enabled = false;
             }
         }
+    }
 
-        bool IsWithinDistance()
-        {
-            if (Camera.main == null)
-                return false;
+    bool IsWithinDistance()
+    {
+        if (Camera.main == null)
+            return false;
 
-            float distance = Vector3.Distance(Camera.main.transform.position, transform.position);
-            return distance <= maxDistance;
-        }
+        float distance = Vector3.Distance(Camera.main.transform.position, transform.position);
+        return distance <= maxDistance;
     }
 }

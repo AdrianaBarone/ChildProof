@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Pareti_tutorial
-  m_Shader: {fileID: 4800000, guid: 3a2f13712225d447f8d639c9f1105970, type: 3}
+  m_Shader: {fileID: 4800000, guid: e31db7c0f3c9543749faa96fdba2594e, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -20,22 +20,45 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: 
+  m_LockedProperties: _NoiseTex
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _DepthEffect: 4.99
     - _DetailIntensity: 5
+    - _EmissionStrength: 1.4
     - _FogIntensity: 1
+    - _FresnelPower: 1.5
     - _GlowIntensity: 10
     - _GridScale: 21.6
-    - _NoiseScale: 9.1
+    - _InterferenceSpeed: 1.86
+    - _InterferenceStrength: 0.654
+    - _NoiseScale: 2.74
     - _NoiseSpeed: 4.97
+    - _OrganicNoise: 0
     - _ParallaxDepth: 0.07
+    - _ParallaxStrength: 0
+    - _ScanIntensity: 0.06
+    - _ScanSpeed: 2.81
+    - _Softness: 0.887
+    - _Transparency: 0.04
+    - _WobbleSpeed: 2.4
+    - _WobbleStrength: 0.679
     m_Colors:
     - _BaseColor: {r: 0, g: 0.25342464, b: 1, a: 1}
     - _EmissionColor: {r: 0.031238874, g: 0.24528301, b: 0.24086061, a: 1}
+    - _FresnelColor: {r: 0.89258814, g: 0, b: 1, a: 1}
+    - _TintColor: {r: 0, g: 0.48336995, b: 0.7647059, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &5806966974742884706

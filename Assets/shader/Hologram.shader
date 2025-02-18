@@ -3,20 +3,19 @@ Shader "Custom/HologramShader"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}                      
-        _TintColor ("Tint Color", Color) = (1,1,0,1)              // Colore giallo
-        _Transparency("Transparency", Range(0,1)) = 0.5             // Parametro per regolare la trasparenza
-        _NoiseTex ("Noise Texture", 2D) = "white" {}                // Texture di rumore per distorsioni
-        _FresnelPower("Fresnel Power", Range(1,5)) = 2             // Intensità dell'effetto Fresnel
-        _FresnelColor("Fresnel Color", Color) = (1,1,0,1)           // Colore dell'effetto Fresnel (giallo)
-        _ScanSpeed ("Scan Speed", Range(0, 10)) = 1                 // Velocità della scanline
-        _ScanIntensity ("Scan Intensity", Range(0, 5)) = 0.5        // Intensità della scanline
+        _TintColor ("Tint Color", Color) = (1,1,0,1)              
+        _Transparency("Transparency", Range(0,1)) = 0.5             
+        _NoiseTex ("Noise Texture", 2D) = "white" {}                
+        _FresnelPower("Fresnel Power", Range(1,5)) = 2             
+        _FresnelColor("Fresnel Color", Color) = (1,1,0,1)           
+        _ScanSpeed ("Scan Speed", Range(0, 10)) = 1                
+        _ScanIntensity ("Scan Intensity", Range(0, 5)) = 0.5        
     }
     SubShader
     {
         Tags { "Queue"="Transparent" "RenderType"="Transparent" }
         LOD 200
         
-        // Modalità blending per trasparenza
         Blend SrcAlpha OneMinusSrcAlpha
         Cull Off
         ZWrite Off
@@ -65,23 +64,23 @@ Shader "Custom/HologramShader"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                // Campiona la texture di base e applica il tint (giallo)
+                // Campiona la texture di base e applica il tint
                 fixed4 col = tex2D(_MainTex, i.uv) * _TintColor;
 
-                // Effetto Fresnel: aggiunge un alone luministico sui bordi in funzione dell'angolo di vista
+                // Calcolo migliorato del Fresnel
                 float3 viewDir = normalize(_WorldSpaceCameraPos - i.worldPos);
-                float fresnel = pow(1.0 - saturate(dot(i.worldNormal, viewDir)), _FresnelPower);
+                float fresnel = pow(1.0 - abs(dot(i.worldNormal, viewDir)), _FresnelPower);
                 col.rgb += fresnel * _FresnelColor.rgb;
 
-                // Overlay di rumore per dare un aspetto distorto (simile a un ologramma)
-                float noise = tex2D(_NoiseTex, i.uv * 5.0).r;
-                col.rgb += noise * 0.1;
+                // Miglioramento dell'effetto rumore
+                float noise = tex2D(_NoiseTex, i.uv * 5.0 + _Time.y * 0.1).r;
+                col.rgb += noise * 0.15;
 
-                // Effetto scanline: crea una linea orizzontale in movimento
-                float scanline = sin((i.worldPos.y + _Time.y * _ScanSpeed) * 20.0) * _ScanIntensity;
+                // Effetto scanline migliorato
+                float scanline = sin((i.worldPos.y * 10.0 + _Time.y * _ScanSpeed) * 3.14159) * _ScanIntensity;
                 col.rgb += scanline;
 
-                // Imposta la trasparenza usando il parametro _Transparency
+                // Imposta la trasparenza
                 col.a = _Transparency;
 
                 return col;

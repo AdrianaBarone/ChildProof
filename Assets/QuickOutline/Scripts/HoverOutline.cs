@@ -19,51 +19,50 @@ public class HoverOutline : MonoBehaviour
             outline.enabled = false;
         outline.precomputeOutline = false;
     }
-}
 
-void OnMouseEnter()
-{
-    mouseOver = true;
-    // Attiva l'outline solo se l'oggetto è entro la distanza desiderata
-    if (IsWithinDistance())
+    void OnMouseEnter()
     {
-        outline.enabled = true;
-    }
-}
-
-void OnMouseExit()
-{
-    mouseOver = false;
-    // Disabilita l'outline quando il mouse esce
-    if (outline != null)
-        outline.enabled = false;
-}
-
-void Update()
-{
-    // Se il mouse è sopra l'oggetto, controlla continuamente la distanza dalla camera
-    if (mouseOver)
-    {
+        mouseOver = true;
+        // Attiva l'outline solo se l'oggetto è entro la distanza desiderata
         if (IsWithinDistance())
         {
-            if (!outline.enabled)
-                outline.enabled = true;
-        }
-        else
-        {
-            if (outline.enabled)
-                outline.enabled = false;
+            outline.enabled = true;
         }
     }
-}
 
-// Restituisce true se la distanza dalla camera all'oggetto è minore o uguale a maxDistance
-bool IsWithinDistance()
-{
-    if (Camera.main == null)
-        return false;
+    void OnMouseExit()
+    {
+        mouseOver = false;
+        // Disabilita l'outline quando il mouse esce
+        if (outline != null)
+            outline.enabled = false;
+    }
 
-    float distance = Vector3.Distance(Camera.main.transform.position, transform.position);
-    return distance <= maxDistance;
-}
+    void Update()
+    {
+        // Se il mouse è sopra l'oggetto, controlla continuamente la distanza dalla camera
+        if (mouseOver)
+        {
+            if (IsWithinDistance())
+            {
+                if (!outline.enabled)
+                    outline.enabled = true;
+            }
+            else
+            {
+                if (outline.enabled)
+                    outline.enabled = false;
+            }
+        }
+    }
+
+    // Restituisce true se la distanza dalla camera all'oggetto è minore o uguale a maxDistance
+    bool IsWithinDistance()
+    {
+        if (Camera.main == null)
+            return false;
+
+        float distance = Vector3.Distance(Camera.main.transform.position, transform.position);
+        return distance <= maxDistance;
+    }
 }

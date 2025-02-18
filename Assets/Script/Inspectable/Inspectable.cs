@@ -17,30 +17,11 @@ public class Inspectable : MonoBehaviour
     [Header("Audio Animazione")]
     public AudioClip[] audioClips;
 
-    private bool hasPlayedAchievementAudio = false;
-
     private void Awake()
     {
         maxInteractionNumber = dropZones.Length;
         interactionNumber = maxInteractionNumber;
     }
-
-    /*
-        private void Start() {
-            // Rimuove AudioSource esistenti per evitarne la duplicazione
-            foreach (var source in GetComponents<AudioSource>()) {
-                Destroy(source);
-            }
-
-            audioSources = new AudioSource[audioClips.Length];
-
-        for (int i = 0; i < audioClips.Length; i++) {
-            audioSources[i] = gameObject.AddComponent<AudioSource>();
-            audioSources[i].clip = audioClips[i];
-        }
-
-        }
-        */
 
     public bool IsResolved()
     {
@@ -92,8 +73,8 @@ public class Inspectable : MonoBehaviour
             GetComponent<Animator>().SetTrigger("isInteracting");
             for (int i = 0; i < audioClips.Length; i++)
             {
-                // AudioManager.Instance.ChangeToSnapshot(1,3f)
-                // AudioManager.Instance.PlaySound(audioClips[i]);
+                AudioManager.Instance.CreateAudioSource(audioClips[i], false, "SFX");
+                AudioManager.Instance.PlaySound(audioClips[i]);
             }
         }
     }
@@ -126,20 +107,25 @@ public class Inspectable : MonoBehaviour
         }
     }
 
+/*
     public void OnCameraActivated()
     {
+        if (InStateInspection){
         if (!hasPlayedAchievementAudio && achievementData != null && achievementData.audioClipMum != null && achievementData.audioClipDad != null)
         {
-            //AudioManager.Instance.ChangeToSnapshot(3,3f)
-            // AudioSource audioSourceMum = AudioManager.Instance.CreateAudioSource(achievementData.audioClipMum, false);
-            // audioSourceMum.panStereo = 1.0f;
-            // audioSourceMum.Play();
+            AudioSource audioSourceMum = AudioManager.Instance.CreateAudioSource(achievementData.audioClipMum, false, "Dialoghi");
+            audioSourceMum.panStereo = 1.0f;
 
-            // AudioSource audioSourceDad = AudioManager.Instance.CreateAudioSource(achievementData.audioClipDad, false);
-            // audioSourceDad.panStereo = -1.0f;
-            // audioSourceDad.PlayScheduled(AudioSettings.dspTime + audioSourceMum.clip.length);
+            AudioSource audioSourceDad = AudioManager.Instance.CreateAudioSource(achievementData.audioClipDad, false, "Dialoghi");
+            audioSourceDad.panStereo = -1.0f;
 
-            // hasPlayedAchievementAudio = true;
+            // TO DO: funzione in audio che fa partire l'audio della mamma con il corretto snapshot
+            //audioSourceMum.Play();
+            //audioSourceDad.PlayScheduled(AudioSettings.dspTime + audioSourceMum.clip.length);
+
+            hasPlayedAchievementAudio = true;
+        }
         }
     }
+    */
 }

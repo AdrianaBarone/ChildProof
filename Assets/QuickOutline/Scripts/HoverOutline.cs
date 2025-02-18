@@ -7,17 +7,19 @@ public class HoverOutline : MonoBehaviour
 
     void Awake()
     {
-        // Recupera il componente Outline e lo disattiva inizialmente
         outline = GetComponent<Outline>();
-        if(outline != null)
+        if(outline != null){
             outline.enabled = false;
+            outline.precomputeOutline = false;
+        } 
     }
 
     void OnMouseEnter()
     {
         // Attiva l'outline quando il mouse entra nell'area dell'oggetto
-        if (outline != null)
+        if (outline != null && PlayerManager.Instance.IsInStateExploration())
             outline.enabled = true;
+            Debug.Log("Over");
     }
 
     void OnMouseExit()

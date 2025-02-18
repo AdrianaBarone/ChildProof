@@ -203,9 +203,7 @@ public class PlayerInteraction : MonoBehaviour
         PlayerManager.Instance.PrepareTransition(); // NOTE: Blocca le interazioni durante la transizione
         Camera fixedCamera = inspectable.GetCamera();
 
-        //AUDIO
-        // AudioManager.Instance.ChangeToSnapshot(1,0)
-        // AudioManager.Instance.PlayCameraTransitionSound();
+        AudioManager.Instance.PlayCameraTransitionSound();
 
         // Interpolazione per il movimento graduale della fotocamera
         float elapsedTime = 0f;
@@ -230,9 +228,7 @@ public class PlayerInteraction : MonoBehaviour
         fixedCamera.gameObject.SetActive(true);
         playerCamera.gameObject.SetActive(false);
 
-        //AUDIO
-        // AudioManager.Instance.ChangeToSnapshot(1,0)
-        // AudioManager.Instance.StopCameraTransitionSound();
+        AudioManager.Instance.StopCameraTransitionSound();
 
         PlayerManager.Instance.TransitionToInspection(inspectable);
     }
@@ -242,9 +238,7 @@ public class PlayerInteraction : MonoBehaviour
         PlayerManager.Instance.PrepareTransition(); // NOTE: Blocca le interazioni durante la transizione
         Camera fixedCamera = PlayerManager.Instance.GetInspectableCamera();
 
-        //AUDIO
-        // AudioManager.Instance.ChangeToSnapshot(1,0)
-        // AudioManager.Instance.PlayCameraTransitionSound();
+        AudioManager.Instance.PlayCameraTransitionSound();
 
         // Interpolazione per il movimento graduale della fotocamera
         float elapsedTime = 0f;
@@ -266,9 +260,7 @@ public class PlayerInteraction : MonoBehaviour
 
         playerCamera.transform.SetPositionAndRotation(targetPosition, targetRotation);
 
-        //AUDIO
-        // AudioManager.Instance.ChangeToSnapshot(1,0)
-        // AudioManager.Instance.StopCameraTransitionSound();
+        AudioManager.Instance.StopCameraTransitionSound();
 
         PlayerManager.Instance.TransitionToExploration();
     }

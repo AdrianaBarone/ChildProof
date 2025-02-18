@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public float PointDecreaseRate = 1f;
     public TMP_Text pointsText;
 
+    [Header("Score Audio")]
+    public AudioClip upScore;
+    public AudioClip downScore;
 
     private void Awake()
     {
@@ -33,6 +36,9 @@ public class GameManager : MonoBehaviour
         // NOTE: non ha senso ma funziona, quindi non toccare
         Time.timeScale = 1;
         InDangerMode = false;
+
+        //AudioManager.Instance.CreateAudioSource(upScore, false, "SFX");
+        //AudioManager.Instance.CreateAudioSource(downScore, false, "SFX");
         AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
     }
 

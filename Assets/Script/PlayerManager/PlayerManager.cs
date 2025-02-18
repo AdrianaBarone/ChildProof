@@ -101,6 +101,8 @@ public class PlayerManager : MonoBehaviour
 
             AudioSource audioSourceAnswer = AudioManager.Instance.CreateAudioSource(achievementData.audioClipAnswer, false, "Dialoghi");
             audioSourceAnswer.panStereo = -1.0f;
+            
+            AudioManager.Instance.PlayDialogs(audioSourceQuestion, audioSourceAnswer);
         }
     }
     

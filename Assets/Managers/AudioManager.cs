@@ -23,6 +23,10 @@ public class AudioManager : MonoBehaviour {
     public AudioClip passiClip;
     private AudioSource passiSource;
 
+    [Header("Punteggio Score")]
+    public AudioClip upScore;
+    public AudioClip downScore;
+
     [Header("Audio cambio camera")]
     public AudioClip cameraTransitionClip;
     private AudioSource cameraAudioSource;
@@ -87,7 +91,8 @@ public class AudioManager : MonoBehaviour {
     public void PlayFootsteps(bool isMoving) {
         if (isMoving && !passiSource.isPlaying) {
             passiSource.Play();
-        } else if (!isMoving && passiSource.isPlaying) {
+        }
+        else if (!isMoving && passiSource.isPlaying) {
             passiSource.Stop();
         }
     }
@@ -102,7 +107,6 @@ public class AudioManager : MonoBehaviour {
     public void StopCameraTransitionSound() {
         if (cameraAudioSource.isPlaying) {
             cameraAudioSource.Stop();
-            snapshotManager.ChangeSnapshot(SnapshotState.Player, 1f);
         }
     }
 
@@ -113,27 +117,38 @@ public class AudioManager : MonoBehaviour {
         StartCoroutine(WaitForSoundToFinish(audioSource));
     }
 
-    public void PlayDialogs(AudioSource audioSourceQuestion, AudioSource audioSourceAnswer){
-        audioSourceQuestion.Play();
-        audioSourceAnswer.PlayScheduled(AudioSettings.dspTime + audioSourceAnswer.clip.length);
-    }
-
     private IEnumerator WaitForSoundToFinish(AudioSource audioSource) {
         yield return new WaitForSeconds(audioSource.clip.length);
         yield return new WaitForSeconds(1f);
-        if (!audioSource.isPlaying) {
+         if (!audioSource.isPlaying && snapshotManager.GetCurrentSnapshot() != SnapshotState.Voice) {
         snapshotManager.ChangeSnapshot(SnapshotState.Player, 3f);
     }
     }
 
+    public void PlayDialogs(AudioSource audioSourceQuestion, AudioSource audioSourceAnswer) {
+        snapshotManager.ChangeSnapshot(SnapshotState.Voice, 0);
+        audioSourceQuestion.Play();
+        audioSourceAnswer.PlayScheduled(AudioSettings.dspTime + audioSourceQuestion.clip.length);
+        StartCoroutine(ResetSnapshotAfterDialog(audioSourceQuestion, audioSourceAnswer));
+    }
+
+    private IEnumerator ResetSnapshotAfterDialog(AudioSource audioSourceQuestion, AudioSource audioSourceAnswer) {
+        yield return new WaitForSeconds(audioSourceQuestion.clip.length);
+        yield return new WaitForSeconds(audioSourceAnswer.clip.length);
+
+        if (!audioSourceQuestion.isPlaying && !audioSourceAnswer.isPlaying) {
+            snapshotManager.ChangeSnapshot(SnapshotState.Player, 3f);
+        }
+    }
+
+
+
     public void PlayAudioWithFadeIn(bool InDangerMode) {
         if (!InDangerMode) {
             StartCoroutine(FadeInAudio(audioSafeSource, audioClipSafe));
-            Debug.Log($"PlayAudioWithFadeIn attivato - InDangerMode: {InDangerMode}, {audioSafeSource}, {audioClipSafe}");
-        } else {
+        }
+        else {
             StartCoroutine(FadeInAudio(audioDangerSource, audioClipDanger));
-            Debug.Log($"PlayAudioWithFadeIn attivato - InDangerMode: {InDangerMode}");
-            Debug.Log($"{audioClipDanger}");
         }
     }
 
@@ -142,54 +157,49 @@ public class AudioManager : MonoBehaviour {
             if (audioDangerSource.isPlaying) {
                 StartCoroutine(FadeOutAudio(audioDangerSource, audioClipDanger));
             }
-        } else {
+        }
+        else {
             if (audioSafeSource.isPlaying) {
                 StartCoroutine(FadeOutAudio(audioSafeSource, audioClipSafe));
             }
         }
     }
 
-   private IEnumerator FadeInAudio(AudioSource audioSource, AudioClip clip) {
-    if (audioSource == null || clip == null) {
-        Debug.LogError($"FadeInAudio fallito: AudioSource o AudioClip è NULL!");
-        yield break;
+    private IEnumerator FadeInAudio(AudioSource audioSource, AudioClip clip) {
+        if (audioSource == null || clip == null) {
+            Debug.LogError($"FadeInAudio fallito: AudioSource o AudioClip è NULL!");
+            yield break;
+        }
+
+        audioSource.volume = 0f;
+        audioSource.loop = true;
+        audioSource.Play();
+
+        float timeElapsed = 0f;
+        while (timeElapsed < fadeInDuration) {
+            audioSource.volume = Mathf.Lerp(0f, 1f, timeElapsed / fadeInDuration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        audioSource.volume = 1f;
     }
 
-    audioSource.volume = 0f;
-    audioSource.loop = true;
-    audioSource.Play();  // Assicura che l'audio parta
+    private IEnumerator FadeOutAudio(AudioSource audioSource, AudioClip clip) {
+        if (audioSource == null || clip == null) {
+            Debug.LogError($"FadeOutAudio fallito: AudioSource o AudioClip è NULL!");
+            yield break;
+        }
 
-    Debug.Log($"Fade In iniziato per {clip.name}");
+        float timeElapsed = 0f;
+        while (timeElapsed < fadeOutDuration) {
+            audioSource.volume = Mathf.Lerp(1f, 0f, timeElapsed / fadeOutDuration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
 
-    float timeElapsed = 0f;
-    while (timeElapsed < fadeInDuration) {
-        audioSource.volume = Mathf.Lerp(0f, 1f, timeElapsed / fadeInDuration);
-        timeElapsed += Time.deltaTime;
-        yield return null;
+        audioSource.volume = 0f;
+        audioSource.Stop();
     }
-
-    audioSource.volume = 1f;
-    Debug.Log($"Fade In completato per {clip.name}");
-}
-
-private IEnumerator FadeOutAudio(AudioSource audioSource, AudioClip clip) {
-    if (audioSource == null || clip == null) {
-        Debug.LogError($"FadeOutAudio fallito: AudioSource o AudioClip è NULL!");
-        yield break;
-    }
-
-    Debug.Log($"Fade Out iniziato per {clip.name}");
-
-    float timeElapsed = 0f;
-    while (timeElapsed < fadeOutDuration) {
-        audioSource.volume = Mathf.Lerp(1f, 0f, timeElapsed / fadeOutDuration);
-        timeElapsed += Time.deltaTime;
-        yield return null;
-    }
-
-    audioSource.volume = 0f;
-    audioSource.Stop();  // Stop dell'audio solo dopo la dissolvenza
-    Debug.Log($"Fade Out completato per {clip.name}");
-}
 
 }

@@ -75,15 +75,13 @@ public class UIManager : MonoBehaviour {
             // NOTE: probabilmente esiste un modo più efficiente per fare questa cosa
             for (int i = 0; i < 10; i++) {
                 if (Input.GetKeyDown(KeyCode.Alpha0 + i)) {
-                    Debug.Log("Premuto " + i);
                     Item item = InventoryManager.Instance.GetItem((i - 1 + 10) % 10);
                     if (item != null) {
                         ShowInfo(item);
                         //Aggiunta per tutorial
-                        if (TutorialManager.Instance && gameObject.tag == "Tutorial") {
-                            StartCoroutine(WaitForQAndTriggerEvent());
-                        }
-                        //
+                        // if (TutorialManager.Instance && gameObject.tag == "Tutorial") {
+                        //     StartCoroutine(WaitForQAndTriggerEvent());
+                        // }
                     }
                 }
             }
@@ -162,6 +160,9 @@ public class UIManager : MonoBehaviour {
         isInspecting = false;
         animator.SetTrigger("HideInfo");
         Time.timeScale = 1;
+        if (TutorialManager.Instance && gameObject.tag == "Tutorial") {
+            TutorialManager.Instance.OnReceiveEvent("ChiusuraPopupOggetto");
+        }
     }
 
     public void ShowAchievement(Achievement achievement) {
@@ -189,19 +190,19 @@ public class UIManager : MonoBehaviour {
     }
 
     //Aggiunta per tutorial
-    private IEnumerator WaitForQAndTriggerEvent() {
-        bool qPressed = false;
+    // private IEnumerator WaitForQAndTriggerEvent() {
+    //     bool qPressed = false;
 
-        while (!qPressed) {
-            if (Input.GetKeyDown(KeyCode.Q)) {
-                qPressed = true;
-                Debug.Log("Q premuto");
-            }
-            yield return null;
-        }
+    //     while (!qPressed) {
+    //         if (Input.GetKeyDown(KeyCode.Q)) {
+    //             qPressed = true;
+    //             Debug.Log("Q premuto");
+    //         }
+    //         yield return null;
+    //     }
 
-        if (TutorialManager.Instance && gameObject.tag == "Tutorial") {
-            TutorialManager.Instance.OnReceiveEvent("ChiusuraPopupOggetto");
-        }
-    }
+    //     if (TutorialManager.Instance && gameObject.tag == "Tutorial") {
+    //         TutorialManager.Instance.OnReceiveEvent("ChiusuraPopupOggetto");
+    //     }
+    // }
 }

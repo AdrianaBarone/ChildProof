@@ -18,11 +18,14 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private Sprite completedAchievementSprite;
 
     public Image tooltipSprite;
+    public Sprite lockedAchievementIcon;
+    public Sprite lockedAchievementBackground;
 
     public static UIManager Instance;
 
     private Animator animator;
-    private bool isInspecting = false;
+    public bool isInspecting = false;
+    public bool isPaused = false;
 
     [Header("Suoni UI")]
     public AudioClip InfoItem;
@@ -105,6 +108,7 @@ public class UIManager : MonoBehaviour {
             InventoryCanvas.SetActive(false);
             CursorCanvas.SetActive(false);
             PauseCanvas.SetActive(true);
+            isPaused = true;
 
             Time.timeScale = 0;
             PlayerManager.Instance.PrepareTransition();
@@ -132,6 +136,7 @@ public class UIManager : MonoBehaviour {
         CursorCanvas.SetActive(true);
         InventoryCanvas.SetActive(true);
         PauseCanvas.SetActive(false);
+        isPaused = false;
         Time.timeScale = 1;
         PlayerManager.Instance.ReturnToPreviousState();
     }
@@ -172,13 +177,21 @@ public class UIManager : MonoBehaviour {
         }
 
         achievementCard.transform.Find("Body/Titolo").GetComponent<TMP_Text>().text = achievement.data.name;
+
         if (achievement.taskProgress >= achievement.data.goal) {
 
             achievementCard.GetComponent<Image>().sprite = completedAchievementSprite;
             achievementCard.transform.Find("Body/Titolo").GetComponent<TMP_Text>().color = new Color(0.8396226f, 0.9176471f, 0.972549f);
             achievementCard.transform.Find("Body/Progresso/Testo").GetComponent<TMP_Text>().color = new Color(0.8396226f, 0.9176471f, 0.972549f);
             achievementCard.transform.Find("Icon").GetComponent<Image>().sprite = achievement.data.achievementIcon;
+        } else {
+            achievementCard.GetComponent<Image>().sprite = lockedAchievementBackground;
+            achievementCard.transform.Find("Body/Titolo").GetComponent<TMP_Text>().color = new Color(0.1176471f, 0.3686275f, 0.4666667f, 0.5f);
+            achievementCard.transform.Find("Body/Progresso/Testo").GetComponent<TMP_Text>().color = new Color(0.1176471f, 0.3686275f, 0.4666667f, 0.5f);
+            achievementCard.transform.Find("Icon").GetComponent<Image>().sprite = lockedAchievementIcon;
         }
+
+
 
         TMP_Text progressText = achievementCard.transform.Find("Body/Progresso/Testo").GetComponent<TMP_Text>();
         Slider progressSlider = achievementCard.transform.Find("Body/Progresso/Slider").GetComponent<Slider>();

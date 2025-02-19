@@ -37,6 +37,8 @@ public class AppManager : MonoBehaviour
     public AudioClip SbloccoTelefono;
     public AudioClip BloccoTelefono;
 
+    public bool isPauseMenu;
+
 
     void Awake()
     {
@@ -45,7 +47,8 @@ public class AppManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && Time.timeScale != 0)
+        // 
+        if (Input.GetKeyDown(KeyCode.E) && !(UIManager.Instance.isPaused || UIManager.Instance.isInspecting))
         {
             ToggleSmartphone();
         }
@@ -60,6 +63,7 @@ public class AppManager : MonoBehaviour
         {
             // NOTE: Apre il telefono
             PlayerManager.Instance.SetToPhoneUp();
+            Time.timeScale = 0;
             UIManager.Instance.ShowInventory(false);
             UIManager.Instance.ShowPhoneAnimation();
             AudioManager.Instance.PlaySound(SbloccoTelefono);
@@ -74,6 +78,7 @@ public class AppManager : MonoBehaviour
 
     public void ClosePhone()
     {
+        Time.timeScale = 1;
         PlayerManager.Instance.ReturnToPreviousState();
         UIManager.Instance.ShowInventory(true);
         UIManager.Instance.HidePhoneAnimation();

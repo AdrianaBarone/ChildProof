@@ -14337,6 +14337,10 @@ MonoBehaviour:
   confirmExit: {fileID: 190264511}
   completedAchievementSprite: {fileID: 21300000, guid: c93da4645489be24683605d01dda547a, type: 3}
   tooltipSprite: {fileID: 873928225}
+  lockedAchievementIcon: {fileID: 21300000, guid: 3abbff225ff16af46b83f721c4348f48, type: 3}
+  lockedAchievementBackground: {fileID: 21300000, guid: 3603fbe63fd6c4d4d911aa331472ab04, type: 3}
+  isInspecting: 0
+  isPaused: 0
   InfoItem: {fileID: 8300000, guid: 5a5e8a1612ce648b08f85bad7b37f645, type: 3}
   SbloccoAchivement: {fileID: 8300000, guid: 4dd86fe8041ee5942ac5f90ce169aaef, type: 3}
 --- !u!95 &265524484
@@ -16397,7 +16401,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -16754,7 +16759,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -19373,7 +19379,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -22947,7 +22954,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -26596,7 +26604,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -26858,7 +26867,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -29570,7 +29580,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -31607,7 +31618,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -33905,7 +33917,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -35428,7 +35441,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -40763,7 +40777,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -40891,7 +40906,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -41786,7 +41802,7 @@ Camera:
   m_GameObject: {fileID: 968004416}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 3
+  m_ClearFlags: 4
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -41812,8 +41828,8 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 0.45
-  m_Depth: 0
+  orthographic size: 1
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 32
@@ -41858,9 +41874,9 @@ MonoBehaviour:
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
+  m_CameraType: 1
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -50956,7 +50972,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -54249,7 +54266,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -54365,7 +54383,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -57301,7 +57320,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -57412,7 +57432,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -65500,7 +65521,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -68219,7 +68241,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -71472,7 +71495,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -74463,7 +74487,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -78575,7 +78600,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -79006,7 +79032,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -91626,7 +91653,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -92882,7 +92910,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -93290,7 +93319,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -95663,7 +95693,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 968004417}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
@@ -96885,6 +96916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a4bb1c2773ab54fba9f0dba51c8d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingItems: []
   ItemContent: {fileID: 1277199725}
   ItemSelected: {fileID: 0}
   selectedItemParent: {fileID: 1291810819}
@@ -102669,6 +102701,14 @@ PrefabInstance:
       propertyPath: 'objectToEnableOnRestore.Array.data[0]'
       value: 
       objectReference: {fileID: 906113159}
+    - target: {fileID: 8287157260556438693, guid: ac27ff382feee9d4ab14bb0aff9181f0, type: 3}
+      propertyPath: m_Cameras.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8287157260556438693, guid: ac27ff382feee9d4ab14bb0aff9181f0, type: 3}
+      propertyPath: 'm_Cameras.Array.data[0]'
+      value: 
+      objectReference: {fileID: 968004417}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

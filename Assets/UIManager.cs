@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     public GameObject ItemPopup;
     public GameObject achievementCard;
 
+    public GameObject confirmExit;
+
     [SerializeField] private Sprite completedAchievementSprite;
 
     public Image tooltipSprite;
@@ -83,7 +85,8 @@ public class UIManager : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.Alpha0 + i))
                 {
-                    Item item = InventoryManager.Instance.GetItem(i);
+                    Debug.Log("Premuto " + i);
+                    Item item = InventoryManager.Instance.GetItem((i - 1 + 10) % 10);
                     if (item != null)
                     {
                         ShowInfo(item);
@@ -116,6 +119,11 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 0;
             PlayerManager.Instance.PrepareTransition();
         }
+    }
+
+    public void ShowConfirmExit(bool show)
+    {
+        confirmExit.SetActive(show);
     }
 
     public void HidePhoneAnimation()

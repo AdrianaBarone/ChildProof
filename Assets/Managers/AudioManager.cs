@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class AudioManager : MonoBehaviour {
+public class AudioManager : MonoBehaviour
+{
     public static AudioManager Instance;
 
     private List<AudioSource> audioSources = new List<AudioSource>();
@@ -27,13 +28,13 @@ public class AudioManager : MonoBehaviour {
     public AudioClip cameraTransitionClip;
     private AudioSource cameraAudioSource;
 
-/*
-    [Header("Audio Punti")]
-    public AudioClip pointsGainClip;
-    public AudioClip pointsLossClip;
-    private AudioSource pointsGainSource;
-    private AudioSource pointsLossSource;
-    */
+    /*
+        [Header("Audio Punti")]
+        public AudioClip pointsGainClip;
+        public AudioClip pointsLossClip;
+        private AudioSource pointsGainSource;
+        private AudioSource pointsLossSource;
+        */
 
     [Header("Audio SoundTrack")]
     public AudioClip audioClipSafe;
@@ -43,11 +44,13 @@ public class AudioManager : MonoBehaviour {
 
     private SnapshotManager snapshotManager;
 
-    private void Awake() {
+    private void Awake()
+    {
         Instance = this;
 
         // Costruisce il dizionario con i gruppi mixer
-        foreach (var group in mixerGroups) {
+        foreach (var group in mixerGroups)
+        {
             mixerGroupsDict[group.name] = group;
         }
 
@@ -59,24 +62,30 @@ public class AudioManager : MonoBehaviour {
         //pointsLossSource = CreateAudioSource(pointsLossClip, false, "SFX");
     }
 
-    private void Start() {
+    private void Start()
+    {
         snapshotManager = GetComponent<SnapshotManager>();
         snapshotManager.ChangeSnapshot(SnapshotState.Player, 0);
     }
 
-    public AudioSource CreateAudioSource(AudioClip audioClip, bool loop, string groupName) {
-        if (audioClip == null) {
+    public AudioSource CreateAudioSource(AudioClip audioClip, bool loop, string groupName)
+    {
+        if (audioClip == null)
+        {
             Debug.Log(" AudioClip è NULL! Controlla gli assegnamenti in AudioManager.");
             return null;
         }
 
-        if (!mixerGroupsDict.ContainsKey(groupName)) {
+        if (!mixerGroupsDict.ContainsKey(groupName))
+        {
             Debug.LogError($" Il gruppo AudioMixer '{groupName}' non esiste! Controlla il nome.");
             return null;
         }
 
-        foreach (var source in audioSources) {
-            if (source.clip == audioClip) {
+        foreach (var source in audioSources)
+        {
+            if (source.clip == audioClip)
+            {
                 return source;
             }
         }
@@ -94,99 +103,107 @@ public class AudioManager : MonoBehaviour {
         return newSource;
     }
 
-    public void PlayFootsteps(bool isMoving) {
-        if (isMoving && !passiSource.isPlaying) {
+    public void PlayFootsteps(bool isMoving)
+    {
+        if (isMoving && !passiSource.isPlaying)
+        {
             passiSource.Play();
         }
-        else if (!isMoving && passiSource.isPlaying) {
+        else if (!isMoving && passiSource.isPlaying)
+        {
             passiSource.Stop();
         }
     }
 
-    public void PlayCameraTransitionSound() {
-        if (cameraTransitionClip != null) {
-            snapshotManager.ChangeSnapshot(SnapshotState.SFX, 1f);
+    public void PlayCameraTransitionSound()
+    {
+        if (cameraTransitionClip != null)
+        {
+            snapshotManager.ChangeSnapshot(SnapshotState.SFX, 0);
             cameraAudioSource.Play();
         }
     }
 
-    public void StopCameraTransitionSound() {
-        if (cameraAudioSource.isPlaying) {
+    public void StopCameraTransitionSound()
+    {
+        if (cameraAudioSource.isPlaying)
+        {
             cameraAudioSource.Stop();
         }
     }
 
-    public void PlaySound(AudioClip audioClip) {
+    public void PlaySound(AudioClip audioClip)
+    {
         AudioSource audioSource = CreateAudioSource(audioClip, false, "SFX");
-        snapshotManager.ChangeSnapshot(SnapshotState.SFX, 1f);
+        snapshotManager.ChangeSnapshot(SnapshotState.SFX, 0);
         audioSource.Play();
         StartCoroutine(WaitForSoundToFinish(audioSource));
     }
 
-/*
-    public void PlayPointsSound(bool isGain) {
-        snapshotManager.ChangeSnapshot(SnapshotState.SFX, 1f);
-        if (isGain) {
-            if (pointsGainSource != null) {
-                pointsGainSource.volume = 1;
-                pointsGainSource.Play();
-            }
-        }
-        else {
-            if (pointsLossSource != null) pointsLossSource.Play();
-        }
-    }
-*/
-    private IEnumerator WaitForSoundToFinish(AudioSource audioSource) {
+    private IEnumerator WaitForSoundToFinish(AudioSource audioSource)
+    {
         yield return new WaitForSeconds(audioSource.clip.length);
         yield return new WaitForSeconds(1f);
-        if (!audioSource.isPlaying && snapshotManager.GetCurrentSnapshot() != SnapshotState.Voice) {
+        if (!audioSource.isPlaying && snapshotManager.GetCurrentSnapshot() != SnapshotState.Voice)
+        {
             snapshotManager.ChangeSnapshot(SnapshotState.Player, 3f);
         }
     }
 
-    public void PlayDialogs(AudioSource audioSourceQuestion, AudioSource audioSourceAnswer) {
+    public void PlayDialogs(AudioSource audioSourceQuestion, AudioSource audioSourceAnswer)
+    {
         snapshotManager.ChangeSnapshot(SnapshotState.Voice, 0);
         audioSourceQuestion.Play();
         audioSourceAnswer.PlayScheduled(AudioSettings.dspTime + audioSourceQuestion.clip.length);
         StartCoroutine(ResetSnapshotAfterDialog(audioSourceQuestion, audioSourceAnswer));
     }
 
-    private IEnumerator ResetSnapshotAfterDialog(AudioSource audioSourceQuestion, AudioSource audioSourceAnswer) {
+    private IEnumerator ResetSnapshotAfterDialog(AudioSource audioSourceQuestion, AudioSource audioSourceAnswer)
+    {
         yield return new WaitForSeconds(audioSourceQuestion.clip.length);
         yield return new WaitForSeconds(audioSourceAnswer.clip.length);
 
-        if (!audioSourceQuestion.isPlaying && !audioSourceAnswer.isPlaying) {
+        if (!audioSourceQuestion.isPlaying && !audioSourceAnswer.isPlaying)
+        {
             snapshotManager.ChangeSnapshot(SnapshotState.Player, 3f);
         }
     }
 
 
-
-    public void PlayAudioWithFadeIn(bool InDangerMode) {
-        if (!InDangerMode) {
+    public void PlayAudioWithFadeIn(bool InDangerMode)
+    {
+        if (!InDangerMode)
+        {
             StartCoroutine(FadeInAudio(audioSafeSource, audioClipSafe));
         }
-        else {
+        else
+        {
             StartCoroutine(FadeInAudio(audioDangerSource, audioClipDanger));
         }
     }
 
-    public void StopAudioWithFadeOut(bool InDangerMode) {
-        if (!InDangerMode) {
-            if (audioDangerSource.isPlaying) {
+    public void StopAudioWithFadeOut(bool InDangerMode)
+    {
+        if (!InDangerMode)
+        {
+            if (audioDangerSource.isPlaying)
+            {
                 StartCoroutine(FadeOutAudio(audioDangerSource, audioClipDanger));
             }
         }
-        else {
-            if (audioSafeSource.isPlaying) {
+        else
+        {
+            if (audioSafeSource.isPlaying)
+            {
                 StartCoroutine(FadeOutAudio(audioSafeSource, audioClipSafe));
             }
         }
     }
 
-    private IEnumerator FadeInAudio(AudioSource audioSource, AudioClip clip) {
-        if (audioSource == null || clip == null) {
+    private IEnumerator FadeInAudio(AudioSource audioSource, AudioClip clip)
+    {
+        if (audioSource == null || clip == null)
+        {
             Debug.LogError($"FadeInAudio fallito: AudioSource o AudioClip è NULL!");
             yield break;
         }
@@ -196,7 +213,8 @@ public class AudioManager : MonoBehaviour {
         audioSource.Play();
 
         float timeElapsed = 0f;
-        while (timeElapsed < fadeInDuration) {
+        while (timeElapsed < fadeInDuration)
+        {
             audioSource.volume = Mathf.Lerp(0f, 1f, timeElapsed / fadeInDuration);
             timeElapsed += Time.deltaTime;
             yield return null;
@@ -205,14 +223,17 @@ public class AudioManager : MonoBehaviour {
         audioSource.volume = 1f;
     }
 
-    private IEnumerator FadeOutAudio(AudioSource audioSource, AudioClip clip) {
-        if (audioSource == null || clip == null) {
+    private IEnumerator FadeOutAudio(AudioSource audioSource, AudioClip clip)
+    {
+        if (audioSource == null || clip == null)
+        {
             Debug.LogError($"FadeOutAudio fallito: AudioSource o AudioClip è NULL!");
             yield break;
         }
 
         float timeElapsed = 0f;
-        while (timeElapsed < fadeOutDuration) {
+        while (timeElapsed < fadeOutDuration)
+        {
             audioSource.volume = Mathf.Lerp(1f, 0f, timeElapsed / fadeOutDuration);
             timeElapsed += Time.deltaTime;
             yield return null;

@@ -159,11 +159,17 @@ public class PlayerInteraction : MonoBehaviour
     public bool TryDragAndDrop(ItemData itemData)
     {
         DropZone dropZone = RaycastForDropZone();
-
+        Debug.Log("dropzone");
+        Debug.Log(dropZone);
         if (dropZone == null)
         {
             return false;
         }
+
+        Debug.Log("dropzone parent");
+        Debug.Log(dropZone.parentInspectable);
+        Debug.Log("current inspectable");
+        Debug.Log(PlayerManager.Instance.currentInspectable);
 
         if (dropZone.parentInspectable != PlayerManager.Instance.currentInspectable)
         {
@@ -171,6 +177,9 @@ public class PlayerInteraction : MonoBehaviour
         }
 
 
+
+        Debug.Log("dropzone accepts item");
+        Debug.Log(dropZone.AcceptsItem(itemData));
         if (dropZone.AcceptsItem(itemData))
         {
             dropZone.OnDrop();

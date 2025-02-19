@@ -6,7 +6,7 @@ public class TutorialManager : MonoBehaviour
 
     public static TutorialManager Instance;
     [SerializeField] private Sequence[] sequences;
-    private int currentStep = -1;
+    private int currentStep = 0;
 
     private void Awake()
     {
@@ -22,7 +22,7 @@ public class TutorialManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            sequences[currentStep].tutorialPanel.Hide();
+            sequences[currentStep-1].tutorialPanel.Hide();
         }
     }
 
@@ -35,10 +35,10 @@ public class TutorialManager : MonoBehaviour
         }
 
 
-        if (eventKey == sequences[currentStep + 1].eventKey)
+        if (eventKey == sequences[currentStep].eventKey)
         {
-            currentStep++;
             sequences[currentStep].tutorialPanel.Show();
+            currentStep++;
         }
     }
 }

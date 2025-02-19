@@ -17,10 +17,6 @@ public class GameManager : MonoBehaviour
     public float PointDecreaseRate = 1f;
     public TMP_Text pointsText;
 
-    [Header("Score Audio")]
-    public AudioClip upScore;
-    public AudioClip downScore;
-
     private void Awake()
     {
         if (Instance == null)
@@ -37,8 +33,6 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         InDangerMode = false;
 
-        //AudioManager.Instance.CreateAudioSource(upScore, false, "SFX");
-        //AudioManager.Instance.CreateAudioSource(downScore, false, "SFX");
         AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
     }
 
@@ -47,7 +41,7 @@ public class GameManager : MonoBehaviour
         InDangerMode = true;
 
         AudioManager.Instance.PlayAudioWithFadeIn(InDangerMode);
-         AudioManager.Instance.StopAudioWithFadeOut(InDangerMode);
+        AudioManager.Instance.StopAudioWithFadeOut(InDangerMode);
 
         currentDangerInspectable = inspectable;
         // TODO: animazioni e suoni di attivazione
@@ -102,6 +96,7 @@ public class GameManager : MonoBehaviour
         {
             score += value;
             StartCoroutine(AnimatePointsText());
+            //AudioManager.Instance.PlayPointsSound(true);
         }
         else
         {
@@ -112,6 +107,7 @@ public class GameManager : MonoBehaviour
     public void DecreaseScore(int value)
     {
         score -= value;
+        //AudioManager.Instance.PlayPointsSound(false);
 
         if (score <= 0)
         {

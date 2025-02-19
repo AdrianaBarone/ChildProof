@@ -14054,7 +14054,7 @@ MonoBehaviour:
   completedAchievementSprite: {fileID: 21300000, guid: c93da4645489be24683605d01dda547a, type: 3}
   tooltipSprite: {fileID: 873928225}
   InfoItem: {fileID: 8300000, guid: 5a5e8a1612ce648b08f85bad7b37f645, type: 3}
-  SbloccoAchivement: {fileID: 8300000, guid: 70dde3ed3334642e197f2be41f2085be, type: 3}
+  SbloccoAchivement: {fileID: 8300000, guid: 4dd86fe8041ee5942ac5f90ce169aaef, type: 3}
 --- !u!95 &265524484
 Animator:
   serializedVersion: 7
@@ -24049,8 +24049,6 @@ MonoBehaviour:
   PointDecreasePercent: 5
   PointDecreaseRate: 1
   pointsText: {fileID: 1347080814}
-  upScore: {fileID: 0}
-  downScore: {fileID: 0}
 --- !u!4 &467141827
 Transform:
   m_ObjectHideFlags: 0
@@ -55243,9 +55241,9 @@ MonoBehaviour:
   - {fileID: -6365788787128379153, guid: 0d111de3707b041c7942cb9576d5db6d, type: 2}
   - {fileID: 7283118130218960643, guid: 0d111de3707b041c7942cb9576d5db6d, type: 2}
   passiClip: {fileID: 8300000, guid: e9a487aac16b327459f2d3706f48d095, type: 3}
-  upScore: {fileID: 0}
-  downScore: {fileID: 0}
   cameraTransitionClip: {fileID: 8300000, guid: 9247f62b6f8734d4ebbfbdfbeaa4f7ed, type: 3}
+  pointsGainClip: {fileID: 8300000, guid: ed5281d3c19baa349a7fe53720c59414, type: 3}
+  pointsLossClip: {fileID: 8300000, guid: 702019e57faea5c439f2a9f7472beca6, type: 3}
   audioClipSafe: {fileID: 8300000, guid: 236c9b863cc124d46a798721ab7dc4e0, type: 3}
   audioClipDanger: {fileID: 8300000, guid: 2534211640f4e4303b635f3a0d6ce7d8, type: 3}
 --- !u!114 &1223341607

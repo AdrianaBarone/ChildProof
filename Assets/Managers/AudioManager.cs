@@ -11,25 +11,29 @@ public class AudioManager : MonoBehaviour {
     public float fadeInDuration = 3f;
     public float fadeOutDuration = 3f;
 
+
     [Header("AudioMixer")]
     [SerializeField] private AudioMixer audioMixer;
 
     [Header("AudioMixerGroups")]
     [SerializeField] private List<AudioMixerGroup> mixerGroups = new List<AudioMixerGroup>();
-
     private Dictionary<string, AudioMixerGroup> mixerGroupsDict = new Dictionary<string, AudioMixerGroup>();
 
     [Header("Suoni Giocatore")]
     public AudioClip passiClip;
     private AudioSource passiSource;
 
-    [Header("Punteggio Score")]
-    public AudioClip upScore;
-    public AudioClip downScore;
-
     [Header("Audio cambio camera")]
     public AudioClip cameraTransitionClip;
     private AudioSource cameraAudioSource;
+
+/*
+    [Header("Audio Punti")]
+    public AudioClip pointsGainClip;
+    public AudioClip pointsLossClip;
+    private AudioSource pointsGainSource;
+    private AudioSource pointsLossSource;
+    */
 
     [Header("Audio SoundTrack")]
     public AudioClip audioClipSafe;
@@ -51,6 +55,8 @@ public class AudioManager : MonoBehaviour {
         cameraAudioSource = CreateAudioSource(cameraTransitionClip, false, "SFX");
         audioSafeSource = CreateAudioSource(audioClipSafe, true, "Music");
         audioDangerSource = CreateAudioSource(audioClipDanger, true, "Music");
+        //pointsGainSource = CreateAudioSource(pointsGainClip, false, "SFX");
+        //pointsLossSource = CreateAudioSource(pointsLossClip, false, "SFX");
     }
 
     private void Start() {
@@ -117,12 +123,26 @@ public class AudioManager : MonoBehaviour {
         StartCoroutine(WaitForSoundToFinish(audioSource));
     }
 
+/*
+    public void PlayPointsSound(bool isGain) {
+        snapshotManager.ChangeSnapshot(SnapshotState.SFX, 1f);
+        if (isGain) {
+            if (pointsGainSource != null) {
+                pointsGainSource.volume = 1;
+                pointsGainSource.Play();
+            }
+        }
+        else {
+            if (pointsLossSource != null) pointsLossSource.Play();
+        }
+    }
+*/
     private IEnumerator WaitForSoundToFinish(AudioSource audioSource) {
         yield return new WaitForSeconds(audioSource.clip.length);
         yield return new WaitForSeconds(1f);
-         if (!audioSource.isPlaying && snapshotManager.GetCurrentSnapshot() != SnapshotState.Voice) {
-        snapshotManager.ChangeSnapshot(SnapshotState.Player, 3f);
-    }
+        if (!audioSource.isPlaying && snapshotManager.GetCurrentSnapshot() != SnapshotState.Voice) {
+            snapshotManager.ChangeSnapshot(SnapshotState.Player, 3f);
+        }
     }
 
     public void PlayDialogs(AudioSource audioSourceQuestion, AudioSource audioSourceAnswer) {

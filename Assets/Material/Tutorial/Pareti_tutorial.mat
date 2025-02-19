@@ -20,7 +20,7 @@ Material:
   stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
-  m_LockedProperties: _NoiseTex
+  m_LockedProperties: _NoiseTex _WobbleSpeed
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -41,22 +41,22 @@ Material:
     - _FresnelPower: 1.5
     - _GlowIntensity: 10
     - _GridScale: 21.6
-    - _InterferenceSpeed: 1.86
+    - _InterferenceSpeed: 1.49
     - _InterferenceStrength: 0.654
     - _NoiseScale: 2.74
     - _NoiseSpeed: 4.97
-    - _OrganicNoise: 0
+    - _OrganicNoise: 0.22
     - _ParallaxDepth: 0.07
-    - _ParallaxStrength: 0
+    - _ParallaxStrength: 0.06
     - _ScanIntensity: 0.06
     - _ScanSpeed: 2.81
-    - _Softness: 0.887
-    - _Transparency: 0.04
+    - _Softness: 0.67
+    - _Transparency: 0.06
     - _WobbleSpeed: 2.4
-    - _WobbleStrength: 0.679
+    - _WobbleStrength: 0.54
     m_Colors:
     - _BaseColor: {r: 0, g: 0.25342464, b: 1, a: 1}
-    - _EmissionColor: {r: 0.031238874, g: 0.24528301, b: 0.24086061, a: 1}
+    - _EmissionColor: {r: 0.5071831, g: 0.1745283, b: 1, a: 1}
     - _FresnelColor: {r: 0.89258814, g: 0, b: 1, a: 1}
     - _TintColor: {r: 0, g: 0.48336995, b: 0.7647059, a: 1}
   m_BuildTextureStacks: []

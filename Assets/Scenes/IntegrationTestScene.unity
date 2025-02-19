@@ -15325,7 +15325,7 @@ PrefabInstance:
     - target: {fileID: 3902587517179723073, guid: 31c443b728fe4de49800dc57dee52d81, type: 3}
       propertyPath: 'audioClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 243253a6f5009874fb62abb4e901aaa1, type: 3}
+      objectReference: {fileID: 8300000, guid: 1e2d2f22b383d2047ace572b0823c9cc, type: 3}
     - target: {fileID: 3902587517179723073, guid: 31c443b728fe4de49800dc57dee52d81, type: 3}
       propertyPath: objectToEnableOnRestore.Array.size
       value: 1
@@ -16487,7 +16487,7 @@ PrefabInstance:
     - target: {fileID: 7185873388881721681, guid: e2875197de309c64bb01b131d950fec3, type: 3}
       propertyPath: 'audioClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 243253a6f5009874fb62abb4e901aaa1, type: 3}
+      objectReference: {fileID: 8300000, guid: 1e2d2f22b383d2047ace572b0823c9cc, type: 3}
     - target: {fileID: 7185873388881721681, guid: e2875197de309c64bb01b131d950fec3, type: 3}
       propertyPath: objectToEnableOnRestore.Array.size
       value: 1
@@ -21036,7 +21036,7 @@ MonoBehaviour:
   dropZones:
   - {fileID: 1354070594}
   audioClips:
-  - {fileID: 8300000, guid: 482d29decc5cdf14ebbb99cbd0e9cf5d, type: 3}
+  - {fileID: 8300000, guid: 1076b2c4faf0bbe408525337860fcb77, type: 3}
 --- !u!114 &412936969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23535,6 +23535,8 @@ MonoBehaviour:
   PointDecreasePercent: 5
   PointDecreaseRate: 1
   pointsText: {fileID: 1347080814}
+  upScore: {fileID: 0}
+  downScore: {fileID: 0}
 --- !u!4 &467141827
 Transform:
   m_ObjectHideFlags: 0
@@ -42555,7 +42557,7 @@ Transform:
   m_GameObject: {fileID: 1022202021}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.03, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -49502,7 +49504,7 @@ Transform:
   m_GameObject: {fileID: 1097972326}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0056, z: -0.0025}
+  m_LocalPosition: {x: 0, y: 0.0056, z: -0.00247}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -54393,7 +54395,9 @@ MonoBehaviour:
   - {fileID: -6365788787128379153, guid: 0d111de3707b041c7942cb9576d5db6d, type: 2}
   - {fileID: 7283118130218960643, guid: 0d111de3707b041c7942cb9576d5db6d, type: 2}
   passiClip: {fileID: 8300000, guid: e9a487aac16b327459f2d3706f48d095, type: 3}
-  cameraTransitionClip: {fileID: 8300000, guid: 9247f62b6f8734d4ebbfbdfbeaa4f7ed, type: 3}
+  upScore: {fileID: 0}
+  downScore: {fileID: 0}
+  cameraTransitionClip: {fileID: 8300000, guid: b427b47360c40df4a943ab69b52d53db, type: 3}
   audioClipSafe: {fileID: 8300000, guid: 236c9b863cc124d46a798721ab7dc4e0, type: 3}
   audioClipDanger: {fileID: 8300000, guid: 2534211640f4e4303b635f3a0d6ce7d8, type: 3}
 --- !u!114 &1223341607
@@ -99029,7 +99033,7 @@ PrefabInstance:
     - target: {fileID: 1787349317468028873, guid: cab1c422bbff3014ba2de56739a6dfbf, type: 3}
       propertyPath: 'audioClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 243253a6f5009874fb62abb4e901aaa1, type: 3}
+      objectReference: {fileID: 8300000, guid: 1e2d2f22b383d2047ace572b0823c9cc, type: 3}
     - target: {fileID: 1787349317468028873, guid: cab1c422bbff3014ba2de56739a6dfbf, type: 3}
       propertyPath: objectToEnableOnRestore.Array.size
       value: 1
@@ -101567,7 +101571,7 @@ PrefabInstance:
     - target: {fileID: 4651666141845665841, guid: c453101a05e4444478c87d9680e8a8a1, type: 3}
       propertyPath: 'audioClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 243253a6f5009874fb62abb4e901aaa1, type: 3}
+      objectReference: {fileID: 8300000, guid: 1e2d2f22b383d2047ace572b0823c9cc, type: 3}
     - target: {fileID: 4651666141845665841, guid: c453101a05e4444478c87d9680e8a8a1, type: 3}
       propertyPath: objectToEnableOnRestore.Array.size
       value: 1
@@ -101717,7 +101721,7 @@ PrefabInstance:
     - target: {fileID: 7185873388881721681, guid: 75121dee3397cf042ab5e8125a935eef, type: 3}
       propertyPath: 'audioClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 243253a6f5009874fb62abb4e901aaa1, type: 3}
+      objectReference: {fileID: 8300000, guid: 1e2d2f22b383d2047ace572b0823c9cc, type: 3}
     - target: {fileID: 7185873388881721681, guid: 75121dee3397cf042ab5e8125a935eef, type: 3}
       propertyPath: objectToEnableOnRestore.Array.size
       value: 1
@@ -101782,7 +101786,7 @@ PrefabInstance:
     - target: {fileID: 844376161623859557, guid: 54a0f2569a57a594c9ab23420ead8542, type: 3}
       propertyPath: 'audioClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 45fa8f58efece8b49877cefbf9a36aa9, type: 3}
+      objectReference: {fileID: 8300000, guid: 716a9f865984205468b1af449e3c9aec, type: 3}
     - target: {fileID: 844376161623859557, guid: 54a0f2569a57a594c9ab23420ead8542, type: 3}
       propertyPath: 'audioClips.Array.data[1]'
       value: 
@@ -102984,7 +102988,7 @@ PrefabInstance:
     - target: {fileID: 3902587517179723073, guid: 31c443b728fe4de49800dc57dee52d81, type: 3}
       propertyPath: 'audioClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 243253a6f5009874fb62abb4e901aaa1, type: 3}
+      objectReference: {fileID: 8300000, guid: 1e2d2f22b383d2047ace572b0823c9cc, type: 3}
     - target: {fileID: 3902587517179723073, guid: 31c443b728fe4de49800dc57dee52d81, type: 3}
       propertyPath: objectToEnableOnRestore.Array.size
       value: 1
@@ -103817,7 +103821,7 @@ PrefabInstance:
     - target: {fileID: 1814616091339404286, guid: 38e3b6f065680be43b4a1efe5c587e22, type: 3}
       propertyPath: 'audioClips.Array.data[0]'
       value: 
-      objectReference: {fileID: 8300000, guid: 45fa8f58efece8b49877cefbf9a36aa9, type: 3}
+      objectReference: {fileID: 8300000, guid: 716a9f865984205468b1af449e3c9aec, type: 3}
     - target: {fileID: 1814616091339404286, guid: 38e3b6f065680be43b4a1efe5c587e22, type: 3}
       propertyPath: objectToEnableOnRestore.Array.size
       value: 2

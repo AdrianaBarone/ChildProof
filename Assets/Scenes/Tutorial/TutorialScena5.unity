@@ -948,6 +948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08004422d3f649d4985e37978f6a4402, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextSceneName: IntegrationTestScene
   sequences:
   - eventKey: Inizio
     tutorialPanel: {fileID: 1800417807}
@@ -963,6 +964,7 @@ MonoBehaviour:
     tutorialPanel: {fileID: 1807352208}
   - eventKey: ChiusuraSchedaFinale
     tutorialPanel: {fileID: 0}
+  inventoryCanvas: {fileID: 1382303688}
 --- !u!4 &104796264
 Transform:
   m_ObjectHideFlags: 0
@@ -11357,6 +11359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a4bb1c2773ab54fba9f0dba51c8d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingItems: []
   ItemContent: {fileID: 1707717655}
   ItemSelected: {fileID: 0}
   selectedItemParent: {fileID: 169930790}

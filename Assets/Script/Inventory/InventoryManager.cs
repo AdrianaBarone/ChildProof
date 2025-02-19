@@ -7,6 +7,7 @@ using System.Collections;
 public class InventoryManager : MonoBehaviour {
     public static InventoryManager Instance;
     public Dictionary<string, Item> Items = new();
+    public Item[] startingItems;
     public Transform ItemContent;
     private GameObject moveableItem;
     public GameObject ItemSelected;
@@ -16,6 +17,12 @@ public class InventoryManager : MonoBehaviour {
 
     private void Awake() {
         Instance = this;
+    }
+
+    void Start() {
+        foreach (Item item in startingItems) {
+            Items.Add(item.data.name, item);
+        }
         ListItems();
     }
 
@@ -117,6 +124,7 @@ public class InventoryManager : MonoBehaviour {
 
     public void ListItems() {
         var enumerator = Items.Values.GetEnumerator();
+        int itemCount = 0;
 
         for (int i = 0; i < ItemContent.childCount; i++) {
             Transform obj = ItemContent.GetChild(i);
@@ -126,6 +134,7 @@ public class InventoryManager : MonoBehaviour {
                 Item entry = enumerator.Current;
                 ItemIcon.color = new Color(ItemIcon.color.r, ItemIcon.color.g, ItemIcon.color.b, 255);
                 ItemIcon.sprite = entry.data.icon;
+                itemCount++;
             }
             else {
                 // Slot vuoto
@@ -133,8 +142,10 @@ public class InventoryManager : MonoBehaviour {
             }
         }
 
-        if (ItemContent.childCount == 9) {
-            if (TutorialManager.Instance && gameObject.tag == "Tutorial") {
+    
+        if (itemCount == 9) {
+            if (TutorialManager.Instance) {
+                Debug.Log("shpara");
                 TutorialManager.Instance.OnReceiveEvent("InventarioPieno");
             }
         }

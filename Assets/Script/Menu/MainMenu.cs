@@ -42,7 +42,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlayTutorial()
     {
-        SceneManager.LoadScene("Tutorial_scena 1");
+        SceneManager.LoadScene("TutorialScena1");
     }
 
     public void QuitGame()

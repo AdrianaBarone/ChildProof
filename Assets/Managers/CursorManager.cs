@@ -20,11 +20,11 @@ public class CursorManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        defaultEXSprite = PlayerManager.Instance.playerInteraction.defaultSprite;
     }
 
     private void Start()
     {
+        defaultEXSprite = PlayerManager.Instance.playerInteraction.defaultSprite;
         cursorImage = GetComponentInChildren<Image>();
     }
 

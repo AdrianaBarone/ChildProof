@@ -46,6 +46,8 @@ public class GameOverManager : MonoBehaviour
     {
         if (Input.anyKeyDown)
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             SceneManager.LoadScene("MainMenu");
         }
     }
